@@ -4,4 +4,7 @@
         <file>qml/images/graphic-led-red.png</file>
         <file>qml/images/graphic-led-yellow.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>harbour-ostos.png</file>
+    </qresource>
 </RCC>
