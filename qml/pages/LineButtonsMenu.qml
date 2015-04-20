@@ -24,7 +24,7 @@ ContextMenu {
                     console.log("Item delete, ROWID:"+ shoppingListModel.get(modelindex).rowid)
                     // remorse and delete
                     cxMenu.hide();
-                    remorseIt.execute(cxMenu.parent,"Deleting Item", function () {
+                    remorseIt.execute(cxMenu.parent,qsTr("Deleting Item"), function () {
                         DBA.deleteItemFromShoppingList(shoppingListModel.get(modelindex).rowid)
                         shoppingListModel.remove(modelindex)
                     }, 2000);

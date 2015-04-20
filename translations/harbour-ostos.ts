@@ -15,10 +15,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -112,6 +108,30 @@
         <source>other</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>g</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ItemEditPage</name>
@@ -121,6 +141,13 @@
     </message>
     <message>
         <source>Edit shops</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LineButtonsMenu</name>
+    <message>
+        <source>Deleting Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -157,15 +184,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Don&apos;t save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -179,11 +206,15 @@
 <context>
     <name>Splash</name>
     <message>
-        <source>ShopIt!</source>
+        <source>Shopping list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ostos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

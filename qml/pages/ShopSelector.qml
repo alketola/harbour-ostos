@@ -19,18 +19,20 @@ ComboBox {
     width: parent.width
     y: Theme.paddingLarge
 
+    property bool menuOpen
+
     Component.onCompleted: { // loads the list
         refresh()
-//        console.log("ShopSelector: onCompleted")
+        //        console.log("ShopSelector: onCompleted")
     }
     property ListModel listmodel
     property bool noRefillListmodel: false
-    property string wildcard: "*"
+    //    property string wildcard: "*"
     property string unassigned: "unassigned"
     property bool hidewildcard: false
 
     function refresh() {
-//        console.log("ShopSelector: refresh()")
+        //        console.log("ShopSelector: refresh()")
         shopModel.clear()
         DBA.repopulateShopList(shopModel)
     }
@@ -41,7 +43,7 @@ ComboBox {
 
     function findShopListIndex(shopname) {
         for(var i=0;i<shopModel.count;i++) {
-//            console.log("name="+shopModel.get(i).name+" shopname="+shopname+" i:"+i)
+            //            console.log("name="+shopModel.get(i).name+" shopname="+shopname+" i:"+i)
             if(shopModel.get(i).name == shopname)
             {
                 return i+1
@@ -52,6 +54,7 @@ ComboBox {
 
     menu: ContextMenu {
         id: scx
+        _closeOnOutsideClick: false
 
         MenuItem {
             id: anyMenuItem
@@ -73,6 +76,9 @@ ComboBox {
                     value=model.name
                     appWindow.currentShop=model.name
                     refreshShoppingListByShop()
+                    if(scx._expanded) {
+                        console.log("Yes it's expanded")
+                    }
                 }
             }
         }
@@ -80,19 +86,18 @@ ComboBox {
             enabled: shopModel.count == 0
             text: qsTr("-No items-")
         }
-        onEntered: {
-            console.log("onENtered")
-        }
 
-        onActivated: {
-            refresh()
-            currentIndex=findShopListIndex(appWindow.currentShop)
-            shoppingListModel.clear
-            console.log("ShopSelector onActivated, value:"+value)
-        }
-        onClosed: {
-            appWindow.currentShop = value
-            refreshShoppingListByShop()
-        }
     }
+    onEntered: {
+        menuOpen=true
+        console.log("Entered Shop Selector menuOpen:"+menuOpen)
+        shoppingListModel.clear();
+
+    }
+
+
+    onClicked: {
+        console.log("ShopSelector contextmenu onClicked, value:"+value)
+    }
+
 }

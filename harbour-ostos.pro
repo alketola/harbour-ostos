@@ -41,12 +41,17 @@ OTHER_FILES += qml/harbour-ostos.qml \
     qml/pages/ShopSelector.qml \
     qml/pages/ShopPage.qml \
     qml/pages/NewShopDialog.qml \
-    qml/pages/FirstPage.qml
+    qml/pages/FirstPage.qml \
+    translations/harbour-ostos-fi.ts \
+    translations/harbour-ostos-ca.ts
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/harbour-ostos-de.ts
+TRANSLATIONS += translations/harbour-ostos-de.ts \
+    translations/harbour-ostos-fi.ts \
+    translations/harbour-ostos-es.ts \
+    translations/harbour-ostos-ca.ts
 
 RESOURCES += \
     resources.qrc

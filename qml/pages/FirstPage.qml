@@ -5,7 +5,6 @@ import "../dbaccess.js" as DBA
 /*
  * Copyright Antti Ketola 2015
  * License: GPL V3
- *
  * Main list page of the shopping list app
  */
 
@@ -14,12 +13,12 @@ Page {
 
     SilicaListView {
         id: firstPageView
-
+        clip: true
         Component.onCompleted: {
-            console.log("FirstPage SilicaListView: Component.onCompleted");
-            shopModel.clear();
-            DBA.repopulateShopList(shopModel); // ShopModel
-            refreshShoppingListByShop();
+            console.log("FirstPage SilicaListView: Component.onCompleted")
+            shopModel.clear()
+            DBA.repopulateShopList(shopModel) // ShopModel
+            refreshShoppingListByShop()
         }
 
         header: PageHeader {
@@ -28,11 +27,11 @@ Page {
                 id: mainListShopSelector
                 label: qsTr("Shop")
                 listmodel: shopModel
-                onEntered: {
-                    onClicked: { refreshShoppingListByShop()}
-                    DBA.repopulateShopList(shopModel); // ShopModel
-                    shoppingListModel.clear();
+                onExited: {
+                    console.log("Exited")
+                    menurefreshtimer.turn_on(!mainListShopSelector._menuOpen,value)
                 }
+
             }
         }
 
@@ -44,11 +43,6 @@ Page {
 
         model: shoppingListModel
         delegate: listLine
-
-        ViewPlaceholder {
-            enabled: shoppingListModel.count == 0
-            text: qsTr("No items")
-        }
 
         PullDownMenu {
 
@@ -91,17 +85,19 @@ Page {
         }
 
     }
+
     /*
      * This is the ListItem of the shopping list row
      */
     Component {
         id: listLine
+
         ListItem {
             onClicked: { //ListItem
                 firstPageView.currentIndex = index;
                 ci = index;
                 stateIndicator.cycle();
-                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex);
+                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
             }
             onPressed: {
                 firstPageView.currentIndex = index
@@ -147,6 +143,7 @@ Page {
                 }
             }
         }
+
     } // END Component listLine
 
 

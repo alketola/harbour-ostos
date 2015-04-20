@@ -1,217 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de" sourcelanguage="en">
+<TS version="2.1" language="fi_FI">
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
-        <translation type="vanished">Mein Cover</translation>
-    </message>
-    <message>
         <source> Ostos </source>
-        <translatorcomment>Die Name der App ist &quot;Ostos&quot;, Finnsch, mit Meinung &quot;Kauf&quot;</translatorcomment>
-        <translation></translation>
+        <translation type="unfinished">-Ostos-</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation>Handel</translation>
+        <translation>Kauppa</translation>
     </message>
     <message>
         <source>No items</source>
-        <translation type="vanished">Keine Artikeln</translation>
+        <translation type="vanished">Ei artikkleita</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Dump list</source>
-        <translatorcomment>Screibt die Liste an Konsole fü debugging, im fertig Program kann nicht sein</translatorcomment>
-        <translation>Zu Konsole schreiben</translation>
+        <translatorcomment>Huono käännös</translatorcomment>
+        <translation>Dumppaa lista</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Die Handeln bearbeiten</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>Add new item</source>
-        <translation>Artikel hinzufũgen</translation>
+        <translatorcomment>Atrikkeli,ostos...?</translatorcomment>
+        <translation>Lisää uusi artikkeli</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Erfrischen</translation>
+        <translatorcomment>Virkistä?</translatorcomment>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennetään</translation>
     </message>
 </context>
 <context>
     <name>HelpPage</name>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Add new items by using the pulldown menu</source>
-        <translation>Neue artikeln kann mit ziehmenũ hinzufũgen</translation>
-    </message>
-    <message>
-        <source>The items have different states. The state can be changed by clicking the line.</source>
-        <translation type="vanished">Die artikeln haben verschiedene Stäten. Der Staat kann durch Klicken auf die Zeile geändert werden.</translation>
-    </message>
-    <message>
-        <source>The context menu has options to delete and edit list items.</source>
-        <translation type="vanished">Das Kontextmenü bietet z.B. Optionen zum Löschen und Bearbeiten Artikeln.</translation>
+        <translation>Lisää uusia artikkelita alasvetovalikkoa käyttäen</translation>
     </message>
     <message>
         <source>The items have different states. The state can be changed by clicking the state icon on the left.</source>
-        <translation type="unfinished"></translation>
+        <translation>Arikkeleilla on tila. Tila vaihtuu klikkaamalla artikkelia.</translation>
     </message>
     <message>
         <source>The context menu has options to delete, increase, decrease and edit list items.</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikkelien kontekstivalikossa on nappulat mm. artikkelien poistoon ja muokkaukseen.</translation>
     </message>
 </context>
 <context>
     <name>ItemDetailsPage</name>
     <message>
         <source>pcs</source>
-        <translation>Stücke</translation>
+        <translation>kpl</translation>
     </message>
     <message>
         <source>litres</source>
-        <translation>Liter</translation>
+        <translatorcomment>1 litra, N litraa</translatorcomment>
+        <translation>litraa</translation>
     </message>
     <message>
         <source>Classification</source>
-        <translation>Klassifikation</translation>
+        <translatorcomment>Tyyppi</translatorcomment>
+        <translation>Luokka</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation>Handel</translation>
+        <translation>Kauppa</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Handeln bearbeiten</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>vegetables</source>
-        <translation>Gemüse</translation>
+        <translation>kasvis</translation>
     </message>
     <message>
         <source>fruit</source>
-        <translation>Fruchte</translation>
+        <translation>hedelmä</translation>
     </message>
     <message>
         <source>meat</source>
-        <translation>Fleisch</translation>
+        <translation>liha</translation>
     </message>
     <message>
         <source>fish</source>
-        <translation>Fisch</translation>
+        <translation>kala</translation>
     </message>
     <message>
         <source>dairy</source>
-        <translation>Milchproducte</translation>
+        <translation>maitotuote</translation>
     </message>
     <message>
         <source>other</source>
-        <translation>andere</translation>
+        <translation>muu</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished">Ergänze</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished">Name</translation>
+        <translation>Artikkelin nimi</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished">Einheit</translation>
+        <translation>Yksikkö</translation>
     </message>
     <message>
         <source>g</source>
-        <translation type="unfinished">g</translation>
+        <translation>g</translation>
     </message>
     <message>
         <source>kg</source>
-        <translation type="unfinished">g</translation>
+        <translation>kg</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation>Menge</translation>
+        <translation>Määrä</translation>
     </message>
 </context>
 <context>
     <name>ItemEditPage</name>
     <message>
         <source>Shop</source>
-        <translation>Handel</translation>
+        <translation>Kauppa</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Handeln bearbeiten</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
     <message>
         <source>Deleting Item</source>
-        <translation></translation>
+        <translation>Artikkeli poistetaan</translation>
     </message>
 </context>
 <context>
     <name>NewShopDialog</name>
     <message>
         <source>Shop name</source>
-        <translation>Die Name des Laden</translation>
+        <translation>Kaupan nimi</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Splash screen disabled</source>
-        <translation>Begrüßungsbildschirm deaktiviert</translation>
+        <translation>Alkuruutua ei näytetä</translation>
     </message>
 </context>
 <context>
     <name>ShopPage</name>
     <message>
         <source>Shops</source>
-        <translation>Die Handeln</translation>
+        <translation>Kaupat</translation>
     </message>
     <message>
         <source>Add new shop</source>
-        <translation>Neu Handel hinzufügen</translation>
+        <translation>Lisää uusi kauppa</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>löschen</translation>
+        <translation>Poista</translation>
     </message>
     <message>
         <source>Don&apos;t save</source>
-        <translation type="vanished">nicht retten</translation>
+        <translation type="vanished">Älä tallenna</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation>retten</translation>
+        <translation>Tallenna</translation>
     </message>
     <message>
         <source>No items</source>
-        <translation>Keine Artikeln</translation>
+        <translation>Tyhjä lista</translation>
     </message>
     <message>
         <source>Back</source>
@@ -222,22 +213,22 @@
     <name>ShopSelector</name>
     <message>
         <source>-No items-</source>
-        <translation>-Keine Artikeln</translation>
+        <translation>Tyhjä lista</translation>
     </message>
 </context>
 <context>
     <name>Splash</name>
     <message>
-        <source>Ostos</source>
-        <translation type="unfinished">Ostos - eInKauf</translation>
+        <source>Shopping list</source>
+        <translation>Ostoslista</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>fortsetzen</translation>
+        <translation>Jatka</translation>
     </message>
     <message>
-        <source>Shopping list</source>
-        <translation>Einkaufsliste</translation>
+        <source>Ostos</source>
+        <translation>Ostos</translation>
     </message>
 </context>
 </TS>

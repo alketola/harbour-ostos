@@ -117,7 +117,7 @@ function readAllShoppingList(lm) {
  * but only for a certain shop
  */
 function readShoppingListByShop(lm,shopname) {
-    console.log("readAllShoppingList"+shopname);
+    console.log("readShoppingListByShop:"+shopname);
     shopname=escapeForSqlite(shopname)
     var db = openDB()
     if(!db) { console.log("readAllByShop:db open failed"); return; }
@@ -524,15 +524,21 @@ var HIT_LOW_LIMIT = 10;
 var HIT_DIV = 100;
 
 function hitShop(sname) {
+    if (!sname) { return }
     console.log("hitShop:"+sname)
     sname=escapeForSqlite(sname);
 
     var db = openDB();
-    if(!db) { console.log(this.name + ":db open failed"); return; }
+    if(!db) { console.log(":db open failed"); return; }
     var rs;
+    try {
     db.transaction(function(tx) {
         tx.executeSql("UPDATE shops SET hits=(hits+1) WHERE name=?;", sname);
     });
+    } catch (sqlErr) {
+        console.log("hitShop: err: " + sqlErr);
+        return;
+    }
     // Read hits back and scale all hits down if a limit is exceeded.
     // Maybe excessive precaution to prevent wraparound, but I'm an EMBEDDED systems engineer...
 
@@ -541,8 +547,8 @@ function hitShop(sname) {
             rs = tx.executeSql('SELECT name,hits FROM shops WHERE name=?;', sname);
         });
     } catch (sqlErr) {
-        console.log("getSetting: log squirrel: " + sqlErr);
-        return "ERROR";
+        console.log("hitShop: squirrel: " + sqlErr);
+        return;
     }
     if (rs.rows.length>0) {
         var f = rs.rows.item(0).hits;
@@ -554,11 +560,15 @@ function hitShop(sname) {
 
 function scaleShopsHits() {
     var db = openDB();
-    if(!db) { console.log(this.name+":db open failed"); return; }
-
+    if(!db) { console.log(":db open failed"); return; }
+    try {
     db.transaction(function(tx) {
         tx.executeSql("UPDATE shops SET hits = (CASE WHEN ((hits/HIT_DIV) > HIT_LOW_LIMIT) THEN (hits/HIT_DIV) ELSE (hits) END);");
     });
+    } catch (sqlErr) {
+        console.log("scaleShopsHits: squirrel: " + sqlErr);
+        return;
+    }
 }
 
 function deleteShop(sname) {

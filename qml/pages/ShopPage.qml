@@ -9,6 +9,8 @@ import "../dbaccess.js" as DBA
  * Dialog page for editing shops' details, in the shopping list app
  */
 Dialog {
+    id: shopDialog
+
     allowedOrientations: Orientation.All
     property int changeCount: 0
     canAccept: changeCount > shopListView.count
@@ -38,7 +40,8 @@ Dialog {
                                 shopModel.clear()
                                 DBA.repopulateShopList(shopModel)
                                 currentShop="unassigned"
-//                                firstPage.value="unassigned"
+                                //                                firstPage.value="unassigned"
+                                refreshShoppingListByShop()
                             },5000)
                         }
                     }
@@ -58,7 +61,7 @@ Dialog {
                         changeCount++
                         mychanges++
                         shopModel.set(index,{"edittext":text}) // store changed value in model
-//                        console.log("Text Changed! changeCount:"+ changeCount+" my changes="+mychanges+" currenttext="+text)
+                        // console.log("Text Changed! changeCount:"+ changeCount+" my changes="+mychanges+" currenttext="+text)
                     }
 
                 }
@@ -93,7 +96,7 @@ Dialog {
                 title: qsTr("Save")
             }
             cancelText: {
-                title: qsTr("Don't save")
+                title: qsTr("Back")
             }
         }
 
@@ -121,7 +124,7 @@ Dialog {
             shopModel.clear();
             DBA.repopulateShopList(shopModel);
             changeCount=0
-            infoPanel.hide()
+            //            infoPanel.hide()
         }
     }
 
@@ -150,7 +153,7 @@ Dialog {
         }
         shopModel.sync()
         currentShop=wildcard
-//        pageStack.replace(Qt.resolvedUrl("FirstPage.qml"));
+        //        pageStack.replace(Qt.resolvedUrl("FirstPage.qml"));
     }
     onCanceled: {
         console.log("ShopPage: onCanceled");
@@ -160,20 +163,20 @@ Dialog {
         currentShop="unassigned"
     }
 
-    DockedPanel {
-        id: infoPanel
-        width: page.isPortrait ? parent.width : Theme.itemSizeExtraLarge + Theme.paddingLarge
-        height: page.isPortrait ? Theme.itemSizeExtraLarge + Theme.paddingLarge : parent.height
+    //    DockedPanel {
+    //        id: infoPanel
+    //        width: shopDialog.isPortrait ? parent.width : Theme.itemSizeExtraLarge + Theme.paddingLarge
+    //        height: shopDialog.isPortrait ? Theme.itemSizeExtraLarge + Theme.paddingLarge : parent.height
 
-        dock: page.isPortrait ? Dock.Bottom : Dock.Right
-//        Button {
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            anchors.centerIn: parent.Center
-//            text: qsTr("Cannot delete the shop.\n There are items to buy there.")
-//            onClicked: infoPanel.hide()
-//        }
+    //        dock: shopDialog.isPortrait ? Dock.Bottom : Dock.Right
+    //        //        Button {
+    //        //            anchors.horizontalCenter: parent.horizontalCenter
+    //        //            anchors.centerIn: parent.Center
+    //        //            text: qsTr("Cannot delete the shop.\n There are items to buy there.")
+    //        //            onClicked: infoPanel.hide()
+    //        //        }
 
 
-    }
+    //    }
 
 }

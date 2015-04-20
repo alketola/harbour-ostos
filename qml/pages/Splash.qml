@@ -22,7 +22,7 @@ Component {
 
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("ShopIt!")
+                text: qsTr("Ostos")+qsTr("Shopping list")
             }
             Button {
                 text: qsTr("Continue")

@@ -46,12 +46,14 @@ Dialog {
 
             VerticalScrollDecorator {}
 
-            PageHeader { title: "Add new item" }
+            PageHeader { title: qsTr("Add") }
 
             TextField {
                 id: itemname
                 anchors { left: parent.left; right: parent.right }
-                focus: true; label: "Item Name"; placeholderText: label
+                focus: true;
+                label: qsTr("Item Name")
+                placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: nextField.focus = true
@@ -62,7 +64,8 @@ Dialog {
             TextField {
                 id: itemqty
                 anchors { left: parent.left; right: parent.right }
-                label: "Quantity"; placeholderText: label
+                label: qsTr("Quantity")
+                placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
 //                EnterKey.onClicked: qty.focus = true
@@ -73,12 +76,12 @@ Dialog {
             ComboBox {
                 id: itemunit
                 //width: page.width
-                label: "Unit"
+                label: qsTr("Unit")
 
                 menu: ContextMenu {
                     MenuItem { text: qsTr("pcs") }
-                    MenuItem { text: "g" }
-                    MenuItem { text: "kg" }
+                    MenuItem { text: qsTr("g") }
+                    MenuItem { text: qsTr("kg") }
                     MenuItem { text: qsTr("litres") }                                       
                 }
                 onClicked: { itemshop.focus = true; }
@@ -129,16 +132,17 @@ Dialog {
          }
         PullDownMenu {
             id: detailsEditMenu
+            //            MenuItem {
+            //                text: qsTr("Edit classes")
+            //            }
+            //            MenuItem {
+            //                text: qsTr("Edit units")
+            //            }
+
             MenuItem {
                 text: qsTr("Edit shops")
                 onClicked: { pageStack.push(Qt.resolvedUrl("ShopPage.qml"));}
             }
-//            MenuItem {
-//                text: qsTr("Edit classes")
-//            }
-//            MenuItem {
-//                text: qsTr("Edit units")
-//            }
         }
 
     }

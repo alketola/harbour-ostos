@@ -71,14 +71,8 @@ ApplicationWindow
         DBA.initDatabase();
     }
 
-    //    function setItemState(rowid,curri,state) {
-    //        // shopListModel.get(listView.currentIndex).rowid),statButton.state
-    //        DBA.updateItemState(parseInt(rowid,state));
-    //        //listView.currentIndex,"istat",state
-    //        shoppingListModel.setProperty(curri,"istat",state);
-    //    }
 
-    function refreshShoppingListByShop() {
+    function  refreshShoppingListByShop(){
         console.log("shopname:"+currentShop)
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear();
@@ -87,8 +81,49 @@ ApplicationWindow
             shoppingListModel.clear();
             DBA.readShoppingListByShop(shoppingListModel, currentShop);
         }
+        menurefreshtimer.stop()
     }
 
+    //     This timer is just to fix a the problem that comes from clearing
+    //     the shopping list when entering to the FirstPage ShopSelector
+    //     and then just closing the menu without selection. The shopping list is
+    //     not refreshed and I could not find a ComboBox event to fix shopping
+    //     list refresh in.
+    //     A pragmatic solution.
+    Timer {
+        id: menurefreshtimer
+        interval: 300; running: false; repeat: false
+
+        property bool _enabler
+        property string _current
+
+        function turn_on(enabler,current) {
+            console.log("turn_on:"+_enabler)
+            _enabler=enabler
+            _current=current
+            start()
+        }
+
+        //enabler: !mainListShopSelector._menuOpen
+        //current: currentShop
+
+        onTriggered: {
+            console.log("ostos/ShopSelector TIMER onTriggered, running:"+running);
+            stop()
+            if(_enabler){
+                //                            shoppingListModel.clear();
+                refreshShoppingListByShop()
+
+            } else {
+//                interval=1000
+//                if (_enabler) {
+//                    restart()
+//                    console.log("ostos/ShopSelector TIMER restart, running:"+running);
+//                }
+                console.log("ostos/ShopSelector TIMER ceased, running:"+running);
+            }
+        }
+    }
 
 }
 
