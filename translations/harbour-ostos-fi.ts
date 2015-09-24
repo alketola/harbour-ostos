@@ -15,10 +15,6 @@
         <translation>Kauppa</translation>
     </message>
     <message>
-        <source>No items</source>
-        <translation type="vanished">Ei artikkleita</translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation>Ohje</translation>
     </message>
@@ -191,10 +187,6 @@
     <message>
         <source>Delete</source>
         <translation>Poista</translation>
-    </message>
-    <message>
-        <source>Don&apos;t save</source>
-        <translation type="vanished">Älä tallenna</translation>
     </message>
     <message>
         <source>Save</source>

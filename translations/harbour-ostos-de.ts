@@ -4,10 +4,6 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
-        <translation type="vanished">Mein Cover</translation>
-    </message>
-    <message>
         <source> Ostos </source>
         <translatorcomment>Die Name der App ist &quot;Ostos&quot;, Finnsch, mit Meinung &quot;Kauf&quot;</translatorcomment>
         <translation></translation>
@@ -18,10 +14,6 @@
     <message>
         <source>Shop</source>
         <translation>Handel</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation type="vanished">Keine Artikeln</translation>
     </message>
     <message>
         <source>Help</source>
@@ -62,14 +54,6 @@
     <message>
         <source>Add new items by using the pulldown menu</source>
         <translation>Neue artikeln kann mit ziehmenũ hinzufũgen</translation>
-    </message>
-    <message>
-        <source>The items have different states. The state can be changed by clicking the line.</source>
-        <translation type="vanished">Die artikeln haben verschiedene Stäten. Der Staat kann durch Klicken auf die Zeile geändert werden.</translation>
-    </message>
-    <message>
-        <source>The context menu has options to delete and edit list items.</source>
-        <translation type="vanished">Das Kontextmenü bietet z.B. Optionen zum Löschen und Bearbeiten Artikeln.</translation>
     </message>
     <message>
         <source>The items have different states. The state can be changed by clicking the state icon on the left.</source>
@@ -200,10 +184,6 @@
     <message>
         <source>Delete</source>
         <translation>löschen</translation>
-    </message>
-    <message>
-        <source>Don&apos;t save</source>
-        <translation type="vanished">nicht retten</translation>
     </message>
     <message>
         <source>Save</source>

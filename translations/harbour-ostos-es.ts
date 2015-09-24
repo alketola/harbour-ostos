@@ -15,10 +15,6 @@
         <translation>Tienda</translation>
     </message>
     <message>
-        <source>No items</source>
-        <translation type="vanished">Sin articulos</translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
@@ -186,10 +182,6 @@
     <message>
         <source>Delete</source>
         <translation>Borrar</translation>
-    </message>
-    <message>
-        <source>Don&apos;t save</source>
-        <translation type="vanished">No guardar</translation>
     </message>
     <message>
         <source>Save</source>
