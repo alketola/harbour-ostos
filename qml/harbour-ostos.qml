@@ -25,18 +25,21 @@ import "dbaccess.js" as DBA
 ApplicationWindow
 {
     id: appWindow
-    property int ci // a global for current index, passed from FirstPage to ItemEditPage
+    property int ci // a global for current index, passed from FirstPage and ItemAddPage to ItemEditPage
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
 
     ListModel {
-        id: shopModel
+            id: shoppingListModel
     }
 
     ListModel {
-        id: shoppingListModel
+        id: templistmodel
     }
 
+    ListModel {
+        id: shopModel
+    }
 
     SilicaListView {
         id: listView
@@ -63,10 +66,9 @@ ApplicationWindow
         id: itemEditPage
     }
 
-    //    ShopPage {
-    //        id: shopPage
-    //    }
-
+    ItemAddPage {
+        id: itemAddPage
+    }
 
     Component.onCompleted: {
         DBA.initDatabase();

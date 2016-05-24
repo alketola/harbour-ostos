@@ -88,14 +88,18 @@ Dialog {
         itemunit.text=shoppingListModel.get(ci).iunit;
         itemclass.text=shoppingListModel.get(ci).iclass;
         rowid_in_db=shoppingListModel.get(ci).rowid;
-        editshopselector.value=shoppingListModel.get(ci).ishop; //Sets the selector initial value correctly
+        editshopselector.value=shoppingListModel.get(ci).ishop; //Sets the selector initial value correctly?
     }
 
     onAccepted: {
         console.log("onAccepted-ItemEditPage. ci="+ci);
 
         console.log(itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
-        DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+        DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?        
+        DBA.updateItemState(rowid_in_db,"BUY")
+        pageStack.clear()
+        pageStack.push(Qt.resolvedUrl("FirstPage.qml"))
+        currentShop=wildcard
         refreshShoppingListByCurrentShop();
     }
 

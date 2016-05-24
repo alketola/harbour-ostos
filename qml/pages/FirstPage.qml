@@ -11,6 +11,11 @@ import "../dbaccess.js" as DBA
 Page {
     id: firstPage
 
+
+//    ListModel {
+//            id: shoppingListModel
+//    }
+
     SilicaListView {
         id: firstPageView
         clip: true
@@ -29,7 +34,7 @@ Page {
                 listmodel: shopModel
                 onExited: {
                     console.log("Exited shopselector on FirstPage")
-//                    menurefreshtimer.turn_on(!mainListShopSelector._menuOpen,value)
+                    menurefreshtimer.turn_on(!mainListShopSelector._menuOpen,value)
                 }
 
             }
@@ -80,8 +85,13 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Add new item")
+                text: qsTr("Item details")
                 onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
+            }
+
+            MenuItem {
+                text: qsTr("Enter to list")
+                onClicked: pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
             }
         }
 
@@ -153,6 +163,7 @@ Page {
     function purgeShoppingList() {
         remorse.execute(qsTr("Clearing"), function() { DBA.deleteAllShoppingList(); shoppingListModel.clear() }, 10000 )
     }
+
 }
 
 

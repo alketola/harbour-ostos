@@ -36,8 +36,6 @@ CoverBackground {
     property int cover_index: 0
     property string itemname
 
-
-
     Label {
         id: label
         anchors.centerIn: parent
@@ -58,7 +56,7 @@ CoverBackground {
                 if(cover_index>1) {
                     cover_index--;
                 } else {
-                    cover_index=shoppingListModel.count-1;
+                    cover_index=shoppingListModel.count-1;                    
                 }
 
             }

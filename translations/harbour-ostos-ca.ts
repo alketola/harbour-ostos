@@ -35,11 +35,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new item</source>
+        <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clearing</source>
+        <source>Item details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter to list</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -60,6 +64,13 @@
     <message>
         <source>The context menu has options to delete, increase, decrease and edit list items.</source>
         <translation>El menú contextual té opcions per eliminar, augmentar, disminuir i elements de llista d&apos;edició.</translation>
+    </message>
+</context>
+<context>
+    <name>ItemAddPage</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

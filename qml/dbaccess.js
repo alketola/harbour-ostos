@@ -99,7 +99,7 @@ function readAllShoppingList(lm) {
         iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
         iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
         ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-//        console.log("DBREAD:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        //console.log("DBREAD:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
         lm.append({ //rs.rows.item(i).
                       "istat":istat,
                       "iname":iname,
@@ -146,7 +146,7 @@ function readShoppingListByShop(lm,shopname) {
         iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
         iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
         ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-//        console.log("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        //        console.log("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
         lm.append({ //rs.rows.item(i).
                       "istat":istat,
                       "iname":iname,
@@ -365,6 +365,48 @@ function updateItemQty(rid, qty) {
     });
 }
 
+/* Find item by name, return row id */
+function findItemByName(lm,itemname) {
+    console.log("findItemByName:"+itemname);
+    itemname=escapeForSqlite(itemname)
+    var db = openDB()
+    if(!db) { console.log("findItemByName:db open failed"); return; }
+    var rs
+    try {
+        db.transaction( function(tx) {
+            print('finding Item By Name ')
+            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
+            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE iname=? LIMIT 1;', itemname)
+        })
+    } catch (sqlErr) {
+        return "SQL:"+sqlErr
+    }
+    var istat = ""
+    var iname = ""
+    var iqty = ""
+    var iunit = ""
+    var iclass = ""
+    var ishop = ""
+    var i = 0;
+    var irid = rs.rows.item(i).rowid
+    istat = rs.rows.item(i).istat
+    iname = unescapeFromSqlite(rs.rows.item(i).iname)
+    iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
+    iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
+    iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
+    ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
+    console.log("DBREAD-find:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+    lm.append({
+                  "istat":istat,
+                  "iname":iname,
+                  "iqty":iqty,
+                  "iunit":iunit,
+                  "ishop":ishop,
+                  "iclass":iclass,
+                  "rowid":irid
+              })    
+}
+
 
 /*
  * Shops table management
@@ -485,10 +527,14 @@ function repopulateShopList(lm /* ListModel */) {
 
     lm.clear();
     for(var i=0; i<shoparr.length; i++) {
-        console.log(shoparr[i]+"["+i+"] length="+shoparr.length);
+        //console.log(shoparr[i]+"["+i+"] length="+shoparr.length);
         lm.append({"name":shoparr[i],"edittext":shoparr[i]});
     }
 }
+
+/****************************************
+  Functions for usage statistics of shops
+  */
 
 function getAllShopsByHits() {
     var db = openDB();
@@ -504,7 +550,7 @@ function getAllShopsByHits() {
         return "ERROR";
     }
     var arr = "";
-//    console.log("rs.rows.length:"+rs.rows.length)
+    //    console.log("rs.rows.length:"+rs.rows.length)
     if(rs.rows.length<1) {
         return "[NULL]";
     }
@@ -515,9 +561,10 @@ function getAllShopsByHits() {
         arr += dq(rs.rows.item(i).name);
     }
     arr += "]"
-//    console.log(arr);
+    //    console.log(arr);
     return arr;
 }
+
 
 var HIT_UP_LIMIT = 16393;
 var HIT_LOW_LIMIT = 10;
@@ -532,9 +579,9 @@ function hitShop(sname) {
     if(!db) { console.log(":db open failed"); return; }
     var rs;
     try {
-    db.transaction(function(tx) {
-        tx.executeSql("UPDATE shops SET hits=(hits+1) WHERE name=?;", sname);
-    });
+        db.transaction(function(tx) {
+            tx.executeSql("UPDATE shops SET hits=(hits+1) WHERE name=?;", sname);
+        });
     } catch (sqlErr) {
         console.log("hitShop: err: " + sqlErr);
         return;
@@ -562,9 +609,9 @@ function scaleShopsHits() {
     var db = openDB();
     if(!db) { console.log(":db open failed"); return; }
     try {
-    db.transaction(function(tx) {
-        tx.executeSql("UPDATE shops SET hits = (CASE WHEN ((hits/HIT_DIV) > HIT_LOW_LIMIT) THEN (hits/HIT_DIV) ELSE (hits) END);");
-    });
+        db.transaction(function(tx) {
+            tx.executeSql("UPDATE shops SET hits = (CASE WHEN ((hits/HIT_DIV) > HIT_LOW_LIMIT) THEN (hits/HIT_DIV) ELSE (hits) END);");
+        });
     } catch (sqlErr) {
         console.log("scaleShopsHits: squirrel: " + sqlErr);
         return;

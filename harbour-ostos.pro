@@ -27,6 +27,7 @@ OTHER_FILES += qml/harbour-ostos.qml \
     qml/pages/ItemDetailsPage.qml \
     qml/pages/HelpPage.qml \
     qml/pages/ItemEditPage.qml \
+    qml/pages/ItemAddPage.qml \
     qml/pages/FirstPage.qml \
     qml/dbaccess.js \
     qml/pages/LineButtonsMenu.qml \
@@ -57,5 +58,6 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    to-do-notes.txt
+    to-do-notes.txt \
+    qml/pages/qmlfile
 
