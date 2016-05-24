@@ -44,21 +44,22 @@ ContextMenu {
             IconButton {
                 width: parent.width/4
                 icon.source: "image://theme/icon-l-up"
-
                 onClicked: {
                     var q
                     q = parseInt(shoppingListModel.get(firstPageView.currentIndex).iqty)
                     shoppingListModel.setProperty(firstPageView.currentIndex,"iqty",(q+1).toString())
+                    DBA.updateItemInShoppingList(shoppingListModel.get(modelindex).rowid,itemname.text, String.toString(q+1), itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
                 }
             }
 
-            IconButton {
+            IconButton { // Change to hide function
                 width: parent.width/4
                 icon.source: "image://theme/icon-l-down"
                 onClicked: {
                     var q
                     q = parseInt( shoppingListModel.get(firstPageView.currentIndex).iqty)
                     shoppingListModel.setProperty(firstPageView.currentIndex,"iqty",(q-1).toString())
+                    DBA.updateItemInShoppingList(shoppingListModel.get(modelindex).rowid,itemname.text, String.toString(q-1), itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
                 }
             }
         }

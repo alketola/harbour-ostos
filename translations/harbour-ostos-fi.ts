@@ -12,38 +12,35 @@
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation>Kauppa</translation>
+        <translation type="unfinished">Kauppa</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation type="unfinished">Ohje</translation>
     </message>
     <message>
         <source>Dump list</source>
-        <translatorcomment>Huono käännös</translatorcomment>
-        <translation>Dumppaa lista</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Asetukset</translation>
+        <translation type="unfinished">Asetukset</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Muokkaa kauppoja</translation>
-    </message>
-    <message>
-        <source>Add new item</source>
-        <translatorcomment>Atrikkeli,ostos...?</translatorcomment>
-        <translation>Lisää uusi artikkeli</translation>
+        <translation type="unfinished">Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translatorcomment>Virkistä?</translatorcomment>
-        <translation>Päivitä</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new item</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation>Tyhjennetään</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -136,6 +133,10 @@
     <message>
         <source>Quantity</source>
         <translation>Määrä</translation>
+    </message>
+    <message>
+        <source>packs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

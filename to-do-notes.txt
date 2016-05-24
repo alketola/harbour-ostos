@@ -1,0 +1,7 @@
+2016-06-23:
+* Cover actions could be more useful. The index just jumps to any next item in database.
+  - Improvement: find next that has "BUY" status.
+* After adding an item,
+  - the whole list should be shown.
+  - Auto-refresh, no explicit "refresh"
+* How about incremental search + hide instead of delete?

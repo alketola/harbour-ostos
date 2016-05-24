@@ -46,6 +46,7 @@ ApplicationWindow
         id: itemeditflick
     }
 
+
     initialPage: FirstPage { }
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
@@ -72,8 +73,8 @@ ApplicationWindow
     }
 
 
-    function  refreshShoppingListByShop(){
-        console.log("shopname:"+currentShop)
+    function  refreshShoppingListByCurrentShop(){
+        console.log("refresh; shopname="+currentShop)
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear();
             DBA.readAllShoppingList(shoppingListModel);
@@ -112,7 +113,7 @@ ApplicationWindow
             stop()
             if(_enabler){
                 //                            shoppingListModel.clear();
-                refreshShoppingListByShop()
+                refreshShoppingListByCurrentShop()
 
             } else {
 //                interval=1000

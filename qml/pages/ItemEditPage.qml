@@ -96,7 +96,7 @@ Dialog {
 
         console.log(itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
-        refreshShoppingListByShop();
+        refreshShoppingListByCurrentShop();
     }
 
 }

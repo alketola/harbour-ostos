@@ -33,8 +33,8 @@ ComboBox {
 
     function refresh() {
         //        console.log("ShopSelector: refresh()")
-        shopModel.clear()
-        DBA.repopulateShopList(shopModel)
+        listmodel.clear()
+        DBA.repopulateShopList(listmodel)
     }
 
     function isWildcard(x) {
@@ -42,9 +42,9 @@ ComboBox {
     }
 
     function findShopListIndex(shopname) {
-        for(var i=0;i<shopModel.count;i++) {
-            //            console.log("name="+shopModel.get(i).name+" shopname="+shopname+" i:"+i)
-            if(shopModel.get(i).name == shopname)
+        for(var i=0;i<listmodel.count;i++) {
+            //            console.log("name="+listmodel.get(i).name+" shopname="+shopname+" i:"+i)
+            if(listmodel.get(i).name == shopname)
             {
                 return i+1
             }
@@ -54,36 +54,36 @@ ComboBox {
 
     menu: ContextMenu {
         id: scx
-        _closeOnOutsideClick: false
+        _closeOnOutsideClick: true
 
-        MenuItem {
+        MenuItem {                         // The first item in the shop menu is wildcard, or "any-star"
             id: anyMenuItem
             text: wildcard
             visible: !hidewildcard
             onClicked: {
                 value = wildcard
                 appWindow.currentShop=wildcard
-                refreshShoppingListByShop()
+                refreshShoppingListByCurrentShop()
             }
         }
         Repeater {
             id: shopRepe
-            model: shopModel
+            model: listmodel
 
             MenuItem {
                 text: model.name
                 onClicked: {
                     value=model.name
                     appWindow.currentShop=model.name
-                    refreshShoppingListByShop()
+                    refreshShoppingListByCurrentShop()
                     if(scx._expanded) {
-                        console.log("Yes it's expanded")
+                        console.log("ShopSelector is expanded (MenuItem)")
                     }
                 }
             }
         }
         ViewPlaceholder {
-            enabled: shopModel.count == 0
+            enabled: listmodel.count == 0
             text: qsTr("-No items-")
         }
 
@@ -99,5 +99,7 @@ ComboBox {
     onClicked: {
         console.log("ShopSelector contextmenu onClicked, value:"+value)
     }
+
+
 
 }

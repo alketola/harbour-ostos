@@ -31,11 +31,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new item</source>
+        <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh</source>
+        <source>Add new item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -130,6 +130,10 @@
     </message>
     <message>
         <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>packs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -12,35 +12,35 @@
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation>Botiga</translation>
+        <translation type="unfinished">Botiga</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation type="unfinished">Ajuda</translation>
     </message>
     <message>
         <source>Dump list</source>
-        <translation>Escriure llista a console</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Ajustes</translation>
+        <translation type="unfinished">Ajustes</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Edita botiges</translation>
-    </message>
-    <message>
-        <source>Add new item</source>
-        <translation>Agefeix compra</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Refrescar</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new item</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation>Esborrar todo</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -131,6 +131,10 @@
     <message>
         <source>Quantity</source>
         <translation>Quantitat</translation>
+    </message>
+    <message>
+        <source>packs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

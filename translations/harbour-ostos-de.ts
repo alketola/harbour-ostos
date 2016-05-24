@@ -13,32 +13,31 @@
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation>Handel</translation>
+        <translation type="unfinished">Handel</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation type="unfinished">Hilfe</translation>
     </message>
     <message>
         <source>Dump list</source>
-        <translatorcomment>Screibt die Liste an Konsole fü debugging, im fertig Program kann nicht sein</translatorcomment>
-        <translation>Zu Konsole schreiben</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation type="unfinished">Einstellungen</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Die Handeln bearbeiten</translation>
-    </message>
-    <message>
-        <source>Add new item</source>
-        <translation>Artikel hinzufũgen</translation>
+        <translation type="unfinished">Handeln bearbeiten</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Erfrischen</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new item</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
@@ -133,6 +132,10 @@
     <message>
         <source>Quantity</source>
         <translation>Menge</translation>
+    </message>
+    <message>
+        <source>packs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

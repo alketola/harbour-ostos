@@ -56,3 +56,6 @@ TRANSLATIONS += translations/harbour-ostos-de.ts \
 RESOURCES += \
     resources.qrc
 
+DISTFILES += \
+    to-do-notes.txt
+

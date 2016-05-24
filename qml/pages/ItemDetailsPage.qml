@@ -23,6 +23,9 @@ Dialog {
         rowid = DBA.writeItemToShoppingList("BUY", itemname.text, itemqty.text, itemunit.value, itemclass.value, itemshop.value);
 
         shoppingListModel.insert(0,{ "istat":"BUY", "iname":itemname.text, "iqty":itemqty.text, "iunit":itemunit.value, "iclass":itemclass.value, "rowid":parseInt(rowid)});
+        currentShop = wildcard
+        refreshShoppingListByCurrentShop()
+        //currentShop = wildcard
     }
     onOpened: {
         console.log("Dialog onOpened");
@@ -82,7 +85,8 @@ Dialog {
                     MenuItem { text: qsTr("pcs") }
                     MenuItem { text: qsTr("g") }
                     MenuItem { text: qsTr("kg") }
-                    MenuItem { text: qsTr("litres") }                                       
+                    MenuItem { text: qsTr("litres") }
+                    MenuItem { text: qsTr("packs") }
                 }
                 onClicked: { itemshop.focus = true; }
 
@@ -92,7 +96,6 @@ Dialog {
                 id: itemshop
                 listmodel: shopModel
                 label: qsTr("Shop")
-//                listmodel: shopModel
                 onEntered: {
                     hidewildcard=true
                     // When entering to item creation the item is new

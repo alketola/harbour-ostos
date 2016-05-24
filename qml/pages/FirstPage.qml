@@ -18,7 +18,7 @@ Page {
             console.log("FirstPage SilicaListView: Component.onCompleted")
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
-            refreshShoppingListByShop()
+            refreshShoppingListByCurrentShop()
         }
 
         header: PageHeader {
@@ -28,11 +28,12 @@ Page {
                 label: qsTr("Shop")
                 listmodel: shopModel
                 onExited: {
-                    console.log("Exited")
-                    menurefreshtimer.turn_on(!mainListShopSelector._menuOpen,value)
+                    console.log("Exited shopselector on FirstPage")
+//                    menurefreshtimer.turn_on(!mainListShopSelector._menuOpen,value)
                 }
 
             }
+
         }
 
         anchors.fill: parent
@@ -74,13 +75,13 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Add new item")
-                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
+                text: qsTr("Refresh")
+                onClicked: refreshShoppingListByCurrentShop();
             }
 
             MenuItem {
-                text: qsTr("Refresh")
-                onClicked: refreshShoppingListByShop();
+                text: qsTr("Add new item")
+                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
             }
         }
 
