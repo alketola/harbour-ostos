@@ -18,23 +18,22 @@ ContextMenu {
             width: parent.width
 
             IconButton {
-                width: parent.width/4
-                icon.source: "image://theme/icon-l-clear"
+                width: parent.width/5
+                icon.source: "image://theme/icon-m-dismiss"
                 onClicked: {
-                    console.log("Item delete, ROWID:"+ shoppingListModel.get(modelindex).rowid)
-                    // remorse and delete
+                    console.log("Item hide, ROWID:"+ shoppingListModel.get(modelindex).rowid)
+                    // remorse and hide
                     cxMenu.hide();
-                    remorseIt.execute(cxMenu.parent,qsTr("Deleting Item"), function () {
-                        DBA.deleteItemFromShoppingList(shoppingListModel.get(modelindex).rowid)
+                    remorseHide.execute(cxMenu.parent,qsTr("Hiding Item"), function () {
+                        DBA.updateItemState(shoppingListModel.get(modelindex).rowid,"HIDE")
                         shoppingListModel.remove(modelindex)
                     }, 2000);
                 }
             }
-
-            RemorseItem {id: remorseIt}
+            RemorseItem {id: remorseHide}
 
             IconButton {
-                width: parent.width/4
+                width: parent.width/5
                 icon.source: "image://theme/icon-m-keyboard"
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl('./ItemEditPage.qml'))
@@ -42,26 +41,48 @@ ContextMenu {
             }
 
             IconButton {
-                width: parent.width/4
+                width: parent.width/5
                 icon.source: "image://theme/icon-l-up"
                 onClicked: {
                     var q
                     q = parseInt(shoppingListModel.get(firstPageView.currentIndex).iqty)
-                    shoppingListModel.setProperty(firstPageView.currentIndex,"iqty",(q+1).toString())
-                    DBA.updateItemInShoppingList(shoppingListModel.get(modelindex).rowid,itemname.text, String.toString(q+1), itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+                    q=q+1
+                    var s= q.toString()
+                    shoppingListModel.setProperty(firstPageView.currentIndex,"iqty",s)
+                    DBA.updateItemQty(shoppingListModel.get(modelindex).rowid, s);
                 }
             }
 
             IconButton { // Change to hide function
-                width: parent.width/4
+                width: parent.width/5
                 icon.source: "image://theme/icon-l-down"
                 onClicked: {
                     var q
-                    q = parseInt( shoppingListModel.get(firstPageView.currentIndex).iqty)
-                    shoppingListModel.setProperty(firstPageView.currentIndex,"iqty",(q-1).toString())
-                    DBA.updateItemInShoppingList(shoppingListModel.get(modelindex).rowid,itemname.text, String.toString(q-1), itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+                    q = parseInt( shoppingListModel.get(firstPageView.currentIndex).iqty )
+                    q=q-1
+                    var s= q.toString()
+                    shoppingListModel.setProperty(firstPageView.currentIndex,"iqty",s)
+                    DBA.updateItemQty(shoppingListModel.get(modelindex).rowid, s);
                 }
             }
+
+            IconButton {
+                width: parent.width/5
+                icon.source: "image://theme/icon-m-delete"
+                onClicked: {
+                    console.log("Item delete, ROWID:"+ shoppingListModel.get(modelindex).rowid)
+                    // remorse and delete
+                    cxMenu.hide();
+                    remorseDelete.execute(cxMenu.parent,qsTr("Deleting Item"), function () {
+                        DBA.deleteItemFromShoppingList(shoppingListModel.get(modelindex).rowid)
+                        shoppingListModel.remove(modelindex)
+                    }, 3000);
+                }
+            }
+
+            RemorseItem {id: remorseDelete}
+
+
         }
     }
 

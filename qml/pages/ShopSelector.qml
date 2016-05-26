@@ -63,7 +63,7 @@ ComboBox {
             onClicked: {
                 value = wildcard
                 appWindow.currentShop=wildcard
-                refreshShoppingListByCurrentShop()
+                requestRefresh(true,"ShopSelector MenuItem wildcard clicked")
             }
         }
         Repeater {
@@ -75,10 +75,10 @@ ComboBox {
                 onClicked: {
                     value=model.name
                     appWindow.currentShop=model.name
-                    refreshShoppingListByCurrentShop()
-                    if(scx._expanded) {
-                        console.log("ShopSelector is expanded (MenuItem)")
-                    }
+                    requestRefresh(true,"ShopSelector MenuItem "+model.name+" Clicked")
+//                    if(scx._expanded) {
+//                        console.log("ShopSelector is expanded (MenuItem)")
+//                    }
                 }
             }
         }

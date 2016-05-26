@@ -112,6 +112,7 @@ function readAllShoppingList(lm) {
     }
 }
 
+
 /*
  * Reads all shopping list items and writes them to shopping list model
  * but only for a certain shop
@@ -160,11 +161,107 @@ function readShoppingListByShop(lm,shopname) {
     hitShop(ishop)
 
 }
+/* by states */
+/*
+ * Reads all shopping list items and writes them to shopping list model
+ * but only those which are not in excluded_state (e.g. "BUY")
+ */
+function readShoppingListExState(lm,excluded_state) {
+    console.log("readTheListExState:"+excluded_state);
+    excluded_state=escapeForSqlite(excluded_state)
+    var db = openDB()
+    if(!db) { console.log("readTheListExState:db open failed"); return; }
+    var rs
+    try {
+        db.transaction( function(tx) {
+            print('... read in list items')
+            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
+            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE NOT istat=? ORDER BY istat, iname, rowid DESC;', excluded_state)
+        })
+    } catch (sqlErr) {
+        return "SQL:"+sqlErr
+    }
+    var irid = 0
+    var istat = ""
+    var iname = ""
+    var iqty = ""
+    var iunit = ""
+    var iclass = ""
+    var ishop = ""
+    for(var i = 0; i < rs.rows.length; i++) {
+        irid = rs.rows.item(i).rowid
+        istat = rs.rows.item(i).istat
+        iname = unescapeFromSqlite(rs.rows.item(i).iname)
+        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
+        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
+        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
+        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
+        //        console.log("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        lm.append({ //rs.rows.item(i).
+                      "istat":istat,
+                      "iname":iname,
+                      "iqty":iqty,
+                      "iunit":iunit,
+                      "ishop":ishop,
+                      "iclass":iclass,
+                      "rowid":irid
+                  });
+    }
 
+}
+/*
+ * Reads all shopping list items and writes them to shopping list model
+ * but only for a certain shop
+ */
+function readShoppingListByShopExState(lm,shopname,excluded_state) {
+    console.log("readShoppingListByShop:"+shopname+", ex:"+excluded_state);
+    shopname=escapeForSqlite(shopname)
+    excluded_state=escapeForSqlite(excluded_state)
+    var db = openDB()
+    if(!db) { console.log("readAllByShop:db open failed"); return; }
+    var rs
+    try {
+        db.transaction( function(tx) {
+            print('... read in list items')
+            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
+            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE ishop=? AND NOT istat=? ORDER BY istat, rowid DESC;', shopname, excluded_state)
+        })
+    } catch (sqlErr) {
+        return "SQL:"+sqlErr
+    }
+    var irid = 0
+    var istat = ""
+    var iname = ""
+    var iqty = ""
+    var iunit = ""
+    var iclass = ""
+    var ishop = ""
+    for(var i = 0; i < rs.rows.length; i++) {
+        irid = rs.rows.item(i).rowid
+        istat = rs.rows.item(i).istat
+        iname = unescapeFromSqlite(rs.rows.item(i).iname)
+        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
+        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
+        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
+        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
+        //        console.log("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        lm.append({ //rs.rows.item(i).
+                      "istat":istat,
+                      "iname":iname,
+                      "iqty":iqty,
+                      "iunit":iunit,
+                      "ishop":ishop,
+                      "iclass":iclass,
+                      "rowid":irid
+                  });
+    }
+    hitShop(ishop)
+
+}
 /**
  * Inserts a new item to shopping list, and returns database row id (TEXT)
  */
-function writeItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
+function insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
     iname=escapeForSqlite(iname)
     iqty=escapeForSqlite(iqty)
     iunit=escapeForSqlite(iunit)
@@ -185,7 +282,7 @@ function writeItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
         rid = lastrow.insertId
     })
     hitShop(ishop) /* update shop reference statistic */
-    //    console.log("inserted rowid:" + rid)
+    console.log("insertItemToShoppingList inserted rowid:" + rid)
     return rid // rid seems to be a String?
 }
 
@@ -356,7 +453,7 @@ function updateItemState(rid, state) {
 function updateItemQty(rid, qty) {
     rid=escapeForSqlite(rid);
     qty=escapeForSqlite(qty);
-
+    console.log("updateItemQty:("+rid+","+qty)
     var db = openDB();
     if(!db) { console.log("update Item count:db open failed"); return; }
 
@@ -381,6 +478,11 @@ function findItemByName(lm,itemname) {
     } catch (sqlErr) {
         return "SQL:"+sqlErr
     }
+    if (!rs) {
+        console.log("No result set")
+        return false;
+    }
+
     var istat = ""
     var iname = ""
     var iqty = ""
@@ -396,15 +498,19 @@ function findItemByName(lm,itemname) {
     iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
     ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
     console.log("DBREAD-find:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
-    lm.append({
-                  "istat":istat,
-                  "iname":iname,
-                  "iqty":iqty,
-                  "iunit":iunit,
-                  "ishop":ishop,
-                  "iclass":iclass,
-                  "rowid":irid
-              })    
+    if (lm){
+        lm.append({ /// ERROR! DOES NOT RETURN row ID!
+                      "istat":istat,
+                      "iname":iname,
+                      "iqty":iqty,
+                      "iunit":iunit,
+                      "ishop":ishop,
+                      "iclass":iclass,
+                      "rowid":irid
+                  })
+    }
+    return irid
+
 }
 
 

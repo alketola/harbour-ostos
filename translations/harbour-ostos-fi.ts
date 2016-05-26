@@ -31,19 +31,19 @@
         <translation type="unfinished">Muokkaa kauppoja</translation>
     </message>
     <message>
-        <source>Refresh</source>
+        <source>Set shop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clearing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Item details</source>
+        <source>Refresh (unnecessary)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enter to list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -166,6 +166,10 @@
     <message>
         <source>Deleting Item</source>
         <translation>Artikkeli poistetaan</translation>
+    </message>
+    <message>
+        <source>Hiding Item</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

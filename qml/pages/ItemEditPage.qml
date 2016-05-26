@@ -92,15 +92,27 @@ Dialog {
     }
 
     onAccepted: {
-        console.log("onAccepted-ItemEditPage. ci="+ci);
+        console.log("onAccepted-ItemEditPage. ci="+ci)
+        console.log("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
+        var rowid = DBA.findItemByName(null,itemname.text)
+        console.log("Found rowid in db:"+rowid)
 
-        console.log(itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
-        DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?        
-        DBA.updateItemState(rowid_in_db,"BUY")
+        if (rowid) {
+            console.log("...updating existent ci="+ci)
+            DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+            DBA.updateItemState(rowid_in_db,"BUY")
+        } else { // adding new
+            console.log("...adding new ci="+ci)
+            // insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop)
+            DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)
+//            DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+//            DBA.updateItemState(rowid_in_db,"BUY")
+
+        }
         pageStack.clear()
         pageStack.push(Qt.resolvedUrl("FirstPage.qml"))
         currentShop=wildcard
-        refreshShoppingListByCurrentShop();
+        requestRefresh(true,"ItemEditPage Accepted")
     }
 
 }

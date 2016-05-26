@@ -4,25 +4,26 @@ import "../dbaccess.js" as DBA
 Dialog {
     id: addDialog
     property alias searchField: searchView.headerItem // needed the particular reference!
+    canAccept: (searchListModel.count <= 1)
 
     onAccepted: {
-
         var count = searchListModel.count
+        var db_index
         if ( count == 1) {
             // we have found the item already on the list as unique, the retrieve it from database and
             // store to global templistmodel variable
-            DBA.findItemByName(templistmodel,searchField.text)
-            console.log("ROW:"+templistmodel.get(0).rowid+" STAT:"+templistmodel.get(0).istat+" NAME:"+templistmodel.get(0).iname+" QTY:"+templistmodel.get(0).iqty+
-                        "UNIT:"+ templistmodel.get(0).iunit+" CLASS:"+templistmodel.get(0).iclass+" SHOP:"+templistmodel.get(0).ishop)
-            for (var i=0; i<shoppingListModel.count; i++){
-                if(shoppingListModel.get(i).iname===searchField.text) {
-                    ci = i
-                    break
+            db_index = DBA.findItemByName(templistmodel,searchField.text)
+            if(db_index) {
+                console.log("ROW:"+templistmodel.get(0).rowid+" STAT:"+templistmodel.get(0).istat+" NAME:"+templistmodel.get(0).iname+" QTY:"+templistmodel.get(0).iqty+
+                            "UNIT:"+ templistmodel.get(0).iunit+" CLASS:"+templistmodel.get(0).iclass+" SHOP:"+templistmodel.get(0).ishop)
+                for (var i=0; i<shoppingListModel.count; i++){
+                    if(shoppingListModel.get(i).iname===templistmodel.get(0).iname) {
+                        ci = i
+                        break
+                    }
                 }
+                pageStack.push(Qt.resolvedUrl("ItemEditPage.qml"))
             }
-
-            pageStack.push(Qt.resolvedUrl("ItemEditPage.qml"))
-
         } else if (count==0) { // Haven't found, will start adding a new item and its details
             ci = shoppingListModel.count
             shoppingListModel.append(
@@ -36,22 +37,22 @@ Dialog {
         }
     }
 
+
     ListModel {
         id: searchListModel
 
         function update() {
             var s
-            clear()
-            console.log("shoppingListModel="+shoppingListModel)
-            console.log("shoppingListModel.count="+shoppingListModel.count)
-            console.log("search text="+searchField.text)
             var stat
-            for (var i=0; i<shoppingListModel.count; i++) {
-                s = shoppingListModel.get(i).iname
-                stat= shoppingListModel.get(i).istat
-                console.log("ItemAddPage.listModel.update.s:"+s)
-                if (s.indexOf(searchField.text) >= 0
-                        && !(stat=="BUY")) {
+            clear()
+            templistmodel.clear()
+            DBA.readShoppingListExState(templistmodel,"BUY")
+            console.log("templistmodel.count="+templistmodel.count)
+            for (var i=0; i<templistmodel.count; i++) {
+                s = templistmodel.get(i).iname
+                stat= templistmodel.get(i).istat
+                //  console.log("ItemAddPage.searchListModel.update.s:"+s)
+                if (s.toLowerCase().indexOf(searchField.text.toLowerCase()) >= 0 ) {
                     append({"name":s})
                 }
             }

@@ -70,11 +70,12 @@ IconButton {
         case "FIND":
             statButton.state = "BUY";
             break;
-        default: // BUY too
+        case "BUY": //too
             statButton.state = "GOT";
-            break;
+            break;            
         }
         DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
         shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
+        requestRefresh(true,"StatButton.cycle")
     }
 }

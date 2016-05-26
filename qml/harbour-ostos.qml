@@ -72,6 +72,7 @@ ApplicationWindow
 
     Component.onCompleted: {
         DBA.initDatabase();
+        currentShop = wildcard
     }
 
 
@@ -79,10 +80,10 @@ ApplicationWindow
         console.log("refresh; shopname="+currentShop)
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear();
-            DBA.readAllShoppingList(shoppingListModel);
+            DBA.readShoppingListExState(shoppingListModel,"HIDE");
         } else {
             shoppingListModel.clear();
-            DBA.readShoppingListByShop(shoppingListModel, currentShop);
+            DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
         menurefreshtimer.stop()
     }
@@ -125,6 +126,16 @@ ApplicationWindow
 //                }
                 console.log("ostos/ShopSelector TIMER ceased, running:"+running);
             }
+        }
+    }
+    /*
+     * Function to request refresh
+     */
+    function requestRefresh(enabler,tracetext) {
+        if (!menurefreshtimer.running) {
+            menurefreshtimer.turn_on(enabler,tracetext)
+        } else {
+            console.log("requestRefresh while already running. enabler: "+enabler+" trace:",tracetext)
         }
     }
 

@@ -20,17 +20,17 @@ Dialog {
         if(itemshop.isWildcard()) {}
         console.log("onAccepted-Dialog of ItemDetailsPage")
         console.log(itemname.text + ">" + itemqty.text  + ">" + itemunit.value + ">" + itemclass.value + ">" + itemshop.value)
-        rowid = DBA.writeItemToShoppingList("BUY", itemname.text, itemqty.text, itemunit.value, itemclass.value, itemshop.value);
+        rowid = DBA.insertItemToShoppingList("BUY", itemname.text, itemqty.text, itemunit.value, itemclass.value, itemshop.value);
 
         shoppingListModel.insert(0,{ "istat":"BUY", "iname":itemname.text, "iqty":itemqty.text, "iunit":itemunit.value, "iclass":itemclass.value, "rowid":parseInt(rowid)});
         currentShop = wildcard
-        refreshShoppingListByCurrentShop()
+        requestRefresh(true,"ItemDetailsPage Accepted")
         //currentShop = wildcard
     }
     onOpened: {
-        console.log("Dialog onOpened");
-//        shopModel.clear();
-//        DBA.repopulateShopList(shopModel);
+        console.log("ItemDetailsPage Dialog onOpened");
+        shopModel.clear();
+        DBA.repopulateShopList(shopModel);
     }
 
     SilicaFlickable {

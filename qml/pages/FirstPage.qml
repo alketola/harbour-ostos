@@ -23,7 +23,7 @@ Page {
             console.log("FirstPage SilicaListView: Component.onCompleted")
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
-            refreshShoppingListByCurrentShop()
+            requestRefresh(true,"FirstPage SilicaListview Completed")
         }
 
         header: PageHeader {
@@ -34,7 +34,7 @@ Page {
                 listmodel: shopModel
                 onExited: {
                     console.log("Exited shopselector on FirstPage")
-                    menurefreshtimer.turn_on(!mainListShopSelector._menuOpen,value)
+                    requestRefresh(!mainListShopSelector._menuOpen,value)
                 }
 
             }
@@ -80,14 +80,19 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Refresh")
-                onClicked: refreshShoppingListByCurrentShop();
+                text: qsTr("Set shop")
+                onClicked: { console.log("currentShop:"+currentShop)}
             }
 
             MenuItem {
-                text: qsTr("Item details")
-                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
+                text: qsTr("Refresh (unnecessary)")
+                onClicked: requestRefresh(true,"FirstPage menu selected");
             }
+
+//            MenuItem {
+//                text: qsTr("Item details")
+//                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
+//            }
 
             MenuItem {
                 text: qsTr("Enter to list")
@@ -101,9 +106,9 @@ Page {
      * This is the ListItem of the shopping list row
      */
     Component {
-        id: listLine
-
+        id: listLine        
         ListItem {
+            id: lli
             onClicked: { //ListItem
                 firstPageView.currentIndex = index;
                 ci = index;
@@ -114,7 +119,7 @@ Page {
                 firstPageView.currentIndex = index
                 ci = index;
                 //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-            }
+            }           
 
             menu: LineButtonsMenu {
                 id: lineButtonsMenu
