@@ -40,10 +40,10 @@ CoverBackground {
         id: label
         anchors.centerIn: parent
         text: qsTr(" Ostos ") + "\n\n"
-              +
-              "   " + (shoppingListModel.get(cover_index).iname).substring(0,12) + "\n" +
-              "   " + shoppingListModel.get(cover_index).iqty + "\n" +
-              "   " + shoppingListModel.get(cover_index).iunit
+//              + //DUMMIFIED TypeError: Cannot read property 'iname' of undefined
+//              "   " + (shoppingListModel.get(cover_index).iname).substring(0,12) + "\n" +
+//              "   " + shoppingListModel.get(cover_index).iqty + "\n" +
+//              "   " + shoppingListModel.get(cover_index).iunit
 
     }
 

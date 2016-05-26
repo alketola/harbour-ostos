@@ -112,7 +112,7 @@ ApplicationWindow
         //current: currentShop
 
         onTriggered: {
-            console.log("ostos/ShopSelector TIMER onTriggered, running:"+running);
+            // console.log("menurefreshtimer Triggered, running:"+running);
             stop()
             if(_enabler){
                 //                            shoppingListModel.clear();

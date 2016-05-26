@@ -490,7 +490,7 @@ function findItemByName(lm,itemname) {
     var iclass = ""
     var ishop = ""
     var i = 0;
-    var irid = rs.rows.item(i).rowid
+    var irid = rs.rows.item(i).rowid // Uuden lisäyksessä tässä TypeError: Cannot read property 'rowid' of undefined
     istat = rs.rows.item(i).istat
     iname = unescapeFromSqlite(rs.rows.item(i).iname)
     iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
@@ -627,7 +627,7 @@ function repopulateShopList(lm /* ListModel */) {
     try {
         var shoparr=JSON.parse(shops);
     } catch (err) {
-        console.log("Problem parsing '"+shoparr+" err:"+err);
+        //console.log("Problem parsing '"+shoparr+" err:"+err);
         return;
     }
 

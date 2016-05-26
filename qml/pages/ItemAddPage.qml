@@ -17,7 +17,9 @@ Dialog {
                 console.log("ROW:"+templistmodel.get(0).rowid+" STAT:"+templistmodel.get(0).istat+" NAME:"+templistmodel.get(0).iname+" QTY:"+templistmodel.get(0).iqty+
                             "UNIT:"+ templistmodel.get(0).iunit+" CLASS:"+templistmodel.get(0).iclass+" SHOP:"+templistmodel.get(0).ishop)
                 for (var i=0; i<shoppingListModel.count; i++){
-                    if(shoppingListModel.get(i).iname===templistmodel.get(0).iname) {
+
+                    if(shoppingListModel.get(i).iname.toLowerCase()
+                            ==searchField.text.toLowerCase()) {
                         ci = i
                         break
                     }
