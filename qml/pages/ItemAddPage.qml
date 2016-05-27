@@ -1,9 +1,13 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+
+
 import "../dbaccess.js" as DBA
 Dialog {
     id: addDialog
-    property alias searchField: searchView.headerItem // needed the particular reference!
+
+    property string searchString
+    //property alias searchField: //searchView.headerItem // needed the particular reference!
     canAccept: (searchListModel.count <= 1)
 
     onAccepted: {
@@ -39,6 +43,10 @@ Dialog {
         }
     }
 
+    //    Loader {
+    //        anchors.fill: parent
+    //        sourceComponent: searchViewComponent
+    //    }
 
     ListModel {
         id: searchListModel
@@ -53,7 +61,7 @@ Dialog {
             for (var i=0; i<templistmodel.count; i++) {
                 s = templistmodel.get(i).iname
                 stat= templistmodel.get(i).istat
-                //  console.log("ItemAddPage.searchListModel.update.s:"+s)
+                console.log("ItemAddPage.searchListModel.update.s:"+s)
                 if (s.toLowerCase().indexOf(searchField.text.toLowerCase()) >= 0 ) {
                     append({"name":s})
                 }
@@ -64,47 +72,99 @@ Dialog {
         }
     } //end searchListModel
 
+    Column {
+        id: headerContainer
+        width: parent.width
+        height: parent.height
 
+        DialogHeader {
+            id: dialogHeader
 
-    SilicaListView {
-
-        id: searchView
-        anchors.fill: parent
-
-        header: SearchField {
-            id: searchField
-            width: parent.width - 4 * Theme.paddingLarge
-            placeholderText: qsTr("Search")
-
-            onTextChanged: {
-                searchListModel.update()
-            }
+            height: 6 * Theme.paddingLarge
+            //            width: parent.width
         }
 
+        Rectangle {
+            id: searchBox
+            anchors.top: dialogHeader.bottom
+            //                    height: 100
+            width: parent.width
+            anchors.left: parent.left
 
-        // prevent newly added list delegates from stealing focus away from the search field
-        currentIndex: -1
+            SearchField {
+                id: searchField
+                anchors.top: dialogHeader.bottom
+                width: parent.width
 
-        model: searchListModel
+                placeholderText: qsTr("Search")
 
-        delegate: ListItem {
-
-            Label {
-                anchors {
-                    left: parent.left
-                    leftMargin: searchField.textLeftMargin
-                    verticalCenter: parent.verticalCenter
+                onTextChanged: {
+                    searchListModel.update()
                 }
-                text: name
-                Button {
-                    width: parent.width
-                    height: parent.height
-                    onClicked: {
-                        searchField.text=parent.text
+            }
+        }
+        Item {
+            id: searchListBox
+            anchors.top: searchBox.bottom
+            anchors.bottom: parent.bottom
+
+            ListView {
+                id: searchView
+                anchors.top: searchBox.bottom
+                y: 80
+                width: parent.width
+                height: parent.height
+
+
+                model: searchListModel
+                // anchors
+                //            header:
+                //                Item {
+                //                id: header
+                //                width: headerContainer.width
+                //                height: headerContainer.height
+                //                Component.onCompleted: headerContainer.parent = header
+                //            }
+                //        header: SearchField {
+                //            id: searchField
+                //            width: parent.width - 4 * Theme.paddingLarge
+                //            placeholderText: qsTr("Search")
+
+                //            onTextChanged: {
+                //                searchListModel.update()
+                //            }
+                //        }
+
+
+                // prevent newly added list delegates from stealing focus away from the search field
+                currentIndex: -1
+
+
+                delegate: BackgroundItem {
+                    id: bItem
+                    Label {
+                        height: 30
+                        anchors {
+                            left: parent.left
+                            leftMargin: searchField.textLeftMargin
+                            verticalCenter: parent.verticalCenter
+                        }
+                        text: model.name
+                        Button {
+                            width: parent.width
+                            height: parent.height
+                            onClicked: {
+                                searchField.text=parent.text
+                            }
+                        }
                     }
                 }
+
+
+                VerticalScrollDecorator {}
             }
         }
-
     }
 }
+
+
