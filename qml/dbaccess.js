@@ -482,14 +482,16 @@ function findItemByName(lm,itemname) {
         console.log("No result set")
         return false;
     }
-
+    var c =rs.rows.length
+    console.log(".Query returned "+c+"rows")
+    if (c==0) { return false }
     var istat = ""
     var iname = ""
     var iqty = ""
     var iunit = ""
     var iclass = ""
     var ishop = ""
-    var i = 0;
+    var i = 0
     var irid = rs.rows.item(i).rowid // Uuden lisäyksessä tässä TypeError: Cannot read property 'rowid' of undefined
     istat = rs.rows.item(i).istat
     iname = unescapeFromSqlite(rs.rows.item(i).iname)
