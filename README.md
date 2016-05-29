@@ -1,34 +1,46 @@
 # harbour-ostos
-A shopping list app for Jolla, Sailfish OS native, simply QML &amp; Javascript. It should be a good, preferred one.
-My motivation to develop this has come from the long years I have had to take care of children, cook, and go shopping, 
-and the available shopping lists have been uncomfortable for me. I have used Jolla's 'Muistio' ('Notes') for the 
-purpose, and it serves for the purpose in a minimalistic way. I wanted something else, and no shopping chain 
-dependencies. This is not about building an ecosystem, just an app to make and use shopping list. ;-)
-
-Yes I looked at Armadill0 's harbour-tasklist, but finally decided not to fork it. 
+A shopping list app for Jolla, Sailfish OS native, simply QML &amp; Javascript. It should be a good,
+preferred one. My motivation to develop this came from the long years I have had to take care of
+children, cook, and go shopping, and the available shopping lists have been uncomfortable for me.
+I have used Jolla's 'Muistio' ('Notes') for the purpose, and it serves for the purpose in a
+minimali way. I wanted something else, and no shopping chain dependencies. This is not about
+building an ecosystem, just an app to make and use shopping list. ;-)
 
 There are a couple of ideas that I wanted to be different:
-- The first page show the list, and lets to a select a sub-list by clicking (ContextMenu)
+- The first page shows the shopping list, and lets show all the items ( * ) or by shop
+  - The shop filter is on top
 - The items are easy to add, and have voluntary quantity, unit, classification and destination shop attributes
-- The items should have more than just (on/off) state. In practise, I have found usable to be able to mark itemas as 
-  'not found' - it's a real situation. Now there are three states "BUY" (yellow), "GOT" green, "FIND" red. 
-   I could imagine a couple of more states too...
+- The items have more than just (on/off) state. In practise, I have found usable to be able to mark itemas as
+  'not found' - it's a real situation. Now there are three visible states:
+  "BUY" (yellow), "GOT" (green), "FIND" (flagged). "HIDE" state is not visible, but the items in the state will
+  show up in search
 - Item edit is left uncontrolled in purpose. You can edit the unit and class to any text if you wish.
-- State changing should be easy. - Just click the item line. For delete or edit buttons, press to get a context menu
+- State changing is easy. - Just click the item line to toggle between yellow and green
+- Long press to get a context menu, that shows:
+  - [X the dismiss icon] = HIDE the item
+  - [flag icon]          = Flag for FIND
+  - [keyboard icon]      = Edit the item
+  - [up arrow icon]      = Increase quantity
+  - [down arrow icon]    = Decrease quantity
+  - [trashcan icon]      = delete item permanently (from database too)
 - The line context menu has buttons at this first version, which might be considered intentional violation of UI 
-  design recommendations. I might change it to text... but I wanted to see buttons there.
-- The lists are self-arranging to some degree. At the moment they are arranged by state, yellow items come first, 
-  then reds and finally greens. With localstorage's SQLite, many things are possible, and there are some 
-  fields to make ordering tricks. (hits usage statistics, seq thought for forced order, control for something 
-  I haven't decided yet)
+  design recommendations. I might change it to text... but I still like 6 buttons there instead of 6 lines of text.
+- The lists are self-arranging and the user can't re-arrange by hand.
+  At the moment they are arranged by state, yellow items come first, then reds and finally greens.
+  Then the order is by database rowid, which means newest first... which in practise is not all nice.
 
-This is my first QT QUICK project. There are a couple of ugly circumventings of glitches.
+This is still my first QT QUICK project.
 
-There are some missing things, misunderstandings and bugs.
-- Classes are not editable by user
-- Front page refreshing is... ugly. There is no event for onExpandedComboboxClosed:??
-- Deleting a shop in shop editor causes a hangup...
-- There are some quite outrageous ways to use Qt Quick, like ComboBox in PageHeader. However it quite works.
+Further notes on the version
+- The earlier front page problem is about the shop selector combo box value, when leaving the edit dialog, and the
+current shop global. Now the current shop is set to '*' when leaving edit dialog. Not all fixed...
+- Front page refreshing now done via timer, which is a threaded implementation that works glitchless...
+but is a bit slow, you can see it.
+- Animations are missing, TBD
+- Better icons and graphics TBD
+- Test cases are missing
+
+
 
  It's quite usable but not finished. I will study more Qt when I have more time. :-D
  
