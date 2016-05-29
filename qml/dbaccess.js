@@ -61,6 +61,7 @@ function initDatabase() {
             tx.executeSql('INSERT INTO shops (name, hits, seq) VALUES ("unassigned", 0, 0);')
         })
     } catch (sqlErr) {
+        console.error("ostos/dbaccess.js: Could not complete shop initDatabase well")
         // do nothing with it
     }
 
@@ -70,18 +71,19 @@ function initDatabase() {
   Reads all shopping list items and writes them to shopping list model (which is rendered to the first page
   */
 function readAllShoppingList(lm) {
-    console.log("readAllShoppingList");
+    console.log("ostos/dbaccess.js: readAllShoppingList");
     var db = openDB()
-    if(!db) { console.log("readAll:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: readAll:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
-            print('readAllShoppingList('+lm+')')
+            console.log('ostos/dbaccess.js: readAllShoppingList('+lm+')')
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
             rs = tx.executeSql('SELECT rowid, * FROM shoppinglist ORDER BY istat, rowid DESC;')
         })
     } catch (sqlErr) {
-        return "SQL:"+sqlErr
+        console.error("readAllShoppingList, SQL:"+sqlErr)
+        return
     }
 
     var irid = 0
@@ -118,10 +120,10 @@ function readAllShoppingList(lm) {
  * but only for a certain shop
  */
 function readShoppingListByShop(lm,shopname) {
-    console.log("readShoppingListByShop:"+shopname);
+    console.log("ostos/dbaccess.js: readShoppingListByShop:"+shopname);
     shopname=escapeForSqlite(shopname)
     var db = openDB()
-    if(!db) { console.log("readAllByShop:db open failed"); return; }
+    if(!db) { console.error("readAllByShop:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
@@ -167,14 +169,13 @@ function readShoppingListByShop(lm,shopname) {
  * but only those which are not in excluded_state (e.g. "BUY")
  */
 function readShoppingListExState(lm,excluded_state) {
-    console.log("readTheListExState:"+excluded_state);
+    console.log("ostos/dbaccess.js: readTheListExState:"+excluded_state);
     excluded_state=escapeForSqlite(excluded_state)
     var db = openDB()
-    if(!db) { console.log("readTheListExState:db open failed"); return; }
+    if(!db) { console.error("readTheListExState:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
-            print('... read in list items')
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
             rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE NOT istat=? ORDER BY istat, iname, rowid DESC;', excluded_state)
         })
@@ -214,11 +215,11 @@ function readShoppingListExState(lm,excluded_state) {
  * but only for a certain shop
  */
 function readShoppingListByShopExState(lm,shopname,excluded_state) {
-    console.log("readShoppingListByShop:"+shopname+", ex:"+excluded_state);
+    console.log("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
     shopname=escapeForSqlite(shopname)
     excluded_state=escapeForSqlite(excluded_state)
     var db = openDB()
-    if(!db) { console.log("readAllByShop:db open failed"); return; }
+    if(!db) { console.error("readAllByShop:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
@@ -269,7 +270,7 @@ function insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
     ishop=escapeForSqlite(ishop)
 
     var db = openDB()
-    if(!db) { console.log("writeItem:db open failed"); return; }
+    if(!db) { console.error("writeItem:db open failed"); return; }
 
     var result
     var lastrow=0
@@ -282,7 +283,7 @@ function insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
         rid = lastrow.insertId
     })
     hitShop(ishop) /* update shop reference statistic */
-    console.log("insertItemToShoppingList inserted rowid:" + rid)
+    console.log("ostos/dbaccess.js: insertItemToShoppingList inserted rowid:" + rid)
     return rid // rid seems to be a String?
 }
 
@@ -299,7 +300,7 @@ function updateItemInShoppingList(rid /* rowid */,iname, iqty, iunit, iclass, is
     console.log("updating rowid:" + rid + " iname:" + iname + " iqty:" + iqty + " iunit:" + iunit + " iclass:" + iclass + " ishop:" + ishop)
 
     var db = openDB()
-    if(!db) { console.log("writeItem:db open failed"); return; }
+    if(!db) { /* console.error("writeItem:db open failed"); */ return; }
 
     var result
     var lastrow=0
@@ -318,10 +319,10 @@ function updateItemInShoppingList(rid /* rowid */,iname, iqty, iunit, iclass, is
  */
 function updateSeqShoppingList(rid /* rowid */,seq) {
 
-    console.log("updating rowid:" + rid + " seq:" + seq )
+    console.log("ostos/dbaccess.js: updating rowid:" + rid + " seq:" + seq )
 
     var db = openDB()
-    if(!db) { console.log("writeItem:db open failed"); return; }
+    if(!db) { /* console.error("writeItem:db open failed");*/ return; }
 
     var result
     var lastrow=0
@@ -335,10 +336,10 @@ function updateSeqShoppingList(rid /* rowid */,seq) {
 }
 
 function getSeq(rowid,seq) {
-    console.log("getSeq"+rowid+":"+seq)
+    console.log("ostos/dbaccess.js: getSeq"+rowid+":"+seq)
 
     var db = openDB()
-    if(!db) { console.log("getSeq:db open failed"); return; }
+    if(!db) { /* console.error("getSeq:db open failed"); */ return; }
     var rs
     try {
         db.transaction( function(tx) {
@@ -350,7 +351,7 @@ function getSeq(rowid,seq) {
     var seq = 0
 
     seq = rs.rows.item(i).seq
-    console.log("getSeq: seq="+seq)
+    console.log("ostos/dbaccess.js: getSeq: seq="+seq)
     return seq
 }
 
@@ -362,7 +363,7 @@ function deleteItemFromShoppingList(rid) {
     rid=escapeForSqlite(rid)
 
     var db = openDB()
-    if(!db) { console.log("deleteItem:db open failed"); return; }
+    if(!db) { /* console.error("deleteItem:db open failed");*/ return; }
     var result
     var lastrow=0
 
@@ -384,14 +385,14 @@ function deleteItemFromShoppingList(rid) {
 function dumpShoppingList() {
     var db = openDB()
 
-    if(!db) { console.log("dumpShopList:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: dumpShopList:db open failed"); return; }
     var rs
     try {
         db.transaction(function(tx) {
             rs = tx.executeSql('SELECT rowid, * FROM shoppinglist;');
         });
     } catch (sqlErr) {
-        console.log("dump: log squirrel"+sqlErr);
+        console.log("ostos/dbaccess.js: dump: log squirrel"+sqlErr);
         return "ERROR";
     }
     for(var i = 0; i < rs.rows.length; i++) {
@@ -410,7 +411,7 @@ function dumpShoppingList() {
  */
 function deleteAllShoppingList() {
     var db = openDB();
-    if(!db) { console.log("dumpShopList:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: deleteShopList:db open failed"); return; }
     var rs;
 
     try {
@@ -418,7 +419,7 @@ function deleteAllShoppingList() {
             rs = tx.executeSql('DELETE FROM shoppinglist;');
         });
     } catch (sqlErr) {
-        console.log("deleteAll: log squirrel");
+        console.error("ostos/dbaccess.js: deleteAll: log squirrel");
         return "ERROR";
     }
 }
@@ -442,7 +443,7 @@ function updateItemState(rid, state) {
     //    console.log("updating Item state, rowid:" + rid + " state:" + state);
 
     var db = openDB();
-    if(!db) { console.log("update Item state:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: update Item state:db open failed"); return; }
 
     db.transaction(function(tx) {
         tx.executeSql("UPDATE shoppinglist SET istat=? WHERE rowid=?;", [state, rid]);
@@ -453,9 +454,9 @@ function updateItemState(rid, state) {
 function updateItemQty(rid, qty) {
     rid=escapeForSqlite(rid);
     qty=escapeForSqlite(qty);
-    console.log("updateItemQty:("+rid+","+qty)
+    console.log("ostos/dbaccess.js: updateItemQty:("+rid+","+qty)
     var db = openDB();
-    if(!db) { console.log("update Item count:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: update Item qty:db open failed"); return; }
 
     db.transaction(function(tx) {
         tx.executeSql("UPDATE shoppinglist SET iqty=? WHERE rowid=?;", [qty, rid]);
@@ -464,10 +465,10 @@ function updateItemQty(rid, qty) {
 
 /* Find item by name, return row id */
 function findItemByName(lm,itemname) {
-    console.log("findItemByName:"+itemname);
+    console.log("ostos/dbaccess.js: findItemByName:"+itemname);
     itemname=escapeForSqlite(itemname)
     var db = openDB()
-    if(!db) { console.log("findItemByName:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: findItemByName:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
@@ -476,10 +477,11 @@ function findItemByName(lm,itemname) {
             rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE iname=? LIMIT 1;', itemname)
         })
     } catch (sqlErr) {
+        console.error("ostos/dbaccess.js: findItemByName: SQL error")
         return "SQL:"+sqlErr
     }
     if (!rs) {
-        console.log("No result set")
+        console.warn("No result set for:"+itemname)
         return false;
     }
     var c =rs.rows.length
@@ -492,16 +494,16 @@ function findItemByName(lm,itemname) {
     var iclass = ""
     var ishop = ""
     var i = 0
-    var irid = rs.rows.item(i).rowid // Uuden lisäyksessä tässä TypeError: Cannot read property 'rowid' of undefined
+    var irid = rs.rows.item(i).rowid
     istat = rs.rows.item(i).istat
     iname = unescapeFromSqlite(rs.rows.item(i).iname)
     iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
     iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
     iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
     ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-    console.log("DBREAD-find:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+    console.log("ostos/dbaccess.js: findItemByName DB read: "+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
     if (lm){
-        lm.append({ /// ERROR! DOES NOT RETURN row ID!
+        lm.append({
                       "istat":istat,
                       "iname":iname,
                       "iqty":iqty,
@@ -525,9 +527,9 @@ function findItemByName(lm,itemname) {
 function addShop(sname) {
     sname=escapeForSqlite(sname);
 
-    console.log("adding shop:"+sname);
+    console.log("ostos/dbaccess.js: Adding shop to db:"+sname);
     var db = openDB();
-    if(!db) { console.log("addShops:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: addShop:db open failed"); return; }
 
     var lastrow=0;
     var rid;
@@ -539,11 +541,11 @@ function addShop(sname) {
             rid = lastrow.insertId;
         });
     } catch (sqlErr) {
-        console.log(sqlErr);
+        console.error("ostos/dbaccess.js: "+sqlErr);
         rid="-1";
     }
 
-    console.log("inserted Shop rowid:" + rid);
+    console.log("ostos/dbaccess.js: inserted Shop rowid:" + rid);
     return rid; // rid seems to be a String?
 
 }
@@ -555,16 +557,16 @@ function updateShopNameDB(oldname, newname) {
     var oN=escapeForSqlite(oldname)
     var nN=escapeForSqlite(newname)
 
-    console.log("Entering updateShopName\("+oN+","+nN+"\)")
+    console.log("ostos/dbaccess.js: updateShopName\("+oN+","+nN+"\)")
 
     var db = openDB();
-    if(!db) { console.log("update Item state:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: update Item state:db open failed"); return; }
     try {
         db.transaction(function(tx) {
             tx.executeSql("UPDATE shops SET name=? WHERE name=?;", [newname, oldname]);
         });
     } catch (sqlErr) {
-        console.log("updateShopName\("+oN+","+nN+"\)\;"+sqlErr)
+        console.error("ostos/dbaccess.js: updateShopName("+oN+","+nN+"): "+sqlErr)
     }
 }
 
@@ -573,11 +575,15 @@ function updateShopNameInShoppinglistDB(oldname, newname) {
     var nN=escapeForSqlite(newname);
 
     var db = openDB();
-    if(!db) { console.log("update Item state:db open failed"); return; }
-    db.transaction(function(tx) {
-        tx.executeSql("UPDATE OR REPLACE shoppinglist SET ishop=? WHERE ishop=?;",
-                      [nN,oN])
-    })
+    if(!db) { console.error("ostos/dbaccess.js: update Item state:db open failed"); return; }
+    try {
+        db.transaction(function(tx) {
+            tx.executeSql("UPDATE OR REPLACE shoppinglist SET ishop=? WHERE ishop=?;",
+                          [nN,oN])
+        })
+    } catch (sqlErr) {
+        console.error("ostos/dbaccess.js: updateShopName("+oN+","+nN+"): "+sqlErr)
+    }
 }
 /*
  *
@@ -586,12 +592,17 @@ function shopRefCount(shopname) {
     var sN=escapeForSqlite(shopname);
 
     var db = openDB();
-    if(!db) { console.log("update Item state:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js:update Item state:db open failed"); return; }
 
     var rs
-    db.transaction(function(tx) {
-        rs=tx.executeSql("select ishop from shoppinglist where ishop=?;",[sN])
-    })
+    try {
+        db.transaction(function(tx) {
+            rs=tx.executeSql("select ishop from shoppinglist where ishop=?;",[sN])
+        })
+    } catch (sqlErr) {
+        console.error("ostos/dbaccess.js: updateShopName("+oN+","+nN+"): "+sqlErr)
+    }
+
     var count = 0
     // I couldn't get count() value out to count variable.
     // The pragmatic way to do it. :-(
@@ -599,7 +610,7 @@ function shopRefCount(shopname) {
         if (rs.rows.item(i).ishop==sN) count++
     }
 
-    //    console.log("shop "+sN+" ref count "+count)
+    //    console.log("ostos/dbaccess.js: shop "+sN+" ref count "+count)
     return count
 }
 
@@ -624,18 +635,18 @@ function dq(str) {
  * Returns shop list ordered by [usage] hits as array
  */
 function repopulateShopList(lm /* ListModel */) {
-    console.log("repopulateShopList")
+    console.log("ostos/dbaccess.js: repopulateShopList")
     var shops = getAllShopsByHits();
     try {
         var shoparr=JSON.parse(shops);
     } catch (err) {
-        //console.log("Problem parsing '"+shoparr+" err:"+err);
+        //console.error("Problem parsing '"+shoparr+" err:"+err);
         return;
     }
 
     lm.clear();
     for(var i=0; i<shoparr.length; i++) {
-        //console.log(shoparr[i]+"["+i+"] length="+shoparr.length);
+        //console.log("ostos/dbaccess.js: shoparr ["+i+"] ="+shoparr[i]+" length="+shoparr.length);
         lm.append({"name":shoparr[i],"edittext":shoparr[i]});
     }
 }
@@ -647,18 +658,18 @@ function repopulateShopList(lm /* ListModel */) {
 function getAllShopsByHits() {
     var db = openDB();
 
-    if(!db) { console.log("getAllShopssByHits:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: getAllShopssByHits:db open failed"); return; }
     var rs;
     try {
         db.transaction(function(tx) {
             rs = tx.executeSql('SELECT name FROM shops ORDER BY hits DESC;');
         });
     } catch (sqlErr) {
-        console.log("! log squirrel:"+sqlErr);
+        console.log("ostos/dbaccess.js: getAllShopsByHits log squirrel:"+sqlErr);
         return "ERROR";
     }
     var arr = "";
-    //    console.log("rs.rows.length:"+rs.rows.length)
+    //    console.log("ostos/dbaccess.js: rs.rows.length:"+rs.rows.length)
     if(rs.rows.length<1) {
         return "[NULL]";
     }
@@ -680,18 +691,18 @@ var HIT_DIV = 100;
 
 function hitShop(sname) {
     if (!sname) { return }
-    console.log("hitShop:"+sname)
+    console.log("ostos/dbaccess.js: hitShop:"+sname)
     sname=escapeForSqlite(sname);
 
     var db = openDB();
-    if(!db) { console.log(":db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: :db open failed"); return; }
     var rs;
     try {
         db.transaction(function(tx) {
             tx.executeSql("UPDATE shops SET hits=(hits+1) WHERE name=?;", sname);
         });
     } catch (sqlErr) {
-        console.log("hitShop: err: " + sqlErr);
+        console.log("ostos/dbaccess.js: hitShop: err: " + sqlErr);
         return;
     }
     // Read hits back and scale all hits down if a limit is exceeded.
@@ -702,7 +713,7 @@ function hitShop(sname) {
             rs = tx.executeSql('SELECT name,hits FROM shops WHERE name=?;', sname);
         });
     } catch (sqlErr) {
-        console.log("hitShop: squirrel: " + sqlErr);
+        console.log("ostos/dbaccess.js: hitShop: squirrel: " + sqlErr);
         return;
     }
     if (rs.rows.length>0) {
@@ -715,13 +726,13 @@ function hitShop(sname) {
 
 function scaleShopsHits() {
     var db = openDB();
-    if(!db) { console.log(":db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: db open failed"); return; }
     try {
         db.transaction(function(tx) {
             tx.executeSql("UPDATE shops SET hits = (CASE WHEN ((hits/HIT_DIV) > HIT_LOW_LIMIT) THEN (hits/HIT_DIV) ELSE (hits) END);");
         });
     } catch (sqlErr) {
-        console.log("scaleShopsHits: squirrel: " + sqlErr);
+        console.log("ostos/dbaccess.js: scaleShopsHits: squirrel: " + sqlErr);
         return;
     }
 }
@@ -729,8 +740,8 @@ function scaleShopsHits() {
 function deleteShop(sname) {
     sname=escapeForSqlite(sname);
     var db = openDB();
-    if(!db) { console.log("delete Shop:db open failed"); return; }
-    console.log("deleteShop:" + sname);
+    if(!db) { console.error("ostos/dbaccess.js: delete Shop:db open failed"); return; }
+    console.log("ostos/dbaccess.js: deleteShop:" + sname);
     db.transaction(function(tx) {
         tx.executeSql("DELETE FROM shops WHERE name=?;", sname);
     });
@@ -749,12 +760,12 @@ function setSetting(setting,value) {
 
     setting=escapeForSqlite(setting);
     value=escapeForSqlite(value);
-    console.log("setSetting: setting,value: " + setting + ","+value);
+    console.log("ostos/dbaccess.js: setSetting: setting,value: " + setting + ","+value);
 
 
     var db = openDB();
     var rs;
-    if(!db) { console.log("setSetting:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: setSetting:db open failed"); return; }
 
     try {
         db.transaction(function(tx) {
@@ -776,20 +787,20 @@ function getSetting(setting) {
 
     var db = openDB();
     var rs;
-    if(!db) { console.log("getSetting:db open failed"); return; }
+    if(!db) { console.error("ostos/dbaccess.js: getSetting:db open failed"); return; }
 
     try {
         db.transaction(function(tx) {
-            rs = tx.executeSql('SELECT setting, value FROM settings WHERE setting=?;',[setting]);
+            rs = tx.executeSql('SELECT setting, value FROM settings WHERE setting=? LIMIT 1;',[setting]);
         });
     } catch (sqlErr) {
-        console.log("getSetting: log squirrel: " + sqlErr);
+        console.log("ostos/dbaccess.js: getSetting: log squirrel: " + sqlErr);
         return ""; // "ERROR"
     }
 
     if(rs.rows.length>0) {
         var v=rs.rows.item(0).value;
-        console.log("getSetting: setting,value: " + setting + ","+v);
+        console.log("ostos/dbaccess.js: getSetting: setting,value: " + setting + ","+v);
         return v;
     } else {
         return "";
@@ -797,5 +808,5 @@ function getSetting(setting) {
 }
 
 function deleteSetting(setting) {
-    console.log("Not implemented yet");
+    console.error("deleteSetting ("+setting+") -  Not implemented yet!");
 }

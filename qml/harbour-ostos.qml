@@ -25,7 +25,7 @@ import "dbaccess.js" as DBA
 ApplicationWindow
 {
     id: appWindow
-    property int ci // a global for current index, passed from FirstPage and ItemAddPage to ItemEditPage
+    property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
 
@@ -135,7 +135,7 @@ ApplicationWindow
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)
         } else {
-            console.log("requestRefresh while already running. enabler: "+enabler+" trace:",tracetext)
+            console.log("harbour-ostos.requestRefresh while already running. enabler: "+enabler+" trace:",tracetext)
         }
     }
 

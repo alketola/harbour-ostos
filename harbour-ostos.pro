@@ -24,7 +24,6 @@ OTHER_FILES += qml/harbour-ostos.qml \
     rpm/harbour-ostos.yaml \
     translations/*.ts \
     harbour-ostos.desktop \
-    qml/pages/ItemDetailsPage.qml \
     qml/pages/HelpPage.qml \
     qml/pages/ItemEditPage.qml \
     qml/pages/ItemAddPage.qml \
@@ -59,5 +58,6 @@ RESOURCES += \
 
 DISTFILES += \
     to-do-notes.txt \
-    qml/pages/qmlfile
+    qml/pages/qmlfile \
+    qml/itemadd.js
 

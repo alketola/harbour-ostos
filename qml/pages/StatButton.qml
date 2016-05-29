@@ -42,8 +42,8 @@ IconButton {
             PropertyChanges {
                 target: statButton;
                 explicit: true;
-                //                icon.source: "image://theme/icon-m-search";
-                icon.source: "../images/graphic-led-red.png"
+                icon.source: "image://theme/icon-s-task";
+//                icon.source: "../images/graphic-led-red.png"
             }
         }
 
@@ -54,15 +54,32 @@ IconButton {
         ci = index;
     }
     onExited: {
-       cycle(); // Not seems to be redundant. Can't click icon without this?
+       cycle2(); // Does not seem to be redundant. Can't click icon without this?
     }
 
     // This is necessary to set the initial state
     Component.onCompleted: {
-        //console.log("Statbutton Completed istat:"+istat);
-        statButton.state=istat;
+        //console.log("Statbutton Completed istat:"+istat);        
+        statButton.setState(istat)
+
     }
 
+    function setState(state) {
+        switch (state) {
+        case "BUY":
+        case "GOT":
+        case "FIND":
+        case "HIDE":
+            break
+        default:
+            state="HIDE"
+            return
+        }
+
+        statButton.state = state
+    }
+
+/* tri-state cycle */
     function cycle() {
         switch (statButton.state) {
         case "GOT":
@@ -78,5 +95,23 @@ IconButton {
         DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
         shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
         requestRefresh(true,"StatButton.cycle")
+    }    
+/* bi-state cycle */
+    function cycle2() {
+        switch (statButton.state) {
+        case "GOT":
+            setState("BUY")
+            break
+        case "BUY": //too
+            setState("GOT")
+            break
+        case "FIND":
+            setState("GOT")
+            break
+        }
+        DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
+        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
+        requestRefresh(true,"StatButton.cycle")
     }
+
 }

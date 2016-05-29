@@ -39,11 +39,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enter to list</source>
+        <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clearing</source>
+        <source>Enter to buy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -162,11 +162,11 @@
 <context>
     <name>LineButtonsMenu</name>
     <message>
-        <source>Deleting Item</source>
+        <source>Hiding Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hiding Item</source>
+        <source>Deleting Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

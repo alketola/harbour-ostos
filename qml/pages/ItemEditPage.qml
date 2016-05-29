@@ -99,6 +99,7 @@ Dialog {
 
         if (rowid) {
             console.log("...updating existent ci="+ci)
+            DBA.updateItemState(rowid_in_db,"BUY")
             DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
             DBA.updateItemState(rowid_in_db,"BUY")
         } else { // adding new

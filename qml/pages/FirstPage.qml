@@ -75,9 +75,10 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Edit shops")
-                onClicked: { pageStack.push(Qt.resolvedUrl("ShopPage.qml"));}
+                text: qsTr("Refresh (unnecessary)")
+                onClicked: requestRefresh(true,"FirstPage menu selected");
             }
+
 
             MenuItem {
                 text: qsTr("Set shop")
@@ -85,8 +86,8 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Refresh (unnecessary)")
-                onClicked: requestRefresh(true,"FirstPage menu selected");
+                text: qsTr("Edit shops")
+                onClicked: { pageStack.push(Qt.resolvedUrl("ShopPage.qml"));}
             }
 
 //            MenuItem {
@@ -95,7 +96,7 @@ Page {
 //            }
 
             MenuItem {
-                text: qsTr("Enter to list")
+                text: qsTr("Enter to buy")
                 onClicked: pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
             }
         }
@@ -110,9 +111,9 @@ Page {
         ListItem {
             id: lli
             onClicked: { //ListItem
-                firstPageView.currentIndex = index;
-                ci = index;
-                stateIndicator.cycle();
+//                firstPageView.currentIndex = index;
+//                ci = index;
+//                stateIndicator.cycle();
                 //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
             }
             onPressed: {

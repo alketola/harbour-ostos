@@ -21,7 +21,7 @@ Dialog {
         console.log("onAccepted-Dialog of ItemDetailsPage")
         console.log(itemname.text + ">" + itemqty.text  + ">" + itemunit.value + ">" + itemclass.value + ">" + itemshop.value)
         rowid = DBA.insertItemToShoppingList("BUY", itemname.text, itemqty.text, itemunit.value, itemclass.value, itemshop.value);
-
+        // Inserts the new item to row 0 of model
         shoppingListModel.insert(0,{ "istat":"BUY", "iname":itemname.text, "iqty":itemqty.text, "iunit":itemunit.value, "iclass":itemclass.value, "rowid":parseInt(rowid)});
         currentShop = wildcard
         requestRefresh(true,"ItemDetailsPage Accepted")
