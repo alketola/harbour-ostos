@@ -13,11 +13,6 @@ Dialog {
 
     onAccepted: ITEMADD.accept()
 
-    //    Loader {
-    //        anchors.fill: parent
-    //        sourceComponent: searchViewComponent
-    //    }
-
     ListModel {
         id: searchListModel
 
@@ -42,57 +37,52 @@ Dialog {
             update()
         }
     } //end searchListModel
+    SilicaFlickable {
+        id: theFlickable
+        anchors.fill: parent
+        contentHeight: theColumn.height
 
-    Column {
-        id: headerContainer
-        width: parent.width
-        height: parent.height
+        Column {
+            id: theColumn
+            anchors.fill: parent
 
-        DialogHeader {
-            id: dialogHeader
+            DialogHeader {
+                id: dialogHeader
 
-            height: 4 * Theme.paddingLarge
-            //            width: parent.width
-        }
+                anchors.left: parent.left   // The Must-Have anchors
+                anchors.right: parent.right
+            }
 
-        Rectangle {
-            id: searchBox
-            anchors.top: dialogHeader.bottom
-            //                    height: 100
-            width: parent.width
-            anchors.left: parent.left
+            Item {
+                id: searchItem
+                anchors.left: parent.left // The Must-Have anchors
+                anchors.right: parent.right
+                height: Theme.itemSizeSmall // The Must-Have height
 
-            SearchField {
-                id: searchField
-                anchors.top: dialogHeader.bottom
-                width: parent.width
+                SearchField {
+                    id: searchField
+                    anchors.fill: parent
+                    placeholderText: qsTr("Search")
 
-                placeholderText: qsTr("Search")
-
-                onTextChanged: {
-                    searchListModel.update()
+                    onTextChanged: {
+                        searchListModel.update()
+                    }
                 }
             }
-        }
-        Item {
-            id: searchListBox
-            anchors.top: searchBox.bottom
-            anchors.bottom: parent.bottom
+
+            VerticalScrollDecorator { flickable: theFlickable }
 
             SilicaListView {
                 id: searchView
-                anchors.top: searchBox.bottom
-                y: 80
                 width: parent.width
-                height: parent.height
-
-
+                // The height must be calculated sor SilicaListView and
+                // Scrolldecorator to work in Flickable!
+                height: addDialog.height - dialogHeader.height - searchItem.height
+                clip: true
                 model: searchListModel
-
 
                 // prevent newly added list delegates from stealing focus away from the search field
                 currentIndex: -1
-
 
                 delegate: ListItem {
                     id: slItem
@@ -100,11 +90,10 @@ Dialog {
                         height: 30
                         anchors {
                             left: parent.left
-                            leftMargin: searchField.textLeftMargin
-                            verticalCenter: parent.verticalCenter
+                            leftMargin: searchField.textLeftMargin // a tab
                         }
                         text: model.name
-                        Button {
+                        Button { // words decorated as buttons
                             width: parent.width
                             height: parent.height
                             onClicked: {
@@ -113,13 +102,11 @@ Dialog {
                         }
                     }
                 }
-
-
-                VerticalScrollDecorator {}
             }
         }
     }
-
 }
+
+
 
 
