@@ -14,84 +14,25 @@ Dialog {
     allowedOrientations: Orientation.All
     property int changeCount: 0
     canAccept: changeCount > shopListView.count
-
-    Component {
-        id: shopDelegate
-
-        ListItem {
-            id:shopitem
-            width: parent.width
-
-            menu: ContextMenu {
-                MenuItem {
-                    text: qsTr("Delete")
-                    onClicked: {
-                        console.log("index:"+index)
-
-                        if( DBA.shopRefCount(shopModel.get(index).name)>0) {
-                            console.log("NOT deleting: " + shopModel.get(index).name)
-                            /* The user should be warned why it's not deleting */
-                            infoPanel.show()
-
-                        } else {
-                            console.log("deleting: " + shopModel.get(index).name)
-                            remorseShop.execute(shopitem,"Deleting", function() {
-                                DBA.deleteShop(shopModel.get(index).name)
-                                shopModel.clear()
-                                DBA.repopulateShopList(shopModel)
-                                currentShop="unassigned"
-                                //                                firstPage.value="unassigned"
-                                refreshShoppingListByShop()
-                            },5000)
-                        }
-                    }
-                }
-            }
-            Row {
-                width: parent.width
-
-
-                TextField {
-                    id: shopname
-                    text: model.name
-                    readOnly: false
-                    property int mychanges: 0
-
-                    onTextChanged: {
-                        changeCount++
-                        mychanges++
-                        shopModel.set(index,{"edittext":text}) // store changed value in model
-                        // console.log("Text Changed! changeCount:"+ changeCount+" my changes="+mychanges+" currenttext="+text)
-                    }
-
-                }
-                //                Label {
-                //                    text: "refs."+DBA.shopRefCount(model.name)
-                //                }
-            }
-        }
-    }
-
-    RemorseItem {id: remorseShop}
-
     SilicaListView {
         id: shopListView
         anchors.fill: parent
-        contentHeight: parent.height + Theme.paddingLarge
+        contentHeight: parent.height
         highlightFollowsCurrentItem: true
 
         VerticalScrollDecorator { }
 
-        anchors {
-            left: parent.left
-            right: parent.right
-            margins: Theme.paddingLarge
-        }
-        header: PageHeader {
-            title: qsTr("Shops")
-        }
+        //        anchors {
+        //            left: parent.left
+        //            right: parent.right
+        //            margins: Theme.paddingLarge
+        //        }
 
-        DialogHeader {
+        //        ListView.onRemove: animateRemoval()
+
+        model: shopModel
+        delegate: shopDelegate
+        header: DialogHeader {
             acceptText: {
                 title: qsTr("Save")
             }
@@ -100,12 +41,6 @@ Dialog {
             }
         }
 
-        ListView.onRemove: animateRemoval()
-
-        model: shopModel
-        delegate: shopDelegate
-
-        VerticalScrollDecorator { }
         ViewPlaceholder {
             enabled: shopModel.count == 0
             text: qsTr("No items")
@@ -124,10 +59,8 @@ Dialog {
             shopModel.clear();
             DBA.repopulateShopList(shopModel);
             changeCount=0
-            //            infoPanel.hide()
         }
-    }
-
+    } //end silicalistview
 
     onExited: {
         console.log("ShopPage: onExited");
@@ -151,7 +84,7 @@ Dialog {
                 shopModel.get(i).name=newtext
             }
         }
-        shopModel.sync()
+//        shopModel.sync()
         currentShop=wildcard
         //        pageStack.replace(Qt.resolvedUrl("FirstPage.qml"));
     }
@@ -163,20 +96,71 @@ Dialog {
         currentShop="unassigned"
     }
 
-    //    DockedPanel {
-    //        id: infoPanel
-    //        width: shopDialog.isPortrait ? parent.width : Theme.itemSizeExtraLarge + Theme.paddingLarge
-    //        height: shopDialog.isPortrait ? Theme.itemSizeExtraLarge + Theme.paddingLarge : parent.height
+    function deleteshop() {
+        if( DBA.shopRefCount(shopModel.get(index).name)>0) {
+            console.log("NOT deleting: " + shopModel.get(index).name)
+            /* The user should be warned why it's not deleting */
+            //            infoPanel.show()
 
-    //        dock: shopDialog.isPortrait ? Dock.Bottom : Dock.Right
-    //        //        Button {
-    //        //            anchors.horizontalCenter: parent.horizontalCenter
-    //        //            anchors.centerIn: parent.Center
-    //        //            text: qsTr("Cannot delete the shop.\n There are items to buy there.")
-    //        //            onClicked: infoPanel.hide()
-    //        //        }
+        } else {
+            console.log("deleting: " + shopModel.get(index).name)
+            remorseShop.execute(shopitem,"Deleting", function() {
+                DBA.deleteShop(shopModel.get(index).name)
+                shopModel.clear()
+                DBA.repopulateShopList(shopModel)
+                currentShop="unassigned"
+                //                                firstPage.value="unassigned"
+            },5000)
+        }
+    }
 
+    Component {
+        id: shopDelegate
 
-    //    }
+        ListItem {
+            id:shopitem
+            width: parent.width
+            TextField {
+                id: shopField
+                anchors { left: parent.left; right: parent.right }
+                text: model.name
+                EnterKey.enabled: true //text || inputMethodComposing
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: {
+                    console.log("ShopPage.qml EnterKey.onClicked")
 
+                }
+
+//                readOnly: true
+                property int mychanges: 0
+
+                onTextChanged: {
+                    changeCount++
+                    mychanges++
+                    shopModel.set(index,{"edittext":text}) // store changed value in model
+                    console.log("ShopPage.qml: Text Changed! changeCount:"+ changeCount+" my changes="+mychanges+" currenttext="+text)
+                }
+            }
+
+            menu: ContextMenu {
+                MenuItem {
+                    text: qsTr("Edit")
+                    height: Theme.itemSizeSmall
+                    onClicked: {
+                        console.log("ShopPage.shopitem.ContextMenu.Edit index:"+index)
+                        shopField.readOnly = false
+                    }
+                }
+                MenuItem {
+                    text: qsTr("Delete")
+                    height: Theme.itemSizeSmall
+                    onClicked: {
+                        console.log("ShopPage.shopitem.ContextMenu.Delete index:"+index)
+                        //                        deleteshop()
+                    }
+                }
+
+            }
+        }
+    }
 }
