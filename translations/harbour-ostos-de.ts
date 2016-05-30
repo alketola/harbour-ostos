@@ -24,20 +24,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
-    </message>
-    <message>
         <source>Edit shops</source>
         <translation type="unfinished">Handeln bearbeiten</translation>
-    </message>
-    <message>
-        <source>Set shop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Refresh (unnecessary)</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
@@ -159,6 +147,14 @@
         <source>Edit shops</source>
         <translation>Handeln bearbeiten</translation>
     </message>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
@@ -192,10 +188,6 @@
 <context>
     <name>ShopPage</name>
     <message>
-        <source>Shops</source>
-        <translation>Die Handeln</translation>
-    </message>
-    <message>
         <source>Add new shop</source>
         <translation>Neu Handel hinzufügen</translation>
     </message>
@@ -204,12 +196,16 @@
         <translation>löschen</translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation>retten</translation>
-    </message>
-    <message>
         <source>No items</source>
         <translation>Keine Artikeln</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Back</source>

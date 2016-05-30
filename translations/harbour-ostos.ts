@@ -23,19 +23,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Edit shops</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set shop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Refresh (unnecessary)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -158,6 +146,14 @@
         <source>Edit shops</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
@@ -191,10 +187,6 @@
 <context>
     <name>ShopPage</name>
     <message>
-        <source>Shops</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Add new shop</source>
         <translation type="unfinished"></translation>
     </message>
@@ -203,11 +195,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save</source>
+        <source>No items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No items</source>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
