@@ -19,12 +19,21 @@ Dialog {
 
         VerticalScrollDecorator{}
 
+        DialogHeader {
+            acceptText: {
+                title: qsTr("Accept")
+            }
+            cancelText: {
+                title: qsTr("Cancel")
+            }
+        }
+
         Column {
             id: detailsColumn
             anchors { left: parent.left; right: parent.right }
             spacing: Theme.paddingSmall
 
-            PageHeader { title: "Accept edits" }
+//            PageHeader { title: "Accept edits" }
 
             TextField {
                 id: itemname
