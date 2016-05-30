@@ -90,20 +90,30 @@ Dialog {
 
                 delegate: ListItem {
                     id: slItem
-                    Label {
-                        height: 30
-                        anchors {
-                            left: parent.left
-                            leftMargin: searchField.textLeftMargin // a tab
+                    //                    Label {
+                    //                        height: 30
+                    //                        anchors {
+                    //                            left: parent.left
+                    //
+                    //                        }
+                    // text: model.name
+
+
+                    Button { // words decorated as buttons
+                        width: sLabel.width + 2 * Theme.paddingLarge
+                        anchors.margins: Theme.paddingLarge
+                        x: searchField.textLeftMargin
+                        height: sLabel.height + 2 * Theme.paddingSmall
+                        Label{
+                            id: sLabel
+                            text: model.name
+                            x: Theme.paddingLarge
+                            y: Theme.paddingSmall
                         }
-                        text: model.name
-                        Button { // words decorated as buttons
-                            width: parent.width
-                            height: parent.height
-                            onClicked: {
-                                searchField.text=parent.text
-                                acceptClicked=true
-                            }
+
+                        onClicked: {
+                            searchField.text=parent.text
+                            acceptClicked=true
                         }
                     }
                 }
@@ -111,6 +121,7 @@ Dialog {
         }
     }
 }
+
 
 
 
