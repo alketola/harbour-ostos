@@ -10,10 +10,16 @@ function accept() {
     var db_index
     var found_1st_item_name
 
-    if ( count == 1) {
+    if ((count == 1) || ((acceptClicked==true))) {
         // we have found the item already on the list as a unique match, the retrieve it from database and
         // store to global templistmodel variable
-        found_1st_item_name = searchListModel.get(0).name
+
+        if (acceptClicked==true) {
+            found_1st_item_name = searchField.text
+        } else {
+            found_1st_item_name = searchListModel.get(0).name
+        }
+
         console.log("- found_item_name:"+found_1st_item_name)
 
         templistmodel.clear()
@@ -50,6 +56,7 @@ function accept() {
         console.log("- ci="+ci+": iname="+shoppingListModel.get(ci).iname)
         pageStack.push(Qt.resolvedUrl("../qml/pages/ItemEditPage.qml"))
     }
+
     console.log("* ItemAddPage accepted,\n- searchField.text:"+searchField.text+
                 " found_item_name:"+found_1st_item_name+" ci:"+ci)
 

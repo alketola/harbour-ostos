@@ -44,24 +44,29 @@ function unescapeFromSqlite(s){
   */
 function initDatabase() {
     var db = openDB()
-    db.transaction( function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS shoppinglist (istat TEXT, iname TEXT PRIMARY KEY, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER);')
-    })
+    try {
+        db.transaction( function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS shoppinglist (istat TEXT, iname TEXT PRIMARY KEY, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER);')
+        })
 
-    db.transaction( function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS shops (name TEXT PRIMARY KEY, hits INTEGER, seq INTEGER, control INTEGER);')
-    })
+        db.transaction( function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS shops (name TEXT PRIMARY KEY, hits INTEGER, seq INTEGER, control INTEGER);')
+        })
 
-    db.transaction( function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS settings (setting TEXT(16) PRIMARY KEY, value TEXT(64));')
-    })
+        db.transaction( function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS settings (setting TEXT(16) PRIMARY KEY, value TEXT(64));')
+        })
+    } catch (sqlErr) {
+        console.warn("ostos/dbaccess.js: initDatabase "+sqlErr)
+        // do nothing with it
+    }
 
     try {
         db.transaction( function(tx) {
             tx.executeSql('INSERT INTO shops (name, hits, seq) VALUES ("unassigned", 0, 0);')
         })
     } catch (sqlErr) {
-        console.error("ostos/dbaccess.js: Could not complete shop initDatabase well")
+        console.warn("ostos/dbaccess.js:"+sqlErr)
         // do nothing with it
     }
 
@@ -223,12 +228,13 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
     var rs
     try {
         db.transaction( function(tx) {
-            print('... read in list items')
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE ishop=? AND NOT istat=? ORDER BY istat, rowid DESC;', shopname, excluded_state)
+            var querystring = "SELECT rowid, * FROM shoppinglist WHERE ishop='"+shopname+"' AND NOT istat='"+excluded_state+"' ORDER BY istat, rowid DESC;"
+            rs = tx.executeSql(querystring)
         })
     } catch (sqlErr) {
-        return "SQL:"+sqlErr
+        console.error("readShoppingListByShopExState SQL error:"+sqlErr)
+        return false
     }
     var irid = 0
     var istat = ""
@@ -237,6 +243,7 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
     var iunit = ""
     var iclass = ""
     var ishop = ""
+    console.log("..read "+rs.rows.length+" lines from DB")
     for(var i = 0; i < rs.rows.length; i++) {
         irid = rs.rows.item(i).rowid
         istat = rs.rows.item(i).istat
@@ -245,7 +252,7 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
         iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
         iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
         ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-        //        console.log("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        //console.log("...DBREAD-SX:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
         lm.append({ //rs.rows.item(i).
                       "istat":istat,
                       "iname":iname,

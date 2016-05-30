@@ -85,15 +85,10 @@ ApplicationWindow
             shoppingListModel.clear();
             DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
-        menurefreshtimer.stop()
+//        menurefreshtimer.stop()
     }
 
-    //     This timer is just to fix a the problem that comes from clearing
-    //     the shopping list when entering to the FirstPage ShopSelector
-    //     and then just closing the menu without selection. The shopping list is
-    //     not refreshed and I could not find a ComboBox event to fix shopping
-    //     list refresh in.
-    //     A pragmatic solution.
+    //     This timer is used to refresh the shopping list in a separate thread.
     Timer {
         id: menurefreshtimer
         interval: 300; running: false; repeat: false
@@ -102,29 +97,22 @@ ApplicationWindow
         property string _current
 
         function turn_on(enabler,current) {
-            console.log("turn_on:"+_enabler)
+            console.log("menurefreshtimer turn_on:"+_enabler)
             _enabler=enabler
             _current=current
             start()
         }
 
-        //enabler: !mainListShopSelector._menuOpen
-        //current: currentShop
-
         onTriggered: {
             // console.log("menurefreshtimer Triggered, running:"+running);
             stop()
             if(_enabler){
-                //                            shoppingListModel.clear();
+
                 refreshShoppingListByCurrentShop()
 
             } else {
-//                interval=1000
-//                if (_enabler) {
-//                    restart()
-//                    console.log("ostos/ShopSelector TIMER restart, running:"+running);
-//                }
-                console.log("ostos/ShopSelector TIMER ceased, running:"+running);
+
+                console.log("ostos/ShopSelector TIMER ceased, running:"+running+" trace:"+ _current);
             }
         }
     }

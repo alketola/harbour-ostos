@@ -7,3 +7,5 @@
 * How about incremental search + hide instead of delete?
 2016-05-30
 * Removed the cover actions... put them back...
+* Shop filter on FirstPage is broken
+

@@ -9,7 +9,9 @@ Dialog {
 
     property string searchString
     //property alias searchField: //searchView.headerItem // needed the particular reference!
-    canAccept: (searchListModel.count <= 1)
+    property bool acceptClicked
+
+    canAccept: ((searchListModel.count <= 1) || acceptClicked == true)
 
     onAccepted: ITEMADD.accept()
 
@@ -32,6 +34,7 @@ Dialog {
         }
 
         Component.onCompleted: {
+            acceptClicked=false
             templistmodel.clear()
             DBA.readShoppingListExState(templistmodel,"BUY")
             update()
@@ -66,6 +69,7 @@ Dialog {
 
                     onTextChanged: {
                         searchListModel.update()
+                        acceptClicked = false
                     }
                 }
             }
@@ -98,6 +102,7 @@ Dialog {
                             height: parent.height
                             onClicked: {
                                 searchField.text=parent.text
+                                acceptClicked=true
                             }
                         }
                     }

@@ -12,9 +12,9 @@ Page {
     id: firstPage
 
 
-//    ListModel {
-//            id: shoppingListModel
-//    }
+    //    ListModel {
+    //            id: shoppingListModel
+    //    }
 
     SilicaListView {
         id: firstPageView
@@ -28,6 +28,7 @@ Page {
 
         header: PageHeader {
             height:Theme.paddingLarge *4
+
             ShopSelector {
                 id: mainListShopSelector
                 label: qsTr("Shop")
@@ -50,6 +51,9 @@ Page {
         model: shoppingListModel
         delegate: listLine
 
+        add: Transition {
+            NumberAnimation { properties: "y"; from: 100; duration: 100 }
+        }
         PullDownMenu {
 
             MenuItem {
@@ -90,10 +94,10 @@ Page {
                 onClicked: { pageStack.push(Qt.resolvedUrl("ShopPage.qml"));}
             }
 
-//            MenuItem {
-//                text: qsTr("Item details")
-//                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
-//            }
+            //            MenuItem {
+            //                text: qsTr("Item details")
+            //                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
+            //            }
 
             MenuItem {
                 text: qsTr("Enter to buy")
@@ -107,20 +111,20 @@ Page {
      * This is the ListItem of the shopping list row
      */
     Component {
-        id: listLine        
+        id: listLine
         ListItem {
             id: lli
             onClicked: { //ListItem
-//                firstPageView.currentIndex = index;
-//                ci = index;
-//                stateIndicator.cycle();
+                //                firstPageView.currentIndex = index;
+                //                ci = index;
+                //                stateIndicator.cycle();
                 //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
             }
             onPressed: {
                 firstPageView.currentIndex = index
                 ci = index;
                 //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-            }           
+            }
 
             menu: LineButtonsMenu {
                 id: lineButtonsMenu

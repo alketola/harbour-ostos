@@ -20,7 +20,9 @@ ComboBox {
     y: Theme.paddingLarge
 
     property bool menuOpen
-
+    _backgroundColor: "black"
+    opacity: Theme.highlightBackgroundOpacity
+    labelColor: Theme.secondaryColor
     Component.onCompleted: { // loads the list
         refresh()
         //        console.log("ShopSelector: onCompleted")
@@ -85,6 +87,10 @@ ComboBox {
         ViewPlaceholder {
             enabled: listmodel.count == 0
             text: qsTr("-No items-")
+        }
+
+        onClosed: {
+            appWindow.requestRefresh(true,"ShopSelector ContexMenu closed")
         }
 
     }
