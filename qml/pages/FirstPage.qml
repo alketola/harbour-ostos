@@ -51,9 +51,6 @@ Page {
         model: shoppingListModel
         delegate: listLine
 
-        add: Transition {
-            NumberAnimation { properties: "y"; from: 100; duration: 100 }
-        }
         PullDownMenu {
 
             MenuItem {

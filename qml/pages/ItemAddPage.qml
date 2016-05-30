@@ -8,7 +8,7 @@ Dialog {
     id: addDialog
 
     property string searchString
-    //property alias searchField: //searchView.headerItem // needed the particular reference!
+    //property alias searchFld: addDialog.searchField //searchView.headerItem // needed the particular reference!
     property bool acceptClicked
 
     canAccept: ((searchListModel.count <= 1) || acceptClicked == true)
@@ -22,15 +22,15 @@ Dialog {
             var s
             var stat
             clear()
-            console.log("templistmodel.count="+templistmodel.count)
             for (var i=0; i<templistmodel.count; i++) {
                 s = templistmodel.get(i).iname
                 stat= templistmodel.get(i).istat
-                //console.log("ItemAddPage.searchListModel.update.s:"+s)
+//                console.log("ItemAddPage.searchListModel.update.s:"+s)
                 if (s.toLowerCase().indexOf(searchField.text.toLowerCase()) >= 0 ) {
                     append({"name":s})
                 }
             }
+//            console.log("ItemAddPage: searchListModel.count="+searchListModel.count)
         }
 
         Component.onCompleted: {
@@ -100,6 +100,7 @@ Dialog {
 
 
                     Button { // words decorated as buttons
+                        id: btn
                         width: sLabel.width + 2 * Theme.paddingLarge
                         anchors.margins: Theme.paddingLarge
                         x: searchField.textLeftMargin
@@ -112,8 +113,8 @@ Dialog {
                         }
 
                         onClicked: {
-                            searchField.text=parent.text
-                            acceptClicked=true
+                            searchField.text=sLabel.text
+                            addDialog.acceptClicked=true
                         }
                     }
                 }
