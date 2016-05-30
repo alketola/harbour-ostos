@@ -52,14 +52,6 @@ Page {
         delegate: listLine
 
         PullDownMenu {
-
-            MenuItem {
-                text: qsTr("Help")
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("HelpPage.qml"))
-                }
-            }
-
             MenuItem {
                 text: qsTr("Dump list");
                 onClicked: {
@@ -69,22 +61,29 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Settings")
+                text: qsTr("Help")
                 onClicked: {
-                    pageStack.push("SettingsPage.qml")
+                    pageStack.push(Qt.resolvedUrl("HelpPage.qml"))
                 }
             }
 
-            MenuItem {
-                text: qsTr("Refresh (unnecessary)")
-                onClicked: requestRefresh(true,"FirstPage menu selected");
-            }
+            //            MenuItem {
+            //                text: qsTr("Settings")
+            //                onClicked: {
+            //                    pageStack.push("SettingsPage.qml")
+            //                }
+            //            }
+
+            //            MenuItem {
+            //                text: qsTr("Refresh (unnecessary)")
+            //                onClicked: requestRefresh(true,"FirstPage menu selected");
+            //            }
 
 
-            MenuItem {
-                text: qsTr("Set shop")
-                onClicked: { console.log("currentShop:"+currentShop)}
-            }
+            //            MenuItem {
+            //                text: qsTr("Set shop")
+            //                onClicked: { console.log("currentShop:"+currentShop)}
+            //            }
 
             MenuItem {
                 text: qsTr("Edit shops")
