@@ -24,7 +24,7 @@
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Editar botigas</translation>
     </message>
     <message>
         <source>Enter to buy</source>
@@ -33,6 +33,10 @@
     <message>
         <source>Clearing</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No items</source>
+        <translation type="unfinished">(res)</translation>
     </message>
 </context>
 <context>
@@ -139,20 +143,20 @@
 <context>
     <name>ItemEditPage</name>
     <message>
-        <source>Shop</source>
-        <translation>Botiga</translation>
-    </message>
-    <message>
-        <source>Edit shops</source>
-        <translation>Editar botiges</translation>
-    </message>
-    <message>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shop</source>
+        <translation type="unfinished">Botiga</translation>
+    </message>
+    <message>
+        <source>Edit shops</source>
+        <translation type="unfinished">Editar botigas</translation>
     </message>
 </context>
 <context>
@@ -209,13 +213,6 @@
     <message>
         <source>Accept</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ShopSelector</name>
-    <message>
-        <source>-No items-</source>
-        <translation>(res)</translation>
     </message>
 </context>
 <context>

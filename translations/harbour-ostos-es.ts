@@ -34,6 +34,10 @@
         <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No items</source>
+        <translation type="unfinished">(Nada)</translation>
+    </message>
 </context>
 <context>
     <name>HelpPage</name>
@@ -139,20 +143,20 @@
 <context>
     <name>ItemEditPage</name>
     <message>
-        <source>Shop</source>
-        <translation>Tienda</translation>
-    </message>
-    <message>
-        <source>Edit shops</source>
-        <translation>Editar tiendas</translation>
-    </message>
-    <message>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shop</source>
+        <translation type="unfinished">Tienda</translation>
+    </message>
+    <message>
+        <source>Edit shops</source>
+        <translation type="unfinished">Editar tiendas</translation>
     </message>
 </context>
 <context>
@@ -209,13 +213,6 @@
     <message>
         <source>Accept</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ShopSelector</name>
-    <message>
-        <source>-No items-</source>
-        <translation>(Nada)</translation>
     </message>
 </context>
 <context>

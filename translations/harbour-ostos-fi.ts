@@ -34,6 +34,10 @@
         <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No items</source>
+        <translation type="unfinished">Tyhjä lista</translation>
+    </message>
 </context>
 <context>
     <name>HelpPage</name>
@@ -141,20 +145,20 @@
 <context>
     <name>ItemEditPage</name>
     <message>
-        <source>Shop</source>
-        <translation>Kauppa</translation>
-    </message>
-    <message>
-        <source>Edit shops</source>
-        <translation>Muokkaa kauppoja</translation>
-    </message>
-    <message>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shop</source>
+        <translation type="unfinished">Kauppa</translation>
+    </message>
+    <message>
+        <source>Edit shops</source>
+        <translation type="unfinished">Muokkaa kauppoja</translation>
     </message>
 </context>
 <context>
@@ -211,13 +215,6 @@
     <message>
         <source>Accept</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ShopSelector</name>
-    <message>
-        <source>-No items-</source>
-        <translation>Tyhjä lista</translation>
     </message>
 </context>
 <context>

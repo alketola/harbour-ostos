@@ -19,6 +19,10 @@ Page {
     SilicaListView {
         id: firstPageView
         clip: true
+        anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: parent.height + Theme.paddingLarge
+
         Component.onCompleted: {
             console.log("FirstPage SilicaListView: Component.onCompleted")
             shopModel.clear()
@@ -40,10 +44,11 @@ Page {
             }
         }
 
-        anchors.fill: parent
+        ViewPlaceholder {
+            enabled: shoppingListModel.count == 0
+            text: qsTr("No items")
+        }
 
-        contentWidth: parent.width
-        contentHeight: parent.height + Theme.paddingLarge
         VerticalScrollDecorator { flickable: firstPageView }
 
         model: shoppingListModel

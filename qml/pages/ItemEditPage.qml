@@ -19,14 +19,10 @@ Dialog {
 
         VerticalScrollDecorator{}
 
-
-
         Column {
             id: detailsColumn
             anchors { left: parent.left; right: parent.right }
             spacing: Theme.paddingSmall
-
-//            PageHeader { title: "Accept edits" }
 
             DialogHeader {
                 acceptText: {

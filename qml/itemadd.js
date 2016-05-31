@@ -53,7 +53,7 @@ function accept() {
                         "iqty":"", "iunit":"", "iclass":"",
                         "ishop":"unassigned",
                         "rowid":parseInt(ci)}) // How come? rowid is the db row id!
-        console.log("- ci="+ci+": iname="+shoppingListModel.get(ci).iname)
+        console.log("itemadd.js: added new to model: ci="+ci+": iname="+shoppingListModel.get(ci).iname)
         pageStack.push(Qt.resolvedUrl("../qml/pages/ItemEditPage.qml"))
     }
 
