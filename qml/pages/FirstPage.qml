@@ -37,9 +37,7 @@ Page {
                     console.log("Exited shopselector on FirstPage")
                     requestRefresh(!mainListShopSelector._menuOpen,value)
                 }
-
             }
-
         }
 
         anchors.fill: parent
@@ -90,11 +88,6 @@ Page {
                 onClicked: { pageStack.push(Qt.resolvedUrl("ShopPage.qml"));}
             }
 
-            //            MenuItem {
-            //                text: qsTr("Item details")
-            //                onClicked: pageStack.push(Qt.resolvedUrl("ItemDetailsPage.qml"))
-            //            }
-
             MenuItem {
                 text: qsTr("Enter to buy")
                 onClicked: pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
@@ -127,40 +120,33 @@ Page {
                 modelindex: index
             }
 
-            Rectangle {
+            Row {
                 id: llr
-                //spacing: 10
+                spacing: 5
                 width: firstPage.width
                 anchors.verticalCenter: parent.verticalCenter
 
                 StatButton { id: stateIndicator }
 
                 Label {
-                    x: 83
-                    width: firstPage.width *.5
+//                    x: 83
+                    width: firstPage.width / 2
                     anchors.verticalCenter: parent.verticalCenter
                     truncationMode: TruncationMode.Fade
                     text: iname //+ " " + iqty + " " + iunit
                 }
-                Row{
-                    x: firstPage.width * 0.75
-                    anchors.verticalCenter: parent.verticalCenter
 
-                    Label {
-                        anchors.rightMargin: 12
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: iqty
-                    }
-                    Label {
-                        anchors.leftMargin: 12
-                        anchors.rightMargin: 12
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: iunit
-                    }
+                Label {
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: iqty
+                }
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: iunit
                 }
             }
         }
-
     } // END Component listLine
 
 

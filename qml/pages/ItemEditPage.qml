@@ -19,14 +19,7 @@ Dialog {
 
         VerticalScrollDecorator{}
 
-        DialogHeader {
-            acceptText: {
-                title: qsTr("Accept")
-            }
-            cancelText: {
-                title: qsTr("Cancel")
-            }
-        }
+
 
         Column {
             id: detailsColumn
@@ -35,6 +28,14 @@ Dialog {
 
 //            PageHeader { title: "Accept edits" }
 
+            DialogHeader {
+                acceptText: {
+                    title: qsTr("Accept")
+                }
+                cancelText: {
+                    title: qsTr("Cancel")
+                }
+            }
             TextField {
                 id: itemname
                 anchors { left: parent.left; right: parent.right }

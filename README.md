@@ -6,15 +6,15 @@ I have used Jolla's 'Muistio' ('Notes') for the purpose, and it serves for the p
 minimali way. I wanted something else, and no shopping chain dependencies. This is not about
 building an ecosystem, just an app to make and use shopping list. ;-)
 
-There are a couple of ideas that I wanted to be different:
+There are a couple of ideas that I wanted :
 - The first page shows the shopping list, and lets show all the items ( * ) or by shop
   - The shop filter is on top
 - The items are easy to add, and have voluntary quantity, unit, classification and destination shop attributes
 - The items have more than just (on/off) state. In practise, I have found usable to be able to mark itemas as
   'not found' - it's a real situation. Now there are three visible states:
-  "BUY" (yellow), "GOT" (green), "FIND" (flagged). "HIDE" state is not visible, but the items in the state will
+  "BUY" (active button), "GOT" (inactive button), "FIND" (flagged). "HIDE" state is not visible, but the items in the state will
   show up in search
-- Item edit is left uncontrolled in purpose. You can edit the unit and class to any text if you wish.
+- Item edit is left unvalidated string edit in purpose. You can edit the unit and class to any text if you wish.
 - State changing is easy. - Just click the item line to toggle between yellow and green
 - Long press to get a context menu, that shows:
   - [X the dismiss icon] = HIDE the item
@@ -29,19 +29,14 @@ There are a couple of ideas that I wanted to be different:
   At the moment they are arranged by state, yellow items come first, then reds and finally greens.
   Then the order is by database rowid, which means newest first... which in practise is not all nice.
 
-This is still my first QT QUICK project.
-
 Further notes on the version
 - The earlier front page problem is about the shop selector combo box value, when leaving the edit dialog, and the
 current shop global. Now the current shop is set to '*' when leaving edit dialog. Not all fixed...
 - Front page refreshing now done via timer, which is a threaded implementation that works glitchless...
 but is a bit slow, you can see it.
-- Animations are missing, TBD
-- Better icons and graphics TBD
+- Animations are deemed not necessary
 - Test cases are missing
 
+This is my Qt/QML/Silica study project.
 
-
- It's quite usable but not finished. I will study more Qt when I have more time. :-D
- 
 

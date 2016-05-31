@@ -15,6 +15,7 @@ IconButton {
     anchors.leftMargin: 12
     anchors.rightMargin: 12
     anchors.verticalCenter: parent.verticalCenter
+    width: parent.width / 6
     //x: 50
     //state:
 
@@ -24,8 +25,8 @@ IconButton {
             PropertyChanges {
                 target: statButton;
                 explicit: true;
-                //                icon.source: "image://theme/icon-m-day";
-                icon.source: "../images/graphic-led-yellow.png"
+                //icon.source: "../images/graphic-led-yellow.png"
+                icon.source: "../images/graphic-toggle-on.png"
             }
         },
         State {
@@ -33,8 +34,8 @@ IconButton {
             PropertyChanges {
                 target: statButton;
                 explicit: true;
-                //                icon.source: "image://theme/icon-m-certificates";
-                icon.source: "../images/graphic-led-green.png"
+                //icon.source: "../images/graphic-led-green.png"
+                icon.source: "../images/graphic-toggle-off.png"
             }
         },
         State {

@@ -59,5 +59,8 @@ RESOURCES += \
 DISTFILES += \
     to-do-notes.txt \
     qml/pages/qmlfile \
-    qml/itemadd.js
+    qml/itemadd.js \
+    qml/images/graphic-toggle-off.png \
+    qml/images/graphic-toggle-on.png \
+    README.md
 

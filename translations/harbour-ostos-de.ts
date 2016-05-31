@@ -16,23 +16,23 @@
         <translation type="unfinished">Handel</translation>
     </message>
     <message>
-        <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
-    </message>
-    <message>
         <source>Dump list</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Hilfe</translation>
     </message>
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Handeln bearbeiten</translation>
     </message>
     <message>
-        <source>Clearing</source>
+        <source>Enter to buy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enter to buy</source>
+        <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -204,11 +204,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save</source>
+        <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Back</source>
+        <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -589,7 +589,7 @@ function updateShopNameInShoppinglistDB(oldname, newname) {
                           [nN,oN])
         })
     } catch (sqlErr) {
-        console.error("ostos/dbaccess.js: updateShopName("+oN+","+nN+"): "+sqlErr)
+        console.error("ostos/dbaccess.js: updateShopName...DB("+oN+","+nN+"): "+sqlErr)
     }
 }
 /*
@@ -621,18 +621,6 @@ function shopRefCount(shopname) {
     return count
 }
 
-//function updateShopNameInShoppinglistModel(lm, oldname, newname) {
-//    var oN=escapeForSqlite(oldname)
-//    ContextMenu {
-//        id:scx
-//    }
-//    var nN=escapeForSqlite(newname)
-//    for (var i=0; i<lm.count; i++ ) {
-//        if (lm.get(i).ishop==oN) {
-//            lm.get(i).ishop=nN
-//        }
-//    }
-//}
 
 function dq(str) {
     return '"' + str + '"';

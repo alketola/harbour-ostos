@@ -33,8 +33,9 @@ Dialog {
         model: shopModel
         delegate: shopDelegate
         header: DialogHeader {
+            width: shopDialog.width
             acceptText: {
-                title: qsTr("Save")
+                title: qsTr("Accept")
             }
             cancelText: {
                 title: qsTr("Back")
@@ -62,6 +63,7 @@ Dialog {
         }
     } //end silicalistview
 
+
     onExited: {
         console.log("ShopPage: onExited");
         pageStack.replace(Qt.resolvedUrl("FirstPage.qml"))
@@ -84,9 +86,7 @@ Dialog {
                 shopModel.get(i).name=newtext
             }
         }
-//        shopModel.sync()
         currentShop=wildcard
-        //        pageStack.replace(Qt.resolvedUrl("FirstPage.qml"));
     }
     onCanceled: {
         console.log("ShopPage: onCanceled");
@@ -96,21 +96,12 @@ Dialog {
         currentShop="unassigned"
     }
 
-    function deleteshop() {
-        if( DBA.shopRefCount(shopModel.get(index).name)>0) {
-            console.log("NOT deleting: " + shopModel.get(index).name)
-            /* The user should be warned why it's not deleting */
-            //            infoPanel.show()
 
-        } else {
-            console.log("deleting: " + shopModel.get(index).name)
-            remorseShop.execute(shopitem,"Deleting", function() {
-                DBA.deleteShop(shopModel.get(index).name)
-                shopModel.clear()
-                DBA.repopulateShopList(shopModel)
-                currentShop="unassigned"
-                //                                firstPage.value="unassigned"
-            },5000)
+    function updateShopNameInLM(lm, oldname, newname) {
+        for (var i=0; i<lm.count; i++ ) {
+            if (lm.get(i).ishop==oldname) {
+                lm.get(i).ishop=newname
+            }
         }
     }
 
@@ -122,33 +113,37 @@ Dialog {
             width: parent.width
             TextField {
                 id: shopField
-                anchors { left: parent.left; right: parent.right }
+                //                anchors { left: parent.left; right: parent.right }
                 text: model.name
                 EnterKey.enabled: true //text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: {
                     console.log("ShopPage.qml EnterKey.onClicked")
-
+                    readOnly = true
                 }
 
-//                readOnly: true
                 property int mychanges: 0
 
                 onTextChanged: {
                     changeCount++
                     mychanges++
                     shopModel.set(index,{"edittext":text}) // store changed value in model
-                    console.log("ShopPage.qml: Text Changed! changeCount:"+ changeCount+" my changes="+mychanges+" currenttext="+text)
+                    //                    console.log("ShopPage.qml: Text Changed! changeCount:"+ changeCount+" my changes="+mychanges+" currenttext="+text)
+                }
+                Component.onCompleted: {
+                    readOnly = true
                 }
             }
 
             menu: ContextMenu {
+                id: scxmenu
                 MenuItem {
                     text: qsTr("Edit")
                     height: Theme.itemSizeSmall
                     onClicked: {
                         console.log("ShopPage.shopitem.ContextMenu.Edit index:"+index)
                         shopField.readOnly = false
+                        shopField.forceActiveFocus()
                     }
                 }
                 MenuItem {
@@ -156,11 +151,69 @@ Dialog {
                     height: Theme.itemSizeSmall
                     onClicked: {
                         console.log("ShopPage.shopitem.ContextMenu.Delete index:"+index)
-                        //                        deleteshop()
+                        //                        deleteshop(index)
+                        var shopitem = shopModel.get(index)
+                        var shopname = shopitem.name
+                        var refcount = DBA.shopRefCount(shopname)
+                        if( refcount>0) {
+                            remorseShopDelete.execute(scxmenu.parent,"Deleting", function() {
+                                console.log("ShopPage.qml: Deleting "+shopname+" the hard way, there are "+refcount+" references")
+                                console.log("ShopPage.qml: ...reassign to unassigned in DB")
+                                DBA.updateShopNameInShoppinglistDB(shopname,"unassigned")
+                                console.log("ShopPage.qml: ...reassign to unassigned in shoppingListModel")
+                                updateShopNameInLM(shoppingListModel,shopname,"unassigned")
+                                console.log("ShopPage.qml: ...reassign to unassigned in DB")
+                                DBA.deleteShop(shopname)
+                                shopModel.clear()
+                                DBA.repopulateShopList(shopModel)
+                                currentShop="unassigned"
+                                console.log("ShopPage.qml: deleteshop finished")
+                            },5000)
+
+                        } else {
+                            console.log("deleting: " + shopname)
+                            remorseShopDelete.execute(scxmenu.parent,"Deleting", function() {
+                                DBA.deleteShop(shopname)
+                                shopModel.clear()
+                                DBA.repopulateShopList(shopModel)
+                                currentShop="unassigned"
+                                //                                firstPage.value="unassigned"
+                            },5000)
+                        }
+                        console.log("ShopPage.qml: deleteshop finished")
                     }
                 }
-
+                RemorseItem {id: remorseShopDelete}
             }
+
         }
+    }
+    /* function to delete shop occurrenses in
+     * shoppingList DB, shoppingListModel and shoplist
+     */
+    function deleteshop(i) {
+        var shopitem = shopModel.get(i)
+        var shopname = shopitem.name
+        var refcount = DBA.shopRefCount(shopname)
+        if( refcount>0) {
+            console.log("ShopPage.qml: Deleting "+shopname+" the hardway, there are "+refcoount+" references")
+            console.log("ShopPage.qml: ...reassign to unassigned in DB")
+            DBA.updateShopNameInShoppinglistDB(shopname,"unassigned")
+            console.log("ShopPage.qml: ...reassign to unassigned in shoppingListModel")
+            updateShopNameInLM(shoppingListModel,shopname,"unassigned")
+            console.log("ShopPage.qml: ...reassign to unassigned in DB")
+            DBA.deleteShop(shopname)
+            console.log("ShopPage.qml: deleteshop finished")
+
+        } else {
+            console.log("deleting: " + shopModel.get(i).name)
+            remorseShopDelete.execute(scxmenu.parent,"Deleting", function() {
+                DBA.deleteShop(shopModel.get(i).name)
+                shopModel.clear()
+                DBA.repopulateShopList(shopModel)
+                currentShop="unassigned"
+            },4000)
+        }
+        console.log("ShopPage.qml: deleteshop finished")
     }
 }

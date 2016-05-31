@@ -70,6 +70,10 @@ ApplicationWindow
         id: itemAddPage
     }
 
+    ShopPage {
+        id: shopPage
+    }
+
     Component.onCompleted: {
         DBA.initDatabase();
         currentShop = wildcard

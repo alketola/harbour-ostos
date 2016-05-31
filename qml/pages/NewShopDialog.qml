@@ -16,7 +16,10 @@ Dialog {
         pageStack.push(Qt.resolvedUrl("FirstPage.qml"));
     }
     Column {
-        DialogHeader { title: "Add new shop" }
+        DialogHeader {
+            title: "Add new shop"
+            anchors.right: parent.right
+        }
 
         TextField {
             id: newShopName

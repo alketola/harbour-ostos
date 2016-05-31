@@ -3,8 +3,8 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-ostos
 Exec=harbour-ostos
-Name=harbour-ostos
+Name=Ostos
 # translation example:
-# your app name in German locale (de)
-Name[de]=harbour-ostos
+# your app name in Finnish locale (fi)
+Name[fi]=Ostos
 
