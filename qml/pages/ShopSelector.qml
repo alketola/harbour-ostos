@@ -84,10 +84,10 @@ ComboBox {
                 }
             }
         }
-        ViewPlaceholder {
-            enabled: listmodel.count == 0
-            text: qsTr("-No items-")
-        }
+//        ViewPlaceholder {
+//            enabled: listmodel.count == 0
+//            text: qsTr("-No items-")
+//        }
 
         onClosed: {
             appWindow.requestRefresh(true,"ShopSelector ContexMenu closed")
