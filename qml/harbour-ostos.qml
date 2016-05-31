@@ -30,7 +30,7 @@ ApplicationWindow
     property string wildcard: "*"
 
     ListModel {
-            id: shoppingListModel
+        id: shoppingListModel
     }
 
     ListModel {
@@ -89,26 +89,25 @@ ApplicationWindow
             shoppingListModel.clear();
             DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
-//        menurefreshtimer.stop()
     }
 
     //     This timer is used to refresh the shopping list in a separate thread.
     Timer {
         id: menurefreshtimer
-        interval: 300; running: false; repeat: false
+        interval: 500; running: false; repeat: false
 
         property bool _enabler
         property string _current
 
         function turn_on(enabler,current) {
-            console.log("menurefreshtimer turn_on:"+_enabler)
+            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
             start()
         }
 
         onTriggered: {
-            // console.log("menurefreshtimer Triggered, running:"+running);
+            console.debug("menurefreshtimer Triggered, running:"+running);
             stop()
             if(_enabler){
 
@@ -124,6 +123,7 @@ ApplicationWindow
      * Function to request refresh
      */
     function requestRefresh(enabler,tracetext) {
+
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)
         } else {

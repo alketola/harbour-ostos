@@ -10,7 +10,12 @@ import "../dbaccess.js" as DBA
  */
 
 Dialog {
-    property int rowid_in_db: -1
+    id: itemeditdialog
+    property int rowid_in_db: -1    
+
+    acceptDestination: Qt.resolvedUrl("FirstPage.qml")
+    acceptDestinationAction: PageStackAction.pop
+
 
     SilicaFlickable {
         id: itemeditflick
@@ -87,21 +92,21 @@ Dialog {
     }
     //"istat":"BUY", "iname":itemname.text, "iqty":itemqty.text, "iunit":itemunit.value, "iclass":itemclass.value, "rowid":rowid, "ishop":itemshop.value
     onOpened:{
-
         console.log("ItemEditPage onOpened: index=" + ci);
         itemname.text=shoppingListModel.get(ci).iname;
         itemqty.text=shoppingListModel.get(ci).iqty;
         itemunit.text=shoppingListModel.get(ci).iunit;
         itemclass.text=shoppingListModel.get(ci).iclass;
         rowid_in_db=shoppingListModel.get(ci).rowid;
-        editshopselector.value=shoppingListModel.get(ci).ishop; //Sets the selector initial value correctly?
+        editshopselector.value=shoppingListModel.get(ci).ishop; //Sets the selector initial value correctly?        
+
     }
 
     onAccepted: {
-        console.log("onAccepted-ItemEditPage. ci="+ci)
-        console.log("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
+        console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
+        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         var rowid = DBA.findItemByName(null,itemname.text)
-        console.log("Found rowid in db:"+rowid)
+        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
 
         if (rowid) {
             console.log("...updating existent ci="+ci)
@@ -110,17 +115,13 @@ Dialog {
             DBA.updateItemState(rowid_in_db,"BUY")
         } else { // adding new
             console.log("...adding new ci="+ci)
-            // insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop)
             DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)
-//            DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
-//            DBA.updateItemState(rowid_in_db,"BUY")
-
         }
-        pageStack.clear()
-        pageStack.push(Qt.resolvedUrl("FirstPage.qml"))
+
         currentShop=wildcard
         requestRefresh(true,"ItemEditPage Accepted")
     }
+
 
 }
 

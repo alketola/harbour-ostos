@@ -10,11 +10,11 @@ function accept() {
     var db_index
     var found_1st_item_name
 
-    if ((count == 1) || ((acceptClicked==true))) {
+    if ((count == 1) || ((cherryPicked==true))) {
         // we have found the item already on the list as a unique match, the retrieve it from database and
         // store to global templistmodel variable
 
-        if (acceptClicked==true) {
+        if (cherryPicked==true) {
             found_1st_item_name = searchField.text
         } else {
             found_1st_item_name = searchListModel.get(0).name
@@ -42,8 +42,6 @@ function accept() {
                 shoppingListModel.insert(ci,{ "istat":"BUY", "iname":templistmodel.get(0).iname, "iqty":templistmodel.get(0).iqty, "iunit":templistmodel.get(0).iunit, "iclass":templistmodel.get(0).iclass, "rowid":parseInt(db_index)});
                 currentShop = wildcard
             }
-
-            pageStack.push(Qt.resolvedUrl("../qml/pages/ItemEditPage.qml"))
         }
     } else if (count==0) { // Haven't found, will start adding a new item and its details
         ci = shoppingListModel.count
@@ -54,7 +52,7 @@ function accept() {
                         "ishop":"unassigned",
                         "rowid":parseInt(ci)}) // How come? rowid is the db row id!
         console.log("itemadd.js: added new to model: ci="+ci+": iname="+shoppingListModel.get(ci).iname)
-        pageStack.push(Qt.resolvedUrl("../qml/pages/ItemEditPage.qml"))
+
     }
 
     console.log("* ItemAddPage accepted,\n- searchField.text:"+searchField.text+

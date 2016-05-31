@@ -9,11 +9,16 @@ Dialog {
 
     property string searchString
     //property alias searchFld: addDialog.searchField //searchView.headerItem // needed the particular reference!
-    property bool acceptClicked
+    property bool cherryPicked
 
-    canAccept: ((searchListModel.count <= 1) || acceptClicked == true)
+    canAccept: ((searchListModel.count <= 1) || addDialog.cherryPicked == true)
+    acceptDestination: Qt.resolvedUrl("ItemEditPage.qml")
+    acceptDestinationAction: PageStackAction.Push
 
-    onAccepted: ITEMADD.accept()
+    onAccepted: {
+        ITEMADD.accept()
+        console.debug("ItemAddPage.qml onAccepted, about to push ItemEditPage.qml")
+    }
 
     ListModel {
         id: searchListModel
@@ -34,7 +39,7 @@ Dialog {
         }
 
         Component.onCompleted: {
-            acceptClicked=false
+            cherryPicked=false
             templistmodel.clear()
             DBA.readShoppingListExState(templistmodel,"BUY")
             update()
@@ -69,7 +74,7 @@ Dialog {
 
                     onTextChanged: {
                         searchListModel.update()
-                        acceptClicked = false
+                        cherryPicked = false
                     }
                 }
             }
@@ -114,12 +119,15 @@ Dialog {
 
                         onClicked: {
                             searchField.text=sLabel.text
-                            addDialog.acceptClicked=true
+                            addDialog.cherryPicked=true
                         }
                     }
                 }
             }
         }
+    }
+    Component.onCompleted: {
+        cherryPicked = false
     }
 }
 
