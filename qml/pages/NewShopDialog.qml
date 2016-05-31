@@ -9,6 +9,7 @@ import "../dbaccess.js" as DBA
  * Dialog page for shop details input in the shopping list app
  */
 Dialog {
+    id: newShopDialog
     onAccepted:  {
         DBA.addShop(newShopName.text);
         DBA.repopulateShopList(shopModel);
@@ -18,7 +19,7 @@ Dialog {
     Column {
         DialogHeader {
             title: "Add new shop"
-            anchors.right: parent.right
+            width: newShopDialog.width
         }
 
         TextField {
@@ -29,5 +30,4 @@ Dialog {
             EnterKey.iconSource: "image://theme/icon-m-enter-accept"
         }
     }
-
 }
