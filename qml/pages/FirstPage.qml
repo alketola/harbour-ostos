@@ -12,14 +12,19 @@ Page {
     id: firstPage
 
     onStatusChanged: {
-        if((firstPage.status==PageStatus.Activating)) {
+        if((firstPage.status==PageStatus.Active)) {
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
             requestRefresh(true,"firstPage status Activating")
         }
     }
     backNavigation: false
-    forwardNavigation: false
+
+    _forwardDestination: Qt.resolvedUrl("ItemAddPage.qml")
+    _forwardDestinationAction: PageStackAction.Push
+
+    forwardNavigation: true
+
 
     SilicaListView {
         id: firstPageView
@@ -39,17 +44,30 @@ Page {
 
 
         header: PageHeader {
-            height:Theme.paddingLarge *4
+            id: phdr
+            height:Theme.paddingLarge *3
+            Row {
+                id: headerRow
+                spacing: Theme.paddingSmall
+                anchors.fill: parent
 
-            ShopSelector {
-                id: mainListShopSelector
-                label: qsTr("Shop")
-                listmodel: shopModel
-                onExited: {
-                    requestRefresh(!mainListShopSelector._menuOpen,"mainListShopSelector exited, value:"+value)
+                ShopSelector {
+                    id: mainListShopSelector
+                    label: qsTr("Shop")
+                    width: firstPage.width - firstPageSearchImage.width - Theme.paddingLarge
+                    listmodel: shopModel
+                    onExited: {
+                        requestRefresh(!mainListShopSelector._menuOpen,"mainListShopSelector exited, value:"+value)
+                    }
+                }
+                Image {
+                    id: firstPageSearchImage
+                    source: "image://theme/icon-m-search"
+                    y: Theme.paddingLarge
                 }
             }
         }
+
 
         ViewPlaceholder {
             id: firstPagePlaceholder

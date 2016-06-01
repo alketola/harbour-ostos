@@ -80,13 +80,6 @@ ApplicationWindow
         currentShop = wildcard
     }
 
-//    pageStack.on_OngoingTransitionCountChanged: {
-
-//        if(pageStack._ongoingTransitionCount==0) {
-//            requestRefresh(true,"*******************************ongoingTransitionCount==0")
-//        }
-//    }
-
     function  refreshShoppingListByCurrentShop(){
         // console.log("refresh; shopname="+currentShop)
         if ((currentShop==wildcard) || (!currentShop) ) {

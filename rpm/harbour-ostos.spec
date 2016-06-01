@@ -13,11 +13,11 @@ Name:       harbour-ostos
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Shopping List App
-Version:    0.92
+Version:    0.93
 Release:    0
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    GPL V3
+URL:        http://example.com/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-ostos.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9

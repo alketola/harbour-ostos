@@ -14,10 +14,23 @@ Dialog {
     canAccept: ((searchListModel.count <= 1) || addDialog.cherryPicked == true)
     acceptDestination: Qt.resolvedUrl("ItemEditPage.qml")
 //    acceptDestinationAction: PageStackAction.Push
+    backNavigation: true
+    forwardNavigation: true
+
+    ListModel {
+        id: acceptlm
+    }
 
     onAccepted: {
         ITEMADD.accept()
         console.debug("ItemAddPage.qml onAccepted, about to push ItemEditPage.qml")
+    }
+
+    onStatusChanged: {
+        if(addDialog.status == PageStatus.Active) {
+            cherryPicked = false
+            searchListModel.update()
+        }
     }
 
     ListModel {
@@ -55,6 +68,7 @@ Dialog {
             anchors.fill: parent
 
             DialogHeader {
+
                 id: dialogHeader
 
                 anchors.left: parent.left   // The Must-Have anchors
@@ -127,12 +141,7 @@ Dialog {
         }
     }
     Component.onCompleted: {
-        cherryPicked = false
     }
-    onFocusChanged: {
-
-    }
-
 }
 
 

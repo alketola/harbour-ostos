@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../dbaccess.js" as DBA
+import "../pages"
 
 /*
  * Copyright Antti Ketola 2015
@@ -15,7 +16,8 @@ Dialog {
 
     acceptDestination: Qt.resolvedUrl("FirstPage.qml")
     acceptDestinationAction:  PageStackAction.Push
-
+    backNavigation: true
+    forwardNavigation: true
 
     SilicaFlickable {
         id: itemeditflick
@@ -103,22 +105,21 @@ Dialog {
     }
 
     onAccepted: {
-        console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
-        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
+       console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
+//        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         var rowid = DBA.findItemByName(null,itemname.text)
-        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
+//        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
 
         if (rowid) {
-            console.log("...updating existent ci="+ci)
+//            console.log("...updating existent ci="+ci)
             DBA.updateItemState(rowid_in_db,"BUY")
             DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
             DBA.updateItemState(rowid_in_db,"BUY")
         } else { // adding new
-            console.log("...adding new ci="+ci)
+//            console.log("...adding new ci="+ci)
             DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)
         }
         currentShop=wildcard
     }
-
 }
 

@@ -12,7 +12,7 @@ function accept() {
 
     if ((count == 1) || ((cherryPicked==true))) {
         // we have found the item already on the list as a unique match, the retrieve it from database and
-        // store to global templistmodel variable
+        // store to global acceptlm variable
 
         if (cherryPicked==true) {
             found_1st_item_name = searchField.text
@@ -22,12 +22,12 @@ function accept() {
 
         console.log("- found_item_name:"+found_1st_item_name)
 
-        templistmodel.clear()
-        db_index = DBA.findItemByName(templistmodel,found_1st_item_name)
+        acceptlm.clear()
+        db_index = DBA.findItemByName(acceptlm,found_1st_item_name)
         if(db_index) {
-            console.log("- ROW:"+templistmodel.get(0).rowid+" STAT:"+templistmodel.get(0).istat+" NAME:"+templistmodel.get(0).iname+" QTY:"+templistmodel.get(0).iqty+
-                        "UNIT:"+ templistmodel.get(0).iunit+" CLASS:"+templistmodel.get(0).iclass+" SHOP:"+templistmodel.get(0).ishop)
-            if(templistmodel.get(0).istat!="HIDE") { // If the row stat is other than HIDE, it should be found in shoppingList
+            console.log("- ROW:"+acceptlm.get(0).rowid+" STAT:"+acceptlm.get(0).istat+" NAME:"+acceptlm.get(0).iname+" QTY:"+acceptlm.get(0).iqty+
+                        "UNIT:"+ acceptlm.get(0).iunit+" CLASS:"+acceptlm.get(0).iclass+" SHOP:"+acceptlm.get(0).ishop)
+            if(acceptlm.get(0).istat!="HIDE") { // If the row stat is other than HIDE, it should be found in shoppingList
                 for (var i=0; i<shoppingListModel.count; i++){
 
                     if(shoppingListModel.get(i).iname.toLowerCase()
@@ -39,7 +39,7 @@ function accept() {
             } else {
                 // in case the item stat was HIDE, it must be added to shoppingListModel
                 ci=0
-                shoppingListModel.insert(ci,{ "istat":"BUY", "iname":templistmodel.get(0).iname, "iqty":templistmodel.get(0).iqty, "iunit":templistmodel.get(0).iunit, "iclass":templistmodel.get(0).iclass, "rowid":parseInt(db_index)});
+                shoppingListModel.insert(ci,{ "istat":"BUY", "iname":acceptlm.get(0).iname, "iqty":acceptlm.get(0).iqty, "iunit":acceptlm.get(0).iunit, "iclass":acceptlm.get(0).iclass, "rowid":parseInt(db_index)});
                 currentShop = wildcard
             }
         }
