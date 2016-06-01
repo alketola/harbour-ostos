@@ -15,7 +15,11 @@
         <translation type="unfinished">Botiga</translation>
     </message>
     <message>
-        <source>Dump list</source>
+        <source>No items</source>
+        <translation type="unfinished">(res)</translation>
+    </message>
+    <message>
+        <source>Debug dump DB to log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -33,10 +37,6 @@
     <message>
         <source>Clearing</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation type="unfinished">(res)</translation>
     </message>
 </context>
 <context>

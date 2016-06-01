@@ -24,7 +24,7 @@ Dialog {
         // Inserts the new item to row 0 of model
         shoppingListModel.insert(0,{ "istat":"BUY", "iname":itemname.text, "iqty":itemqty.text, "iunit":itemunit.value, "iclass":itemclass.value, "rowid":parseInt(rowid)});
         currentShop = wildcard
-        requestRefresh(true,"ItemDetailsPage Accepted")
+//        requestRefresh(true,"ItemDetailsPage Accepted")
         //currentShop = wildcard
     }
     onOpened: {

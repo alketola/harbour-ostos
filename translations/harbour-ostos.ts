@@ -15,7 +15,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Dump list</source>
+        <source>No items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Debug dump DB to log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -32,10 +36,6 @@
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No items</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

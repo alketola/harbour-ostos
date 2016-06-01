@@ -11,10 +11,15 @@ import "../dbaccess.js" as DBA
 Page {
     id: firstPage
 
-
-    //    ListModel {
-    //            id: shoppingListModel
-    //    }
+    onStatusChanged: {
+        if((firstPage.status==PageStatus.Activating)) {
+            shopModel.clear()
+            DBA.repopulateShopList(shopModel) // ShopModel
+            requestRefresh(true,"firstPage status Activating")
+        }
+    }
+    backNavigation: false
+    forwardNavigation: false
 
     SilicaListView {
         id: firstPageView
@@ -23,12 +28,15 @@ Page {
         contentWidth: parent.width
         contentHeight: parent.height + Theme.paddingLarge
 
-        Component.onCompleted: {
-            console.log("FirstPage SilicaListView: Component.onCompleted")
-            shopModel.clear()
-            DBA.repopulateShopList(shopModel) // ShopModel
-            requestRefresh(true,"FirstPage SilicaListview Completed")
-        }
+        //        Component.onCompleted: {
+        //            console.log("FirstPage SilicaListView: Component.onCompleted")
+        //            shopModel.clear()
+        //            DBA.repopulateShopList(shopModel) // ShopModel
+        //            console.log("*****firstPage.status:"+firstPage.status)
+        //            //            requestRefresh((firstPage.status==PageStatus.Active),"FirstPage SilicaListview Completed")
+
+        //        }
+
 
         header: PageHeader {
             height:Theme.paddingLarge *4
@@ -38,15 +46,18 @@ Page {
                 label: qsTr("Shop")
                 listmodel: shopModel
                 onExited: {
-                    console.log("Exited shopselector on FirstPage")
-                    requestRefresh(!mainListShopSelector._menuOpen,value)
+                    requestRefresh(!mainListShopSelector._menuOpen,"mainListShopSelector exited, value:"+value)
                 }
             }
         }
 
         ViewPlaceholder {
+            id: firstPagePlaceholder
             enabled: shoppingListModel.count == 0
             text: qsTr("No items")
+
+            //            onEnabledChanged: {}
+
         }
 
         VerticalScrollDecorator { flickable: firstPageView }
@@ -56,7 +67,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Dump list");
+                text: qsTr("Debug dump DB to log");
                 onClicked: {
                     DBA.dumpShoppingList();
                     console.log("...dumped.");
@@ -134,7 +145,7 @@ Page {
                 StatButton { id: stateIndicator }
 
                 Label {
-//                    x: 83
+                    //                    x: 83
                     width: firstPage.width / 2
                     anchors.verticalCenter: parent.verticalCenter
                     truncationMode: TruncationMode.Fade
@@ -160,7 +171,6 @@ Page {
     function purgeShoppingList() {
         remorse.execute(qsTr("Clearing"), function() { DBA.deleteAllShoppingList(); shoppingListModel.clear() }, 10000 )
     }
-
 }
 
 

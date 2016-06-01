@@ -65,7 +65,7 @@ ComboBox {
             onClicked: {
                 value = wildcard
                 appWindow.currentShop=wildcard
-                requestRefresh(true,"ShopSelector MenuItem wildcard clicked")
+                requestRefresh(true,"ShopSelector ContexMenu closed")
             }
         }
         Repeater {
@@ -77,10 +77,7 @@ ComboBox {
                 onClicked: {
                     value=model.name
                     appWindow.currentShop=model.name
-                    requestRefresh(true,"ShopSelector MenuItem "+model.name+" Clicked")
-//                    if(scx._expanded) {
-//                        console.log("ShopSelector is expanded (MenuItem)")
-//                    }
+                    requestRefresh(true,"ShopSelector ContexMenu closed")
                 }
             }
         }
@@ -92,6 +89,10 @@ ComboBox {
         onClosed: {
             appWindow.requestRefresh(true,"ShopSelector ContexMenu closed")
         }
+        onExited: {
+            appWindow.requestRefresh(true,"ShopSelector ContexMenu closed")
+        }
+
 
     }
     onEntered: {

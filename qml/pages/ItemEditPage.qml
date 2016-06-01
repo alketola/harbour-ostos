@@ -14,7 +14,7 @@ Dialog {
     property int rowid_in_db: -1    
 
     acceptDestination: Qt.resolvedUrl("FirstPage.qml")
-    acceptDestinationAction: PageStackAction.pop
+    acceptDestinationAction:  PageStackAction.Push
 
 
     SilicaFlickable {
@@ -117,11 +117,8 @@ Dialog {
             console.log("...adding new ci="+ci)
             DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)
         }
-
         currentShop=wildcard
-        requestRefresh(true,"ItemEditPage Accepted")
     }
-
 
 }
 

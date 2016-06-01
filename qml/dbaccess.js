@@ -392,8 +392,9 @@ function deleteItemFromShoppingList(rid) {
  */
 function dumpShoppingList() {
     var db = openDB()
-
-    if(!db) { console.error("ostos/dbaccess.js: dumpShopList:db open failed"); return; }
+    console.log("********shoppinglist DATABASE DUMP BY ostos.dbaccess.js.dumpShoppingList()********")
+    console.log("rowid\tistat\tiname\t\tiqty\tiunit\ticlass\tishop\tseq")
+    if(!db) { console.error("ostos/dbaccess.js: dumpShoppingList:db open failed"); return; }
     var rs
     try {
         db.transaction(function(tx) {
@@ -404,13 +405,14 @@ function dumpShoppingList() {
         return "ERROR";
     }
     for(var i = 0; i < rs.rows.length; i++) {
-        console.log(rs.rows.item(i).rowid +":"+
-                    rs.rows.item(i).istat+":"+
-                    rs.rows.item(i).iname+":"+
-                    rs.rows.item(i).iqty+":"+
-                    rs.rows.item(i).iunit+":"+
-                    rs.rows.item(i).iclass+":"+
-                    rs.rows.item(i).ishop+":");
+        console.log(rs.rows.item(i).rowid +"\t"+
+                    rs.rows.item(i).istat+"\t'"+
+                    rs.rows.item(i).iname+"'\t"+
+                    rs.rows.item(i).iqty+"\t"+
+                    rs.rows.item(i).iunit+"\t"+
+                    rs.rows.item(i).iclass+"\t"+
+                    rs.rows.item(i).ishop+"\t"+
+                    rs.rows.item(i).seq)
     }
 }
 

@@ -63,4 +63,3 @@ DISTFILES += \
     qml/images/graphic-toggle-off.png \
     qml/images/graphic-toggle-on.png \
     README.md
-

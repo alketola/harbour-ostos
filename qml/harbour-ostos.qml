@@ -28,6 +28,7 @@ ApplicationWindow
     property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
+    property int refreshInterval: 100
 
     ListModel {
         id: shoppingListModel
@@ -79,14 +80,20 @@ ApplicationWindow
         currentShop = wildcard
     }
 
+//    pageStack.on_OngoingTransitionCountChanged: {
+
+//        if(pageStack._ongoingTransitionCount==0) {
+//            requestRefresh(true,"*******************************ongoingTransitionCount==0")
+//        }
+//    }
 
     function  refreshShoppingListByCurrentShop(){
-        console.log("refresh; shopname="+currentShop)
+        // console.log("refresh; shopname="+currentShop)
         if ((currentShop==wildcard) || (!currentShop) ) {
-            shoppingListModel.clear();
+            shoppingListModel.clear()
             DBA.readShoppingListExState(shoppingListModel,"HIDE");
         } else {
-            shoppingListModel.clear();
+            shoppingListModel.clear()
             DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
     }
@@ -94,28 +101,28 @@ ApplicationWindow
     //     This timer is used to refresh the shopping list in a separate thread.
     Timer {
         id: menurefreshtimer
-        interval: 500; running: false; repeat: false
+        interval: refreshInterval
+        repeat: false
 
         property bool _enabler
         property string _current
 
         function turn_on(enabler,current) {
-            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
+//            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
             start()
         }
 
         onTriggered: {
-            console.debug("menurefreshtimer Triggered, running:"+running);
+
             stop()
             if(_enabler){
-
+//                console.debug("menurefresh timer triggered.");
                 refreshShoppingListByCurrentShop()
 
             } else {
-
-                console.log("ostos/ShopSelector TIMER ceased, running:"+running+" trace:"+ _current);
+//                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
             }
         }
     }
@@ -123,11 +130,12 @@ ApplicationWindow
      * Function to request refresh
      */
     function requestRefresh(enabler,tracetext) {
+        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+" trace:'"+tracetext+"' firstPage.status:"+firstPage.status)
 
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)
         } else {
-            console.log("harbour-ostos.requestRefresh while already running. enabler: "+enabler+" trace:",tracetext)
+            console.debug("**********harbour-ostos.requestRefresh while already running.")
         }
     }
 

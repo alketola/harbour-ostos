@@ -13,7 +13,7 @@ Dialog {
 
     canAccept: ((searchListModel.count <= 1) || addDialog.cherryPicked == true)
     acceptDestination: Qt.resolvedUrl("ItemEditPage.qml")
-    acceptDestinationAction: PageStackAction.Push
+//    acceptDestinationAction: PageStackAction.Push
 
     onAccepted: {
         ITEMADD.accept()
@@ -129,6 +129,10 @@ Dialog {
     Component.onCompleted: {
         cherryPicked = false
     }
+    onFocusChanged: {
+
+    }
+
 }
 
 
