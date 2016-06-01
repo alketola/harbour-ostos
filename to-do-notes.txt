@@ -7,5 +7,18 @@
 * How about incremental search + hide instead of delete?
 2016-05-30
 * Removed the cover actions... put them back...
-* Shop filter on FirstPage is broken
 
+
+* Run-Time Errors:
+DialogHeader.qml:
+189: TypeError: Cannot read property 'backIndicatorDown' of null
+242: TypeError: Cannot read property 'forwardIndicatorDown' of null
+
+code:
+>pageStack._pageStackIndicator.forwardIndicatorDown
+
+>pageStack._pageStackIndicator.backIndicatorDown
+
+REASON is obviously that _pageStackIndicator is null.
+
+>>PageStack.qml
