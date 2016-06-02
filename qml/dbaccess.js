@@ -75,99 +75,99 @@ function initDatabase() {
 /*
   Reads all shopping list items and writes them to shopping list model (which is rendered to the first page
   */
-function readAllShoppingList(lm) {
-    console.debug("ostos/dbaccess.js: readAllShoppingList");
-    var db = openDB()
-    if(!db) { console.error("ostos/dbaccess.js: readAll:db open failed"); return; }
-    var rs
-    try {
-        db.transaction( function(tx) {
-            console.debug('ostos/dbaccess.js: readAllShoppingList('+lm+')')
-            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist ORDER BY istat, rowid DESC;')
-        })
-    } catch (sqlErr) {
-        console.error("readAllShoppingList, SQL:"+sqlErr)
-        return
-    }
+//function readAllShoppingList(lm) {
+//    console.debug("ostos/dbaccess.js: readAllShoppingList");
+//    var db = openDB()
+//    if(!db) { console.error("ostos/dbaccess.js: readAll:db open failed"); return; }
+//    var rs
+//    try {
+//        db.transaction( function(tx) {
+//            console.debug('ostos/dbaccess.js: readAllShoppingList('+lm+')')
+//            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
+//            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist ORDER BY istat ASC, seq DESC, iname ASC;')
+//        })
+//    } catch (sqlErr) {
+//        console.error("readAllShoppingList, SQL:"+sqlErr)
+//        return
+//    }
 
-    var irid = 0
-    var istat = ""
-    var iname = ""
-    var iqty = ""
-    var iunit = ""
-    var iclass = ""
-    var ishop
-    for(var i = 0; i < rs.rows.length; i++) {
-        irid = rs.rows.item(i).rowid
-        istat = rs.rows.item(i).istat
-        iname = unescapeFromSqlite(rs.rows.item(i).iname)
-        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
-        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
-        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
-        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-        //console.debug("DBREAD:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
-        lm.append({ //rs.rows.item(i).
-                      "istat":istat,
-                      "iname":iname,
-                      "iqty":iqty,
-                      "iunit":iunit,
-                      "ishop":ishop,
-                      "iclass":iclass,
-                      "rowid":irid
-                  })
-    }
-}
+//    var irid = 0
+//    var istat = ""
+//    var iname = ""
+//    var iqty = ""
+//    var iunit = ""
+//    var iclass = ""
+//    var ishop
+//    for(var i = 0; i < rs.rows.length; i++) {
+//        irid = rs.rows.item(i).rowid
+//        istat = rs.rows.item(i).istat
+//        iname = unescapeFromSqlite(rs.rows.item(i).iname)
+//        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
+//        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
+//        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
+//        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
+//        //console.debug("DBREAD:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+//        lm.append({ //rs.rows.item(i).
+//                      "istat":istat,
+//                      "iname":iname,
+//                      "iqty":iqty,
+//                      "iunit":iunit,
+//                      "ishop":ishop,
+//                      "iclass":iclass,
+//                      "rowid":irid
+//                  })
+//    }
+//}
 
 
-/*
- * Reads all shopping list items and writes them to shopping list model
- * but only for a certain shop
- */
-function readShoppingListByShop(lm,shopname) {
-    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname);
-    shopname=escapeForSqlite(shopname)
-    var db = openDB()
-    if(!db) { console.error("readAllByShop:db open failed"); return; }
-    var rs
-    try {
-        db.transaction( function(tx) {
-            print('... read in list items')
-            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE ishop=? ORDER BY istat, rowid DESC;', shopname)
-        })
-    } catch (sqlErr) {
-        return "SQL:"+sqlErr
-    }
-    var irid = 0
-    var istat = ""
-    var iname = ""
-    var iqty = ""
-    var iunit = ""
-    var iclass = ""
-    var ishop = ""
-    for(var i = 0; i < rs.rows.length; i++) {
-        irid = rs.rows.item(i).rowid
-        istat = rs.rows.item(i).istat
-        iname = unescapeFromSqlite(rs.rows.item(i).iname)
-        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
-        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
-        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
-        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-        //        console.debug("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
-        lm.append({ //rs.rows.item(i).
-                      "istat":istat,
-                      "iname":iname,
-                      "iqty":iqty,
-                      "iunit":iunit,
-                      "ishop":ishop,
-                      "iclass":iclass,
-                      "rowid":irid
-                  });
-    }
-    hitShop(ishop)
+///*
+// * Reads all shopping list items and writes them to shopping list model
+// * but only for a certain shop
+// */
+//function readShoppingListByShop(lm,shopname) {
+//    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname);
+//    shopname=escapeForSqlite(shopname)
+//    var db = openDB()
+//    if(!db) { console.error("readAllByShop:db open failed"); return; }
+//    var rs
+//    try {
+//        db.transaction( function(tx) {
+//            print('... read in list items')
+//            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
+//            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE ishop=? ORDER BY istat ASC, seq DESC, iname ASC;', shopname)
+//        })
+//    } catch (sqlErr) {
+//        return "SQL:"+sqlErr
+//    }
+//    var irid = 0
+//    var istat = ""
+//    var iname = ""
+//    var iqty = ""
+//    var iunit = ""
+//    var iclass = ""
+//    var ishop = ""
+//    for(var i = 0; i < rs.rows.length; i++) {
+//        irid = rs.rows.item(i).rowid
+//        istat = rs.rows.item(i).istat
+//        iname = unescapeFromSqlite(rs.rows.item(i).iname)
+//        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
+//        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
+//        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
+//        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
+//        //        console.debug("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+//        lm.append({ //rs.rows.item(i).
+//                      "istat":istat,
+//                      "iname":iname,
+//                      "iqty":iqty,
+//                      "iunit":iunit,
+//                      "ishop":ishop,
+//                      "iclass":iclass,
+//                      "rowid":irid
+//                  });
+//    }
+//    hitShop(ishop)
 
-}
+//}
 /* by states */
 /*
  * Reads all shopping list items and writes them to shopping list model
@@ -182,7 +182,7 @@ function readShoppingListExState(lm,excluded_state) {
     try {
         db.transaction( function(tx) {
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE NOT istat=? ORDER BY istat, iname, rowid DESC;', excluded_state)
+            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE NOT istat=? ORDER BY istat ASC, seq DESC, iname ASC;', excluded_state)
         })
     } catch (sqlErr) {
         return "SQL:"+sqlErr
@@ -229,7 +229,7 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
     try {
         db.transaction( function(tx) {
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-            var querystring = "SELECT rowid, * FROM shoppinglist WHERE ishop='"+shopname+"' AND NOT istat='"+excluded_state+"' ORDER BY istat, rowid DESC;"
+            var querystring = "SELECT rowid, * FROM shoppinglist WHERE ishop='"+shopname+"' AND NOT istat='"+excluded_state+"' ORDER BY istat ASC, seq DESC, iname ASC;"
             rs = tx.executeSql(querystring)
         })
     } catch (sqlErr) {
@@ -289,6 +289,7 @@ function insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
         lastrow = tx.executeSql("SELECT last_insert_rowid();")
         rid = lastrow.insertId
     })
+    updateShoppinListNextSeq(rid)
     hitShop(ishop) /* update shop reference statistic */
     console.debug("ostos/dbaccess.js: insertItemToShoppingList inserted rowid:" + rid)
     return rid // rid seems to be a String?
@@ -333,11 +334,16 @@ function updateSeqShoppingList(rid /* rowid */,seq) {
 
     var result
     var lastrow=0
+    try {
+        db.transaction(function(tx) {
+            tx.executeSql("UPDATE OR REPLACE shoppinglist SET seq=? WHERE rowid=?;",
+                          [seq, rid])
+        })
 
-    db.transaction(function(tx) {
-        tx.executeSql("UPDATE OR REPLACE shoppinglist SET seq=? WHERE rowid=?;",
-                      [seq, rid])
-    })
+    } catch (sqlErr) {
+        console.error("ostos/dbaccess.js: SQL:"+sqlErr)
+        return
+    }
 
     return rid
 }
@@ -353,7 +359,8 @@ function getSeq(rowid,seq) {
             rs = tx.executeSql('SELECT seq FROM shoppinglist WHERE rowid=? ;', rowid)
         })
     } catch (sqlErr) {
-        return "SQL:"+sqlErr
+        console.error("ostos/dbaccess.js: SQL:"+sqlErr)
+        return
     }
     var seq = 0
 
@@ -429,7 +436,7 @@ function deleteAllShoppingList() {
             rs = tx.executeSql('DELETE FROM shoppinglist;');
         });
     } catch (sqlErr) {
-        console.error("ostos/dbaccess.js: deleteAll: log squirrel");
+        console.error("ostos/dbaccess.js: deleteAll: log squirrel:"+sqlErr);
         return "ERROR";
     }
 }
@@ -807,4 +814,38 @@ function getSetting(setting) {
 
 function deleteSetting(setting) {
     console.error("deleteSetting ("+setting+") -  Not implemented yet!");
+}
+
+/*
+*Sequence number for order handling
+*/
+
+/* Get maximum seq number */
+function getMaxSeq() {
+    var maxseq
+    var db = openDB();
+    var rs;
+    if(!db) { console.error("ostos/dbaccess.js: getMaxSeq:db open failed"); return; }
+
+    try {
+        db.transaction(function(tx) {
+            rs = tx.executeSql('SELECT MAX(seq) AS db_maxseq FROM shoppinglist;');
+        });
+    } catch (sqlErr) {
+        console.debug("ostos/dbaccess.js: getMaxSeq: log squirrel: " + sqlErr);
+        return ""; // "ERROR"
+    }
+    maxseq = rs.rows.item(0).db_maxseq
+    console.debug("ostos/dbaccess.js: getMaxSeq returns:"+maxseq)
+    return maxseq
+}
+
+/* update next seq number to row */
+function updateShoppinListNextSeq(row) {
+    var seq
+
+    // get biggest seq value
+    seq = getMaxSeq()
+    seq++
+    updateSeqShoppingList(row,seq)
 }

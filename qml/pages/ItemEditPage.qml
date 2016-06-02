@@ -113,8 +113,9 @@ Dialog {
         if (rowid) {
 //            console.log("...updating existent ci="+ci)
             DBA.updateItemState(rowid_in_db,"BUY")
-            DBA.updateItemInShoppingList(rowid_in_db,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
-            DBA.updateItemState(rowid_in_db,"BUY")
+            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+            DBA.updateItemState(rowid,"BUY")
+            DBA.updateShoppinListNextSeq(rowid)
         } else { // adding new
 //            console.log("...adding new ci="+ci)
             DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)

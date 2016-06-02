@@ -101,7 +101,7 @@ IconButton {
     function cycle2() {
         switch (statButton.state) {
         case "GOT":
-            setState("BUY")
+            setState("BUY")            
             break
         case "BUY": //too
             setState("GOT")
@@ -111,6 +111,7 @@ IconButton {
             break
         }
         DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
+        DBA.updateShoppinListNextSeq(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid))
         shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
         requestRefresh(true,"StatButton.cycle")
     }

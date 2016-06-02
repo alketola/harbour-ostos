@@ -15,7 +15,7 @@ Page {
         if((firstPage.status==PageStatus.Active)) {
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
-            requestRefresh(true,"firstPage status Activating")
+            requestRefresh(true,"firstPage status changed to Active")
         }
     }
     backNavigation: false
