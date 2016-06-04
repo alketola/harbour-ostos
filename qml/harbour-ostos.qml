@@ -28,7 +28,7 @@ ApplicationWindow
     property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
-    property int refreshInterval: 100
+    property int refreshInterval: 1250
 
     ListModel {
         id: shoppingListModel
@@ -75,9 +75,21 @@ ApplicationWindow
         id: shopPage
     }
 
+    SettingsPage {
+        id: settingsPage
+    }
+
     Component.onCompleted: {
         DBA.initDatabase();
         currentShop = wildcard
+    }
+
+    function setRefreshInterval(millisec) {
+        if ((millisec >99) && (millisec<5000)){
+            refreshInterval = millisec
+        } else {
+          refreshInterval = 1250
+        }
     }
 
     function  refreshShoppingListByCurrentShop(){
@@ -101,7 +113,7 @@ ApplicationWindow
         property string _current
 
         function turn_on(enabler,current) {
-//            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
+            //            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
             start()
@@ -111,27 +123,37 @@ ApplicationWindow
 
             stop()
             if(_enabler){
-//                console.debug("menurefresh timer triggered.");
+                //                console.debug("menurefresh timer triggered.");
                 refreshShoppingListByCurrentShop()
 
             } else {
-//                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
+                //                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
             }
         }
     }
     /*
-     * Function to request refresh
+     * Function to request refresh - without timer
      */
     function requestRefresh(enabler,tracetext) {
+        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+" trace:'"+tracetext+"' firstPage.status:"+firstPage.status)
+        refreshShoppingListByCurrentShop()
+        console.debug("\tPage status="+firstPage.status)
+
+        console.debug("Legend:\n\tPageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive+"\n\tPageStatus.Activating="+PageStatus.Activating+" PageStatus.Deactivating="+PageStatus.Deactivating)
+    }
+    /*
+ * Function to request refresh asynchronously - the timer version spawning a new thread
+ */
+    function requestRefreshAsync(enabler,tracetext) {
         console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+" trace:'"+tracetext+"' firstPage.status:"+firstPage.status)
 
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)
         } else {
-            console.debug("**********harbour-ostos.requestRefresh while already running.")
+            menurefreshtimer.restart()
+            console.debug("harbour-ostos.requestRefresh - restarted timer.")
         }
     }
-
 }
 
 

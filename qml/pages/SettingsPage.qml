@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../dbaccess.js" as DBA
+import "../pages"
 
 /*
  * Copyright Antti Ketola 2015
@@ -26,16 +27,30 @@ Page {
                 title: qsTr("Settings")
             }
 
-            TextSwitch {
-                id: splashDisable
-                automaticCheck: false
-                text: qsTr("Splash screen disabled")
-                onClicked: {
-                    checked=!checked;
-                    console.log("splashDisableChanged checked="+checked);
-                    DBA.setSetting("general-splash-disable",checked);
+//            TextSwitch {
+//                id: splashDisable
+//                automaticCheck: false
+//                text: qsTr("Splash screen disabled")
+//                onClicked: {
+//                    checked=!checked;
+//                    console.log("splashDisableChanged checked="+checked);
+//                    DBA.setSetting("general-splash-disable",checked);
 
+//                }
+//            }
+
+            Slider {
+                width: parent.width
+                minimumValue: 100
+                maximumValue: 5000
+                value: 1250
+
+                label: qsTr("List refresh interval")
+                valueText: Math.ceil(value) + " ms"
+                onValueChanged: {
+                    appWindow.setRefreshInterval(value)
                 }
+
             }
 
             Component.onCompleted: {

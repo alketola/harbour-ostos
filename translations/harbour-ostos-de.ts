@@ -50,6 +50,10 @@
         <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Einstellungen</translation>
+    </message>
 </context>
 <context>
     <name>HelpPage</name>
@@ -196,8 +200,8 @@
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <source>Splash screen disabled</source>
-        <translation>Begrüßungsbildschirm deaktiviert</translation>
+        <source>List refresh interval</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

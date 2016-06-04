@@ -33,14 +33,7 @@ Page {
         contentWidth: parent.width
         contentHeight: parent.height + Theme.paddingLarge
 
-        //        Component.onCompleted: {
-        //            console.log("FirstPage SilicaListView: Component.onCompleted")
-        //            shopModel.clear()
-        //            DBA.repopulateShopList(shopModel) // ShopModel
-        //            console.log("*****firstPage.status:"+firstPage.status)
-        //            //            requestRefresh((firstPage.status==PageStatus.Active),"FirstPage SilicaListview Completed")
 
-        //        }
 
 
         header: PageHeader {
@@ -99,12 +92,12 @@ Page {
                 }
             }
 
-            //            MenuItem {
-            //                text: qsTr("Settings")
-            //                onClicked: {
-            //                    pageStack.push("SettingsPage.qml")
-            //                }
-            //            }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: {
+                    pageStack.push("SettingsPage.qml")
+                }
+            }
 
             //            MenuItem {
             //                text: qsTr("Refresh (unnecessary)")
@@ -188,6 +181,15 @@ Page {
 
     function purgeShoppingList() {
         remorse.execute(qsTr("Clearing"), function() { DBA.deleteAllShoppingList(); shoppingListModel.clear() }, 10000 )
+    }
+
+    Component.onCompleted: {
+        console.log("FirstPage : Component.onCompleted")
+        shopModel.clear()
+        DBA.repopulateShopList(shopModel) // ShopModel
+        console.log("*****firstPage.status:"+firstPage.status)
+        //            requestRefresh((firstPage.status==PageStatus.Active),"FirstPage SilicaListview Completed")
+
     }
 }
 

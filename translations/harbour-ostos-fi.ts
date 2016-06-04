@@ -49,6 +49,10 @@
         <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Asetukset</translation>
+    </message>
 </context>
 <context>
     <name>HelpPage</name>
@@ -197,8 +201,8 @@
         <translation>Asetukset</translation>
     </message>
     <message>
-        <source>Splash screen disabled</source>
-        <translation>Alkuruutua ei näytetä</translation>
+        <source>List refresh interval</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

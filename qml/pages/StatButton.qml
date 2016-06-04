@@ -55,7 +55,7 @@ IconButton {
         ci = index;
     }
     onExited: {
-       cycle2(); // Does not seem to be redundant. Can't click icon without this?
+       cycle(); // Does not seem to be redundant. Can't click icon without this?
     }
 
     // This is necessary to set the initial state
@@ -81,24 +81,24 @@ IconButton {
     }
 
 /* tri-state cycle */
-    function cycle() {
+    function cycle3() {
         switch (statButton.state) {
         case "GOT":
-            statButton.state = "FIND";
+            setState("FIND")
             break;
         case "FIND":
-            statButton.state = "BUY";
+            setState("BUY")
             break;
         case "BUY": //too
-            statButton.state = "GOT";
+            setState("GOT")
             break;            
         }
         DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
         shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
-        requestRefresh(true,"StatButton.cycle")
+        requestRefreshAsync(true,"StatButton.cycle3")
     }    
 /* bi-state cycle */
-    function cycle2() {
+    function cycle() {
         switch (statButton.state) {
         case "GOT":
             setState("BUY")            
@@ -112,8 +112,8 @@ IconButton {
         }
         DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
         DBA.updateShoppinListNextSeq(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid))
-        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
-        requestRefresh(true,"StatButton.cycle")
+        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);        
+        requestRefreshAsync(true,"StatButton.cycle")
     }
 
 }

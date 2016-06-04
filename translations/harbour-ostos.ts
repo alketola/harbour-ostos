@@ -49,6 +49,10 @@
         <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>HelpPage</name>
@@ -195,7 +199,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Splash screen disabled</source>
+        <source>List refresh interval</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

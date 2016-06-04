@@ -87,10 +87,10 @@ ComboBox {
 //        }
 
         onClosed: {
-            appWindow.requestRefresh(true,"ShopSelector ContexMenu closed")
+            appWindow.requestRefresh(true,"ShopSelector ContexMenu Closed")
         }
         onExited: {
-            appWindow.requestRefresh(true,"ShopSelector ContexMenu closed")
+            appWindow.requestRefresh(true,"ShopSelector ContexMenu Exited")
         }
 
 
@@ -98,7 +98,8 @@ ComboBox {
     onEntered: {
         menuOpen=true
         console.log("Entered Shop Selector menuOpen:"+menuOpen)
-        shoppingListModel.clear();
+//        shoppingListModel.//clear();
+
 
     }
 
@@ -106,6 +107,7 @@ ComboBox {
     onClicked: {
         console.log("ShopSelector contextmenu onClicked, value:"+value)
     }
+
 
 
 
