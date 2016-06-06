@@ -62,4 +62,7 @@ DISTFILES += \
     qml/itemadd.js \
     qml/images/graphic-toggle-off.png \
     qml/images/graphic-toggle-on.png \
-    README.md
+    README.md \
+    qml/pages/helptxt.txt \
+    qml/pages/ostoshelp.html \
+    qml/pages/helphtml.css

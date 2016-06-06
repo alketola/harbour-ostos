@@ -1,39 +1,42 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 
 /*
- * Copyright Antti Ketola 2015
+ * Copyright Antti Ketola 2016
  * License: GPL V3
  *
  * Help page of the shopping list app
  */
 Page {
-    id: page
-    SilicaFlickable {
-        anchors.fill: parent
-        contentWidth: parent.width
-        contentHeight: col.height + Theme.paddingLarge
+    SilicaWebView {
+        id: webView
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom //urlField.top //
+            margins: Theme.paddingLarge
+        }
+        url: "file:./ostoshelp.html"
 
-        VerticalScrollDecorator {}
-
-        Column {
-            id: col
-            spacing: Theme.paddingLarge
-            width: parent.width
-
-            PageHeader {
-                title: qsTr("Help")
-            }
-
-            TextArea {
-                width: parent.width
-                color: Theme.primaryColor
-                id: name
-                text: qsTr("Add new items by using the pulldown menu") +
-                      qsTr("The items have different states. The state can be changed by clicking the state icon on the left.") +
-                      qsTr("The context menu has options to delete, increase, decrease and edit list items.")
-            }
+        onUrlChanged: {
+            console.log("Help Page.qml: URL changed")
         }
     }
-}
 
+//    TextField {
+//        id: urlField
+//        anchors {
+//            left: parent.left
+//            right: parent.right
+//            bottom: parent.bottom
+//        }
+//        inputMethodHints: Qt.ImhUrlCharactersOnly
+//        text: "file:./ostoshelp.html"
+//        label: webView.title
+//        EnterKey.onClicked: {
+//            webView.url = text
+//            parent.focus = true
+//        }
+//    }
+}

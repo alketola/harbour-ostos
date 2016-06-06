@@ -55,25 +55,6 @@
     </message>
 </context>
 <context>
-    <name>HelpPage</name>
-    <message>
-        <source>Help</source>
-        <translation>Ayuda</translation>
-    </message>
-    <message>
-        <source>Add new items by using the pulldown menu</source>
-        <translation>Añade nuevos articulos usando el menu de arrastre arriba</translation>
-    </message>
-    <message>
-        <source>The items have different states. The state can be changed by clicking the state icon on the left.</source>
-        <translation>Cada uno de articulos tiene un estado. El estado se cambia cliqueando.</translation>
-    </message>
-    <message>
-        <source>The context menu has options to delete, increase, decrease and edit list items.</source>
-        <translation>El menu del contexto tiene opciones de borrar y editar articulos.</translation>
-    </message>
-</context>
-<context>
     <name>ItemAddPage</name>
     <message>
         <source>Search</source>
@@ -190,6 +171,53 @@
     <message>
         <source>Shop name</source>
         <translation>Nonbre de la tienda</translation>
+    </message>
+</context>
+<context>
+    <name>OldHelpTxt</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Ayuda</translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The items have states, indicated by the icon on the left of each shopping list item.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The state can be toggled like by clicking the state icon on the left.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The context menu has options to hide, edit, flag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> increase quantity, decrease quantity and delete the item.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item is listed as to buy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item has been bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item is listed as flagged (e.g. find later)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

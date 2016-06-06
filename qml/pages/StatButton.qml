@@ -16,8 +16,7 @@ IconButton {
     anchors.rightMargin: 12
     anchors.verticalCenter: parent.verticalCenter
     width: parent.width / 6
-    //x: 50
-    //state:
+    //x: 50       
 
     states: [
         State {

@@ -1,0 +1,4 @@
+Add new items by swithcing to search page on the right (on first item in the pulldown menu.
+The items have states, indicated by the icon on the left of each shopping list item.
+The state can be toggled like by clicking the state icon on the left.
+The context menu has options to hide, edit, increase quantity, decrease quantity and delete the item.
