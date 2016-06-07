@@ -13,7 +13,7 @@ Dialog {
 
     canAccept: ((searchListModel.count <= 1) || addDialog.cherryPicked == true)
     acceptDestination: Qt.resolvedUrl("ItemEditPage.qml")
-//    acceptDestinationAction: PageStackAction.Push
+    //    acceptDestinationAction: PageStackAction.Push
     backNavigation: true
     forwardNavigation: true
 
@@ -28,7 +28,11 @@ Dialog {
 
     onStatusChanged: {
         if(addDialog.status == PageStatus.Active) {
+            console.log("****ItemAddPage.qml Dialog.onStatusChanged, status="+status)
             cherryPicked = false
+            templistmodel.clear()
+            console.log("**** loading templistmodel")
+            DBA.readShoppingListExState(templistmodel,"BUY")
             searchListModel.update()
         }
     }
@@ -43,21 +47,16 @@ Dialog {
             for (var i=0; i<templistmodel.count; i++) {
                 s = templistmodel.get(i).iname
                 stat= templistmodel.get(i).istat
-//                console.log("ItemAddPage.searchListModel.update.s:"+s)
+                //                console.log("ItemAddPage.searchListModel.update.s:"+s)
                 if (s.toLowerCase().indexOf(searchField.text.toLowerCase()) >= 0 ) {
                     append({"name":s})
                 }
             }
-//            console.log("ItemAddPage: searchListModel.count="+searchListModel.count)
-        }
-
-        Component.onCompleted: {
-            cherryPicked=false
-            templistmodel.clear()
-            DBA.readShoppingListExState(templistmodel,"BUY")
-            update()
+            //            console.log("ItemAddPage: searchListModel.count="+searchListModel.count)
         }
     } //end searchListModel
+
+
     SilicaFlickable {
         id: theFlickable
         anchors.fill: parent
@@ -139,8 +138,6 @@ Dialog {
                 }
             }
         }
-    }
-    Component.onCompleted: {
     }
 }
 
