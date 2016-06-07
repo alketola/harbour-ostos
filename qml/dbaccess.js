@@ -215,6 +215,53 @@ function readShoppingListExState(lm,excluded_state) {
     }
 
 }
+
+/*
+ * Reads all shopping list items and writes them to shopping list model
+ * but only those which are in mystate (e.g. "BUY")
+ */
+function readShoppingListByState(lm, mystate) {
+//    console.debug("ostos/dbaccess.js: readShoppingListByState:"+mystate);
+    mystate=escapeForSqlite(mystate)
+    var db = openDB()
+    if(!db) { console.error("readTheListExState:db open failed"); return; }
+    var rs
+    try {
+        db.transaction( function(tx) {
+            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
+            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE istat=? ORDER BY istat ASC, seq DESC, iname ASC;', mystate)
+        })
+    } catch (sqlErr) {
+        return "SQL:"+sqlErr
+    }
+    var irid = 0
+    var istat = ""
+    var iname = ""
+    var iqty = ""
+    var iunit = ""
+    var iclass = ""
+    var ishop = ""
+    for(var i = 0; i < rs.rows.length; i++) {
+        irid = rs.rows.item(i).rowid
+        istat = rs.rows.item(i).istat
+        iname = unescapeFromSqlite(rs.rows.item(i).iname)
+        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
+        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
+        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
+        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
+//        console.debug("DBREAD-State:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        lm.append({ //rs.rows.item(i).
+                      "istat":istat,
+                      "iname":iname,
+                      "iqty":iqty,
+                      "iunit":iunit,
+                      "ishop":ishop,
+                      "iclass":iclass,
+                      "rowid":irid
+                  });
+    }
+}
+
 /*
  * Reads all shopping list items and writes them to shopping list model
  * but only for a certain shop
@@ -266,6 +313,7 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
     hitShop(ishop)
 
 }
+
 
 /*
  * Changes all items in database which are in 'oldstate' to 'newstate'
