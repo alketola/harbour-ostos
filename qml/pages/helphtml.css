@@ -1,7 +1,7 @@
 body { margin: 20 ; bgcolor: DarkSlateGrey }
-h1 { font-family: "arial" }
-h2 { font-family: "arial" }
-p { font-family: "arial" }
-li { margin: 5px; vertical-align: middle; }
-li.nobullet { margin: 5px; vertical-align: middle; list-style-type:none }
+h1 { font-family: "Sans" }
+h2 { font-family: "Sans" }
+p { font-family: "Sans" }
+li { font-family: "Sans"; margin: 5px; vertical-align: middle; }
+li.nobullet { font-family: "Sans"; margin: 5px; vertical-align: middle; list-style-type:none }
 img { box-align: center; vertical-align: middle; horizontal-align: middle; margin: 10px; width: 35px }
