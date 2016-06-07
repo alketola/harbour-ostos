@@ -15,8 +15,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source> Ostos </source>
-        <translation>-Compra-</translation>
+        <source>Ostos</source>
+        <translation type="unfinished">Ostos - Compra</translation>
     </message>
 </context>
 <context>
@@ -30,28 +30,28 @@
         <translation type="unfinished">(Nada)</translation>
     </message>
     <message>
-        <source>Debug dump DB to log</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished">Ayuda</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Ajustes</translation>
     </message>
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Editar tiendas</translation>
     </message>
     <message>
-        <source>Enter to buy</source>
+        <source>Hide bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search to buy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
     </message>
 </context>
 <context>
@@ -153,6 +153,22 @@
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Editar tiendas</translation>
+    </message>
+    <message>
+        <source>Item Name</source>
+        <translation type="unfinished">Nombre del article</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation type="unfinished">Cantidad</translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished">Unidad</translation>
+    </message>
+    <message>
+        <source>Item Class</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -135,17 +135,14 @@ ApplicationWindow
      * Function to request refresh - without timer
      */
     function requestRefresh(enabler,tracetext) {
-        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+" trace:'"+tracetext+"' firstPage.status:"+firstPage.status)
+//        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
         refreshShoppingListByCurrentShop()
-        console.debug("\tPage status="+firstPage.status)
-
-        console.debug("Legend:\n\tPageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive+"\n\tPageStatus.Activating="+PageStatus.Activating+" PageStatus.Deactivating="+PageStatus.Deactivating)
     }
     /*
  * Function to request refresh asynchronously - the timer version spawning a new thread
  */
     function requestRefreshAsync(enabler,tracetext) {
-        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+" trace:'"+tracetext+"' firstPage.status:"+firstPage.status)
+        console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
 
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)

@@ -64,4 +64,11 @@ DISTFILES += \
     qml/images/graphic-toggle-on.png \
     README.md \
     qml/pages/ostoshelp.html \
-    qml/pages/helphtml.css
+    qml/pages/helphtml.css \
+    qml/images/icon-m-delete.png \
+    qml/images/icon-m-dismiss.png \
+    qml/images/icon-m-down.png \
+    qml/images/icon-m-keyboard.png \
+    qml/images/icon-m-search.png \
+    qml/images/icon-m-up.png \
+    qml/images/icon-s-task.png

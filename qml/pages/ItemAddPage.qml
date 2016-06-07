@@ -28,14 +28,14 @@ Dialog {
 
     onStatusChanged: {
         if(addDialog.status == PageStatus.Active) {
-            console.log("****ItemAddPage.qml Dialog.onStatusChanged, status="+status)
+//            console.log("****ItemAddPage.qml Dialog.onStatusChanged, status="+status)
             cherryPicked = false
             templistmodel.clear()
-            console.log("**** loading templistmodel")
+//            console.log("**** loading templistmodel")
             DBA.readShoppingListExState(templistmodel,"BUY")
             searchListModel.update()
         }
-    }
+    }    
 
     ListModel {
         id: searchListModel
@@ -108,14 +108,6 @@ Dialog {
 
                 delegate: ListItem {
                     id: slItem
-                    //                    Label {
-                    //                        height: 30
-                    //                        anchors {
-                    //                            left: parent.left
-                    //
-                    //                        }
-                    // text: model.name
-
 
                     Button { // words decorated as buttons
                         id: btn

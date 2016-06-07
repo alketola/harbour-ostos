@@ -15,7 +15,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source> Ostos </source>
+        <source>Ostos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -30,11 +30,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Debug dump DB to log</source>
+        <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Help</source>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -42,15 +42,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enter to buy</source>
+        <source>Hide bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search to buy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -152,6 +152,22 @@
     </message>
     <message>
         <source>Edit shops</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item Class</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

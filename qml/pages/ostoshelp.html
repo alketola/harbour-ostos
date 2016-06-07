@@ -1,13 +1,24 @@
 <html lang="en">
-
 <head>
   <title>Ostos HELP</title>
   <link rel="stylesheet" type="text/css" href="helphtml.css">
 </head>
-<body bgcolor="DarkSlateGrey" text="white">
+<body>
 <page>
 <H1>How to use Ostos</h1>
+<H2>Introduction</H2>
+<p>
+"Ostos" is a shopping list application. It has been handcrafted to the purpose over a quite long period,
+analysing the natural flow of shopping, how I see it.
+</p>
+<p>
+The app remembers what you have entered but doesn't tell anyone else!
+No ads or shop chain connections... no connections at all at the moment.
+I hope you enjoy it!
+</p>
 <H2>List page</H2>
+<p>
+The the first page that opens is the shopping list page, that shows
 <p>
 Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 <br/>
@@ -15,24 +26,17 @@ The items have states, indicated by the icon on the left of each shopping list i
 <br/>
 The state can be toggled like by clicking the state icon on the left.
 <br/>
-<table>
-<tr>
-  <td> <img src="../images/graphic-toggle-on.png" /></td>  <!--//<img src=\"../images/graphic-toggle-on.png\" --> 
-  <td>The item is listed as to buy</td> 
-</tr>
-<tr>
-  <td><img src="../images/graphic-toggle-off.png" /></td>
-  <td>The item has been bought</td>
-</tr>
-<tr>
-  <td> <img src="../images/icon-s-task.png" /></td>
-  <td>The item is listed as flagged (e.g. find later)</td>
-</tr>
-</table>
+<ul>
+<li class="nobullet"><img src="../images/graphic-toggle-on.png" /> <!--//<img src=\"../images/graphic-toggle-on.png\" -->
+The item is listed as to buy</li>
+<li class="nobullet"><img src="../images/graphic-toggle-off.png" />The item has been bought</li>
+<li class="nobullet"><img src="../images/icon-s-task.png" />The item is listed as flagged</li>
+</ul>
 <p>An item can also be hidden but then it is not shown in the list</p>
 </ul>
 <p>
 The context menu has options to:
+</p>
 <ul>
   <li class="nobullet"><img src="../images/icon-m-dismiss.png" />hide</li>
   <li class="nobullet"><img src="../images/icon-s-task.png" />flag</li>
@@ -49,7 +53,7 @@ Correct paths for device are:
 /usr/share/themes/sailfish-default/meegotouch/z1.0/icons/
 /usr/share/themes/sailfish-default/meegotouch/icons
 -->
-
+<p>
 Add new items by swithcing to search page on the right on first item in the pulldown menu
 </p> 
 <H2>Pulldown menu</H2>
@@ -72,8 +76,16 @@ then detail edit and confirmation of the item added to the list. Swipe right to 
 Type to the text field nex to <img src="../images/icon-m-search.png" />,
 or pick your match from the shown list of buttons.
 Accept with Accept or swipe left.
+</p>
 <H2>Edit page</H2>
+<p>
 The page shows item details retrieved from database, if any. The user should edit the values to his liking, and the press Accept or swipe left.
+</p>
+<p class="copyright">
+Copyright Antti Ketola 2016.
+</p>
+<p class="version">
+v0.97
 </p>
 </body>
 </html>

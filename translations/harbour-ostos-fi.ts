@@ -15,8 +15,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source> Ostos </source>
-        <translation type="unfinished">-Ostos-</translation>
+        <source>Ostos</source>
+        <translation type="unfinished">Ostos</translation>
     </message>
 </context>
 <context>
@@ -30,28 +30,28 @@
         <translation type="unfinished">Tyhjä lista</translation>
     </message>
     <message>
-        <source>Debug dump DB to log</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished">Ohje</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Asetukset</translation>
     </message>
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Muokkaa kauppoja</translation>
     </message>
     <message>
-        <source>Enter to buy</source>
+        <source>Hide bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search to buy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Asetukset</translation>
     </message>
 </context>
 <context>
@@ -155,6 +155,22 @@
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Muokkaa kauppoja</translation>
+    </message>
+    <message>
+        <source>Item Name</source>
+        <translation type="unfinished">Artikkelin nimi</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation type="unfinished">Määrä</translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished">Yksikkö</translation>
+    </message>
+    <message>
+        <source>Item Class</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

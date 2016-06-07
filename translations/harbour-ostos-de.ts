@@ -15,9 +15,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source> Ostos </source>
-        <translatorcomment>Die Name der App ist &quot;Ostos&quot;, Finnsch, mit Meinung &quot;Kauf&quot;</translatorcomment>
-        <translation></translation>
+        <source>Ostos</source>
+        <translation type="unfinished">Ostos - eInKauf</translation>
     </message>
 </context>
 <context>
@@ -31,28 +30,28 @@
         <translation type="unfinished">Keine Artikeln</translation>
     </message>
     <message>
-        <source>Debug dump DB to log</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation type="unfinished">Hilfe</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Einstellungen</translation>
     </message>
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Handeln bearbeiten</translation>
     </message>
     <message>
-        <source>Enter to buy</source>
+        <source>Hide bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search to buy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
     </message>
 </context>
 <context>
@@ -154,6 +153,22 @@
     <message>
         <source>Edit shops</source>
         <translation type="unfinished">Handeln bearbeiten</translation>
+    </message>
+    <message>
+        <source>Item Name</source>
+        <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation type="unfinished">Menge</translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished">Einheit</translation>
+    </message>
+    <message>
+        <source>Item Class</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

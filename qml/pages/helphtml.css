@@ -1,7 +1,13 @@
-body { margin: 20 ; bgcolor: DarkSlateGrey }
-h1 { font-family: "Sans" }
-h2 { font-family: "Sans" }
-p { font-family: "Sans" }
-li { font-family: "Sans"; margin: 5px; vertical-align: middle; }
-li.nobullet { font-family: "Sans"; margin: 5px; vertical-align: middle; list-style-type:none }
+body { margin: 20 ; background-color: #112233; color: #FFFFFF}
+h1 { font-family: "Sans"; font-size: 1.8em }
+h2 { font-family: "Sans"; font-size: 1.6em}
+p { font-family: "Sans"; font-size: 1.5em }
+li { font-family: "Sans"; font-size: 1.5em;
+    margin: 5px; vertical-align: middle;
+    }
+li.nobullet { font-family: "Sans"; font-size: 1.5em;
+    margin: 5px; vertical-align: middle; list-style-type:none
+    }
 img { box-align: center; vertical-align: middle; horizontal-align: middle; margin: 10px; width: 35px }
+p.copyright{ font-weight: bold }
+p.version{ font-weight: bold }

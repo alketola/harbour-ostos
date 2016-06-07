@@ -76,6 +76,13 @@ Page {
 //                    console.log("...dumped.");
 //                }
 //            }
+//            MenuItem {
+//                text: qsTr("DELETE DB ");
+//                onClicked: {
+//                    DBA.deleteAllShoppingList()
+//                    console.log("...deleted database.");
+//                }
+//            }
 
             MenuItem {
                 text: qsTr("Help")
