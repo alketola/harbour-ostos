@@ -25,20 +25,17 @@ Page {
 
     forwardNavigation: true
 
-
     SilicaListView {
         id: firstPageView
         clip: true
         anchors.fill: parent
         contentWidth: parent.width
-        contentHeight: parent.height + Theme.paddingLarge
-
-
-
+        contentHeight: parent.height - Theme.paddingLarge
+        anchors.margins: 2
 
         header: PageHeader {
             id: phdr
-            height:Theme.paddingLarge *3
+            height: Theme.itemSizeMedium
             Row {
                 id: headerRow
                 spacing: Theme.paddingSmall
@@ -48,10 +45,9 @@ Page {
                     id: mainListShopSelector
                     label: qsTr("Shop")
                     width: firstPage.width - firstPageSearchImage.width - Theme.paddingLarge
+                    anchors.top: parent.top
                     listmodel: shopModel
-                    onExited: {
-                        requestRefresh(!mainListShopSelector._menuOpen,"mainListShopSelector exited, value:"+value)
-                    }
+                    overlappedToHide: listLine
                 }
                 Image {
                     id: firstPageSearchImage
@@ -61,14 +57,10 @@ Page {
             }
         }
 
-
         ViewPlaceholder {
             id: firstPagePlaceholder
             enabled: shoppingListModel.count == 0
             text: qsTr("No items")
-
-            //            onEnabledChanged: {}
-
         }
 
         VerticalScrollDecorator { flickable: firstPageView }
@@ -77,13 +69,13 @@ Page {
         delegate: listLine
 
         PullDownMenu {
-            MenuItem {
-                text: qsTr("Debug dump DB to log");
-                onClicked: {
-                    DBA.dumpShoppingList();
-                    console.log("...dumped.");
-                }
-            }
+//            MenuItem {
+//                text: qsTr("Debug dump DB to log");
+//                onClicked: {
+//                    DBA.dumpShoppingList();
+//                    console.log("...dumped.");
+//                }
+//            }
 
             MenuItem {
                 text: qsTr("Help")
@@ -116,7 +108,15 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Enter to buy")
+                text: qsTr("Hide bought")
+                onClicked: {
+                    DBA.bulkStateChange(shoppingListModel,"GOT","HIDE")
+                    requestRefresh()
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Search to buy")
                 onClicked: pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
             }
         }
@@ -129,12 +129,14 @@ Page {
     Component {
         id: listLine
         ListItem {
-            id: lli
+            id: itemi
+
             onClicked: { //ListItem
                 //                firstPageView.currentIndex = index;
                 //                ci = index;
                 //                stateIndicator.cycle();
                 //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
+                //                console.debug("shoppinglistitem height is:"+itemi.height)
             }
             onPressed: {
                 firstPageView.currentIndex = index
@@ -164,7 +166,6 @@ Page {
                 }
 
                 Label {
-
                     anchors.verticalCenter: parent.verticalCenter
                     text: iqty
                 }
@@ -181,15 +182,6 @@ Page {
 
     function purgeShoppingList() {
         remorse.execute(qsTr("Clearing"), function() { DBA.deleteAllShoppingList(); shoppingListModel.clear() }, 10000 )
-    }
-
-    Component.onCompleted: {
-        console.log("FirstPage : Component.onCompleted")
-        shopModel.clear()
-        DBA.repopulateShopList(shopModel) // ShopModel
-        console.log("*****firstPage.status:"+firstPage.status)
-        //            requestRefresh((firstPage.status==PageStatus.Active),"FirstPage SilicaListview Completed")
-
     }
 }
 
