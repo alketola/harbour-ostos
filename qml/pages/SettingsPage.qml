@@ -26,7 +26,7 @@ Page {
             PageHeader {
                 title: qsTr("Settings")
             }
-
+// This was an attempt to read in Settings from database. There aren't any, currently
 //            TextSwitch {
 //                id: splashDisable
 //                automaticCheck: false
@@ -40,10 +40,11 @@ Page {
 //            }
 
             Slider {
+                id: refreshslider
                 width: parent.width
                 minimumValue: 100
                 maximumValue: 5000
-                value: 1250
+                value: ((appWindow.refreshInterval >= minimumValue) && (appWindow.refreshInterval<=maximumValue))? appWindow.refreshInterval : 1250
 
                 label: qsTr("List refresh interval")
                 valueText: Math.ceil(value) + " ms"
@@ -54,18 +55,19 @@ Page {
             }
 
             Component.onCompleted: {
-                try {
-                    var d=DBA.getSetting("general-splash-disable");
-                    console.log("SettingsPage.qml: d:"+d);
-                    if(d!='true') {
-                        console.log("false");
-                        splashDisable.checked=false;
-                    } else {
-                        splashDisable.checked=true;
-                    }
-                } catch (err) {
-                    console.log("splashDisable error="+err);
-                }
+// This was an attempt to read in Settings from database. There aren't any, currently
+//                try {
+//                    var d=DBA.getSetting("general-splash-disable");
+//                    console.log("SettingsPage.qml: d:"+d);
+//                    if(d!='true') {
+//                        console.log("false");
+//                        splashDisable.checked=false;
+//                    } else {
+//                        splashDisable.checked=true;
+//                    }
+//                } catch (err) {
+//                    console.log("splashDisable error="+err);
+//                }
             }
         }
     }
