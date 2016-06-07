@@ -42,7 +42,7 @@ Dialog {
             TextField {
                 id: itemname
                 anchors { left: parent.left; right: parent.right }
-                focus: true; label: "Item Name"; placeholderText: label
+                focus: true; label: qsTr("Item Name"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: itemname.focus = true
@@ -52,7 +52,7 @@ Dialog {
             TextField {
                 id: itemqty
                 anchors { left: parent.left; right: parent.right }
-                label: "Quantity"; placeholderText: label
+                label: qsTr("Quantity"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: qty.focus = true
@@ -61,7 +61,7 @@ Dialog {
             TextField {
                 id: itemunit
                 anchors { left: parent.left; right: parent.right }
-                label: "Unit"; placeholderText: label
+                label: qsTr("Unit"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
             }
@@ -69,7 +69,7 @@ Dialog {
             TextField {
                 id: itemclass
                 anchors { left: parent.left; right: parent.right }
-                label: "Item Class"; placeholderText: label
+                label: qsTr("Item Class"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: itemclass.focus = true
@@ -77,6 +77,7 @@ Dialog {
 
             ShopSelector {
                 id: editshopselector
+                hidewildcard: true
                 label: qsTr("Shop")
                 listmodel: shopModel
             }
@@ -109,11 +110,12 @@ Dialog {
 //        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         var rowid = DBA.findItemByName(null,itemname.text)
 //        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
+        var itemshop = (editshopselector.value == editshopselector.wildcard) ? editshopselector.unassigned : editshopselector.value
 
         if (rowid) {
 //            console.log("...updating existent ci="+ci)
             DBA.updateItemState(rowid_in_db,"BUY")
-            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, editshopselector.value); //shop.currentname?
+            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, itemshop); //shop.currentname?
             DBA.updateItemState(rowid,"BUY")
             DBA.updateShoppinListNextSeq(rowid)
         } else { // adding new
