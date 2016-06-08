@@ -12,6 +12,7 @@ Page {
     id: firstPage
 
     onStatusChanged: {
+        console.log("first page status changed:"+status)
         if((firstPage.status==PageStatus.Active)) {
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel

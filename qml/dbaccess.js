@@ -7,7 +7,6 @@
 
 /*
  * Opens Qt/QML Local Storage database
- * The database is in /home/nemo/.local/share/<AppName>/<AppName>/QML/OfflineStorage/Databases
  */
 function openDB() {
     return LS.LocalStorage.openDatabaseSync("ShopListDB", "1.1", "Shopping list database", 100000);
@@ -519,7 +518,6 @@ function deleteAllShoppingList() {
 
 /* Delete database
  * this function must delete files in:
- * /home/nemo/.local/share/<AppName>/<AppName>/QML/OfflineStorage/Databases
  */
 //function deleteShopListDatabase() {
 

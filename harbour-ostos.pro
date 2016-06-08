@@ -71,4 +71,8 @@ DISTFILES += \
     qml/images/icon-m-keyboard.png \
     qml/images/icon-m-search.png \
     qml/images/icon-m-up.png \
-    qml/images/icon-s-task.png
+    qml/images/icon-s-task.png \
+    icons/86x86/harbour-ostos.png \
+    icons/108x108/harbour-ostos.png \
+    icons/128x128/harbour-ostos.png \
+    qml/icons/86x86/apps/harbour-ostos.png

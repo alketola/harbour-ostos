@@ -3,8 +3,21 @@
         <file>qml/images/graphic-led-green.png</file>
         <file>qml/images/graphic-led-red.png</file>
         <file>qml/images/graphic-led-yellow.png</file>
+        <file>qml/images/graphic-toggle-off.png</file>
+        <file>qml/images/graphic-toggle-on.png</file>
+        <file>qml/images/icon-m-delete.png</file>
+        <file>qml/images/icon-m-dismiss.png</file>
+        <file>qml/images/icon-m-down.png</file>
+        <file>qml/images/icon-m-keyboard.png</file>
+        <file>qml/images/icon-m-search.png</file>
+        <file>qml/images/icon-m-up.png</file>
+        <file>qml/images/icon-s-task.png</file>
     </qresource>
     <qresource prefix="/">
         <file>harbour-ostos.png</file>
+        <file>qml/icons/256x256/apps/harbour-ostos.png</file>
+        <file>qml/icons/128x128/apps/harbour-ostos.png</file>
+        <file>qml/icons/108x108/apps/harbour-ostos.png</file>
+        <file>qml/icons/86x86/apps/harbour-ostos.png</file>
     </qresource>
 </RCC>

@@ -83,9 +83,21 @@ ComboBox {
           * ComboBox.onEntered --> ComboBox.onStateChanged -->
           * ContextMenu.onClicked --> ContextMenu.onExited -->
           * ComboBox.onStateChanged --> ContextMenu.onClosed */
+        onCanceled: {
+            console.log("ShopSelector.ContextMenu Canceled")
+        }
+        onExited: {
+            console.log("ShopSelector.ContextMenu Exited")
+        }
+        onStateChanged: {
+            console.log("ShopSelector.ContextMenu statechanged:"+state)
+        }
 
+        on_ExpandedChanged:  {
+            console.log("ShopSelector.ContextMenu on_ExpandedChanged:"+_expanded)
+        }
         onClosed: {
-            //            console.log("***************ShopSelector contextmenu onClosed, value:"+value)
+            console.log("***************ShopSelector contextmenu onClosed, value:"+value)
             if (overlappedToHide) firstPageView.delegate = overlappedToHide
             appWindow.requestRefresh(true,"ShopSelector ContexMenu Closed")
         }
@@ -94,17 +106,20 @@ ComboBox {
         forceActiveFocus()
         if(overlappedToHide) firstPageView.delegate = nilvue
     }
+    onExited: {
+        console.log("ShopSelector Exited")
+    }
 
     Component {id: nilvue
         ListView { id: nillistview }
     }
 
-    //    onStateChanged: {
+    onStateChanged: {
 
-    //        if(state) {
-    //            console.log("ShopSelector.qml activated ("+state+")")
-    //        } else {
-    //            console.log("ShopSelector.qml deactivated.")
-    //        }
-    //    }
+        if(state) {
+            console.log("ShopSelector.qml activated ("+state+")")
+        } else {
+            console.log("ShopSelector.qml deactivated.")
+        }
+    }
 }

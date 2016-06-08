@@ -2,17 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name></name>
-    <message id="components-he-dialog_accept">
-        <source>Accept</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="components-he-dialog_cancel">
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
