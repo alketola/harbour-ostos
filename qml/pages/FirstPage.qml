@@ -12,11 +12,12 @@ Page {
     id: firstPage
 
     onStatusChanged: {
-        console.log("first page status changed:"+status)
+//        console.log("first page status changed:"+status+" PageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive)
         if((firstPage.status==PageStatus.Active)) {
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
             requestRefresh(true,"firstPage status changed to Active")
+            firstPageView.delegate = listLine // to make sure that it is there even if exited shop selector malament
         }
     }
     backNavigation: false
