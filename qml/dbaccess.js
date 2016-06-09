@@ -62,7 +62,7 @@ function initDatabase() {
 
     try {
         db.transaction( function(tx) {
-            tx.executeSql('INSERT INTO shops (name, hits, seq) VALUES ("unassigned", 0, 0);')
+            tx.executeSql('INSERT OR IGNORE INTO shops (name, hits, seq) VALUES ("unassigned", 0, 0);')
         })
     } catch (sqlErr) {
         console.warn("ostos/dbaccess.js:"+sqlErr)
