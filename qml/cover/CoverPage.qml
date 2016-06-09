@@ -41,7 +41,8 @@ CoverBackground {
     Label {
         id: coverlabel
         y: 8
-        x: parent.width / 3
+//        x: parent.width / 3
+        anchors.horizontalCenter: parent.horizontalCenter
         font.family: Theme.fontFamilyHeading
         font.pixelSize: Theme.fontSizeSmall
         font.bold: true
