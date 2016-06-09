@@ -12,6 +12,8 @@
 # The name of your application
 TARGET = harbour-ostos
 
+SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
+
 CONFIG += sailfishapp
 
 SOURCES += src/harbour-ostos.cpp \
@@ -42,6 +44,10 @@ OTHER_FILES += qml/harbour-ostos.qml \
     qml/pages/ShopPage.qml \
     qml/pages/NewShopDialog.qml \
     qml/pages/FirstPage.qml \
+    icons/86x86/harbour-ostos.png \
+    icons/108x108/harbour-ostos.png \
+    icons/128x108/harbour-ostos.png \
+    icons/256x108/harbour-ostos.png \
     translations/harbour-ostos-fi.ts \
     translations/harbour-ostos-ca.ts
 
@@ -72,7 +78,6 @@ DISTFILES += \
     qml/images/icon-m-search.png \
     qml/images/icon-m-up.png \
     qml/images/icon-s-task.png \
-    icons/86x86/harbour-ostos.png \
-    icons/108x108/harbour-ostos.png \
-    icons/128x128/harbour-ostos.png \
-    qml/icons/86x86/apps/harbour-ostos.png
+    harbour-ostos.png \
+
+

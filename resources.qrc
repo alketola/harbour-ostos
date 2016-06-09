@@ -15,9 +15,5 @@
     </qresource>
     <qresource prefix="/">
         <file>harbour-ostos.png</file>
-        <file>qml/icons/256x256/apps/harbour-ostos.png</file>
-        <file>qml/icons/128x128/apps/harbour-ostos.png</file>
-        <file>qml/icons/108x108/apps/harbour-ostos.png</file>
-        <file>qml/icons/86x86/apps/harbour-ostos.png</file>
     </qresource>
 </RCC>
