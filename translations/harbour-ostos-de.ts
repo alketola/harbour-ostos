@@ -5,56 +5,57 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation type="unfinished">Ostos - eInKauf</translation>
+        <translation>Ostos - Einkaufs</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Handel</translation>
+        <translatorcomment>Platz wo es kauft</translatorcomment>
+        <translation>Laden</translation>
     </message>
     <message>
         <source>No items</source>
-        <translation type="unfinished">Keine Artikeln</translation>
+        <translation>Keine Artikeln</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Anweisnung</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Handeln bearbeiten</translation>
+        <translation>Handeln bearbeiten</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Versteck gekaufte</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Such und ergänz</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Einkaufsliste wird leer gemacht</translation>
     </message>
 </context>
 <context>
     <name>ItemAddPage</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Such und ergäntz</translation>
     </message>
 </context>
 <context>
     <name>ItemDetailsPage</name>
     <message>
         <source>pcs</source>
-        <translation>Stücke</translation>
+        <translation>Stk</translation>
     </message>
     <message>
         <source>litres</source>
@@ -98,23 +99,23 @@
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished">Ergänze</translation>
+        <translation>Ergänz</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished">Name</translation>
+        <translation>Artikelname</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished">Einheit</translation>
+        <translation>Einheit</translation>
     </message>
     <message>
         <source>g</source>
-        <translation type="unfinished">g</translation>
+        <translation>g</translation>
     </message>
     <message>
         <source>kg</source>
-        <translation type="unfinished">g</translation>
+        <translation>kg</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -122,53 +123,53 @@
     </message>
     <message>
         <source>packs</source>
-        <translation type="unfinished"></translation>
+        <translation>Stk</translation>
     </message>
 </context>
 <context>
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Akzeptier</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurũck</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Handel</translation>
+        <translation>Handel</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Handeln bearbeiten</translation>
+        <translation>Handeln bearbeiten</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished">Name</translation>
+        <translation>Artikelname</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation type="unfinished">Menge</translation>
+        <translation>Quantität</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished">Einheit</translation>
+        <translation>Einheit</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasse</translation>
     </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
     <message>
         <source>Hiding Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Versteckend Artikel</translation>
     </message>
     <message>
         <source>Deleting Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschend Artikel</translation>
     </message>
 </context>
 <context>
@@ -182,7 +183,7 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Anweisnung</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
@@ -233,7 +234,7 @@
     </message>
     <message>
         <source>List refresh interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Laufzeit bevor aktualisierung von Einkaufsliste</translation>
     </message>
 </context>
 <context>
@@ -252,22 +253,22 @@
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurũck</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Akzeptier</translation>
     </message>
 </context>
 <context>
     <name>Splash</name>
     <message>
         <source>Ostos</source>
-        <translation type="unfinished">Ostos - eInKauf</translation>
+        <translation>Ostos - eInKauf</translation>
     </message>
     <message>
         <source>Continue</source>

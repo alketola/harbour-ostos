@@ -5,49 +5,49 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation type="unfinished">Ostos - Compre</translation>
+        <translation>Ostos - Compra</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Botiga</translation>
+        <translation>Botiga</translation>
     </message>
     <message>
         <source>No items</source>
-        <translation type="unfinished">(res)</translation>
+        <translation>(vuit)</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Ajuda</translation>
+        <translation>Instructions</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Paràmetres</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Editar botigas</translation>
+        <translation>Editar botigas</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Amagar que s&apos;ha comprat</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca y agrega</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Se fara vuil la llista de compres</translation>
     </message>
 </context>
 <context>
     <name>ItemAddPage</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca i agrega</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     </message>
     <message>
         <source>kg</source>
-        <translation type="unfinished">kg</translation>
+        <translation>kg</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -122,53 +122,53 @@
     </message>
     <message>
         <source>packs</source>
-        <translation type="unfinished"></translation>
+        <translation>paq</translation>
     </message>
 </context>
 <context>
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Acceptar</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Botiga</translation>
+        <translation>Botiga</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Editar botigas</translation>
+        <translation>Editar botigas</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished">Nom d&apos;article</translation>
+        <translation>Nom d&apos;article</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation type="unfinished">Quantitat</translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished">Unitat</translation>
+        <translation>Unitat</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation type="unfinished"></translation>
+        <translation>Classificació</translation>
     </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
     <message>
         <source>Hiding Item</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;amaga l&apos;article</translation>
     </message>
     <message>
         <source>Deleting Item</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;esborra l&apos;article</translation>
     </message>
 </context>
 <context>
@@ -182,7 +182,7 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Ajuda</translation>
+        <translation>Instructions</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>List refresh interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Demora per actualizaciò de la llista</translation>
     </message>
 </context>
 <context>
@@ -252,15 +252,15 @@
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Enrere</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Acceptar</translation>
     </message>
 </context>
 <context>
@@ -275,7 +275,7 @@
     </message>
     <message>
         <source>Ostos</source>
-        <translation type="unfinished">Ostos - Compre</translation>
+        <translation>Ostos - Compra</translation>
     </message>
 </context>
 </TS>

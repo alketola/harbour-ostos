@@ -5,49 +5,49 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation type="unfinished">Ostos</translation>
+        <translation>Ostos</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Kauppa</translation>
+        <translation>Kauppa</translation>
     </message>
     <message>
         <source>No items</source>
-        <translation type="unfinished">Tyhjä lista</translation>
+        <translation>Ei artikkelita</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Ohje</translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Asetukset</translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Muokkaa kauppoja</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilota ostetut</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi ja lisää</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostoslista tyhjennetään</translation>
     </message>
 </context>
 <context>
     <name>ItemAddPage</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi ja lisää</translation>
     </message>
 </context>
 <context>
@@ -124,53 +124,53 @@
     </message>
     <message>
         <source>packs</source>
-        <translation type="unfinished"></translation>
+        <translation>pak</translation>
     </message>
 </context>
 <context>
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Kauppa</translation>
+        <translation>Kauppa</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Muokkaa kauppoja</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished">Artikkelin nimi</translation>
+        <translation>Artikkelin nimi</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation type="unfinished">Määrä</translation>
+        <translation>Määrä</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished">Yksikkö</translation>
+        <translation>Yksikkö</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation type="unfinished"></translation>
+        <translation>Luokka</translation>
     </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
     <message>
         <source>Hiding Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilotetaan artikkeli</translation>
     </message>
     <message>
         <source>Deleting Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan artikkeli</translation>
     </message>
 </context>
 <context>
@@ -184,7 +184,7 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Ohje</translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
@@ -235,7 +235,7 @@
     </message>
     <message>
         <source>List refresh interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Ostoslistan päivityksen viive</translation>
     </message>
 </context>
 <context>
@@ -254,15 +254,15 @@
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Muokkaa</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Takaisin</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Hyväksy</translation>
     </message>
 </context>
 <context>
