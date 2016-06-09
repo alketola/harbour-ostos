@@ -23,6 +23,7 @@ Page {
         Column {
             id: settingsColumn
             width: parent.width
+            spacing: Theme.paddingLarge
             PageHeader {
                 title: qsTr("Settings")
             }
@@ -53,6 +54,13 @@ Page {
                 }
 
             }
+            Label {
+                width: parent.width
+                height: Theme.itemSizeLarge
+                horizontalAlignment: Text.AlignHCenter
+                text: "Current locale = "+ (Qt.locale().name.substring(0,2))
+            }
+
 
             Component.onCompleted: {
 // This was an attempt to read in Settings from database. There aren't any, currently
