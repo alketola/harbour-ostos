@@ -1,50 +1,53 @@
 <html lang="fi">
 <head>
-  <title>Ostos HELP</title>
+  <title>Ostos OHJE</title>
   <link rel="stylesheet" type="text/css" href="helphtml.css">
 </head>
 <body>
 <page>
-<H1>How to use Ostos</h1>
-<H2>Introduction</H2>
+<p class="tbanner">
+Translations :
+<a href="ostoshelp-fi.html">suomi</a>
+<a href="ostoshelp-es.html">Espa&ntilde;ol</a>
+<a href="ostoshelp-de.html">Deutsch</a>
+<a href="ostoshelp-fr.html">Fran&ccedil;ais</a>
+</p>
+<H1>K&auml;ytt&ouml;ohje Ostos-sovellukseen</h1>
+<H2>Esittely</H2>
 <p>
-"Ostos" on ostoslista-applikaatio. Se on artesaanituote, joka on kehitetty pitkän ajan kuluessa, analysoiden
-päivittäisten ostosten tekoa huolellisesti.
+"Ostos" on ostoslista-applikaatio. Se on artesaanituote, joka on kehitetty kuukausien kuluessa, analysoiden
+p&auml;ivitt&auml;isten ostosten tekoa huolellisesti.
 </p>
 <p>
-Sovellus muistaa artikkelit, jotka olet sille syöttänyt, eikä kerro kenellekkään muulle!
-Ei mainoksia eikä kauppaketjuyhteyksiä... eikä muitakaan yhteyksiä tällä hetkellä.
-Toivottavasti tästä on iloa sinulle!
+Sovellus muistaa artikkelit, jotka olet sille sy&ouml;tt&auml;nyt, eik&auml; kerro kenellekk&auml;&auml;n muulle!
+Ei mainoksia eik&auml; kauppaketjuyhteyksi&auml;... eik&auml; muitakaan yhteyksi&auml; t&auml;ll&auml; hetkell&auml;.
+Toivottavasti t&auml;st&auml; on hy&ouml;ty&auml; sinulle!
 </p>
 <H2>Ostoslistasivu</H2>
 <p>
-Ensimmäinen sivu joka aukeaa on ostoslistasivu.
+Ensimm&auml;inen sivu joka aukeaa on ostoslistasivu.
 <p>
-Lisää uusia artikkeleita pyyhkäisemällä vasemmalle, tai alasvetovalikosta 
-Add new items by swithcing to search page on the right (on first item in the pulldown menu.
+Lis&auml;&auml; uusia artikkeleita pyyhk&auml;isem&auml;ll&auml; vasemmalle, tai alasvetovalikosta "Etsi ja lis&auml;&auml;".
 <br/>
-The items have states, indicated by the icon on the left of each shopping list item.
-<br/>
-The state can be toggled like by clicking the state icon on the left.
+Artikkeleilla on tila jonka n&auml;kee vasemman reunan ikonista ja jota voi muuttaa napauttamalla.
 <br/>
 <ul>
-<li class="nobullet"><img src="../../images/graphic-toggle-on.png" /> <!--//<img src=\".../../images/graphic-toggle-on.png\" -->
-The item is listed as to buy</li>
-<li class="nobullet"><img src="../../images/graphic-toggle-off.png" />The item has been bought</li>
-<li class="nobullet"><img src="../../images/icon-s-task.png" />The item is listed as flagged</li>
+<li class="nobullet"><img src="../../images/graphic-toggle-on.png" />Osta!</li><!--//<img src=\".../../images/graphic-toggle-on.png\" -->
+<li class="nobullet"><img src="../../images/graphic-toggle-off.png" />Ostettu.</li>
+<li class="nobullet"><img src="../../images/icon-s-task.png" />Liputettu. (Voit k&auml;ytt&auml;&auml; kuinka haluat.)</li>
 </ul>
-<p>An item can also be hidden but then it is not shown in the list</p>
+<p>Artikkeli voi olla my&ouml;s piilotettu, jolloin se ei n&auml;y listassa, mutta on applikaation muistissa.</p>
 </ul>
 <p>
-The context menu has options to:
+Kunkin artikkelin tilannevalikossa on seuraaavat toiminnot:
 </p>
 <ul>
-  <li class="nobullet"><img src=".../../images/icon-m-dismiss.png" />hide</li>
-  <li class="nobullet"><img src=".../../images/icon-s-task.png" />flag</li>
-  <li class="nobullet"><img src=".../../images/icon-m-keyboard.png" />edit</li>
-  <li class="nobullet"><img src=".../../images/icon-m-up.png" />increase quantity</li>
-  <li class="nobullet"><img src=".../../images/icon-m-down.png" />decrease quantity</li>
-  <li class="nobullet"><img src=".../../images/icon-m-delete.png" />delete the item.</li>
+  <li class="nobullet"><img src="../../images/icon-m-dismiss.png" />piilota</li>
+  <li class="nobullet"><img src="../../images/icon-s-task.png" />liputa</li>
+  <li class="nobullet"><img src="../../images/icon-m-keyboard.png" />muokkaa</li>
+  <li class="nobullet"><img src="../../images/icon-m-up.png" />lis&auml;&auml;</li>
+  <li class="nobullet"><img src="../../images/icon-m-down.png" />v&auml;henn&auml;</li>
+  <li class="nobullet"><img src="../../images/icon-m-delete.png" />poista kokonaan (applikaation muistista.)</li>
 </ul>
 <!-- The icon paths WERE:
 /usr/share/themes/jolla-ambient/meegotouch/icons/
@@ -53,40 +56,48 @@ The paths worked on emulator, but not on device.
 Correct paths for device are:
 /usr/share/themes/sailfish-default/meegotouch/z1.0/icons/
 /usr/share/themes/sailfish-default/meegotouch/icons
--->
+--> 
+<H2>Vetovalikko</H2>
 <p>
-Add new items by swithcing to search page on the right on first item in the pulldown menu
-</p> 
-<H2>Pulldown menu</H2>
-<p>
-There are options in Pulldown menu:
+Vetovalikon valinnat:
 <ul>
-  <li >Enter to buy - add items to list. Same as swipe left / next page</li>
-  <li>Edit Shops - go to to the dialog page for adding shops</li>
-  <li>Settings - go to settings page. Few settings.</li>  
-  <li>Help - go to this page</li>
+  <li>Etsi ja Lis&auml;&auml; - Lis&auml;&auml; uusia artikkeleita listaan pyyhk&auml;isem&auml;ll&auml; vasemmalle</li>
+  <li>Piilota ostetut - jos et halua n&auml;hd&auml; jo ostettuja ostoslistalla en&auml;&auml;
+  <li>Muokkaa kauppoja - siirry sivulle jossa kauppoja voi muokara ja lis&auml;t&auml;</li>
+  <li>Asetukset</li>
+  <li>Ohje - t&auml;m&auml; sivu</li>
 </ul>
 </p>
-<H2>Navigation</H2>
+<H2>Navigointi</H2>
 <p>
-Swipe navigation is supported; swipe left to add items, dialogs go first to search page and 
-then detail edit and confirmation of the item added to the list. Swipe right to go back.
+Navigointi sipaisuilla on mahdollista. Sipaise vasemmalle, niin p&auml;&auml;set "Etsi ja Lis&auml;&auml;"-sivulle.
+Oikealle sipaisemalla p&auml;&auml;see monesta kohdasta takaisinkin.
 </p> 
-<H2>Search (Add) page</H2>
+<H2>Etsi ja lis&auml;&auml;-sivu</H2>
 <p>
-Type to the text field nex to <img src=".../../images/icon-m-search.png" />,
-or pick your match from the shown list of buttons.
-Accept with Accept or swipe left.
+Sivu n&auml;ytt&auml;&auml; listan artikkeleista joita ei ole merkitty ostettavaksi sil&auml;&auml; hetkell&auml;.
+Koska lista on pitk&auml;, niin on fiksua k&auml;ytt&auml;&auml; hakua. Kirjoita teksti&auml; suurennuslasin
+ <img src="../../images/icon-m-search.png" /> vieress&auml; olevaan kentt&auml;&auml;n.
 </p>
-<H2>Edit page</H2>
 <p>
-The page shows item details retrieved from database, if any. The user should edit the values to his liking, and the press Accept or swipe left.
+Voit selata my&ouml;s listaa yl&ouml;s ja alas.
 </p>
-<p class="copyright">
-Copyright Antti Ketola 2016.
+<p>
+Voit milloin vain napauttaa artikkelian nime&auml;, jonka haluat lis&auml;t&auml; ostoslistalle, ja hyv&auml;ksy&auml;
+sipaisemalla vasemmalle (tai napauttamalla "hyv&auml;ksy".
 </p>
-<p class="version">
-v0.97
+<H2>Atrikkelien Muokkaussivu</H2>
+<p>
+Kun olet valinnut lis&auml;tt&auml;v&auml;n artikkelin nimen joko kirjoittamalla tai napauttamalla nime&auml;,
+hyv&auml;ksyess&auml;si esiin tulee muokkaussivu. Sivu esit&auml;ytet&auml;&auml;n aiemmila tiedoilla, mik&auml;li niit&auml; oli.
+Muokkaa artikkelin tiedot haluamiksisi, ja hyv&auml;ksy sipaisemalla vasemmalle (tai napauttamalla "hyv&auml;ksy".
+</p>
+<h3>Lista kaupoista ja sen merkitys</h3>
+<p>
+Kauppojen nimi&auml; k&auml;ytet&auml;&auml;n suodattamaan ostoslistan&auml;kym&auml;&auml;.
+Jokerimerkki - * , star or asterisk n&auml;ytt&auml;&auml; kaikki artikkelit kaupasta riippumatta, ja on tavallinen tapa k&auml;ytt&auml;&auml; sovellusta.
+Jokaisella artikkelilla on "Kauppa" ominaisuus, jonka voi valita kauppalistalta tai sitten sen voi my&ouml;s j&auml;tt&auml;&auml; valitsematta
+(unassigned). Kauppojen lis&auml;&auml;minen on j&auml;tetty vetovalikkoon, koska niit&auml; ei tarvitse lis&auml;t&auml; kovinkaan usein.
 </p>
 </body>
 </html>

@@ -1,7 +1,13 @@
-body { margin: 20 ; background-color: #112233; color: #FFFFFF}
-h1 { font-family: "Sans"; font-size: 1.8em }
-h2 { font-family: "Sans"; font-size: 1.6em}
-p { font-family: "Sans"; font-size: 1.5em }
+body { margin: 20 ; background-color: #112222; color: white;}
+h1 { font-family: "Sans"; font-size: 1.9em; }
+h2 { font-family: "Sans"; font-size: 1.7em;}
+h3 { font-family: "Sans"; font-size: 1.6em;}
+p { font-family: "Sans"; font-size: 1.5em;}
+p.tbanner { font-size: 1.5em; color: #EEEEE;}
+a:link { color: yellow;}
+a:visited { color: gold; }
+a:hover { font-size: 2em; color: orange;}
+
 li { font-family: "Sans"; font-size: 1.5em;
     margin: 5px; vertical-align: middle;
     }

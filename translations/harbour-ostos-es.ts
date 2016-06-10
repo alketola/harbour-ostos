@@ -5,7 +5,7 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Compra</translation>
+        <translation type="unfinished">Ostos - Kompra</translation>
     </message>
 </context>
 <context>
@@ -275,7 +275,7 @@
     </message>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Compra</translation>
+        <translation type="unfinished">Ostos - Kompra</translation>
     </message>
 </context>
 </TS>

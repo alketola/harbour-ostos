@@ -5,7 +5,7 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Einkaufs</translation>
+        <translation>Ostos - Einkaufa</translation>
     </message>
 </context>
 <context>
@@ -29,7 +29,7 @@
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Handeln bearbeiten</translation>
+        <translation>Laden bearbeiten</translation>
     </message>
     <message>
         <source>Hide bought</source>
@@ -67,11 +67,11 @@
     </message>
     <message>
         <source>Shop</source>
-        <translation>Handel</translation>
+        <translation>Laden</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Handeln bearbeiten</translation>
+        <translation>Laden bearbeiten</translation>
     </message>
     <message>
         <source>vegetables</source>
@@ -138,11 +138,11 @@
     </message>
     <message>
         <source>Shop</source>
-        <translation>Handel</translation>
+        <translation>Laden</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Handeln bearbeiten</translation>
+        <translation>Laden bearbeiten</translation>
     </message>
     <message>
         <source>Item Name</source>
@@ -241,7 +241,7 @@
     <name>ShopPage</name>
     <message>
         <source>Add new shop</source>
-        <translation>Neu Handel hinzufügen</translation>
+        <translation>Neu Laden hinzufügen</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -257,7 +257,7 @@
     </message>
     <message>
         <source>Back</source>
-        <translation>Zurũck</translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <source>Accept</source>

@@ -27,18 +27,18 @@ Page {
             PageHeader {
                 title: qsTr("Settings")
             }
-// This was an attempt to read in Settings from database. There aren't any, currently
-//            TextSwitch {
-//                id: splashDisable
-//                automaticCheck: false
-//                text: qsTr("Splash screen disabled")
-//                onClicked: {
-//                    checked=!checked;
-//                    console.log("splashDisableChanged checked="+checked);
-//                    DBA.setSetting("general-splash-disable",checked);
+            // This was an attempt to read in Settings from database. There aren't any, currently
+            //            TextSwitch {
+            //                id: splashDisable
+            //                automaticCheck: false
+            //                text: qsTr("Splash screen disabled")
+            //                onClicked: {
+            //                    checked=!checked;
+            //                    console.log("splashDisableChanged checked="+checked);
+            //                    DBA.setSetting("general-splash-disable",checked);
 
-//                }
-//            }
+            //                }
+            //            }
 
             Slider {
                 id: refreshslider
@@ -61,21 +61,42 @@ Page {
                 text: "Current locale = "+ (Qt.locale().name.substring(0,2))
             }
 
+            Label {
+                width: parent.width
+                height: Theme.itemSizeLarge
+                horizontalAlignment: Text.AlignHCenter
+                text: "Copyright Antti Ketola 2016"
+            }
+
+            Label {
+                width: parent.width
+                height: Theme.itemSizeLarge
+                horizontalAlignment: Text.AlignHCenter
+                text: "Translations:\n"+
+                      "Antti Ketola"
+            }
+            Label {
+                id: versionLabel
+                width: parent.width
+                height: Theme.itemSizeLarge
+                horizontalAlignment: Text.AlignHCenter
+                text: "Version "+"v0.97"
+            }
 
             Component.onCompleted: {
-// This was an attempt to read in Settings from database. There aren't any, currently
-//                try {
-//                    var d=DBA.getSetting("general-splash-disable");
-//                    console.log("SettingsPage.qml: d:"+d);
-//                    if(d!='true') {
-//                        console.log("false");
-//                        splashDisable.checked=false;
-//                    } else {
-//                        splashDisable.checked=true;
-//                    }
-//                } catch (err) {
-//                    console.log("splashDisable error="+err);
-//                }
+                // This was an attempt to read in Settings from database. There aren't any, currently
+                //                try {
+                //                    var d=DBA.getSetting("general-splash-disable");
+                //                    console.log("SettingsPage.qml: d:"+d);
+                //                    if(d!='true') {
+                //                        console.log("false");
+                //                        splashDisable.checked=false;
+                //                    } else {
+                //                        splashDisable.checked=true;
+                //                    }
+                //                } catch (err) {
+                //                    console.log("splashDisable error="+err);
+                //                }
             }
         }
     }
