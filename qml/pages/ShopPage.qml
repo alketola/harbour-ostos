@@ -139,7 +139,7 @@ Dialog {
                 id: scxmenu
                 MenuItem {
                     text: qsTr("Edit")
-                    height: Theme.itemSizeSmall
+                    height: ((model.name != "unassigned") && (model.name != "*")) ? Theme.itemSizeSmall : 0
                     onClicked: {
                         console.log("ShopPage.shopitem.ContextMenu.Edit index:"+index)
                         shopField.readOnly = false
@@ -148,7 +148,7 @@ Dialog {
                 }
                 MenuItem {
                     text: qsTr("Delete")
-                    height: Theme.itemSizeSmall
+                    height: ((model.name != "unassigned") && (model.name != "*")) ? Theme.itemSizeSmall : 0
                     onClicked: {
                         console.log("ShopPage.shopitem.ContextMenu.Delete index:"+index)
                         //                        deleteshop(index)
