@@ -25,6 +25,8 @@ import "./dbaccess.js" as DBA
 ApplicationWindow
 {
     id: appWindow
+
+
     property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"

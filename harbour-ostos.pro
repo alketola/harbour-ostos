@@ -12,8 +12,6 @@
 # The name of your application
 TARGET = harbour-ostos
 
-SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
-
 CONFIG += sailfishapp
 
 SOURCES += src/harbour-ostos.cpp \
@@ -24,7 +22,6 @@ OTHER_FILES += qml/harbour-ostos.qml \
     rpm/harbour-ostos.changes.in \
     rpm/harbour-ostos.spec \
     rpm/harbour-ostos.yaml \
-    translations/*.ts \
     harbour-ostos.desktop \
     qml/pages/HelpPage.qml \
     qml/pages/ItemEditPage.qml \
@@ -43,21 +40,17 @@ OTHER_FILES += qml/harbour-ostos.qml \
     qml/pages/ShopSelector.qml \
     qml/pages/ShopPage.qml \
     qml/pages/NewShopDialog.qml \
-    qml/pages/FirstPage.qml \
-    icons/86x86/harbour-ostos.png \
-    icons/108x108/harbour-ostos.png \
-    icons/128x108/harbour-ostos.png \
-    icons/256x108/harbour-ostos.png \
-    translations/harbour-ostos-fi.ts \
-    translations/harbour-ostos-ca.ts
+    qml/pages/FirstPage.qml
+
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/harbour-ostos-de.ts \
-    translations/harbour-ostos-fi.ts \
-    translations/harbour-ostos-es.ts \
-    translations/harbour-ostos-ca.ts
+
+TRANSLATIONS += translations/harbour-ostos-fi.ts
+TRANSLATIONS += translations/harbour-ostos-de.ts
+TRANSLATIONS += translations/harbour-ostos-es.ts
+TRANSLATIONS += translations/harbour-ostos-ca.ts
 
 RESOURCES += \
     resources.qrc
@@ -79,5 +72,23 @@ DISTFILES += \
     qml/images/icon-m-up.png \
     qml/images/icon-s-task.png \
     harbour-ostos.png \
+    help/ostoshelp.html \
+    help/helphtml.css \
+    help/ostoshelp-fi.html \
+    help/ostoshelp-fr.html \
+    help/ostoshelp-de.html \
+    help/ostoshelp-es.html \
+    qml/pages/help/helphtml.css \
+    qml/pages/help/ostoshelp-ca.html \
+    qml/pages/help/ostoshelp-de.html \
+    qml/pages/help/ostoshelp-es.html \
+    qml/pages/help/ostoshelp-fi.html \
+    qml/pages/help/ostoshelp-fr.html \
+    qml/pages/help/ostoshelp.html
 
+SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
 
+DISTFILES += icons/86x86/harbour-ostos.png \
+    icons/108x108/harbour-ostos.png \
+    icons/128x108/harbour-ostos.png \
+    icons/256x108/harbour-ostos.png

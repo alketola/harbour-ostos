@@ -70,6 +70,6 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/hicolor/108x108/apps/%{name}.png
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-
+%{_datadir}/%{name}/translations
 # >> files
 # << files
