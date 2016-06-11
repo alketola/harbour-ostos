@@ -45,6 +45,7 @@ Page {
                 width: parent.width
                 minimumValue: 100
                 maximumValue: 5000
+
                 value: ((appWindow.refreshInterval >= minimumValue) && (appWindow.refreshInterval<=maximumValue))? appWindow.refreshInterval : 1250
 
                 label: qsTr("List refresh interval")
@@ -56,31 +57,44 @@ Page {
             }
             Label {
                 width: parent.width
-                height: Theme.itemSizeLarge
+                height: Theme.itemSizeSmall
                 horizontalAlignment: Text.AlignHCenter
+                truncationMode: TruncationMode.Fade
                 text: "Current locale = "+ (Qt.locale().name.substring(0,2))
             }
 
             Label {
                 width: parent.width
-                height: Theme.itemSizeLarge
+                height: Theme.itemSizeSmall*2
+                truncationMode: TruncationMode.Fade
+                horizontalAlignment: Text.AlignHCenter
+                text: "Original version written by\nAntti L S Ketola"
+            }
+            Label {
+                width: parent.width
+                height: Theme.itemSizeSmall
+                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
                 text: "Copyright Antti Ketola 2016"
             }
-
             Label {
                 width: parent.width
-                height: Theme.itemSizeLarge
+                height: Theme.itemSizesmall * 4
                 horizontalAlignment: Text.AlignHCenter
+                truncationMode: TruncationMode.Fade
                 text: "Translations:\n"+
-                      "Antti Ketola"
+                      "en: Antti Ketola\n"+
+                      "fi: Antti Ketola\n"+
+                      "es: Antti Ketola (proofreading needed)\n"+
+                      "de: Antti Ketola (proofreading needed)"
             }
             Label {
                 id: versionLabel
                 width: parent.width
-                height: Theme.itemSizeLarge
+                height: Theme.itemSizeMedium
+                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v0.97"
+                text: "Version "+"v0.98"
             }
 
             Component.onCompleted: {

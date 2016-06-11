@@ -62,6 +62,7 @@ Dialog {
                 id: itemunit
                 anchors { left: parent.left; right: parent.right }
                 label: qsTr("Unit"); placeholderText: label
+                font.capitalization: Font.MixedCase
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
             }
