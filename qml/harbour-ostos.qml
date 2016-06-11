@@ -90,7 +90,7 @@ ApplicationWindow
         if ((millisec >99) && (millisec<5000)){
             refreshInterval = millisec
         } else {
-          refreshInterval = 1250
+            refreshInterval = 1250
         }
     }
 
@@ -118,12 +118,14 @@ ApplicationWindow
             //            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
+            toast.show()
             start()
         }
 
         onTriggered: {
 
             stop()
+            toast.hide()
             if(_enabler){
                 //                console.debug("menurefresh timer triggered.");
                 refreshShoppingListByCurrentShop()
@@ -137,8 +139,10 @@ ApplicationWindow
      * Function to request refresh - without timer
      */
     function requestRefresh(enabler,tracetext) {
-//        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
+        toast.show()
+        //        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
         refreshShoppingListByCurrentShop()
+        toast.hide()
     }
     /*
  * Function to request refresh asynchronously - the timer version spawning a new thread
@@ -151,6 +155,54 @@ ApplicationWindow
         } else {
             menurefreshtimer.restart()
             console.debug("harbour-ostos.requestRefresh - restarted timer.")
+        }
+    }
+    Rectangle {
+        color: "#"+(~(valueOf(Theme.primaryColor)))
+        opacity: 20
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: parent.width / 3
+        height: Theme.itemSizeLarge
+
+        id: toast
+        Label {
+            id: toastLabel
+
+            visible: parent.visible
+            color: Theme.primaryColor
+            opacity: 100
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width// - Theme.paddingLarge
+            height: Theme.itemSizeLarge
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+
+
+            text: qsTr("Updating")
+        }
+        states: State {
+            name: "toasting"; when: visible
+            PropertyChanges {
+                target: toast; height: Theme.itemSizeLarge
+            }
+        }
+//        transitions: Transition {
+//            NumberAnimation {
+//                properties: height;
+//                duration: 500
+//            }
+//        }
+
+        function show() {
+            visible = true
+        }
+        function hide() {
+            visible = false
+        }
+        Component.onCompleted: {
+            hide()
         }
     }
 }
