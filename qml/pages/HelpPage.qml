@@ -10,6 +10,7 @@ import Sailfish.Silica 1.0
  */
 Page {
     property string helpURL
+    property string defaultHelpURL: "http://mobilitio.com/app-support/ostos/help/ostoshelp.html"
 
     SilicaWebView {
         id: helpView
@@ -59,7 +60,7 @@ Page {
             break;
         default:
             console.debug("Default case for locale:"+mylocale)
-            helpURL=helppath+"ostoshelp.html"
+            helpURL=defaultHelpURL+"?locale="+mylocale //helppath+"ostoshelp.html"
         }
 
         console.log("helpURL="+helpURL)
