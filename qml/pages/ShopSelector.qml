@@ -14,6 +14,7 @@ import "../dbaccess.js" as DBA
  * at times.
  *
  */
+
 ComboBox {
 
     property Component overlappedToHide         // if there is something that has to be hidden
@@ -25,6 +26,7 @@ ComboBox {
 
     property string wildcard: "*"
     property string unassigned: "unassigned"
+    property string dbvalue
 
     width: parent.width
     labelColor: Theme.secondaryColor
@@ -40,6 +42,46 @@ ComboBox {
 
     function isWildcard(x) {
         return (x==wildcard)
+    }
+
+    /*
+     * getting ShopSelector's value so that it is not intenationalized
+     */
+    function getDBValue() {
+        var value_out
+        if (value == wildcard)
+            value_out = unassigned // dissallowing * in database
+        else if ((value == unassigned) || (value==qsTr("unassigned")))
+            value_out = unassigned // Disallowing translations of unassigned in database
+        else
+            value_out = value  // Otherwise, let it be.
+
+        return value_out
+    }
+
+    function getUIValue() {
+        var value_out
+        if ((value == unassigned) || (value==qsTr("unassigned")))
+            value_out = qsTr("unassigned")
+        else
+            value_out = value  // Otherwise, let it be.
+
+        return value_out
+    }
+
+    function setValue(invalue) {
+        value = invalue;
+    }
+
+    function setValueI18N(dbvalue) {
+        if (dbvalue == wildcard)
+            value = unassigned // dissallowing * in database
+        else if (dbvalue == unassigned)
+            value = qsTr("unassigned") // Disallowing translations of unassigned in database
+        else if (dbvalue == unassigned)
+            value = unassigned
+        else
+            value = dbvalue  // Otherwise, let it be.
     }
 
 //    function findShopListIndex(shopname) {
@@ -62,8 +104,16 @@ ComboBox {
             text: wildcard
             visible: !hidewildcard
             onClicked: {
-                value = wildcard
+                setValue(wildcard)
                 appWindow.currentShop=wildcard
+            }
+        }
+        MenuItem {  // The first item in the shop menu is wildcard, or "any-star"
+            id: unassignedMenuItem
+            text: qsTr("unassigned")
+            onClicked: {
+                setValueI18N(unassigned)
+                appWindow.currentShop=unassigned
             }
         }
         Repeater {
@@ -72,9 +122,10 @@ ComboBox {
 
             MenuItem {
                 text: model.name
+                visible: (model.name != unassigned)
                 onClicked: {
-                    value=model.name
-                    appWindow.currentShop=model.name
+                    value= model.name
+                    appWindow.currentShop=value
                 }
             }
         }
@@ -108,3 +159,4 @@ ComboBox {
 //        }
 //    }
 }
+

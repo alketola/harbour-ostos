@@ -12,7 +12,7 @@ Page {
     id: firstPage
 
     onStatusChanged: {
-//        console.log("first page status changed:"+status+" PageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive)
+        //        console.log("first page status changed:"+status+" PageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive)
         if((firstPage.status==PageStatus.Active)) {
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
@@ -71,20 +71,20 @@ Page {
         delegate: listLine
 
         PullDownMenu {
-//            MenuItem {
-//                text: qsTr("Debug dump DB to log");
-//                onClicked: {
-//                    DBA.dumpShoppingList();
-//                    console.log("...dumped.");
-//                }
-//            }
-//            MenuItem {
-//                text: qsTr("DELETE DB ");
-//                onClicked: {
-//                    DBA.deleteAllShoppingList()
-//                    console.log("...deleted database.");
-//                }
-//            }
+                        MenuItem {
+                            text: qsTr("Debug dump DB to log");
+                            onClicked: {
+                                DBA.dumpShoppingList();
+                                console.log("...dumped.");
+                            }
+                        }
+            //            MenuItem {
+            //                text: qsTr("DELETE DB ");
+            //                onClicked: {
+            //                    DBA.deleteAllShoppingList()
+            //                    console.log("...deleted database.");
+            //                }
+            //            }
 
             MenuItem {
                 text: qsTr("Help")

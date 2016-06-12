@@ -9,10 +9,9 @@ import "../pages"
  *
  * Dialog page for item details input in the shopping list app
  */
-
 Dialog {
     id: itemeditdialog
-    property int rowid_in_db: -1    
+    property int rowid_in_db: -1
 
     acceptDestination: Qt.resolvedUrl("FirstPage.qml")
     acceptDestinationAction:  PageStackAction.Push
@@ -102,28 +101,29 @@ Dialog {
         itemunit.text=shoppingListModel.get(ci).iunit;
         itemclass.text=shoppingListModel.get(ci).iclass;
         rowid_in_db=shoppingListModel.get(ci).rowid;
-        editshopselector.value=shoppingListModel.get(ci).ishop; //Sets the selector initial value correctly?        
+        editshopselector.setValueI18N(shoppingListModel.get(ci).ishop) //Sets the selector initial value correctly?
 
     }
 
     onAccepted: {
-       console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
-//        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
+        console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
+        //        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         var rowid = DBA.findItemByName(null,itemname.text)
-//        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
-        var itemshop = (editshopselector.value == editshopselector.wildcard) ? editshopselector.unassigned : editshopselector.value
+        //        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
+        var itemshop2db = editshopselector.getDBValue()
 
         if (rowid) {
-//            console.log("...updating existent ci="+ci)
+            console.log("...updating existent ci="+ci+
+                        " qsTr(ShopSelector.unassigned)="+ qsTr(editshopselector.unassigned) +
+                        " itemshop="+itemshop2db)
             DBA.updateItemState(rowid_in_db,"BUY")
-            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, itemshop); //shop.currentname?
+            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, itemshop2db); //shop.currentname?
             DBA.updateItemState(rowid,"BUY")
             DBA.updateShoppinListNextSeq(rowid)
         } else { // adding new
-//            console.log("...adding new ci="+ci)
+            //            console.log("...adding new ci="+ci)
             DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)
         }
         currentShop=wildcard
     }
 }
-

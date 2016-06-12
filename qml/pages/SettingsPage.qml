@@ -13,7 +13,6 @@ import "../pages"
 Page {
     allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
 
-
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: settingsColumn.height
@@ -43,8 +42,8 @@ Page {
             Slider {
                 id: refreshslider
                 width: parent.width
-                minimumValue: 100
-                maximumValue: 5000
+                minimumValue: 0
+                maximumValue: 2000
 
                 value: ((appWindow.refreshInterval >= minimumValue) && (appWindow.refreshInterval<=maximumValue))? appWindow.refreshInterval : 1250
 
@@ -59,29 +58,29 @@ Page {
                 width: parent.width
                 height: Theme.itemSizeSmall
                 horizontalAlignment: Text.AlignHCenter
-                truncationMode: TruncationMode.Fade
+
                 text: "Current locale = "+ (Qt.locale().name.substring(0,2))
             }
 
             Label {
                 width: parent.width
                 height: Theme.itemSizeSmall*2
-                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
+
                 text: "Original version written by\nAntti L S Ketola"
             }
             Label {
                 width: parent.width
                 height: Theme.itemSizeSmall
-                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
+
                 text: "Copyright Antti Ketola 2016"
             }
             Label {
                 width: parent.width
                 height: Theme.itemSizesmall * 4
                 horizontalAlignment: Text.AlignHCenter
-                truncationMode: TruncationMode.Fade
+
                 text: "Translations:\n"+
                       "en: Antti Ketola\n"+
                       "fi: Antti Ketola\n"+
@@ -92,7 +91,7 @@ Page {
                 id: versionLabel
                 width: parent.width
                 height: Theme.itemSizeMedium
-                truncationMode: TruncationMode.Fade
+//                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
                 text: "Version "+"v0.98"
             }

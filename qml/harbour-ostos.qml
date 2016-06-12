@@ -30,7 +30,7 @@ ApplicationWindow
     property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
-    property int refreshInterval: 1250
+    property int refreshInterval: 300
 
     ListModel {
         id: shoppingListModel
@@ -43,42 +43,41 @@ ApplicationWindow
     ListModel {
         id: shopModel
     }
-
-    SilicaListView {
+    Component {
         id: listView
+        SilicaListView {}
     }
-
-    SilicaFlickable {
+    Component {
         id: itemeditflick
+        SilicaFlickable {}
     }
-
-
-    initialPage: FirstPage { }
+    initialPage: firstPage
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
-
-    FirstPage {
+    Component {
         id: firstPage
+        FirstPage {}
     }
 
-    ItemDetailsPage {
-        id: itemDetailsPage
-    }
-
-    ItemEditPage {
+    //    ItemDetailsPage {
+    //        id: itemDetailsPage
+    //    }
+    Component {
         id: itemEditPage
+        ItemEditPage {}
     }
-
-    ItemAddPage {
+    Component {
         id: itemAddPage
+        ItemAddPage {}
     }
-
-    ShopPage {
+    Component {
         id: shopPage
+        ShopPage {}
     }
 
-    SettingsPage {
+    Component {
         id: settingsPage
+        SettingsPage {}
     }
 
     Component.onCompleted: {
@@ -87,15 +86,16 @@ ApplicationWindow
     }
 
     function setRefreshInterval(millisec) {
-        if ((millisec >99) && (millisec<5000)){
+        if ((millisec >=0) && (millisec<=2000)){
             refreshInterval = millisec
         } else {
-            refreshInterval = 1250
+            refreshInterval = 300
         }
     }
 
     function  refreshShoppingListByCurrentShop(){
         // console.log("refresh; shopname="+currentShop)
+        toast.show()
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear()
             DBA.readShoppingListExState(shoppingListModel,"HIDE");
@@ -103,6 +103,7 @@ ApplicationWindow
             shoppingListModel.clear()
             DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
+        toast.hide()
     }
 
     //     This timer is used to refresh the shopping list in a separate thread.
@@ -118,14 +119,13 @@ ApplicationWindow
             //            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
-            toast.show()
             start()
+            //            toast.show()
         }
 
         onTriggered: {
 
             stop()
-            toast.hide()
             if(_enabler){
                 //                console.debug("menurefresh timer triggered.");
                 refreshShoppingListByCurrentShop()
@@ -133,16 +133,15 @@ ApplicationWindow
             } else {
                 //                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
             }
+
         }
     }
     /*
      * Function to request refresh - without timer
      */
     function requestRefresh(enabler,tracetext) {
-        toast.show()
         //        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
         refreshShoppingListByCurrentShop()
-        toast.hide()
     }
     /*
  * Function to request refresh asynchronously - the timer version spawning a new thread
@@ -163,7 +162,7 @@ ApplicationWindow
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width / 3
-        height: Theme.itemSizeLarge
+        height: 0
 
         id: toast
         Label {
@@ -175,34 +174,53 @@ ApplicationWindow
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width// - Theme.paddingLarge
-            height: Theme.itemSizeLarge
+            height: parent.height
+
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-
-
+            font.pixelSize: Theme.fontSizeMedium
             text: qsTr("Updating")
         }
         states: State {
             name: "toasting"; when: visible
             PropertyChanges {
-                target: toast; height: Theme.itemSizeLarge
+                target: toast; height: Theme.itemSizeMedium
             }
         }
-//        transitions: Transition {
-//            NumberAnimation {
-//                properties: height;
-//                duration: 500
-//            }
-//        }
+        transitions: Transition {
+            to: "toasting"
+            ParallelAnimation {
+                PropertyAnimation {
+                    target: toast
+                    properties: "height";
+                    duration: 150
+                    easing.type: Easing.InQuad
+                }
+                PropertyAnimation {
+                    target: toastLabel
+                    properties: "font.pixelSize"
+                    duration: 300
+                    from:0
+                    to: Theme.fontSizeMedium
+                }
+            }
+        }
 
         function show() {
-            visible = true
+            //            console.log("***show toast")
+            visible=true
+            state = "toasting"
         }
         function hide() {
-            visible = false
+            //            console.log("***hide toast")
+            visible=false
+            state=""
+
         }
+
         Component.onCompleted: {
-            hide()
+            visible=false
+            state=""
         }
     }
 }

@@ -5,7 +5,7 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation></translation>
+        <translation>Ostos</translation>
     </message>
 </context>
 <context>
@@ -42,6 +42,10 @@
     <message>
         <source>Clearing</source>
         <translation>Ostoslista tyhjennetään</translation>
+    </message>
+    <message>
+        <source>Debug dump DB to log</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -137,14 +141,6 @@
         <translation>Peruuta</translation>
     </message>
     <message>
-        <source>Shop</source>
-        <translation>Kauppa</translation>
-    </message>
-    <message>
-        <source>Edit shops</source>
-        <translation>Muokkaa kauppoja</translation>
-    </message>
-    <message>
         <source>Item Name</source>
         <translation>Artikkelin nimi</translation>
     </message>
@@ -159,6 +155,14 @@
     <message>
         <source>Item Class</source>
         <translation>Luokka</translation>
+    </message>
+    <message>
+        <source>Shop</source>
+        <translation>Kauppa</translation>
+    </message>
+    <message>
+        <source>Edit shops</source>
+        <translation>Muokkaa kauppoja</translation>
     </message>
 </context>
 <context>
@@ -183,7 +187,7 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation></translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
@@ -240,28 +244,39 @@
 <context>
     <name>ShopPage</name>
     <message>
-        <source>Add new shop</source>
-        <translation>Lisää uusi kauppa</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Poista</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation>Ei kauppoja</translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation>Muokkaa</translation>
+        <source>Accept</source>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <source>Back</source>
         <translation>Takaisin</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <translation>Hyväksy</translation>
+        <source>No items</source>
+        <translation>Ei artikkelita</translation>
+    </message>
+    <message>
+        <source>Add new shop</source>
+        <translation>Lisää kauppa</translation>
+    </message>
+    <message>
+        <source>unassigned</source>
+        <translation>[ei valittu]</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Muokkaa</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Poista</translation>
+    </message>
+</context>
+<context>
+    <name>ShopSelector</name>
+    <message>
+        <source>unassigned</source>
+        <translation>[ei valittu]</translation>
     </message>
 </context>
 <context>
@@ -277,6 +292,13 @@
     <message>
         <source>Ostos</source>
         <translation>Ostos</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-ostos</name>
+    <message>
+        <source>Updating</source>
+        <translation>Listaa päivitetään</translation>
     </message>
 </context>
 </TS>

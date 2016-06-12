@@ -5,7 +5,7 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Einkaufa</translation>
+        <translation>Ostos - Karren</translation>
     </message>
 </context>
 <context>
@@ -42,6 +42,10 @@
     <message>
         <source>Clearing</source>
         <translation>Einkaufsliste wird leer gemacht</translation>
+    </message>
+    <message>
+        <source>Debug dump DB to log</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -134,7 +138,23 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Zurũck</translation>
+        <translation>Aufheben</translation>
+    </message>
+    <message>
+        <source>Item Name</source>
+        <translation>Artikelname</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation>Menge</translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation>Einheit</translation>
+    </message>
+    <message>
+        <source>Item Class</source>
+        <translation>Klass</translation>
     </message>
     <message>
         <source>Shop</source>
@@ -143,22 +163,6 @@
     <message>
         <source>Edit shops</source>
         <translation>Laden bearbeiten</translation>
-    </message>
-    <message>
-        <source>Item Name</source>
-        <translation>Artikelname</translation>
-    </message>
-    <message>
-        <source>Quantity</source>
-        <translation>Quantität</translation>
-    </message>
-    <message>
-        <source>Unit</source>
-        <translation>Einheit</translation>
-    </message>
-    <message>
-        <source>Item Class</source>
-        <translation>Klasse</translation>
     </message>
 </context>
 <context>
@@ -188,42 +192,42 @@
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>The state can be toggled like by clicking the state icon on the left.
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>The context menu has options to hide, edit, flag</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source> increase quantity, decrease quantity and delete the item.
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>The item is listed as to buy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>The item has been bought</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>The item is listed as flagged (e.g. find later)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -240,35 +244,46 @@
 <context>
     <name>ShopPage</name>
     <message>
-        <source>Add new shop</source>
-        <translation>Neu Laden hinzufügen</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>löschen</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation>Keine Artikeln</translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation>Bearbeiten</translation>
+        <source>Accept</source>
+        <translation>Akzeptier</translation>
     </message>
     <message>
         <source>Back</source>
         <translation>Zurück</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <translation>Akzeptier</translation>
+        <source>No items</source>
+        <translation>Keine Artikeln</translation>
+    </message>
+    <message>
+        <source>Add new shop</source>
+        <translation>Laden hinzufügen</translation>
+    </message>
+    <message>
+        <source>unassigned</source>
+        <translation>(nicht gewählt]</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+</context>
+<context>
+    <name>ShopSelector</name>
+    <message>
+        <source>unassigned</source>
+        <translation>(nicht gewählt]</translation>
     </message>
 </context>
 <context>
     <name>Splash</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - eInKauf</translation>
+        <translation>Ostos - Karren</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -277,6 +292,13 @@
     <message>
         <source>Shopping list</source>
         <translation>Einkaufsliste</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-ostos</name>
+    <message>
+        <source>Updating</source>
+        <translation>Aktualisierend</translation>
     </message>
 </context>
 </TS>

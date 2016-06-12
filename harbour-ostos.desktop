@@ -3,11 +3,10 @@ Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-ostos
 Exec=harbour-ostos
-Name=Ostos
+Name=Cart Manager
 # translation example:
 # your app name in Finnish locale (fi)
-Name[fi]=Ostos
-Name[en]=Shopa
-Name[es]=Kompra
-Name[ca]=Kompre
-Name[de]=Einkaufa
+Name[fi]=Kärry
+Name[en]=Cartmana
+Name[es]=Karrito
+Name[de]=Karren

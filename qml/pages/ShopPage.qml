@@ -13,7 +13,10 @@ Dialog {
 
     allowedOrientations: Orientation.All
     property int changeCount: 0
+    property string wildcard: "*"
+    property string unassigned: "unassigned"
     canAccept: changeCount > shopListView.count
+
     SilicaListView {
         id: shopListView
         anchors.fill: parent
@@ -93,7 +96,7 @@ Dialog {
         changeCount=0
         shopModel.clear()
         DBA.repopulateShopList()
-        currentShop="unassigned"
+        currentShop=wildcard
     }
 
 
@@ -110,11 +113,11 @@ Dialog {
 
         ListItem {
             id:shopitem
-            width: parent.width
+            //            width: parent.width
             TextField {
                 id: shopField
                 //                anchors { left: parent.left; right: parent.right }
-                text: model.name
+                text: (model.name == "unassigned") ? qsTr("unassigned") : model.name
                 EnterKey.enabled: true //text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: {
@@ -135,11 +138,28 @@ Dialog {
                 }
             }
 
+            Rectangle {
+                anchors {
+                    top: parent.top;
+                    bottom: parent.bottom;
+                    left: parent.left;
+                    right: parent.right;
+                    margins: 2
+                }
+                color: Theme.highlightBackgroundColor
+                opacity: Theme.highlightBackgroundOpacity /3
+            }
+
             menu: ContextMenu {
                 id: scxmenu
+
                 MenuItem {
                     text: qsTr("Edit")
-                    height: ((model.name != "unassigned") && (model.name != "*")) ? Theme.itemSizeSmall : 0
+                    height: Theme.itemSizeSmall
+                    enabled: ((model.name != unassigned) &&
+                              (model.name != qsTr("unassigned")) &&
+                              (model.name != wildcard))
+                             ? true : false
                     onClicked: {
                         console.log("ShopPage.shopitem.ContextMenu.Edit index:"+index)
                         shopField.readOnly = false
@@ -148,7 +168,11 @@ Dialog {
                 }
                 MenuItem {
                     text: qsTr("Delete")
-                    height: ((model.name != "unassigned") && (model.name != "*")) ? Theme.itemSizeSmall : 0
+                    height: Theme.itemSizeSmall
+                    enabled: ((model.name != unassigned) &&
+                              (model.name != qsTr("unassigned")) &&
+                              (model.name != wildcard))
+                             ? true : false
                     onClicked: {
                         console.log("ShopPage.shopitem.ContextMenu.Delete index:"+index)
                         //                        deleteshop(index)
@@ -159,14 +183,14 @@ Dialog {
                             remorseShopDelete.execute(scxmenu.parent,"Deleting", function() {
                                 console.log("ShopPage.qml: Deleting "+shopname+" the hard way, there are "+refcount+" references")
                                 console.log("ShopPage.qml: ...reassign to unassigned in DB")
-                                DBA.updateShopNameInShoppinglistDB(shopname,"unassigned")
+                                DBA.updateShopNameInShoppinglistDB(shopname,unassigned)
                                 console.log("ShopPage.qml: ...reassign to unassigned in shoppingListModel")
-                                updateShopNameInLM(shoppingListModel,shopname,"unassigned")
+                                updateShopNameInLM(shoppingListModel,shopname,unassigned)
                                 console.log("ShopPage.qml: ...reassign to unassigned in DB")
                                 DBA.deleteShop(shopname)
                                 shopModel.clear()
                                 DBA.repopulateShopList(shopModel)
-                                currentShop="unassigned"
+                                currentShop=qsTr("unassigned")
                                 console.log("ShopPage.qml: deleteshop finished")
                             },5000)
 
@@ -176,8 +200,7 @@ Dialog {
                                 DBA.deleteShop(shopname)
                                 shopModel.clear()
                                 DBA.repopulateShopList(shopModel)
-                                currentShop="unassigned"
-                                //                                firstPage.value="unassigned"
+                                currentShop=qsTr("unassigned")
                             },5000)
                         }
                         console.log("ShopPage.qml: deleteshop finished")
@@ -196,11 +219,11 @@ Dialog {
         var shopname = shopitem.name
         var refcount = DBA.shopRefCount(shopname)
         if( refcount>0) {
-            console.log("ShopPage.qml: Deleting "+shopname+" the hardway, there are "+refcoount+" references")
+            console.log("ShopPage.qml: Deleting "+shopname+" the hard way, there are "+refcount+" references")
             console.log("ShopPage.qml: ...reassign to unassigned in DB")
-            DBA.updateShopNameInShoppinglistDB(shopname,"unassigned")
+            DBA.updateShopNameInShoppinglistDB(shopname,unassigned)
             console.log("ShopPage.qml: ...reassign to unassigned in shoppingListModel")
-            updateShopNameInLM(shoppingListModel,shopname,"unassigned")
+            updateShopNameInLM(shoppingListModel,shopname,unassigned)
             console.log("ShopPage.qml: ...reassign to unassigned in DB")
             DBA.deleteShop(shopname)
             console.log("ShopPage.qml: deleteshop finished")
@@ -211,7 +234,7 @@ Dialog {
                 DBA.deleteShop(shopModel.get(i).name)
                 shopModel.clear()
                 DBA.repopulateShopList(shopModel)
-                currentShop="unassigned"
+                currentShop=qsTr("unassigned")
             },4000)
         }
         console.log("ShopPage.qml: deleteshop finished")

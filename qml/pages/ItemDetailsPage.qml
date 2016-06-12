@@ -114,7 +114,7 @@ Dialog {
                 onPressed: { // Here could be context menu for modification and delete
                     //But this is not priority
                 }
-                Component.onCompleted: value=itemshop.unassigned
+                Component.onCompleted: value=ShopSelector.unassigned
             }
 
             ComboBox {
