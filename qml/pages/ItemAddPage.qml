@@ -6,6 +6,7 @@ import "../dbaccess.js" as DBA
 import "../itemadd.js" as ITEMADD
 Dialog {
     id: addDialog
+    allowedOrientations: Orientation.All
 
     property string searchString
     //property alias searchFld: addDialog.searchField //searchView.headerItem // needed the particular reference!
@@ -28,14 +29,14 @@ Dialog {
 
     onStatusChanged: {
         if(addDialog.status == PageStatus.Active) {
-//            console.log("****ItemAddPage.qml Dialog.onStatusChanged, status="+status)
+            //            console.log("****ItemAddPage.qml Dialog.onStatusChanged, status="+status)
             cherryPicked = false
             templistmodel.clear()
-//            console.log("**** loading templistmodel")
+            //            console.log("**** loading templistmodel")
             DBA.readShoppingListExState(templistmodel,"BUY")
             searchListModel.update()
         }
-    }    
+    }
 
     ListModel {
         id: searchListModel
@@ -82,6 +83,7 @@ Dialog {
 
                 SearchField {
                     id: searchField
+
                     anchors.fill: parent
                     placeholderText: qsTr("Search")
 
@@ -109,23 +111,26 @@ Dialog {
                 delegate: ListItem {
                     id: slItem
 
-                    Button { // words decorated as buttons
-                        id: btn
-                        width: sLabel.width + 2 * Theme.paddingLarge
-                        anchors.margins: Theme.paddingLarge
-                        x: searchField.textLeftMargin
-                        height: sLabel.height + 2 * Theme.paddingSmall
-                        Label{
-                            id: sLabel
-                            text: model.name
-                            x: Theme.paddingLarge
-                            y: Theme.paddingSmall
+                    Label{
+                        id: sLabel
+                        text: model.name
+                        x: Theme.paddingLarge
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    Rectangle {
+                        anchors {
+                            top: parent.top;
+                            bottom: parent.bottom;
+                            left: parent.left;
+                            right: parent.right;
+                            margins: 2
                         }
-
-                        onClicked: {
-                            searchField.text=sLabel.text
-                            addDialog.cherryPicked=true
-                        }
+                        color: Theme.highlightBackgroundColor
+                        opacity: Theme.highlightBackgroundOpacity /3
+                    }
+                    onClicked: {
+                        searchField.text=sLabel.text
+                        addDialog.cherryPicked=true
                     }
                 }
             }

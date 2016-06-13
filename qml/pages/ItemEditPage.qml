@@ -11,6 +11,8 @@ import "../pages"
  */
 Dialog {
     id: itemeditdialog
+    allowedOrientations: Orientation.All
+
     property int rowid_in_db: -1
 
     acceptDestination: Qt.resolvedUrl("FirstPage.qml")

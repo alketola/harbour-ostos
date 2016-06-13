@@ -43,10 +43,6 @@
         <source>Clearing</source>
         <translation>Ostoslista tyhjennetään</translation>
     </message>
-    <message>
-        <source>Debug dump DB to log</source>
-        <translation></translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>

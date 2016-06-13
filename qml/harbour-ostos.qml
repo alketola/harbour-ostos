@@ -26,11 +26,16 @@ ApplicationWindow
 {
     id: appWindow
 
+    allowedOrientations: Orientation.All
 
     property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
     property int refreshInterval: 300
+
+    onOrientationChanged: {
+        console.log("Orientation changed:"+orientation)
+    }
 
     ListModel {
         id: shoppingListModel
@@ -95,7 +100,7 @@ ApplicationWindow
 
     function  refreshShoppingListByCurrentShop(){
         // console.log("refresh; shopname="+currentShop)
-        toast.show()
+        //        toast.show()
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear()
             DBA.readShoppingListExState(shoppingListModel,"HIDE");
@@ -103,7 +108,7 @@ ApplicationWindow
             shoppingListModel.clear()
             DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
-        toast.hide()
+        //        toast.hide()
     }
 
     //     This timer is used to refresh the shopping list in a separate thread.
@@ -120,7 +125,7 @@ ApplicationWindow
             _enabler=enabler
             _current=current
             start()
-            //            toast.show()
+            toast.show()
         }
 
         onTriggered: {
@@ -133,7 +138,7 @@ ApplicationWindow
             } else {
                 //                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
             }
-
+            toast.hide()
         }
     }
     /*
@@ -147,13 +152,13 @@ ApplicationWindow
  * Function to request refresh asynchronously - the timer version spawning a new thread
  */
     function requestRefreshAsync(enabler,tracetext) {
-        console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
+        //        console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
 
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)
         } else {
             menurefreshtimer.restart()
-            console.debug("harbour-ostos.requestRefresh - restarted timer.")
+            //            console.debug("harbour-ostos.requestRefresh - restarted timer.")
         }
     }
     Rectangle {

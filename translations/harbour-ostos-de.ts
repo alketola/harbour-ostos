@@ -43,10 +43,6 @@
         <source>Clearing</source>
         <translation>Einkaufsliste wird leer gemacht</translation>
     </message>
-    <message>
-        <source>Debug dump DB to log</source>
-        <translation></translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>

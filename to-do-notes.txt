@@ -1,6 +1,13 @@
-2015-06-23:
+2016-06-13:
+* Prepare uninstallation cleanup routines for example to SettingsPage.qml.
+Database erase:
+- optinally export database as file
+- remove tables shoppinglist, shops, settings,
+- remove database, ShopListDB
+
+2016-06-23:
 * Cover actions could be more useful. The index just jumps to any next item in database.
-  - Improvement: find next that has "BUY" status.
+  - Improvement: find next that has "BUY" status. CANCELLED v0.98: still no cover actions
 * After adding an item,
   - the whole list should be shown. DONE v0.97
   - Auto-refresh, no explicit "refresh" DONE

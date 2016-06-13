@@ -1,0 +1,21 @@
+TESTING
+
+Documenting manual testing of Ostos.
+
+1. Case: Start-up:
+1.1 Launch the application from the icon
+1.2 Expected result: The first page show with pull-down menu enabled and
+with shop selector in the upper edge with word "shop",
+and a looking glass and a dot on the right side.
+The list below the header may show items
+
+2. Case: Add an item
+2.1 Go to search page
+2.1a. Click dot
+2.1b. Swipe left
+2.2 Expected result: Search page shows with highlighted "Cancel" and greyed-out "Accept"
+It's OK to have list items on the list
+
+
+
+

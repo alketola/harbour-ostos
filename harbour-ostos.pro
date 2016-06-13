@@ -57,7 +57,6 @@ RESOURCES += \
 
 DISTFILES += \
     to-do-notes.txt \
-    qml/pages/qmlfile \
     qml/itemadd.js \
     qml/images/graphic-toggle-off.png \
     qml/images/graphic-toggle-on.png \
@@ -84,7 +83,10 @@ DISTFILES += \
     qml/pages/help/ostoshelp-es.html \
     qml/pages/help/ostoshelp-fi.html \
     qml/pages/help/ostoshelp-fr.html \
-    qml/pages/help/ostoshelp.html
+    qml/pages/help/ostoshelp.html \
+    testing.txt \
+    LICENSE.txt \
+    COPYING
 
 SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
 

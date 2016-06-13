@@ -42,10 +42,6 @@
         <source>Clearing</source>
         <translation>Se fara vuil la llista de compres</translation>
     </message>
-    <message>
-        <source>Debug dump DB to log</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>

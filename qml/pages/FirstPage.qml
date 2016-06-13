@@ -10,6 +10,7 @@ import "../dbaccess.js" as DBA
 
 Page {
     id: firstPage
+    allowedOrientations: Orientation.All
 
     onStatusChanged: {
         //        console.log("first page status changed:"+status+" PageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive)
@@ -71,13 +72,13 @@ Page {
         delegate: listLine
 
         PullDownMenu {
-                        MenuItem {
-                            text: qsTr("Debug dump DB to log");
-                            onClicked: {
-                                DBA.dumpShoppingList();
-                                console.log("...dumped.");
-                            }
-                        }
+            //            MenuItem {
+            //                text: qsTr("Debug dump DB to log");
+            //                onClicked: {
+            //                    DBA.dumpShoppingList();
+            //                    console.log("...dumped.");
+            //                }
+            //            }
             //            MenuItem {
             //                text: qsTr("DELETE DB ");
             //                onClicked: {
@@ -139,7 +140,7 @@ Page {
         id: listLine
         ListItem {
             id: itemi
-
+            //            height: Theme.itemSizeSmall
             onClicked: { //ListItem
                 //                firstPageView.currentIndex = index;
                 //                ci = index;
@@ -171,7 +172,7 @@ Page {
                     width: firstPage.width / 2
                     anchors.verticalCenter: parent.verticalCenter
                     truncationMode: TruncationMode.Fade
-                    text: iname //+ " " + iqty + " " + iunit
+                    text: iname
                 }
 
                 Label {
@@ -180,8 +181,20 @@ Page {
                 }
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
+                    color: Theme.secondaryColor
                     text: iunit
                 }
+            }
+            Rectangle {
+                anchors {
+                    top: parent.top;
+                    bottom: parent.bottom;
+                    left: parent.left;
+                    right: parent.right;
+                    margins: 2
+                }
+                color: Theme.highlightBackgroundColor
+                opacity: Theme.highlightBackgroundOpacity /3
             }
         }
     } // END Component listLine
