@@ -177,6 +177,10 @@
         <source>Shop name</source>
         <translation>Nombre de botiga</translation>
     </message>
+    <message>
+        <source>Add new shop</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OldHelpTxt</name>

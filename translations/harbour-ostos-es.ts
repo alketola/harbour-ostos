@@ -177,6 +177,10 @@
         <source>Shop name</source>
         <translation>Nonbre de la tienda</translation>
     </message>
+    <message>
+        <source>Add new shop</source>
+        <translation>Añadir tienda</translation>
+    </message>
 </context>
 <context>
     <name>OldHelpTxt</name>

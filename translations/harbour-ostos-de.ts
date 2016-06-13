@@ -178,6 +178,10 @@
         <source>Shop name</source>
         <translation>Die Name des Laden</translation>
     </message>
+    <message>
+        <source>Add new shop</source>
+        <translation>Laden hinzufügen</translation>
+    </message>
 </context>
 <context>
     <name>OldHelpTxt</name>

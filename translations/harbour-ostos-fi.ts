@@ -179,6 +179,10 @@
         <source>Shop name</source>
         <translation>Kaupan nimi</translation>
     </message>
+    <message>
+        <source>Add new shop</source>
+        <translation>Lisää kauppa</translation>
+    </message>
 </context>
 <context>
     <name>OldHelpTxt</name>

@@ -18,7 +18,7 @@ Dialog {
     }
     Column {
         DialogHeader {
-            title: "Add new shop"
+            title: qsTr("Add new shop")
             width: newShopDialog.width
         }
 

@@ -52,7 +52,7 @@ Dialog {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr ("Add new shop")
+                text: qsTr("Add new shop")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("NewShopDialog.qml"));
                 }
