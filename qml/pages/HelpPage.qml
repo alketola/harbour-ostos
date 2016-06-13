@@ -9,6 +9,8 @@ import Sailfish.Silica 1.0
  * Help page of the shopping list app
  */
 Page {
+    allowedOrientations: Orientation.All
+
     property string helpURL
     property string webHelpPathURL: "http://mobilitio.com/app-support/ostos/help/"
     property string helpfilename: "ostoshelp"

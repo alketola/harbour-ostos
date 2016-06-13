@@ -176,25 +176,27 @@ Page {
 
             Row {
                 id: llr
-                spacing: 5
-                width: firstPage.width
+                spacing: 6
+                anchors.fill: parent
                 anchors.verticalCenter: parent.verticalCenter
 
                 StatButton { id: stateIndicator }
 
                 Label {
-                    //                    x: 83
-                    width: firstPage.width / 2
+                    width: (orientation == Orientation.Portrait) ? firstPage.width * 0.5 : firstPage.width * 0.7
                     anchors.verticalCenter: parent.verticalCenter
                     truncationMode: TruncationMode.Fade
                     text: iname
                 }
-
                 Label {
+                    width: firstPage.width * 0.1
+                    horizontalAlignment: Text.AlignRight
                     anchors.verticalCenter: parent.verticalCenter
                     text: iqty
                 }
                 Label {
+                    truncationMode: TruncationMode.Fade
+                    horizontalAlignment: Text.AlignLeft
                     anchors.verticalCenter: parent.verticalCenter
                     color: Theme.secondaryColor
                     text: iunit

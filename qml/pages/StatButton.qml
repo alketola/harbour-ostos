@@ -12,11 +12,9 @@ import "../dbaccess.js" as DBA
 IconButton {
     id: statButton
 
-    anchors.leftMargin: 12
-    anchors.rightMargin: 12
+    anchors.leftMargin: 5
+    anchors.rightMargin: 5
     anchors.verticalCenter: parent.verticalCenter
-    width: parent.width / 6
-    //x: 50       
 
     states: [
         State {

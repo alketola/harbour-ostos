@@ -34,10 +34,6 @@ ApplicationWindow
     property int refreshInterval: 300
     property bool webHelpEnabled: false
 
-    onOrientationChanged: {
-        console.log("Orientation changed:"+orientation)
-    }
-
     ListModel {
         id: shoppingListModel
     }
