@@ -10,7 +10,8 @@ import Sailfish.Silica 1.0
  */
 Page {
     property string helpURL
-    property string defaultHelpURL: "http://mobilitio.com/app-support/ostos/help/ostoshelp.html"
+    property string webHelpPathURL: "http://mobilitio.com/app-support/ostos/help/"
+    property string helpfilename: "ostoshelp"
 
     SilicaWebView {
         id: helpView
@@ -37,34 +38,35 @@ Page {
         var helppath = "help/" // important
 
         console.debug("On HelpPage.qml, current locale is:"+mylocale)
-        switch(mylocale) {
-        case "fi":
-            console.debug("suomi")
-            helpURL=helppath+"ostoshelp-fi.html"
-            break;
-        case "es":
-            console.debug("español")
-            helpURL=helppath+"ostoshelp-es.html"
-            break;
-        case "de":
-            console.debug("Deutsch")
-            helpURL=helppath+"ostoshelp-de.html"
-            break;
-        case "ca":
-            console.debug("català")
-            helpURL=helppath+"ostoshelp-ca.html"
-            break;
-        case "en":
-            console.debug("English")
-            helpURL=helppath+"ostoshelp.html"
-            break;
-        default:
-            console.debug("Default case for locale:"+mylocale)
-            helpURL=defaultHelpURL+"?locale="+mylocale //helppath+"ostoshelp.html"
-        }
+        // Formula for help file name:
+        // <path><filename>-<locale>.html
+        var helpfile = helppath+helpfilename+"-"+mylocale+".html"
+        if (!appWindow.webHelpEnabled) {
+            switch(mylocale) {
+            case "fi":
+                console.debug("suomi")
+                break
+            case "es":
+                console.debug("español")
+                break
+            case "de":
+                console.debug("Deutsch")
+                break
+            case "en":
+                console.debug("English")
+                break
+            default:
+                console.debug("Default case for unknown locale:"+mylocale+"=> \"en\"")
+                mylocale="en"
+            }
+            helpURL = helppath+helpfilename+"-"+mylocale+".html"
 
+        } else {
+            helpURL=webHelpPathURL+helpfilename+".html"
+        }
         console.log("helpURL="+helpURL)
         helpView.url = helpURL
     }
+
 }
 

@@ -32,6 +32,7 @@ ApplicationWindow
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
     property int refreshInterval: 300
+    property bool webHelpEnabled: false
 
     onOrientationChanged: {
         console.log("Orientation changed:"+orientation)
@@ -99,7 +100,7 @@ ApplicationWindow
     }
 
     function  refreshShoppingListByCurrentShop(){
-         console.log(" Refresh; shopname="+currentShop)
+        //         console.log(" Refresh; shopname="+currentShop)
 
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear()

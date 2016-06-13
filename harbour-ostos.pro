@@ -83,7 +83,7 @@ DISTFILES += \
     qml/pages/help/ostoshelp-es.html \
     qml/pages/help/ostoshelp-fi.html \
     qml/pages/help/ostoshelp-fr.html \
-    qml/pages/help/ostoshelp.html \
+    qml/pages/help/ostoshelp-en.html \
     testing.txt \
     LICENSE.txt \
     COPYING

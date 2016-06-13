@@ -11,6 +11,8 @@ import "../pages"
  */
 
 Page {
+    id: settingsPage
+
     allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
 
     SilicaFlickable {
@@ -22,17 +24,17 @@ Page {
 
         PullDownMenu {
             id: settingsPullDown
-//            MenuItem {
-//                text: qsTr("Import database data")
-//            }
-//            MenuItem {
-//                text: qsTr("Export database data")
-//            }
+            //            MenuItem {
+            //                text: qsTr("Import database data")
+            //            }
+            //            MenuItem {
+            //                text: qsTr("Export database data")
+            //            }
 
             MenuItem {
                 text: qsTr("DELETE DATABASE TABLES")
                 onClicked: {
-                        databaseTableDropRemorse.execute(qsTr("DELETING ALL DATA"),function(){console.log("***Deleting db table.."); DBA.deleteDatabase();console.log(".deleted.")},10000)
+                    databaseTableDropRemorse.execute(qsTr("DELETING ALL DATA"),function(){console.log("***Deleting db table.."); DBA.deleteDatabase();console.log(".deleted.")},10000)
                 }
             }
         }
@@ -73,6 +75,14 @@ Page {
                 }
 
             }
+            TextSwitch {
+                id: extHelpEnable
+                text: qsTr("Enable WWW help")
+                description: qsTr("Enable Help file read from Web and use of Google translator for unknown languages")
+
+                onCheckedChanged: appWindow.webHelpEnabled = checked
+            }
+
             Label {
                 width: parent.width
                 height: Theme.itemSizeSmall
@@ -110,7 +120,7 @@ Page {
                 id: versionLabel
                 width: parent.width
                 height: Theme.itemSizeMedium
-//                truncationMode: TruncationMode.Fade
+                //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
                 text: "Version "+"v0.98"
             }

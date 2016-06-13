@@ -244,6 +244,14 @@
         <source>DELETING ALL DATA</source>
         <translation>LÖSCHEND DATEN DER APPLIKATION</translation>
     </message>
+    <message>
+        <source>Enable WWW help</source>
+        <translation>Aktivieren WWW Hilfe</translation>
+    </message>
+    <message>
+        <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
+        <translation>Aktivieren die Nutzung des Internet für den Bedienungsanleitung. Google Translator hilft mit unbekannten Sprachen.</translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>

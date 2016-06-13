@@ -244,6 +244,14 @@
         <source>DELETING ALL DATA</source>
         <translation>TYHJENNETÄÄN SOVELLUKSEN MUISTIA</translation>
     </message>
+    <message>
+        <source>Enable WWW help</source>
+        <translation>Hae ohjeet weibstä</translation>
+    </message>
+    <message>
+        <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
+        <translation>Salli ohjeiden luku internet-yhteyden kautta sivulta, joka käyttää Google Translatoria tuntemattomille kielille</translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>

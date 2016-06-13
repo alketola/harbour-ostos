@@ -243,6 +243,14 @@
         <source>DELETING ALL DATA</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Enable WWW help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>
