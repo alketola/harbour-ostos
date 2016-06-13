@@ -71,6 +71,37 @@ function initDatabase() {
 
 }
 
+function deleteDatabase() {
+    var db = openDB()
+    try {
+        db.transaction( function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS shoppinglist;')
+        })
+    } catch (sqlErr) {
+        console.warn("ostos/dbaccess.js: deletDatabase: drop shoppinglist "+sqlErr)
+        // do nothing with it
+    }
+
+    try {
+        db.transaction( function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS shops;')
+        })
+    } catch (sqlErr) {
+        console.warn("ostos/dbaccess.js: deletDatabase: drop shops:"+sqlErr)
+        // do nothing with it
+    }
+
+    try {
+        db.transaction( function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS settings;')
+        })
+    } catch (sqlErr) {
+        console.warn("ostos/dbaccess.js: deletDatabase drop settings:"+sqlErr)
+        // do nothing with it
+    }
+    console.log("Ostos.dbaccess.js: deleted database tables")
+}
+
 /*
   Reads all shopping list items and writes them to shopping list model (which is rendered to the first page
   */
@@ -173,7 +204,7 @@ function initDatabase() {
  * but only those which are not in excluded_state (e.g. "BUY")
  */
 function readShoppingListExState(lm,excluded_state) {
-//    console.debug("ostos/dbaccess.js: readTheListExState:"+excluded_state);
+    //    console.debug("ostos/dbaccess.js: readTheListExState:"+excluded_state);
     excluded_state=escapeForSqlite(excluded_state)
     var db = openDB()
     if(!db) { console.error("readTheListExState:db open failed"); return; }
@@ -220,7 +251,7 @@ function readShoppingListExState(lm,excluded_state) {
  * but only those which are in mystate (e.g. "BUY")
  */
 function readShoppingListByState(lm, mystate) {
-//    console.debug("ostos/dbaccess.js: readShoppingListByState:"+mystate);
+    //    console.debug("ostos/dbaccess.js: readShoppingListByState:"+mystate);
     mystate=escapeForSqlite(mystate)
     var db = openDB()
     if(!db) { console.error("readTheListExState:db open failed"); return; }
@@ -248,7 +279,7 @@ function readShoppingListByState(lm, mystate) {
         iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
         iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
         ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-//        console.debug("DBREAD-State:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+        //        console.debug("DBREAD-State:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
         lm.append({ //rs.rows.item(i).
                       "istat":istat,
                       "iname":iname,
@@ -266,7 +297,7 @@ function readShoppingListByState(lm, mystate) {
  * but only for a certain shop
  */
 function readShoppingListByShopExState(lm,shopname,excluded_state) {
-//    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
+    //    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
     shopname=escapeForSqlite(shopname)
     excluded_state=escapeForSqlite(excluded_state)
     var db = openDB()
@@ -289,7 +320,7 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
     var iunit = ""
     var iclass = ""
     var ishop = ""
-//    console.debug("..read "+rs.rows.length+" lines from DB")
+    //    console.debug("..read "+rs.rows.length+" lines from DB")
     for(var i = 0; i < rs.rows.length; i++) {
         irid = rs.rows.item(i).rowid
         istat = rs.rows.item(i).istat
@@ -714,7 +745,7 @@ function dq(str) {
  * Returns shop list ordered by [usage] hits as array
  */
 function repopulateShopList(lm /* ListModel */) {
-//    console.debug("ostos/dbaccess.js: repopulateShopList")
+    //    console.debug("ostos/dbaccess.js: repopulateShopList")
     var shops = getAllShopsByHits();
     try {
         var shoparr=JSON.parse(shops);
@@ -770,7 +801,7 @@ var HIT_DIV = 100;
 
 function hitShop(sname) {
     if (!sname) { return }
-//    console.debug("ostos/dbaccess.js: hitShop:"+sname)
+    //    console.debug("ostos/dbaccess.js: hitShop:"+sname)
     sname=escapeForSqlite(sname);
 
     var db = openDB();
@@ -820,7 +851,7 @@ function deleteShop(sname) {
     sname=escapeForSqlite(sname);
     var db = openDB();
     if(!db) { console.error("ostos/dbaccess.js: delete Shop:db open failed"); return; }
-//    console.debug("ostos/dbaccess.js: deleteShop:" + sname);
+    //    console.debug("ostos/dbaccess.js: deleteShop:" + sname);
     db.transaction(function(tx) {
         tx.executeSql("DELETE FROM shops WHERE name=?;", sname);
     });

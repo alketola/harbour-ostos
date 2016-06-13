@@ -2,8 +2,10 @@
 * Prepare uninstallation cleanup routines for example to SettingsPage.qml.
 Database erase:
 - optinally export database as file
-- remove tables shoppinglist, shops, settings,
-- remove database, ShopListDB
+- remove tables shoppinglist, shops, settings, DONE
+- remove database, ShopListDB file
+- If first page pulldown menu is left without selection the list is not shown.
+  Have to refreh bu selecting any shop from the shop selector
 
 2016-06-23:
 * Cover actions could be more useful. The index just jumps to any next item in database.

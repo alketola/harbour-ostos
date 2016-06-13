@@ -235,6 +235,14 @@
         <source>List refresh interval</source>
         <translation>Demora de actualización de la lista</translation>
     </message>
+    <message>
+        <source>DELETE DATABASE TABLES</source>
+        <translation>BORRAR DATABASE</translation>
+    </message>
+    <message>
+        <source>DELETING ALL DATA</source>
+        <translation>BORRANDO DATOS DE LA APPLICACIÓN</translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>

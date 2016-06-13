@@ -235,6 +235,14 @@
         <source>List refresh interval</source>
         <translation>Demora per actualizaciò de la llista</translation>
     </message>
+    <message>
+        <source>DELETE DATABASE TABLES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DELETING ALL DATA</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>

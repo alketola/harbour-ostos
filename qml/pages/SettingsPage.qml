@@ -14,10 +14,29 @@ Page {
     allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
 
     SilicaFlickable {
+        id: settingsFlickable
         anchors.fill: parent
         contentHeight: settingsColumn.height
 
         VerticalScrollDecorator { }
+
+        PullDownMenu {
+            id: settingsPullDown
+//            MenuItem {
+//                text: qsTr("Import database data")
+//            }
+//            MenuItem {
+//                text: qsTr("Export database data")
+//            }
+
+            MenuItem {
+                text: qsTr("DELETE DATABASE TABLES")
+                onClicked: {
+                        databaseTableDropRemorse.execute(qsTr("DELETING ALL DATA"),function(){console.log("***Deleting db table.."); DBA.deleteDatabase();console.log(".deleted.")},10000)
+                }
+            }
+        }
+        RemorsePopup { id: databaseTableDropRemorse }
 
         Column {
             id: settingsColumn

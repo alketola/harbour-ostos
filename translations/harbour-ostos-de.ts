@@ -236,6 +236,14 @@
         <source>List refresh interval</source>
         <translation>Laufzeit bevor aktualisierung von Einkaufsliste</translation>
     </message>
+    <message>
+        <source>DELETE DATABASE TABLES</source>
+        <translation>ALLE DATEN LÖSCHEN</translation>
+    </message>
+    <message>
+        <source>DELETING ALL DATA</source>
+        <translation>LÖSCHEND DATEN DER APPLIKATION</translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>

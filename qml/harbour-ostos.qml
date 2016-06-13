@@ -99,8 +99,8 @@ ApplicationWindow
     }
 
     function  refreshShoppingListByCurrentShop(){
-        // console.log("refresh; shopname="+currentShop)
-        //        toast.show()
+         console.log(" Refresh; shopname="+currentShop)
+
         if ((currentShop==wildcard) || (!currentShop) ) {
             shoppingListModel.clear()
             DBA.readShoppingListExState(shoppingListModel,"HIDE");
@@ -108,7 +108,6 @@ ApplicationWindow
             shoppingListModel.clear()
             DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
-        //        toast.hide()
     }
 
     //     This timer is used to refresh the shopping list in a separate thread.
@@ -152,7 +151,7 @@ ApplicationWindow
  * Function to request refresh asynchronously - the timer version spawning a new thread
  */
     function requestRefreshAsync(enabler,tracetext) {
-        //        console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
+        console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
 
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)

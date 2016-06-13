@@ -72,6 +72,8 @@ Page {
         delegate: listLine
 
         PullDownMenu {
+            id: pdm
+            property string optionSelected: ""
             //            MenuItem {
             //                text: qsTr("Debug dump DB to log");
             //                onClicked: {
@@ -90,6 +92,7 @@ Page {
             MenuItem {
                 text: qsTr("Help")
                 onClicked: {
+                    pdm.optionSelected=text
                     pageStack.push(Qt.resolvedUrl("HelpPage.qml"))
                 }
             }
@@ -97,6 +100,7 @@ Page {
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: {
+                    pdm.optionSelected=text
                     pageStack.push("SettingsPage.qml")
                 }
             }
@@ -114,12 +118,16 @@ Page {
 
             MenuItem {
                 text: qsTr("Edit shops")
-                onClicked: { pageStack.push(Qt.resolvedUrl("ShopPage.qml"));}
+                onClicked: {
+                    pdm.optionSelected=text
+                    pageStack.push(Qt.resolvedUrl("ShopPage.qml"));
+                }
             }
 
             MenuItem {
                 text: qsTr("Hide bought")
                 onClicked: {
+                    pdm.optionSelected=text
                     DBA.bulkStateChange(shoppingListModel,"GOT","HIDE")
                     requestRefresh()
                 }
@@ -127,10 +135,17 @@ Page {
 
             MenuItem {
                 text: qsTr("Search to buy")
-                onClicked: pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
+                onClicked: {
+                    pdm.optionSelected=text
+                    pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
+                }
             }
-        }
 
+//            onStateChanged: {
+//                console.log("FirstPage PullDownMenu StateChanged, option selected="+pdm.optionSelected+" state="+state)
+//                if ((state != "expanded") && (pdm.optionSelected == "")) requestRefreshAsync(true,"FirstPagePulldown")
+//            }
+        }
     }
 
     /*

@@ -236,6 +236,14 @@
         <source>List refresh interval</source>
         <translation>Ostoslistan päivityksen viive</translation>
     </message>
+    <message>
+        <source>DELETE DATABASE TABLES</source>
+        <translation>TYHJENNÄ TIETOKANTA</translation>
+    </message>
+    <message>
+        <source>DELETING ALL DATA</source>
+        <translation>TYHJENNETÄÄN SOVELLUKSEN MUISTIA</translation>
+    </message>
 </context>
 <context>
     <name>ShopPage</name>

@@ -18,7 +18,7 @@ import "../dbaccess.js" as DBA
 ComboBox {
 
     property Component overlappedToHide         // if there is something that has to be hidden
-                                                // when ComboBox menu opens put it to overlappedToHide
+    // when ComboBox menu opens put it to overlappedToHide
     property ListModel listmodel                // The listmodel where the item names are
     property bool hidewildcard: false           // flag to hide the wildcard option
     // next learn binding
@@ -36,8 +36,8 @@ ComboBox {
     }
 
     function refresh() {
-      listmodel.clear()
-      DBA.repopulateShopList(listmodel)
+        listmodel.clear()
+        DBA.repopulateShopList(listmodel)
     }
 
     function isWildcard(x) {
@@ -84,16 +84,16 @@ ComboBox {
             value = dbvalue  // Otherwise, let it be.
     }
 
-//    function findShopListIndex(shopname) {
-//        for(var i=0;i<listmodel.count;i++) {
-//            //            console.log("name="+listmodel.get(i).name+" shopname="+shopname+" i:"+i)
-//            if(listmodel.get(i).name == shopname)
-//            {
-//                return i+1
-//            }
-//        }
-//        return 0
-//    }
+    //    function findShopListIndex(shopname) {
+    //        for(var i=0;i<listmodel.count;i++) {
+    //            //            console.log("name="+listmodel.get(i).name+" shopname="+shopname+" i:"+i)
+    //            if(listmodel.get(i).name == shopname)
+    //            {
+    //                return i+1
+    //            }
+    //        }
+    //        return 0
+    //    }
 
     menu: ContextMenu {
         id: scx
@@ -124,19 +124,24 @@ ComboBox {
                 text: model.name
                 visible: (model.name != unassigned)
                 onClicked: {
-                    value= model.name
-                    appWindow.currentShop=value
+                    if(model.name) {
+                        value= model.name
+                        appWindow.currentShop=value
+                    }
+                    else {
+                        console.log("oh my, bad click?")
+                    }
                 }
             }
         }
 
-         /* Event handlers get called intrestingly in order (as seen by console logs)
+        /* Event handlers get called intrestingly in order (as seen by console logs)
           * ComboBox.onEntered --> ComboBox.onStateChanged -->
           * ContextMenu.onClicked --> ContextMenu.onExited -->
           * ComboBox.onStateChanged --> ContextMenu.onClosed */
 
         onClosed: {
-//            console.log("ShopSelector contextmenu onClosed, value:"+value)
+            //            console.log("ShopSelector contextmenu onClosed, value:"+value)
             if (overlappedToHide) firstPageView.delegate = overlappedToHide
             appWindow.requestRefresh(true,"ShopSelector ContexMenu Closed")
         }
@@ -150,13 +155,13 @@ ComboBox {
         ListView { id: nillistview }
     }
 
-//    onStateChanged: {
+    //    onStateChanged: {
 
-//        if(state) {
-//            console.log("ShopSelector.qml activated ("+state+")")
-//        } else {
-//            console.log("ShopSelector.qml deactivated (no state).")
-//        }
-//    }
+    //        if(state) {
+    //            console.log("ShopSelector.qml activated ("+state+")")
+    //        } else {
+    //            console.log("ShopSelector.qml deactivated (no state).")
+    //        }
+    //    }
 }
 
