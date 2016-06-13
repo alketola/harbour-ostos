@@ -48,6 +48,7 @@ ComboBox {
      * getting ShopSelector's value so that it is not intenationalized
      */
     function getValueForDB() {
+        console.log("ShopSelector.qml; value="+value+" qsTr(\"unassigned\")="+qsTr("unassigned"))
         var value_out
         if (value == wildcard) {
             value_out = unassigned // dissallowing * in database
@@ -56,6 +57,7 @@ ComboBox {
         } else {
             value_out = value  // Otherwise, let it be.
         }
+        console.log("ShopSelector.qml; value_out="+value_out)
         return value_out
     }
 

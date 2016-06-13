@@ -174,12 +174,12 @@
 <context>
     <name>NewShopDialog</name>
     <message>
-        <source>Shop name</source>
-        <translation>Nonbre de la tienda</translation>
+        <source>Add new shop</source>
+        <translation type="unfinished">Añadir tienda</translation>
     </message>
     <message>
-        <source>Add new shop</source>
-        <translation>Añadir tienda</translation>
+        <source>Shop name</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
