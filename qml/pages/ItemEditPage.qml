@@ -103,7 +103,7 @@ Dialog {
         itemunit.text=shoppingListModel.get(ci).iunit;
         itemclass.text=shoppingListModel.get(ci).iclass;
         rowid_in_db=shoppingListModel.get(ci).rowid;
-        editshopselector.setValueI18N(shoppingListModel.get(ci).ishop) //Sets the selector initial value correctly?
+        editshopselector.setValueFromDB(shoppingListModel.get(ci).ishop) //Sets the selector initial value correctly?
 
     }
 
@@ -112,7 +112,7 @@ Dialog {
         //        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         var rowid = DBA.findItemByName(null,itemname.text)
         //        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
-        var itemshop2db = editshopselector.getDBValue()
+        var itemshop2db = editshopselector.getValueForDB()
 
         if (rowid) {
             console.log("...updating existent ci="+ci+

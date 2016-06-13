@@ -47,33 +47,19 @@ ComboBox {
     /*
      * getting ShopSelector's value so that it is not intenationalized
      */
-    function getDBValue() {
+    function getValueForDB() {
         var value_out
-        if (value == wildcard)
+        if (value == wildcard) {
             value_out = unassigned // dissallowing * in database
-        else if ((value == unassigned) || (value==qsTr("unassigned")))
+        } else if ((value == unassigned) || (value==qsTr("unassigned"))) {
             value_out = unassigned // Disallowing translations of unassigned in database
-        else
+        } else {
             value_out = value  // Otherwise, let it be.
-
+        }
         return value_out
     }
 
-    function getUIValue() {
-        var value_out
-        if ((value == unassigned) || (value==qsTr("unassigned")))
-            value_out = qsTr("unassigned")
-        else
-            value_out = value  // Otherwise, let it be.
-
-        return value_out
-    }
-
-    function setValue(invalue) {
-        value = invalue;
-    }
-
-    function setValueI18N(dbvalue) {
+    function setValueFromDB(dbvalue) {
         if (dbvalue == wildcard)
             value = unassigned // dissallowing * in database
         else if (dbvalue == unassigned)
@@ -104,33 +90,27 @@ ComboBox {
             text: wildcard
             visible: !hidewildcard
             onClicked: {
-                setValue(wildcard)
+                value = wildcard
                 appWindow.currentShop=wildcard
             }
         }
-        MenuItem {  // The first item in the shop menu is wildcard, or "any-star"
-            id: unassignedMenuItem
-            text: qsTr("unassigned")
-            onClicked: {
-                setValueI18N(unassigned)
-                appWindow.currentShop=unassigned
-            }
-        }
+//        MenuItem {  // The first item in the shop menu is wildcard, or "any-star"
+//            id: unassignedMenuItem
+//            text: qsTr("unassigned")
+//            onClicked: {
+//                setValueFromDB(unassigned)
+//                appWindow.currentShop=unassigned
+//            }
+//        }
         Repeater {
             id: shopRepe
             model: listmodel
 
             MenuItem {
-                text: model.name
-                visible: (model.name != unassigned)
+                text: (model.name ==  unassigned) ? qsTr("unassigned") : model.name
                 onClicked: {
-                    if(model.name) {
-                        value= model.name
-                        appWindow.currentShop=value
-                    }
-                    else {
-                        console.log("oh my, bad click?")
-                    }
+                    value= (model.name ==  unassigned) ? qsTr("unassigned") : model.name
+                    appWindow.currentShop = model.name
                 }
             }
         }
