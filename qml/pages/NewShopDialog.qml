@@ -10,6 +10,7 @@ import "../dbaccess.js" as DBA
  */
 Dialog {
     id: newShopDialog
+    canAccept: shopnameIsGood()
     onAccepted:  {
         DBA.addShop(newShopName.text);
         DBA.repopulateShopList(shopModel);
@@ -29,5 +30,9 @@ Dialog {
             EnterKey.enabled: text.length > 0
             EnterKey.iconSource: "image://theme/icon-m-enter-accept"
         }
+    }
+
+    function shopnameIsGood() {
+        return (newShopName.text.length >1) ? true : false
     }
 }

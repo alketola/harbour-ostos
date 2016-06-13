@@ -45,11 +45,11 @@ function initDatabase() {
     var db = openDB()
     try {
         db.transaction( function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS shoppinglist (istat TEXT, iname TEXT PRIMARY KEY, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER);')
+            tx.executeSql('CREATE TABLE IF NOT EXISTS shoppinglist (istat TEXT, iname TEXT PRIMARY KEY NOT NULL, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER);')
         })
 
         db.transaction( function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS shops (name TEXT PRIMARY KEY, hits INTEGER, seq INTEGER, control INTEGER);')
+            tx.executeSql('CREATE TABLE IF NOT EXISTS shops (name TEXT PRIMARY KEY NOT NULL, hits INTEGER, seq INTEGER, control INTEGER);')
         })
 
         db.transaction( function(tx) {
