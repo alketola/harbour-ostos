@@ -4,17 +4,66 @@ Documenting manual testing of Ostos.
 
 1. Case: Start-up:
 1.1 Launch the application from the icon
-1.2 Expected result: The first page show with pull-down menu enabled and
+1.2 Expected result: The First Page show with pull-down menu enabled and
 with shop selector in the upper edge with word "shop",
 and a looking glass and a dot on the right side.
 The list below the header may show items
 
 2. Case: Add an item
-2.1 Go to search page
-2.1a. Click dot
-2.1b. Swipe left
-2.2 Expected result: Search page shows with highlighted "Cancel" and greyed-out "Accept"
-It's OK to have list items on the list
+2.1 Go to search page. Navigate forward or swipe left
+2.1.1 Expected result: Search page shows with highlighted "Cancel" and greyed-out "Accept"
+It's OK to have list items on the list, or empty. The list shows only items that are not to be bought
+
+2.2 Go back to first page
+2.2a Navidate or Swipe back
+2.2.1 Expected result: the first page show shopping list and is updated
+
+2.3 Navigate forward and type in a letter
+2.3.1 Expected result: the list of available names is filtered ( if any)
+When there is only one name left or a name is clicked to select the Accept navigation becomes
+available
+
+2.4 Type a new name
+2.4.1 Expected result: the list is clear, because no name matches to the iput
+
+2.5 Go to Edit Page. Navigate forward or swipe left
+2.5.1 Expected result: The edit page shows with all details of the item, if any.
+At least the name typed in Search page can be seen.
+2.5.2 Check that back navigation works and returning to Edit page works
+2.5.3 Check that the Accepting, forward navigation or swipe left brings in the First Page
+2.5.3.1 Check that the First Page shows the newly added item as to be bought (as the first item)
+2.5.3.2 (optional) Check that the item is written correctly to sqlite3 database, table shoppinglist
+
+3. Case: Edit shops
+3.1 Enter Edit shops dialog
+3.1.a From First page pulldown menu
+3.1.b From Item Edit Page pulldown menu
+3.1.1 Expected result: The ShopPage show up with a list of shop name.
+Observe that there is "Add new shop" entry in the pulldown menu
+3.2. Case: Enter New shop dialog by selecting "Add new shop" from pulldown menu
+3.2.1 Expected result: A dialog with "Add new shop" turns up
+3.2.2 Check back and forward navigation
+3.2.3 Add new shop to the list by typing name and selecting Accept
+3.2.4 Expected result: the added shop name appears in the bottom of the shop list
+
+3.3 Case: Shop list context menu
+3.3.1 Enter Context menu by long pressing a shop line (not over name)
+3.3.2 Expected result: Context menu shows "Edit" and "Delete" options
+
+3.4. Case: Shop name Edit:
+3.4.1 Select "Edit" in contect menu
+3.4.2 Expected result: The Name becomes editable
+3.4.3 Change shop name and accept by forward navigation
+3.4.4 Expected result shop name changes, in the list seen in shop selector combobox and
+all shopping list items
+
+3.5 Case: Shop name delete
+3.5.1 Get back to ShopPage, enter context meny and select "Delete" in context menu
+3.5.2 Remorse item shows for 5 seconds, let it run to end
+3.5.2 Expected result: The shop name is removed from shop list and all the
+shopping list items that referred to that referred to it, refer to "unassigned"
+
+To Be Continued...
 
 
 
