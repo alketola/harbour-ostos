@@ -109,22 +109,23 @@ Dialog {
 
     onAccepted: {
         console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
-        //        console.debug("Row in db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + editshopselector.value)
         var rowid = DBA.findItemByName(null,itemname.text)
         //        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
-        var itemshop2db = editshopselector.getValueForDB()
-
+        var selectedShopToDB = editshopselector.getValueForDB()
+        console.debug("editshopselector.value="+editshopselector.value
+                      +" .getValueForDB()="+editshopselector.getValueForDB())
+        console.debug("Row to db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + selectedShopToDB)
         if (rowid) {
             console.log("...updating existent ci="+ci+
                         " qsTr(ShopSelector.unassigned)="+ qsTr(editshopselector.unassigned) +
-                        " itemshop="+itemshop2db)
+                        " itemshop="+selectedShopToDB)
             DBA.updateItemState(rowid_in_db,"BUY")
-            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, itemshop2db); //shop.currentname?
+            DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, selectedShopToDB); //shop.currentname?
             DBA.updateItemState(rowid,"BUY")
             DBA.updateShoppinListNextSeq(rowid)
         } else { // adding new
             //            console.log("...adding new ci="+ci)
-            DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, editshopselector.value)
+            DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, selectedShopToDB)
         }
         currentShop=wildcard
     }
