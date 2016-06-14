@@ -86,7 +86,9 @@ DISTFILES += \
     qml/pages/help/ostoshelp-en.html \
     testing.txt \
     LICENSE.txt \
-    COPYING
+    COPYING \
+    icons/128x128/harbour-ostos.png \
+    icons/256x256/harbour-ostos.png
 
 SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
 

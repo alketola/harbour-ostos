@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Help</source>
-        <translation>Anweisnung</translation>
+        <translation>Anweisung</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -176,18 +176,18 @@
     <name>NewShopDialog</name>
     <message>
         <source>Add new shop</source>
-        <translation type="unfinished">Laden hinzufügen</translation>
+        <translation>Laden hinzufügen</translation>
     </message>
     <message>
         <source>Shop name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
 </context>
 <context>
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation>Anweisnung</translation>
+        <translation>Anweisung</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.

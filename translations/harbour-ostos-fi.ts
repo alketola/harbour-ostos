@@ -177,11 +177,11 @@
     <name>NewShopDialog</name>
     <message>
         <source>Add new shop</source>
-        <translation type="unfinished">Lisää kauppa</translation>
+        <translation>Lisää kauppa</translation>
     </message>
     <message>
         <source>Shop name</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaupan nimi</translation>
     </message>
 </context>
 <context>

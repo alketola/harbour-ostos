@@ -31,7 +31,7 @@ ApplicationWindow
     property int ci // a global for current shoppingListModel index, passed around
     property string currentShop // a global to set context for default shop
     property string wildcard: "*"
-    property int refreshInterval: 300
+    property int refreshInterval: 900
     property bool webHelpEnabled: false
 
     ListModel {
@@ -80,6 +80,24 @@ ApplicationWindow
     Component {
         id: settingsPage
         SettingsPage {}
+    }
+
+    onOrientationChanged: {
+        switch(orientation) {
+        case Orientation.Portrait:
+            toast.rotation = 0
+            break
+        case Orientation.Landscape:
+            toast.rotation = 90
+            break
+        case Orientation.PortraitInverted:
+            toast.rotation = 180
+            break
+        case Orientation.LandscapeInverted:
+            toast.rotation = 270
+            break
+        }
+        //        console.log("appWindow.toast.rotation="+toast.rotation)
     }
 
     Component.onCompleted: {
@@ -158,14 +176,17 @@ ApplicationWindow
         }
     }
     Rectangle {
+        id: toast
+
         color: "#"+(~(valueOf(Theme.primaryColor)))
         opacity: 20
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        width: parent.width / 3
+        anchors.margins: 5
+        width: toastLabel.width+Theme.paddingLarge
         height: 0
 
-        id: toast
+
         Label {
             id: toastLabel
 
@@ -174,12 +195,11 @@ ApplicationWindow
             opacity: 100
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            width: parent.width// - Theme.paddingLarge
             height: parent.height
 
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: Theme.fontSizeMedium
+
             text: qsTr("Updating")
         }
         states: State {
@@ -194,8 +214,9 @@ ApplicationWindow
                 PropertyAnimation {
                     target: toast
                     properties: "height";
-                    duration: 150
-                    easing.type: Easing.InQuad
+                    from: 0
+                    duration: 300
+                    easing.type: Easing.OutBack
                 }
                 PropertyAnimation {
                     target: toastLabel
@@ -203,6 +224,14 @@ ApplicationWindow
                     duration: 300
                     from:0
                     to: Theme.fontSizeMedium
+                    easing.type: Easing.OutBack
+                }
+                PropertyAnimation {
+                    target: toastLabel
+                    properties: "opacity"
+                    duration: 200
+                    from:0
+                    to: 100
                 }
             }
         }

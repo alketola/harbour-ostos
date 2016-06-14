@@ -175,11 +175,11 @@
     <name>NewShopDialog</name>
     <message>
         <source>Add new shop</source>
-        <translation type="unfinished">Añadir tienda</translation>
+        <translation>Añadir tienda</translation>
     </message>
     <message>
         <source>Shop name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de la tienda</translation>
     </message>
 </context>
 <context>
