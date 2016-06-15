@@ -5,7 +5,7 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Karrito</translation>
+        <translation>Ostos - Carrito</translation>
     </message>
 </context>
 <context>
@@ -48,81 +48,6 @@
     <message>
         <source>Search</source>
         <translation>Busca y agrega</translation>
-    </message>
-</context>
-<context>
-    <name>ItemDetailsPage</name>
-    <message>
-        <source>pcs</source>
-        <translation>pzas</translation>
-    </message>
-    <message>
-        <source>litres</source>
-        <translation>litros</translation>
-    </message>
-    <message>
-        <source>Classification</source>
-        <translation>Classificación</translation>
-    </message>
-    <message>
-        <source>Shop</source>
-        <translation>Tienda</translation>
-    </message>
-    <message>
-        <source>Edit shops</source>
-        <translation>Editar tiendas</translation>
-    </message>
-    <message>
-        <source>vegetables</source>
-        <translation>verduras o legumbres</translation>
-    </message>
-    <message>
-        <source>fruit</source>
-        <translation>fruta</translation>
-    </message>
-    <message>
-        <source>meat</source>
-        <translation>carne</translation>
-    </message>
-    <message>
-        <source>fish</source>
-        <translation>pescado</translation>
-    </message>
-    <message>
-        <source>dairy</source>
-        <translation>lacteo</translation>
-    </message>
-    <message>
-        <source>other</source>
-        <translation>otras</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>Añadir</translation>
-    </message>
-    <message>
-        <source>Item Name</source>
-        <translation>Nombre del article</translation>
-    </message>
-    <message>
-        <source>Unit</source>
-        <translation>Unidad</translation>
-    </message>
-    <message>
-        <source>g</source>
-        <translation>g</translation>
-    </message>
-    <message>
-        <source>kg</source>
-        <translation>kg</translation>
-    </message>
-    <message>
-        <source>Quantity</source>
-        <translation>Cantidad</translation>
-    </message>
-    <message>
-        <source>packs</source>
-        <translation>paq</translation>
     </message>
 </context>
 <context>
@@ -275,23 +200,12 @@
         <translation>Añadir tienda</translation>
     </message>
     <message>
-        <source>unassigned</source>
-        <translation>[sin especificar]</translation>
-    </message>
-    <message>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Borrar</translation>
-    </message>
-</context>
-<context>
-    <name>ShopSelector</name>
-    <message>
-        <source>unassigned</source>
-        <translation>[sin especificar]</translation>
     </message>
 </context>
 <context>
@@ -306,7 +220,7 @@
     </message>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Karrito</translation>
+        <translation>Ostos - Carrito</translation>
     </message>
 </context>
 <context>
@@ -314,6 +228,10 @@
     <message>
         <source>Updating</source>
         <translation>Actualizando</translation>
+    </message>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 </TS>

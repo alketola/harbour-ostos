@@ -1,9 +1,10 @@
+.pragma library
 .import QtQuick.LocalStorage 2.0 as LS
-
 /* External variable references to be noted:
  * Qt Quick: ListModel shopListModel, declared in ApplicationWindow page
  */
 
+var unknownShop = "?"
 
 /*
  * Opens Qt/QML Local Storage database
@@ -11,6 +12,7 @@
 function openDB() {
     return LS.LocalStorage.openDatabaseSync("ShopListDB", "1.1", "Shopping list database", 100000);
 }
+
 
 /**
  * Escapes string so that special characters are preceded by backslash.
@@ -42,33 +44,21 @@ function unescapeFromSqlite(s){
   Creates our SQLite tables if they do not exists
   */
 function initDatabase() {
+    // console.log("harbour-ostos/dbaccess.js initDatabase().")
     var db = openDB()
     try {
         db.transaction( function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS shoppinglist (istat TEXT, iname TEXT PRIMARY KEY NOT NULL, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER);')
-        })
-
-        db.transaction( function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS shops (name TEXT PRIMARY KEY NOT NULL, hits INTEGER, seq INTEGER, control INTEGER);')
-        })
-
-        db.transaction( function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS settings (setting TEXT(16) PRIMARY KEY, value TEXT(64));')
-        })
-    } catch (sqlErr) {
-        console.warn("ostos/dbaccess.js: initDatabase "+sqlErr)
-        // do nothing with it
-    }
-
-    try {
-        db.transaction( function(tx) {
-            tx.executeSql('INSERT OR IGNORE INTO shops (name, hits, seq) VALUES ("unassigned", 0, 0);')
+            tx.executeSql('CREATE TABLE IF NOT EXISTS shoppinglist (istat TEXT, iname TEXT PRIMARY KEY NOT NULL, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER);');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS shops (name TEXT PRIMARY KEY NOT NULL, hits INTEGER, seq INTEGER, control INTEGER);');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS settings (setting TEXT(16) PRIMARY KEY, value TEXT(64));');
+            tx.executeSql("INSERT OR IGNORE INTO shops (name, hits, seq) VALUES (?,?,?);", [unknownShop, 0, 0]);
         })
     } catch (sqlErr) {
         console.warn("ostos/dbaccess.js:"+sqlErr)
         // do nothing with it
+    } finally {
+        // console.log("harbour-ostos/dbaccess.js initDatabase() finally ended.")
     }
-
 }
 
 function deleteDatabase() {
@@ -102,102 +92,6 @@ function deleteDatabase() {
     console.log("Ostos.dbaccess.js: deleted database tables")
 }
 
-/*
-  Reads all shopping list items and writes them to shopping list model (which is rendered to the first page
-  */
-//function readAllShoppingList(lm) {
-//    console.debug("ostos/dbaccess.js: readAllShoppingList");
-//    var db = openDB()
-//    if(!db) { console.error("ostos/dbaccess.js: readAll:db open failed"); return; }
-//    var rs
-//    try {
-//        db.transaction( function(tx) {
-//            console.debug('ostos/dbaccess.js: readAllShoppingList('+lm+')')
-//            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-//            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist ORDER BY istat ASC, seq DESC, iname ASC;')
-//        })
-//    } catch (sqlErr) {
-//        console.error("readAllShoppingList, SQL:"+sqlErr)
-//        return
-//    }
-
-//    var irid = 0
-//    var istat = ""
-//    var iname = ""
-//    var iqty = ""
-//    var iunit = ""
-//    var iclass = ""
-//    var ishop
-//    for(var i = 0; i < rs.rows.length; i++) {
-//        irid = rs.rows.item(i).rowid
-//        istat = rs.rows.item(i).istat
-//        iname = unescapeFromSqlite(rs.rows.item(i).iname)
-//        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
-//        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
-//        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
-//        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-//        //console.debug("DBREAD:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
-//        lm.append({ //rs.rows.item(i).
-//                      "istat":istat,
-//                      "iname":iname,
-//                      "iqty":iqty,
-//                      "iunit":iunit,
-//                      "ishop":ishop,
-//                      "iclass":iclass,
-//                      "rowid":irid
-//                  })
-//    }
-//}
-
-
-///*
-// * Reads all shopping list items and writes them to shopping list model
-// * but only for a certain shop
-// */
-//function readShoppingListByShop(lm,shopname) {
-//    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname);
-//    shopname=escapeForSqlite(shopname)
-//    var db = openDB()
-//    if(!db) { console.error("readAllByShop:db open failed"); return; }
-//    var rs
-//    try {
-//        db.transaction( function(tx) {
-//            print('... read in list items')
-//            // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-//            rs = tx.executeSql('SELECT rowid, * FROM shoppinglist WHERE ishop=? ORDER BY istat ASC, seq DESC, iname ASC;', shopname)
-//        })
-//    } catch (sqlErr) {
-//        return "SQL:"+sqlErr
-//    }
-//    var irid = 0
-//    var istat = ""
-//    var iname = ""
-//    var iqty = ""
-//    var iunit = ""
-//    var iclass = ""
-//    var ishop = ""
-//    for(var i = 0; i < rs.rows.length; i++) {
-//        irid = rs.rows.item(i).rowid
-//        istat = rs.rows.item(i).istat
-//        iname = unescapeFromSqlite(rs.rows.item(i).iname)
-//        iqty = unescapeFromSqlite(rs.rows.item(i).iqty)
-//        iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
-//        iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
-//        ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-//        //        console.debug("DBREAD-S:"+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
-//        lm.append({ //rs.rows.item(i).
-//                      "istat":istat,
-//                      "iname":iname,
-//                      "iqty":iqty,
-//                      "iunit":iunit,
-//                      "ishop":ishop,
-//                      "iclass":iclass,
-//                      "rowid":irid
-//                  });
-//    }
-//    hitShop(ishop)
-
-//}
 /* by states */
 /*
  * Reads all shopping list items and writes them to shopping list model
@@ -298,7 +192,7 @@ function readShoppingListByState(lm, mystate) {
  */
 function readShoppingListByShopExState(lm,shopname,excluded_state) {
     //    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
-    shopname=escapeForSqlite(shopname)
+    if (shopname != unknownShop) shopname=escapeForSqlite(shopname)
     excluded_state=escapeForSqlite(excluded_state)
     var db = openDB()
     if(!db) { console.error("readAllByShop:db open failed"); return; }
@@ -392,7 +286,7 @@ function insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
     })
     updateShoppinListNextSeq(rid)
     hitShop(ishop) /* update shop reference statistic */
-    console.debug("ostos/dbaccess.js: insertItemToShoppingList inserted rowid:" + rid)
+    // console.debug("ostos/dbaccess.js: insertItemToShoppingList inserted rowid:" + rid)
     return rid // rid seems to be a String?
 }
 
@@ -406,7 +300,7 @@ function updateItemInShoppingList(rid /* rowid */,iname, iqty, iunit, iclass, is
     iclass=escapeForSqlite(iclass)
     ishop=escapeForSqlite(ishop)
 
-    console.debug("updating rowid:" + rid + " iname:" + iname + " iqty:" + iqty + " iunit:" + iunit + " iclass:" + iclass + " ishop:" + ishop)
+    // console.debug("updating rowid:" + rid + " iname:" + iname + " iqty:" + iqty + " iunit:" + iunit + " iclass:" + iclass + " ishop:" + ishop)
 
     var db = openDB()
     if(!db) { /* console.error("writeItem:db open failed"); */ return; }
@@ -428,10 +322,10 @@ function updateItemInShoppingList(rid /* rowid */,iname, iqty, iunit, iclass, is
  */
 function updateSeqShoppingList(rid /* rowid */,seq) {
 
-    console.debug("ostos/dbaccess.js: updating rowid:" + rid + " seq:" + seq )
+    // console.debug("ostos/dbaccess.js: updating rowid:" + rid + " seq:" + seq )
 
     var db = openDB()
-    if(!db) { /* console.error("writeItem:db open failed");*/ return; }
+    if(!db) { console.error("harbour-ostos:db open failed"); return; }
 
     var result
     var lastrow=0
@@ -455,10 +349,10 @@ function updateSeqShoppingList(rid /* rowid */,seq) {
  * not tested
  */
 function getSeq(rowid,seq) {
-    console.debug("ostos/dbaccess.js: getSeq"+rowid+":"+seq)
+    // console.debug("ostos/dbaccess.js: getSeq"+rowid+":"+seq)
 
     var db = openDB()
-    if(!db) { /* console.error("getSeq:db open failed"); */ return; }
+    if(!db) { console.error("getSeq:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
@@ -655,7 +549,7 @@ function addShop(sname) {
 
     var lastrow=0;
     var rid;
-    try {
+    try {        
         db.transaction(function(tx) {
             tx.executeSql("INSERT INTO shops (name,hits,seq,control) VALUES (?,?,?,?);",
                           [sname,0,0,0]);
@@ -755,8 +649,8 @@ function repopulateShopList(lm /* ListModel */) {
     }
 
     lm.clear();
-    for(var i=0; i<shoparr.length; i++) {
-        //console.debug("ostos/dbaccess.js: shoparr ["+i+"] ="+shoparr[i]+" length="+shoparr.length);
+    for(var i=0; i<shoparr.length; i++) {        
+        //        console.debug("ostos/dbaccess.js: shoparr ["+i+"] ="+shoparr[i]+" length="+shoparr.length);
         lm.append({"name":shoparr[i],"edittext":shoparr[i]});
     }
 }
@@ -941,7 +835,7 @@ function getMaxSeq() {
         return ""; // "ERROR"
     }
     maxseq = rs.rows.item(0).db_maxseq
-    console.debug("ostos/dbaccess.js: getMaxSeq returns:"+maxseq)
+    // console.debug("ostos/dbaccess.js: getMaxSeq returns:"+maxseq)
     return maxseq
 }
 

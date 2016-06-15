@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick.LocalStorage 2.0
 import "../dbaccess.js" as DBA
 
 /*
@@ -165,7 +166,7 @@ Page {
             }
             onPressed: {
                 firstPageView.currentIndex = index
-                ci = index;
+                currIndex = index;
                 //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
             }
 

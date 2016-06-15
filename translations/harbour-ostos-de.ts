@@ -52,81 +52,6 @@
     </message>
 </context>
 <context>
-    <name>ItemDetailsPage</name>
-    <message>
-        <source>pcs</source>
-        <translation>Stk</translation>
-    </message>
-    <message>
-        <source>litres</source>
-        <translation>Liter</translation>
-    </message>
-    <message>
-        <source>Classification</source>
-        <translation>Klassifikation</translation>
-    </message>
-    <message>
-        <source>Shop</source>
-        <translation>Laden</translation>
-    </message>
-    <message>
-        <source>Edit shops</source>
-        <translation>Laden bearbeiten</translation>
-    </message>
-    <message>
-        <source>vegetables</source>
-        <translation>Gemüse</translation>
-    </message>
-    <message>
-        <source>fruit</source>
-        <translation>Fruchte</translation>
-    </message>
-    <message>
-        <source>meat</source>
-        <translation>Fleisch</translation>
-    </message>
-    <message>
-        <source>fish</source>
-        <translation>Fisch</translation>
-    </message>
-    <message>
-        <source>dairy</source>
-        <translation>Milchproducte</translation>
-    </message>
-    <message>
-        <source>other</source>
-        <translation>andere</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>Ergänz</translation>
-    </message>
-    <message>
-        <source>Item Name</source>
-        <translation>Artikelname</translation>
-    </message>
-    <message>
-        <source>Unit</source>
-        <translation>Einheit</translation>
-    </message>
-    <message>
-        <source>g</source>
-        <translation>g</translation>
-    </message>
-    <message>
-        <source>kg</source>
-        <translation>kg</translation>
-    </message>
-    <message>
-        <source>Quantity</source>
-        <translation>Menge</translation>
-    </message>
-    <message>
-        <source>packs</source>
-        <translation>Stk</translation>
-    </message>
-</context>
-<context>
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
@@ -276,23 +201,12 @@
         <translation>Laden hinzufügen</translation>
     </message>
     <message>
-        <source>unassigned</source>
-        <translation>(nicht gewählt]</translation>
-    </message>
-    <message>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
         <source>Delete</source>
         <translation>Löschen</translation>
-    </message>
-</context>
-<context>
-    <name>ShopSelector</name>
-    <message>
-        <source>unassigned</source>
-        <translation>(nicht gewählt]</translation>
     </message>
 </context>
 <context>
@@ -315,6 +229,10 @@
     <message>
         <source>Updating</source>
         <translation>Aktualisierend</translation>
+    </message>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 </TS>

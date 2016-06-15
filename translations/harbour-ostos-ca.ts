@@ -275,22 +275,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>unassigned</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ShopSelector</name>
-    <message>
-        <source>unassigned</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -314,6 +303,10 @@
     <message>
         <source>Updating</source>
         <translation>Actualizant</translation>
+    </message>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 </TS>

@@ -50,7 +50,6 @@ CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/harbour-ostos-fi.ts
 TRANSLATIONS += translations/harbour-ostos-de.ts
 TRANSLATIONS += translations/harbour-ostos-es.ts
-TRANSLATIONS += translations/harbour-ostos-ca.ts
 
 RESOURCES += \
     resources.qrc

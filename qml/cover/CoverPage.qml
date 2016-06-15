@@ -167,6 +167,7 @@ CoverBackground {
     function setAsGot() {
         DBA.updateItemState(parseInt(shoppingListModel.get(cover_index).rowid),"GOT");
         shoppingListModel.setProperty(cover_index,"istat","GOT");
+        console.log(qsTr("Ostos"))
     }
 
 

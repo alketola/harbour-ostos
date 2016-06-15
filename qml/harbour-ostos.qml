@@ -27,12 +27,17 @@ ApplicationWindow
     id: appWindow
 
     allowedOrientations: Orientation.All
+    // Global context
+    property int currIndex // a global for current shoppingListModel index, passed around
+    property string currShop // DBA.unknownShop is the string value for an unassigned shop
 
-    property int ci // a global for current shoppingListModel index, passed around
-    property string currentShop // a global to set context for default shop
+    // constants
     property string wildcard: "*"
+
     property int refreshInterval: 900
     property bool webHelpEnabled: false
+
+    // Declared here to be accessible thru appWindow.
 
     ListModel {
         id: shoppingListModel
@@ -45,6 +50,10 @@ ApplicationWindow
     ListModel {
         id: shopModel
     }
+
+    // Using Componentized declarations seem to reduce Silica Util.js:38
+    // Errors (parent Null) - so the Component is the parent
+
     Component {
         id: listView
         SilicaListView {}
@@ -53,17 +62,11 @@ ApplicationWindow
         id: itemeditflick
         SilicaFlickable {}
     }
-    initialPage: firstPage
-
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
     Component {
         id: firstPage
         FirstPage {}
     }
 
-    //    ItemDetailsPage {
-    //        id: itemDetailsPage
-    //    }
     Component {
         id: itemEditPage
         ItemEditPage {}
@@ -82,6 +85,13 @@ ApplicationWindow
         SettingsPage {}
     }
 
+    // Back to normal business, the ApplicationWindow's pointer to start
+    initialPage: firstPage
+
+    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+
+    // Noted that the toast rectangle doesn't turn according to
+    // orientation without this
     onOrientationChanged: {
         switch(orientation) {
         case Orientation.Portrait:
@@ -100,9 +110,11 @@ ApplicationWindow
         //        console.log("appWindow.toast.rotation="+toast.rotation)
     }
 
+    // This is a sort of application starting point
     Component.onCompleted: {
-        DBA.initDatabase();
-        currentShop = wildcard
+        console.log("harbour-ostos starting")
+        DBA.initDatabase(); // plug in localstorage
+        currShop = wildcard
     }
 
     function setRefreshInterval(millisec) {
@@ -110,18 +122,6 @@ ApplicationWindow
             refreshInterval = millisec
         } else {
             refreshInterval = 300
-        }
-    }
-
-    function  refreshShoppingListByCurrentShop(){
-        //         console.log(" Refresh; shopname="+currentShop)
-
-        if ((currentShop==wildcard) || (!currentShop) ) {
-            shoppingListModel.clear()
-            DBA.readShoppingListExState(shoppingListModel,"HIDE");
-        } else {
-            shoppingListModel.clear()
-            DBA.readShoppingListByShopExState(shoppingListModel, currentShop,"HIDE");
         }
     }
 
@@ -135,6 +135,7 @@ ApplicationWindow
         property string _current
 
         function turn_on(enabler,current) {
+            console.log("harbour-ostos refresh timer start")
             //            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
@@ -145,6 +146,7 @@ ApplicationWindow
         onTriggered: {
 
             stop()
+            console.log("harbour-ostos refresh timer stop")
             if(_enabler){
                 //                console.debug("menurefresh timer triggered.");
                 refreshShoppingListByCurrentShop()
@@ -175,20 +177,35 @@ ApplicationWindow
             //            console.debug("harbour-ostos.requestRefresh - restarted timer.")
         }
     }
+
+    // This is for "painting" the first page
+    function  refreshShoppingListByCurrentShop(){
+        if ((currShop==wildcard) || (!currShop) ) {
+            currShop=wildcard
+            shoppingListModel.clear()
+            DBA.readShoppingListExState(shoppingListModel,"HIDE");
+        } else {
+            shoppingListModel.clear()
+            DBA.readShoppingListByShopExState(shoppingListModel, currShop,"HIDE");
+        }
+        //        console.log("By Current shopname="+currShop)
+    }
+
+    // This is the small dark square to stop
+    // the user desperately waiting for the list update
     Rectangle {
         id: toast
 
-        color: "#"+(~(valueOf(Theme.primaryColor)))
+        color: "#"+(~(valueOf(Theme.primaryColor))) // a snappy way to calculate inverse color
         opacity: 20
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: 5
         width: toastLabel.width+Theme.paddingLarge
-        height: 0
-
+        height: 0                 // Start as hidden, Transition will bring it visible
 
         Label {
-            id: toastLabel
+            id: toastLabel   // the text to taunt the user
 
             visible: parent.visible
             color: Theme.primaryColor
@@ -202,12 +219,14 @@ ApplicationWindow
 
             text: qsTr("Updating")
         }
+
         states: State {
             name: "toasting"; when: visible
             PropertyChanges {
                 target: toast; height: Theme.itemSizeMedium
             }
         }
+
         transitions: Transition {
             to: "toasting"
             ParallelAnimation {
@@ -241,6 +260,7 @@ ApplicationWindow
             visible=true
             state = "toasting"
         }
+
         function hide() {
             //            console.log("***hide toast")
             visible=false
@@ -252,7 +272,7 @@ ApplicationWindow
             visible=false
             state=""
         }
-    }
+    } // end Rectangle
 }
 
 

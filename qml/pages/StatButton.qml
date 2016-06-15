@@ -49,7 +49,7 @@ IconButton {
 
     onClicked: {
         firstPageView.currentIndex = index;
-        ci = index;
+        currIndex = index;
     }
     onExited: {
        cycle(); // Does not seem to be redundant. Can't click icon without this?

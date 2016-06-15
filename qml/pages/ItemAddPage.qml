@@ -8,6 +8,8 @@ Dialog {
     id: addDialog
     allowedOrientations: Orientation.All
 
+    property string unknownShopString : DBA.unknownShop
+
     property string searchString
     //property alias searchFld: addDialog.searchField //searchView.headerItem // needed the particular reference!
     property bool cherryPicked

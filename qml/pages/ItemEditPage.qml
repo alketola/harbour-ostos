@@ -97,28 +97,29 @@ Dialog {
     }
     //"istat":"BUY", "iname":itemname.text, "iqty":itemqty.text, "iunit":itemunit.value, "iclass":itemclass.value, "rowid":rowid, "ishop":itemshop.value
     onOpened:{
-        console.log("ItemEditPage onOpened: index=" + ci);
-        itemname.text=shoppingListModel.get(ci).iname;
-        itemqty.text=shoppingListModel.get(ci).iqty;
-        itemunit.text=shoppingListModel.get(ci).iunit;
-        itemclass.text=shoppingListModel.get(ci).iclass;
-        rowid_in_db=shoppingListModel.get(ci).rowid;
-        editshopselector.setValueFromDB(shoppingListModel.get(ci).ishop) //Sets the selector initial value correctly?
+        // console.log("ItemEditPage onOpened: index=" + currIndex);
+        itemname.text=shoppingListModel.get(currIndex).iname;
+        itemqty.text=shoppingListModel.get(currIndex).iqty;
+        itemunit.text=shoppingListModel.get(currIndex).iunit;
+        itemclass.text=shoppingListModel.get(currIndex).iclass;
+        rowid_in_db=shoppingListModel.get(currIndex).rowid;
+        var shopname= (shoppingListModel.get(currIndex).ishop) ? shoppingListModel.get(currIndex).ishop : DBA.unknownShop
+        editshopselector.setValueFromDB(shopname)
 
     }
 
     onAccepted: {
-        console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+ci)
+        var selectedShopToDB = editshopselector.getValueForDB()
+
+        console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+currIndex)
         var rowid = DBA.findItemByName(null,itemname.text)
         //        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
-        var selectedShopToDB = editshopselector.getValueForDB()
+
         console.debug("editshopselector.value="+editshopselector.value
                       +" .getValueForDB()="+editshopselector.getValueForDB())
         console.debug("Row to db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + selectedShopToDB)
         if (rowid) {
-            console.log("...updating existent ci="+ci+
-                        " qsTr(ShopSelector.unassigned)="+ qsTr(editshopselector.unassigned) +
-                        " itemshop="+selectedShopToDB)
+            console.log("...updating existent ci="+currIndex+" itemshop="+selectedShopToDB)
             DBA.updateItemState(rowid_in_db,"BUY")
             DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, selectedShopToDB); //shop.currentname?
             DBA.updateItemState(rowid,"BUY")
@@ -127,6 +128,6 @@ Dialog {
             //            console.log("...adding new ci="+ci)
             DBA.insertItemToShoppingList("BUY",itemname.text,itemqty.text, itemunit.text, itemclass.text, selectedShopToDB)
         }
-        currentShop=wildcard
+        currShop=wildcard
     }
 }

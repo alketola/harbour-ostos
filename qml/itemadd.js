@@ -32,31 +32,31 @@ function accept() {
 
                     if(shoppingListModel.get(i).iname.toLowerCase()
                             ==found_1st_item_name.toLowerCase()) {
-                        ci = i
+                        currIndex = i
                         break
                     }
                 }
             } else {
                 // in case the item stat was HIDE, it must be added to shoppingListModel
-                ci=0
-                shoppingListModel.insert(ci,{ "istat":"BUY", "iname":acceptlm.get(0).iname, "iqty":acceptlm.get(0).iqty, "iunit":acceptlm.get(0).iunit, "iclass":acceptlm.get(0).iclass, "rowid":parseInt(db_index)});
-                currentShop = wildcard
+                currIndex=0
+                shoppingListModel.insert(currIndex,{ "istat":"BUY", "iname":acceptlm.get(0).iname, "iqty":acceptlm.get(0).iqty, "iunit":acceptlm.get(0).iunit, "iclass":acceptlm.get(0).iclass, "rowid":parseInt(db_index)});
+                currShop = wildcard
             }
         }
     } else if (count==0) { // Haven't found, will start adding a new item and its details
-        ci = shoppingListModel.count
+        currIndex = shoppingListModel.count
         shoppingListModel.append(
                     { "istat":"BUY",
                         "iname":searchField.text,
                         "iqty":"", "iunit":"", "iclass":"",
-                        "ishop":"unassigned",
-                        "rowid":parseInt(ci)}) // How come? rowid is the db row id!
-        console.log("itemadd.js: added new to model: ci="+ci+": iname="+shoppingListModel.get(ci).iname)
+                        "ishop":unknownShopString,
+                        "rowid":parseInt(currIndex)}) // How come? rowid is the db row id!
+        console.log("itemadd.js: added new to model: ci="+currIndex+": iname="+shoppingListModel.get(currIndex).iname)
 
     }
 
     console.log("* ItemAddPage accepted,\n- searchField.text:"+searchField.text+
-                " found_item_name:"+found_1st_item_name+" ci:"+ci)
+                " found_item_name:"+found_1st_item_name+" ci:"+currIndex)
 
 }
 

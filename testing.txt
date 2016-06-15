@@ -61,7 +61,7 @@ all shopping list items
 3.5.1 Get back to ShopPage, enter context meny and select "Delete" in context menu
 3.5.2 Remorse item shows for 5 seconds, let it run to end
 3.5.2 Expected result: The shop name is removed from shop list and all the
-shopping list items that referred to that referred to it, refer to "unassigned"
+shopping list items that referred to that referred to it, refer to "unassigned" or "-?-"
 
 To Be Continued...
 
