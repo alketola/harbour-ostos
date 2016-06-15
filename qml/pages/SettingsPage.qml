@@ -34,7 +34,14 @@ Page {
             MenuItem {
                 text: qsTr("DELETE DATABASE TABLES")
                 onClicked: {
-                    databaseTableDropRemorse.execute(qsTr("DELETING ALL DATA"),function(){console.log("***Deleting db table.."); DBA.deleteDatabase();console.log(".deleted.")},10000)
+                    databaseTableDropRemorse.execute(qsTr("DELETING ALL DATA"),
+                                                     function(){
+                                                         console.log("Deleting Database tables...");
+                                                         DBA.deleteDatabase();
+                                                         console.log("...deleted.");
+                                                         Qt.quit(); // a must for proper initialization if using the app again
+                                                     },10000)
+
                 }
             }
         }

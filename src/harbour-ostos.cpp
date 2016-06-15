@@ -46,6 +46,17 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    return SailfishApp::main(argc, argv);
+    // return SailfishApp::main(argc, argv); // Original startup, replace by following
+
+    // The following was required to make Qt.quit() work :-/
+    QGuiApplication* app = SailfishApp::application(argc, argv);
+    QQuickView* view = SailfishApp::createView();
+    view->setSource(SailfishApp::pathTo("qml/harbour-ostos.qml"));
+    view->show();
+    // connecting quit signal
+    QObject::connect((QObject*)view->engine(), SIGNAL(quit()), app, SLOT(quit()));
+
+    return app->exec();
+
 }
 
