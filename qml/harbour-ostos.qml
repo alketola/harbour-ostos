@@ -112,7 +112,7 @@ ApplicationWindow
 
     // This is a sort of application starting point
     Component.onCompleted: {
-        console.log("harbour-ostos starting")
+        console.log("harbour-ostos started")
         DBA.initDatabase(); // plug in localstorage
         currShop = wildcard
     }
@@ -168,7 +168,7 @@ ApplicationWindow
  * Function to request refresh asynchronously - the timer version spawning a new thread
  */
     function requestRefreshAsync(enabler,tracetext) {
-        console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
+        // console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
 
         if (!menurefreshtimer.running) {
             menurefreshtimer.turn_on(enabler,tracetext)

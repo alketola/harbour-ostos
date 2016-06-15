@@ -24,7 +24,7 @@ Page {
             bottom: parent.bottom //urlField.top //
             margins: Theme.paddingLarge
         }
-        url: "file:help/ostoshelp.html"
+        url: "file:help/ostoshelp-en.html"
     }
 
     Component.onCompleted: {
@@ -39,26 +39,26 @@ Page {
         var mylocale = (Qt.locale().name.substring(0,2))
         var helppath = "help/" // important
 
-        console.debug("On HelpPage.qml, current locale is:"+mylocale)
+        // console.debug("On HelpPage.qml, current locale is:"+mylocale)
         // Formula for help file name:
         // <path><filename>-<locale>.html
         var helpfile = helppath+helpfilename+"-"+mylocale+".html"
         if (!appWindow.webHelpEnabled) {
             switch(mylocale) {
             case "fi":
-                console.debug("suomi")
+                // console.debug("suomi")
                 break
             case "es":
-                console.debug("español")
+                // console.debug("español")
                 break
             case "de":
-                console.debug("Deutsch")
+                // console.debug("Deutsch")
                 break
             case "en":
-                console.debug("English")
+                // console.debug("English")
                 break
             default:
-                console.debug("Default case for unknown locale:"+mylocale+"=> \"en\"")
+                // console.debug("Default case for unknown locale:"+mylocale+"=> \"en\"")
                 mylocale="en"
             }
             helpURL = helppath+helpfilename+"-"+mylocale+".html"
@@ -66,7 +66,7 @@ Page {
         } else {
             helpURL=webHelpPathURL+helpfilename+".html"
         }
-        console.log("helpURL="+helpURL)
+        console.log("harbour-ostos helpURL="+helpURL)
         helpView.url = helpURL
     }
 

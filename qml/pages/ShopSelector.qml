@@ -42,8 +42,8 @@ ComboBox {
     /*
      * getting ShopSelector's value so that it is not intenationalized
      */
-    function getValueForDB() {
-        console.log("ShopSelector.qml; value="+value)
+    function getValue() {
+        // console.log("ShopSelector.qml; value="+value)
         var value_out
         if (value == wildcard) {
             value_out = DBA.unknownShop // dissallowing * in database
@@ -51,7 +51,7 @@ ComboBox {
         } else {
             value_out = value  // Otherwise, let it be.
         }
-        console.log("ShopSelector.qml; value_out="+value_out)
+        // console.log("ShopSelector.qml; value_out="+value_out)
         return value_out
     }
 
@@ -59,7 +59,7 @@ ComboBox {
       * Setting ShopSelector's value with a database value
       */
 
-    function setValueFromDB(dbvalue) {
+    function setValue(dbvalue) {
             value = dbvalue  // let it be.
     }
 

@@ -68,7 +68,7 @@ Dialog {
 
 
     onExited: {
-        // console.debug ("ShopPage: onExited");
+        // console.debug("ShopPage: onExited");
         pageStack.replace(Qt.resolvedUrl("FirstPage.qml"))
     }
     onAccepted: {
@@ -92,7 +92,7 @@ Dialog {
         currShop=wildcard
     }
     onCanceled: {
-        console.log("ShopPage: onCanceled");
+        // console.log("ShopPage: onCanceled");
         changeCount=0
         shopModel.clear()
         DBA.repopulateShopList()
@@ -123,7 +123,7 @@ Dialog {
                 EnterKey.enabled: true //text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: {
-                    console.log("ShopPage.qml EnterKey.onClicked")
+                    // console.log("ShopPage.qml EnterKey.onClicked")
                     readOnly = true
                 }
 
@@ -162,7 +162,7 @@ Dialog {
                               (model.name != wildcard))
                              ? true : false
                     onClicked: {
-                        console.log("ShopPage.shopitem.ContextMenu.Edit index:"+index)
+                        // console.log("ShopPage.shopitem.ContextMenu.Edit index:"+index)
                         shopField.readOnly = false
                         shopField.forceActiveFocus()
                     }
@@ -174,7 +174,7 @@ Dialog {
                               (model.name != wildcard))
                              ? true : false
                     onClicked: {
-                        console.log("ShopPage.shopitem.ContextMenu.Delete index:"+index)
+                        // console.log("ShopPage.shopitem.ContextMenu.Delete index:"+index)
                         //                        deleteshop(index)
                         var shopitem = shopModel.get(index)
                         var shopname = shopitem.name
@@ -220,17 +220,17 @@ Dialog {
         var shopname = shopitem.name
         var refcount = DBA.shopRefCount(shopname)
         if( refcount>0) {
-            console.log("ShopPage.qml: Deleting "+shopname+" the hard way, there are "+refcount+" references")
-            console.log("ShopPage.qml: ...reassign to 'unassigned in DB")
+            // console.log("ShopPage.qml: Deleting "+shopname+" the hard way, there are "+refcount+" references")
+            // console.log("ShopPage.qml: ...reassign to 'unassigned in DB")
             DBA.updateShopNameInShoppinglistDB(shopname,DBA.unknownShop)
-            console.log("ShopPage.qml: ...reassign to unassigned in shoppingListModel")
+            // console.log("ShopPage.qml: ...reassign to unassigned in shoppingListModel")
             updateShopNameInLM(shoppingListModel,shopname,DBA.unknownShop)
-            console.log("ShopPage.qml: ...reassign to unassigned in DB")
+            // console.log("ShopPage.qml: ...reassign to unassigned in DB")
             DBA.deleteShop(shopname)
-            console.log("ShopPage.qml: deleteshop finished")
+            // console.log("ShopPage.qml: deleteshop finished")
 
         } else {
-            console.log("deleting: " + shopModel.get(i).name)
+            // console.log("deleting: " + shopModel.get(i).name)
             remorseShopDelete.execute(scxmenu.parent,"Deleting", function() {
                 DBA.deleteShop(shopModel.get(i).name)
                 shopModel.clear()
@@ -238,6 +238,6 @@ Dialog {
                 currShop=DBA.unknownShop
             },4000)
         }
-        console.log("ShopPage.qml: deleteshop finished")
+        // console.log("ShopPage.qml: deleteshop finished")
     }
 }

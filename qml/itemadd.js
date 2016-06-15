@@ -4,9 +4,9 @@
   * HAS DEPENDENCIES TO THE PAGE qml/pages/ItemAddPage.qml and globals
   */
 function accept() {
-    console.log("itemadd.js:accept()")
+    // // console.log("itemadd.js:accept()")
     var count = searchListModel.count
-    console.log("- searchListModel.count="+searchListModel.count)
+    // console.log("- searchListModel.count="+searchListModel.count)
     var db_index
     var found_1st_item_name
 
@@ -20,13 +20,13 @@ function accept() {
             found_1st_item_name = searchListModel.get(0).name
         }
 
-        console.log("- found_item_name:"+found_1st_item_name)
+        // console.log("- found_item_name:"+found_1st_item_name)
 
         acceptlm.clear()
         db_index = DBA.findItemByName(acceptlm,found_1st_item_name)
         if(db_index) {
-            console.log("- ROW:"+acceptlm.get(0).rowid+" STAT:"+acceptlm.get(0).istat+" NAME:"+acceptlm.get(0).iname+" QTY:"+acceptlm.get(0).iqty+
-                        "UNIT:"+ acceptlm.get(0).iunit+" CLASS:"+acceptlm.get(0).iclass+" SHOP:"+acceptlm.get(0).ishop)
+            // console.log("- ROW:"+acceptlm.get(0).rowid+" STAT:"+acceptlm.get(0).istat+" NAME:"+acceptlm.get(0).iname+" QTY:"+acceptlm.get(0).iqty+
+            //            "UNIT:"+ acceptlm.get(0).iunit+" CLASS:"+acceptlm.get(0).iclass+" SHOP:"+acceptlm.get(0).ishop)
             if(acceptlm.get(0).istat!="HIDE") { // If the row stat is other than HIDE, it should be found in shoppingList
                 for (var i=0; i<shoppingListModel.count; i++){
 
@@ -51,12 +51,12 @@ function accept() {
                         "iqty":"", "iunit":"", "iclass":"",
                         "ishop":unknownShopString,
                         "rowid":parseInt(currIndex)}) // How come? rowid is the db row id!
-        console.log("itemadd.js: added new to model: ci="+currIndex+": iname="+shoppingListModel.get(currIndex).iname)
+        // console.log("itemadd.js: added new to model: ci="+currIndex+": iname="+shoppingListModel.get(currIndex).iname)
 
     }
 
-    console.log("* ItemAddPage accepted,\n- searchField.text:"+searchField.text+
-                " found_item_name:"+found_1st_item_name+" ci:"+currIndex)
+    // console.log("* ItemAddPage accepted,\n- searchField.text:"+searchField.text+
+    //            " found_item_name:"+found_1st_item_name+" ci:"+currIndex)
 
 }
 

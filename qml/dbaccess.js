@@ -365,7 +365,7 @@ function getSeq(rowid,seq) {
     var seq = 0
 
     seq = rs.rows.item(i).seq
-    console.debug("ostos/dbaccess.js: getSeq: seq="+seq)
+    // console.debug("ostos/dbaccess.js: getSeq: seq="+seq)
     return seq
 }
 
@@ -470,7 +470,7 @@ function updateItemState(rid, state) {
 function updateItemQty(rid, qty) {
     rid=escapeForSqlite(rid);
     qty=escapeForSqlite(qty);
-    console.debug("ostos/dbaccess.js: updateItemQty:("+rid+","+qty)
+    // console.debug("ostos/dbaccess.js: updateItemQty:("+rid+","+qty)
     var db = openDB();
     if(!db) { console.error("ostos/dbaccess.js: update Item qty:db open failed"); return; }
 
@@ -481,7 +481,7 @@ function updateItemQty(rid, qty) {
 
 /* Find item by name, return row id */
 function findItemByName(lm,itemname) {
-    console.debug("ostos/dbaccess.js: findItemByName:"+itemname);
+    // console.debug("ostos/dbaccess.js: findItemByName:"+itemname);
     itemname=escapeForSqlite(itemname)
     var db = openDB()
     if(!db) { console.error("ostos/dbaccess.js: findItemByName:db open failed"); return; }
@@ -501,7 +501,7 @@ function findItemByName(lm,itemname) {
         return false;
     }
     var c =rs.rows.length
-    console.debug(".Query returned "+c+"rows")
+    // console.debug(".Query returned "+c+"rows")
     if (c==0) { return false }
     var istat = ""
     var iname = ""
@@ -517,7 +517,7 @@ function findItemByName(lm,itemname) {
     iclass = unescapeFromSqlite(rs.rows.item(i).iclass)
     iunit = unescapeFromSqlite(rs.rows.item(i).iunit)
     ishop = unescapeFromSqlite(rs.rows.item(i).ishop)
-    console.debug("ostos/dbaccess.js: findItemByName DB read: "+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
+    // console.debug("ostos/dbaccess.js: findItemByName DB read: "+irid+"/"+istat+"/"+iname+"/"+iqty+"/"+iclass+"/"+iunit+"/"+ishop)
     if (lm){
         lm.append({
                       "istat":istat,
@@ -543,7 +543,7 @@ function findItemByName(lm,itemname) {
 function addShop(sname) {
     sname=escapeForSqlite(sname);
 
-    console.debug("ostos/dbaccess.js: Adding shop to db:"+sname);
+    // console.debug("ostos/dbaccess.js: Adding shop to db:"+sname);
     var db = openDB();
     if(!db) { console.error("ostos/dbaccess.js: addShop:db open failed"); return; }
 
@@ -557,11 +557,11 @@ function addShop(sname) {
             rid = lastrow.insertId;
         });
     } catch (sqlErr) {
-        console.error("ostos/dbaccess.js: "+sqlErr);
+        // console.error("ostos/dbaccess.js: "+sqlErr);
         rid="-1";
     }
 
-    console.debug("ostos/dbaccess.js: inserted Shop rowid:" + rid);
+    // console.debug("ostos/dbaccess.js: inserted Shop rowid:" + rid);
     return rid; // rid seems to be a String?
 
 }
@@ -573,7 +573,7 @@ function updateShopNameDB(oldname, newname) {
     var oN=escapeForSqlite(oldname)
     var nN=escapeForSqlite(newname)
 
-    console.debug("ostos/dbaccess.js: updateShopName\("+oN+","+nN+"\)")
+    // console.debug("ostos/dbaccess.js: updateShopName\("+oN+","+nN+"\)")
 
     var db = openDB();
     if(!db) { console.error("ostos/dbaccess.js: update Item state:db open failed"); return; }

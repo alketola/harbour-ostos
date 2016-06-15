@@ -60,7 +60,6 @@ DISTFILES += \
     qml/images/graphic-toggle-off.png \
     qml/images/graphic-toggle-on.png \
     README.md \
-    qml/pages/ostoshelp.html \
     qml/pages/helphtml.css \
     qml/images/icon-m-delete.png \
     qml/images/icon-m-dismiss.png \
@@ -70,18 +69,10 @@ DISTFILES += \
     qml/images/icon-m-up.png \
     qml/images/icon-s-task.png \
     harbour-ostos.png \
-    help/ostoshelp.html \
-    help/helphtml.css \
-    help/ostoshelp-fi.html \
-    help/ostoshelp-fr.html \
-    help/ostoshelp-de.html \
-    help/ostoshelp-es.html \
     qml/pages/help/helphtml.css \
-    qml/pages/help/ostoshelp-ca.html \
     qml/pages/help/ostoshelp-de.html \
     qml/pages/help/ostoshelp-es.html \
     qml/pages/help/ostoshelp-fi.html \
-    qml/pages/help/ostoshelp-fr.html \
     qml/pages/help/ostoshelp-en.html \
     testing.txt \
     LICENSE.txt \

@@ -26,7 +26,7 @@ Dialog {
 
     onAccepted: {
         ITEMADD.accept()
-        console.debug("ItemAddPage.qml onAccepted, about to push ItemEditPage.qml")
+        // console.debug("ItemAddPage.qml onAccepted, about to push ItemEditPage.qml")
     }
 
     onStatusChanged: {

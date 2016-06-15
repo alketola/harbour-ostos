@@ -104,22 +104,22 @@ Dialog {
         itemclass.text=shoppingListModel.get(currIndex).iclass;
         rowid_in_db=shoppingListModel.get(currIndex).rowid;
         var shopname= (shoppingListModel.get(currIndex).ishop) ? shoppingListModel.get(currIndex).ishop : DBA.unknownShop
-        editshopselector.setValueFromDB(shopname)
+        editshopselector.setValue(shopname)
 
     }
 
     onAccepted: {
-        var selectedShopToDB = editshopselector.getValueForDB()
+        var selectedShopToDB = editshopselector.getValue()
 
-        console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+currIndex)
+        // console.debug("ItemEditPage.onAccepted-ItemEditPage. ci="+currIndex)
         var rowid = DBA.findItemByName(null,itemname.text)
         //        console.debug("Found in DB rowid:"+rowid+" for name"+itemname.text)
 
-        console.debug("editshopselector.value="+editshopselector.value
-                      +" .getValueForDB()="+editshopselector.getValueForDB())
-        console.debug("Row to db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + selectedShopToDB)
+        // console.debug("editshopselector.value="+editshopselector.value
+        //              +" .getValueForDB()="+editshopselector.getValue())
+        // console.debug("Row to db: "+rowid_in_db+":"+itemname.text + ">" + itemqty.text  + ">" + itemunit.text + ">" + itemclass.text + ">" + selectedShopToDB)
         if (rowid) {
-            console.log("...updating existent ci="+currIndex+" itemshop="+selectedShopToDB)
+            // console.log("...updating existent ci="+currIndex+" itemshop="+selectedShopToDB)
             DBA.updateItemState(rowid_in_db,"BUY")
             DBA.updateItemInShoppingList(rowid,itemname.text, itemqty.text, itemunit.text, itemclass.text, selectedShopToDB); //shop.currentname?
             DBA.updateItemState(rowid,"BUY")

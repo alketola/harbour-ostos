@@ -21,7 +21,7 @@ ContextMenu {
                 width: parent.width/lineitems
                 icon.source: "image://theme/icon-m-dismiss"
                 onClicked: {
-                    console.log("Item HIDE, ROWID:"+ shoppingListModel.get(modelindex).rowid)
+                    // console.log("Item HIDE, ROWID:"+ shoppingListModel.get(modelindex).rowid)
                     // remorse and hide
                     cxMenu.hide();
                     remorseHide.execute(cxMenu.parent,qsTr("Hiding Item"), function () {
@@ -36,7 +36,7 @@ ContextMenu {
                 width: parent.width/lineitems
                 icon.source: "image://theme/icon-s-task"
                 onClicked: {
-                    console.log("Item FIND, ROWID:"+ shoppingListModel.get(modelindex).rowid)
+                    // console.log("Item FIND, ROWID:"+ shoppingListModel.get(modelindex).rowid)
                     // remorse and hide
                     cxMenu.hide();
                     stateIndicator.setState("FIND")
@@ -83,7 +83,7 @@ ContextMenu {
                 width: parent.width/lineitems
                 icon.source: "image://theme/icon-m-delete"
                 onClicked: {
-                    console.log("Item delete, ROWID:"+ shoppingListModel.get(modelindex).rowid)
+                    // console.log("Item delete, ROWID:"+ shoppingListModel.get(modelindex).rowid)
                     // remorse and delete
                     cxMenu.hide();
                     remorseDelete.execute(cxMenu.parent,qsTr("Deleting Item"), function () {
