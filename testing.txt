@@ -2,14 +2,15 @@ TESTING
 
 Documenting manual testing of Ostos.
 
-1. Case: Start-up:
+**1. Case: Start-up:**
 1.1 Launch the application from the icon
 1.2 Expected result: The First Page show with pull-down menu enabled and
 with shop selector in the upper edge with word "shop",
 and a looking glass and a dot on the right side.
 The list below the header may show items
 
-2. Case: Add an item
+**2. Case: Add an item**
+
 2.1 Go to search page. Navigate forward or swipe left
 2.1.1 Expected result: Search page shows with highlighted "Cancel" and greyed-out "Accept"
 It's OK to have list items on the list, or empty. The list shows only items that are not to be bought
@@ -34,12 +35,14 @@ At least the name typed in Search page can be seen.
 2.5.3.1 Check that the First Page shows the newly added item as to be bought (as the first item)
 2.5.3.2 (optional) Check that the item is written correctly to sqlite3 database, table shoppinglist
 
-3. Case: Edit shops
+**3. Case: Edit shops**
+
 3.1 Enter Edit shops dialog
 3.1.a From First page pulldown menu
 3.1.b From Item Edit Page pulldown menu
 3.1.1 Expected result: The ShopPage show up with a list of shop name.
 Observe that there is "Add new shop" entry in the pulldown menu
+
 3.2. Case: Enter New shop dialog by selecting "Add new shop" from pulldown menu
 3.2.1 Expected result: A dialog with "Add new shop" turns up
 3.2.2 Check back and forward navigation
@@ -54,7 +57,7 @@ Observe that there is "Add new shop" entry in the pulldown menu
 3.4.1 Select "Edit" in contect menu
 3.4.2 Expected result: The Name becomes editable
 3.4.3 Change shop name and accept by forward navigation
-3.4.4 Expected result shop name changes, in the list seen in shop selector combobox and
+3.4.4 Expected result: shop name changes, in the list seen in shop selector combobox and
 all shopping list items
 
 3.5 Case: Shop name delete
@@ -62,6 +65,22 @@ all shopping list items
 3.5.2 Remorse item shows for 5 seconds, let it run to end
 3.5.2 Expected result: The shop name is removed from shop list and all the
 shopping list items that referred to that referred to it, refer to "unassigned" or "-?-"
+
+** 4. Case: Shopping list filtering by shop **
+4.1 Case: Empty list, no shops
+4.1.1 Have the database deleted, shopping list and shop list empty. Via settings or by removing/moving database file.
+4.1.2 Expected result: The shopping list shows no list items (won't show if it is emptied correctly)
+Shop list that comes from the first page combo box shows only "*" and "?" shop names. The same for Edit Page.
+
+4.2 Case: filtering none "*" and unassigned "?"
+4.2.1 Start from the first page, Add a shop (name First Shop, for example).
+Add list items (names for example A, B, and C) with one set to First Shop and rest left Unassigned "?"
+Expected: The adding page shows "?" as the default option.
+4.2.2 When the first page show the three items (switch ON, i.e. in BUY state),
+select "First Shop" as the filtering option
+4.2.3 Expected result: Only the item that has shop set to "First Shop" is shown
+4.2.4 Select "?" as the filtering option
+4.2.5 Expected result: Only the two items that have "?" set as shop are shown
 
 To Be Continued...
 
