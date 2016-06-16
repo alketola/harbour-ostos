@@ -1,6 +1,8 @@
 TESTING
 
 Documenting manual testing of Ostos.
+These cases are for functional and regression testing, more or less. Not entirely black-box.
+May be used as a weird user guide too.
 
 **1. Case: Start-up:**
 1.1 Launch the application from the icon
@@ -81,6 +83,17 @@ select "First Shop" as the filtering option
 4.2.3 Expected result: Only the item that has shop set to "First Shop" is shown
 4.2.4 Select "?" as the filtering option
 4.2.5 Expected result: Only the two items that have "?" set as shop are shown
+
+5. Case: Item Context menu functions
+5.1 Case: Hide and delete item
+5.1.1 With an item visibe on the shoppinglist, long press the item, and context menu appears below
+Select HIDE function, that is, tap on the leftmost X icon.
+5.1.2 Expected result: Remorse of the item appears, and the item is finally removed from the list.
+You may check (if you can) that the status of the item in database has changed to HIDE.
+5.1.3 Navigate forward to Search page. The hidden item should be visible in the start of the list.
+(it may or may not be the first one)
+5.2.4 You may optionally complete the adding process. After that, you'll find the item in the
+beginning of the shopping list.
 
 To Be Continued...
 
