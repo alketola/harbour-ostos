@@ -22,6 +22,7 @@ function openDB() {
  */
 function escapeForSqlite(s){
     if (!s) return ""
+    if (s==unknownShop) return unknownShop
     var t=s.toString()
     var regex = /['".*+?^${}()|[\]\\]/g
     var sub = '\\$&'
@@ -191,8 +192,8 @@ function readShoppingListByState(lm, mystate) {
  * but only for a certain shop
  */
 function readShoppingListByShopExState(lm,shopname,excluded_state) {
-    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
-    if (shopname != unknownShop) shopname=escapeForSqlite(shopname)
+    //    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
+    shopname=escapeForSqlite(shopname)
     excluded_state=escapeForSqlite(excluded_state)
     var db = openDB()
     if(!db) { console.error("readAllByShop:db open failed"); return; }
@@ -269,7 +270,7 @@ function insertItemToShoppingList(istat, iname, iqty, iunit, iclass, ishop) {
     iqty=escapeForSqlite(iqty)
     iunit=escapeForSqlite(iunit)
     iclass=escapeForSqlite(iclass)
-    if (ishop != unknownShop) ishop=escapeForSqlite(ishop)
+    ishop=escapeForSqlite(ishop)
 
     var db = openDB()
     if(!db) { console.error("writeItem:db open failed"); return; }
@@ -298,7 +299,7 @@ function updateItemInShoppingList(rid /* rowid */,iname, iqty, iunit, iclass, is
     iqty=escapeForSqlite(iqty)
     iunit=escapeForSqlite(iunit)
     iclass=escapeForSqlite(iclass)
-    if (ishop != unknownShop) ishop=escapeForSqlite(ishop)
+    ishop=escapeForSqlite(ishop)
 
     // console.debug("updating rowid:" + rid + " iname:" + iname + " iqty:" + iqty + " iunit:" + iunit + " iclass:" + iclass + " ishop:" + ishop)
 
@@ -696,7 +697,7 @@ var HIT_DIV = 100;
 function hitShop(sname) {
     if (!sname) { return }
     //    console.debug("ostos/dbaccess.js: hitShop:"+sname)
-    if (sname != unknownShop) ishop=escapeForSqlite(sname)
+    sname=escapeForSqlite(sname)
 
     var db = openDB();
     if(!db) { console.error("ostos/dbaccess.js: :db open failed"); return; }
