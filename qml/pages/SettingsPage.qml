@@ -130,7 +130,7 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.01"
+                text: "Version "+"v1.02"
             }
 
             Component.onCompleted: {
