@@ -11,8 +11,11 @@
 <context>
     <name>FirstPage</name>
     <message>
+        <source>Clearing</source>
+        <translation>Einkaufsliste wird leer gemacht</translation>
+    </message>
+    <message>
         <source>Shop</source>
-        <translatorcomment>Platz wo es kauft</translatorcomment>
         <translation>Laden</translation>
     </message>
     <message>
@@ -37,11 +40,7 @@
     </message>
     <message>
         <source>Search to buy</source>
-        <translation>Such und ergänz</translation>
-    </message>
-    <message>
-        <source>Clearing</source>
-        <translation>Einkaufsliste wird leer gemacht</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -232,6 +231,7 @@
     </message>
     <message>
         <source></source>
+        <translatorcomment>Wenn es mach eine Aktualizierung</translatorcomment>
         <translation></translation>
     </message>
 </context>

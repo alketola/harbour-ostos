@@ -5,11 +5,15 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation type="unfinished">Ostos</translation>
+        <translation>Ostos</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
+    <message>
+        <source>Clearing</source>
+        <translation>Ostoslista tyhjennetään</translation>
+    </message>
     <message>
         <source>Shop</source>
         <translation>Kauppa</translation>
@@ -36,12 +40,7 @@
     </message>
     <message>
         <source>Search to buy</source>
-        <translatorcomment>Etsi ostettava</translatorcomment>
-        <translation>Etsi ja lisää</translation>
-    </message>
-    <message>
-        <source>Clearing</source>
-        <translation>Ostoslista tyhjennetään</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -232,6 +231,7 @@
     </message>
     <message>
         <source></source>
+        <translatorcomment>Ilmoitus siitä että päivitys on meneillään</translatorcomment>
         <translation></translation>
     </message>
 </context>

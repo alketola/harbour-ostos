@@ -120,6 +120,7 @@ Page {
                 text: "Translations:\n"+
                       "en: Antti Ketola\n"+
                       "fi: Antti Ketola\n"+
+                      "sv: Åke Engelbrektson\n"+
                       "es: Antti Ketola (proofreading needed)\n"+
                       "de: Antti Ketola (proofreading needed)"
             }
