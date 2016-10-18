@@ -50,9 +50,7 @@ IconButton {
     onClicked: {
         firstPageView.currentIndex = index;
         currIndex = index;
-    }
-    onExited: {
-       cycle(); // Does not seem to be redundant. Can't click icon without this?
+        cycle();
     }
 
     // This is necessary to set the initial state
@@ -77,23 +75,23 @@ IconButton {
         statButton.state = state
     }
 
-/* tri-state cycle */
-    function cycle3() {
-        switch (statButton.state) {
-        case "GOT":
-            setState("FIND")
-            break;
-        case "FIND":
-            setState("BUY")
-            break;
-        case "BUY": //too
-            setState("GOT")
-            break;            
-        }
-        DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
-        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
-        requestRefreshAsync(true,"StatButton.cycle3")
-    }    
+/* OBSOLETE tri-state cycle */
+//    function cycle3() {
+//        switch (statButton.state) {
+//        case "GOT":
+//            setState("FIND")
+//            break;
+//        case "FIND":
+//            setState("BUY")
+//            break;
+//        case "BUY": //too
+//            setState("GOT")
+//            break;
+//        }
+//        DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
+//        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
+//        requestRefreshAsync("StatButton.cycle3")
+//    }
 /* bi-state cycle */
     function cycle() {
         switch (statButton.state) {
@@ -109,8 +107,9 @@ IconButton {
         }
         DBA.updateItemState(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid),statButton.state);
         DBA.updateShoppinListNextSeq(parseInt(shoppingListModel.get(firstPageView.currentIndex).rowid))
-        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);        
-        requestRefreshAsync(true,"StatButton.cycle")
+        shoppingListModel.setProperty(firstPageView.currentIndex,"istat",statButton.state);
+        /* TODO: Initate moving of the parent line to new position, instead of complete repaint */
+        requestRefreshAsync("StatButton.cycle")
     }
 
 }

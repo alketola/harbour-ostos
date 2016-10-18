@@ -33,8 +33,8 @@ ApplicationWindow
 
     // constants
     property string wildcard: "*"
-
-    property int refreshInterval: 3000
+    property int defaultRefreshInterval: 1200
+    property int refreshInterval: defaultRefreshInterval
     property int minRefreshInterval: 0
     property int maxRefreshInterval: 6000
     property bool webHelpEnabled: false
@@ -136,14 +136,12 @@ ApplicationWindow
         interval: refreshInterval
         repeat: false
 
-        property bool _enabler
-        property string _current
+        property string _trace
 
-        function turn_on(enabler,current) {
+        function turn_on(trace) {
 //            console.log("harbour-ostos refresh timer start")
-            //            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
-            _enabler=enabler
-            _current=current
+            //            console.debug("menurefreshtimer turn_on: current:"+current)
+            _trace=trace
             start()            
         }
 
@@ -151,33 +149,25 @@ ApplicationWindow
 
             stop()
 //            console.log("harbour-ostos refresh timer stop")
-            if(_enabler){
-                //                console.debug("menurefresh timer triggered.");
-//                toast.show()
-                refreshShoppingListByCurrentShop()
-//                toast.hide()
-
-            } else {
-                //                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
-            }
+            refreshShoppingListByCurrentShop()
 
         }
     }
     /*
      * Function to request refresh - without timer
      */
-    function requestRefresh(enabler,tracetext) {
-        //        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
+    function requestRefresh(tracetext) {
+//        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
         refreshShoppingListByCurrentShop()
     }
     /*
  * Function to request refresh asynchronously - the timer version spawning a new thread
  */
-    function requestRefreshAsync(enabler,tracetext) {
+    function requestRefreshAsync(tracetext) {
         // console.debug("harbour-ostos.requestRefreshAsync : enabler: "+enabler+"; trace:'"+tracetext+"'")
 
         if (!menurefreshtimer.running) {
-            menurefreshtimer.turn_on(enabler,tracetext)
+            menurefreshtimer.turn_on(tracetext)
         } else {
             menurefreshtimer.restart()
 //            console.debug("harbour-ostos.requestRefresh - restarted timer.")
@@ -199,8 +189,8 @@ ApplicationWindow
         //        console.log("By Current shopname="+currShop)
     }
 
-    // This is the small dark square to stop
-    // the user desperately waiting for the list update
+    // This is the small dark square to inform
+    // the user desperately waiting the list to update
     Rectangle {
         id: toast
 

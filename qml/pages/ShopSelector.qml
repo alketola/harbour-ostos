@@ -110,7 +110,7 @@ ComboBox {
         onClosed: {
             //            console.log("ShopSelector contextmenu onClosed, value:"+value)
             if (overlappedToHide) firstPageView.delegate = overlappedToHide
-            appWindow.requestRefresh(true,"ShopSelector ContexMenu Closed")
+            appWindow.requestRefresh("ShopSelector ContexMenu Closed")
         }
     }
     onEntered: {

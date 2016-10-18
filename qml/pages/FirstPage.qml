@@ -16,10 +16,11 @@ Page {
     onStatusChanged: {
         //        console.log("first page status changed:"+status+" PageStatus.Active="+PageStatus.Active+" PageStatus.Inactive="+PageStatus.Inactive)
         if((firstPage.status==PageStatus.Active)) {
+            firstPageView.delegate = listLine // to make sure that it is present, even if exited shop selector badly
+            requestRefresh("firstPage status changed to Active")
+            // Refactor? Why to always clear and repopulate shop list
             shopModel.clear()
             DBA.repopulateShopList(shopModel) // ShopModel
-            requestRefresh(true,"firstPage status changed to Active")
-            firstPageView.delegate = listLine // to make sure that it is there even if exited shop selector malament
         }
     }
     backNavigation: false
@@ -74,7 +75,7 @@ Page {
         delegate: listLine
 
         PullDownMenu {
-            id: pdm
+            id: pulldownmenu
             property string optionSelected: ""
             //            MenuItem {
             //                text: qsTr("Debug dump DB to log");
@@ -94,7 +95,7 @@ Page {
             MenuItem {
                 text: qsTr("Help")
                 onClicked: {
-                    pdm.optionSelected=text
+                    pulldownmenu.optionSelected=text
                     pageStack.push(Qt.resolvedUrl("HelpPage.qml"))
                 }
             }
@@ -102,7 +103,7 @@ Page {
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: {
-                    pdm.optionSelected=text
+                    pulldownmenu.optionSelected=text
                     pageStack.push("SettingsPage.qml")
                 }
             }
@@ -121,7 +122,7 @@ Page {
             MenuItem {
                 text: qsTr("Edit shops")
                 onClicked: {
-                    pdm.optionSelected=text
+                    pulldownmenu.optionSelected=text
                     pageStack.push(Qt.resolvedUrl("ShopPage.qml"));
                 }
             }
@@ -129,16 +130,16 @@ Page {
             MenuItem {
                 text: qsTr("Hide bought")
                 onClicked: {
-                    pdm.optionSelected=text
+                    pulldownmenu.optionSelected=text
                     DBA.bulkStateChange(shoppingListModel,"GOT","HIDE")
-                    requestRefresh()
+                    requestRefresh("Hid bought")
                 }
             }
 
             MenuItem {
                 text: qsTr("Search to buy")
                 onClicked: {
-                    pdm.optionSelected=text
+                    pulldownmenu.optionSelected=text
                     pageStack.push(Qt.resolvedUrl("ItemAddPage.qml"))
                 }
             }
@@ -158,18 +159,18 @@ Page {
         ListItem {
             id: itemi
             //            height: Theme.itemSizeSmall
-            onClicked: { //ListItem
-                //                firstPageView.currentIndex = index;
-                //                ci = index;
-                //                stateIndicator.cycle();
-                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-                //                console.debug("shoppinglistitem height is:"+itemi.height)
-            }
-            onPressed: {
-                firstPageView.currentIndex = index
-                currIndex = index;
-                //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-            }
+//            onClicked: { //ListItem
+//                //                firstPageView.currentIndex = index;
+//                //                ci = index;
+//                //                stateIndicator.cycle();
+//                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
+//                //                console.debug("shoppinglistitem height is:"+itemi.height)
+//            }
+//            onPressed: {
+//                firstPageView.currentIndex = index
+//                currIndex = index;
+//                //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
+//            }
 
             menu: LineButtonsMenu {
                 id: lineButtonsMenu
