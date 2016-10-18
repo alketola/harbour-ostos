@@ -11,16 +11,8 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Clearing</source>
-        <translation>Ostoslista tyhjennetään</translation>
-    </message>
-    <message>
         <source>Shop</source>
         <translation>Kauppa</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation>Ei artikkelita</translation>
     </message>
     <message>
         <source>Help</source>
@@ -36,11 +28,19 @@
     </message>
     <message>
         <source>Hide bought</source>
-        <translation>Piilota ostetut</translation>
+        <translation>Piiloita ostetut</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation></translation>
+        <translation>Etsi ja lisää</translation>
+    </message>
+    <message>
+        <source>Clearing</source>
+        <translation>Tyhjennetään</translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation>-</translation>
     </message>
 </context>
 <context>

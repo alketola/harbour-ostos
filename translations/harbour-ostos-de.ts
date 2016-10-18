@@ -11,36 +11,36 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Clearing</source>
-        <translation>Einkaufsliste wird leer gemacht</translation>
-    </message>
-    <message>
         <source>Shop</source>
-        <translation>Laden</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation>Keine Artikeln</translation>
+        <translation type="unfinished">Laden</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Anweisung</translation>
+        <translation type="unfinished">Anweisung</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation type="unfinished">Einstellungen</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Laden bearbeiten</translation>
+        <translation type="unfinished">Laden bearbeiten</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation>Versteck gekaufte</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

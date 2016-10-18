@@ -37,6 +37,7 @@ Page {
         contentHeight: parent.height - Theme.paddingLarge
         anchors.margins: 2
 
+
         header: PageHeader {
             id: phdr
             height: Theme.itemSizeMedium
@@ -63,8 +64,8 @@ Page {
 
         ViewPlaceholder {
             id: firstPagePlaceholder
-            enabled: shoppingListModel.count == 0
-            text: qsTr("No items")
+            enabled: shoppingListModel.count == 0 | shoppingListModel.updating == true
+            text: qsTr("-")
         }
 
         VerticalScrollDecorator { flickable: firstPageView }

@@ -34,13 +34,16 @@ ApplicationWindow
     // constants
     property string wildcard: "*"
 
-    property int refreshInterval: 900
+    property int refreshInterval: 3000
+    property int minRefreshInterval: 0
+    property int maxRefreshInterval: 6000
     property bool webHelpEnabled: false
 
     // Declared here to be accessible thru appWindow.
 
     ListModel {
         id: shoppingListModel
+        property bool updating: false
     }
 
     ListModel {
@@ -118,10 +121,12 @@ ApplicationWindow
     }
 
     function setRefreshInterval(millisec) {
-        if ((millisec >=0) && (millisec<=2000)){
-            refreshInterval = millisec
+        if (millisec>maxRefreshInterval){
+            refreshInterval = maxRefreshInterval
+        } else if (millisec<minRefreshInterval) {
+            refreshInterval = minRefreshInterval
         } else {
-            refreshInterval = 300
+            refreshInterval = millisec
         }
     }
 
@@ -135,26 +140,27 @@ ApplicationWindow
         property string _current
 
         function turn_on(enabler,current) {
-            console.log("harbour-ostos refresh timer start")
+//            console.log("harbour-ostos refresh timer start")
             //            console.debug("menurefreshtimer turn_on: enabler:"+enabler+" current:"+current)
             _enabler=enabler
             _current=current
-            start()
-            toast.show()
+            start()            
         }
 
         onTriggered: {
 
             stop()
-            console.log("harbour-ostos refresh timer stop")
+//            console.log("harbour-ostos refresh timer stop")
             if(_enabler){
                 //                console.debug("menurefresh timer triggered.");
+//                toast.show()
                 refreshShoppingListByCurrentShop()
+//                toast.hide()
 
             } else {
                 //                console.debug("menurefresh timer triggered and skipped; trace:"+ _current);
             }
-            toast.hide()
+
         }
     }
     /*
@@ -174,20 +180,22 @@ ApplicationWindow
             menurefreshtimer.turn_on(enabler,tracetext)
         } else {
             menurefreshtimer.restart()
-            //            console.debug("harbour-ostos.requestRefresh - restarted timer.")
+//            console.debug("harbour-ostos.requestRefresh - restarted timer.")
         }
     }
 
     // This is for "painting" the first page
     function  refreshShoppingListByCurrentShop(){
+        shoppingListModel.updating = true
         if ((currShop==wildcard) || (!currShop) ) {
-            currShop=wildcard
+            currShop=wildcard            
             shoppingListModel.clear()
             DBA.readShoppingListExState(shoppingListModel,"HIDE");
         } else {
             shoppingListModel.clear()
             DBA.readShoppingListByShopExState(shoppingListModel, currShop,"HIDE");
         }
+        shoppingListModel.updating = false
         //        console.log("By Current shopname="+currShop)
     }
 
@@ -234,13 +242,13 @@ ApplicationWindow
                     target: toast
                     properties: "height";
                     from: 0
-                    duration: 300
+                    duration: 0
                     easing.type: Easing.OutBack
                 }
                 PropertyAnimation {
                     target: toastLabel
                     properties: "font.pixelSize"
-                    duration: 300
+                    duration: 0
                     from:0
                     to: Theme.fontSizeMedium
                     easing.type: Easing.OutBack
@@ -256,13 +264,13 @@ ApplicationWindow
         }
 
         function show() {
-            //            console.log("***show toast")
+//            console.log("***show toast")
             visible=true
             state = "toasting"
         }
 
         function hide() {
-            //            console.log("***hide toast")
+//            console.log("***hide toast")
             visible=false
             state=""
 

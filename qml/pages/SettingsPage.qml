@@ -70,10 +70,10 @@ Page {
             Slider {
                 id: refreshslider
                 width: parent.width
-                minimumValue: 0
-                maximumValue: 2000
+                minimumValue: appWindow.minRefreshInterval
+                maximumValue: appWindow.maxRefreshInterval
 
-                value: ((appWindow.refreshInterval >= minimumValue) && (appWindow.refreshInterval<=maximumValue))? appWindow.refreshInterval : 1250
+                value: appWindow.refreshInterval
 
                 label: qsTr("List refresh interval")
                 valueText: Math.ceil(value) + " ms"

@@ -12,35 +12,35 @@
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation>Butik</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation>Inga objekt</translation>
+        <translation type="unfinished">Butik</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation type="unfinished">Hjälp</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Inställningar</translation>
+        <translation type="unfinished">Inställningar</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Redigera butiker</translation>
+        <translation type="unfinished">Redigera butiker</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation>Dölj köpta objekt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation>Sök i inköpslistan</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation>Rensar</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

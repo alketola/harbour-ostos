@@ -11,36 +11,36 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Clearing</source>
-        <translation>Ostoslista tyhjennetään</translation>
-    </message>
-    <message>
         <source>Shop</source>
-        <translation>Kauppa</translation>
-    </message>
-    <message>
-        <source>No items</source>
-        <translation>Ei artikkelita</translation>
+        <translation type="unfinished">Kauppa</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ohje</translation>
+        <translation type="unfinished">Ohje</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Asetukset</translation>
+        <translation type="unfinished">Asetukset</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Muokkaa kauppoja</translation>
+        <translation type="unfinished">Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation>Piilota ostetut</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
