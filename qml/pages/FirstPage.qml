@@ -166,11 +166,11 @@ Page {
 //                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
 //                //                console.debug("shoppinglistitem height is:"+itemi.height)
 //            }
-//            onPressed: {
-//                firstPageView.currentIndex = index
-//                currIndex = index;
-//                //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-//            }
+            onPressed: {
+                firstPageView.currentIndex = index
+                currIndex = index;
+                //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
+            }
 
             menu: LineButtonsMenu {
                 id: lineButtonsMenu
