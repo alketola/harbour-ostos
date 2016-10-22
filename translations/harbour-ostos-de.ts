@@ -5,56 +5,57 @@
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Karren</translation>
+        <translation>Ostos - Warenkorb</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Laden</translation>
+        <translatorcomment>wo kaufen</translatorcomment>
+        <translation>Laden</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Anweisung</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Laden bearbeiten</translation>
+        <translation>Laden bearbeiten</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>gekaufte verstecken</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen und hinzufügen</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Einkaufsliste wird geleert</translation>
     </message>
     <message>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>ItemAddPage</name>
     <message>
         <source>Search</source>
-        <translation>Such und ergäntz</translation>
+        <translation>Suchen und hinzufügen</translation>
     </message>
 </context>
 <context>
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation>Akzeptier</translation>
+        <translation>Akzeptieren</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -74,7 +75,7 @@
     </message>
     <message>
         <source>Item Class</source>
-        <translation>Klass</translation>
+        <translation>Klasse</translation>
     </message>
     <message>
         <source>Shop</source>
@@ -89,11 +90,11 @@
     <name>LineButtonsMenu</name>
     <message>
         <source>Hiding Item</source>
-        <translation>Versteckend Artikel</translation>
+        <translation>Verstecke Artikel</translation>
     </message>
     <message>
         <source>Deleting Item</source>
-        <translation>Löschend Artikel</translation>
+        <translation>Lösche Artikel</translation>
     </message>
 </context>
 <context>
@@ -111,47 +112,47 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation>Anweisung</translation>
-    </message>
-    <message>
-        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
-</source>
-        <translation></translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
 </source>
-        <translation></translation>
+        <translation>Die Artikel haben einen Status, der durch Icons links eines Eintrages angezeigt wird.</translation>
     </message>
     <message>
         <source>The state can be toggled like by clicking the state icon on the left.
 </source>
-        <translation></translation>
+        <translation>Der Staus kann durch Klick auf das Status-Icon gewechselt werden.</translation>
     </message>
     <message>
         <source>The context menu has options to hide, edit, flag</source>
-        <translation></translation>
+        <translation>Das Kontextmenü hat Optionen zum Verstecken, Bearbeiten und Markieren.</translation>
     </message>
     <message>
         <source> increase quantity, decrease quantity and delete the item.
 </source>
-        <translation></translation>
+        <translation>Menge erhöhen, Menge verringern und Artikel löschen.</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation></translation>
+        <translation>Neue Artikel durch Wechsel nach rechts auf die Suchseite hinzufügen (erster Eintrag im Pulldown-Menü).</translation>
     </message>
     <message>
         <source>The item is listed as to buy</source>
-        <translation></translation>
+        <translation>Der Artikel ist zum Einkauf eingetragen</translation>
     </message>
     <message>
         <source>The item has been bought</source>
-        <translation></translation>
+        <translation>Der Artikel wurde eingekauft</translation>
     </message>
     <message>
         <source>The item is listed as flagged (e.g. find later)</source>
-        <translation></translation>
+        <translation>Der Artikel ist markiert (z.B. zur Suche)</translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
+</source>
+        <translation>Neue Artikel durch Wechsel nach rechts auf die Suchseite hinzufügen (erster Eintrag im Pulldown-Menü).</translation>
     </message>
 </context>
 <context>
@@ -162,7 +163,7 @@
     </message>
     <message>
         <source>List refresh interval</source>
-        <translation>Laufzeit bevor aktualisierung von Einkaufsliste</translation>
+        <translation>Aktualisierungsintervall der Einkaufsliste</translation>
     </message>
     <message>
         <source>DELETE DATABASE TABLES</source>
@@ -170,22 +171,22 @@
     </message>
     <message>
         <source>DELETING ALL DATA</source>
-        <translation>LÖSCHEND DATEN DER APPLIKATION</translation>
+        <translation>LÖSCHE DATEN DER APPLIKATION</translation>
     </message>
     <message>
         <source>Enable WWW help</source>
-        <translation>Aktivieren WWW Hilfe</translation>
+        <translation>Aktiviere WWW-Hilfe</translation>
     </message>
     <message>
         <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
-        <translation>Aktivieren die Nutzung des Internet für den Bedienungsanleitung. Google Translator hilft mit unbekannten Sprachen.</translation>
+        <translation>Aktiviere die Nutzung des Internets für die Bedienungsanleitung. Google Translator hilft bei unbekannten Sprachen.</translation>
     </message>
 </context>
 <context>
     <name>ShopPage</name>
     <message>
         <source>Accept</source>
-        <translation>Akzeptier</translation>
+        <translation>Akzeptieren</translation>
     </message>
     <message>
         <source>Back</source>
@@ -193,7 +194,7 @@
     </message>
     <message>
         <source>No items</source>
-        <translation>Keine Artikeln</translation>
+        <translation>keine Artikel</translation>
     </message>
     <message>
         <source>Add new shop</source>
@@ -212,11 +213,11 @@
     <name>Splash</name>
     <message>
         <source>Ostos</source>
-        <translation>Ostos - Karren</translation>
+        <translation>Ostos - Einkaufswagen</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>fortsetzen</translation>
+        <translation>Fortsetzen</translation>
     </message>
     <message>
         <source>Shopping list</source>
@@ -227,7 +228,7 @@
     <name>harbour-ostos</name>
     <message>
         <source>Updating</source>
-        <translation>Aktualisierend</translation>
+        <translation>Aktualisiere</translation>
     </message>
     <message>
         <source></source>
