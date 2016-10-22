@@ -28,19 +28,19 @@
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj köpt</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök i inköpslistan</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensar</translation>
     </message>
     <message>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
 </context>
 <context>
