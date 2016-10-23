@@ -122,7 +122,7 @@ Page {
                       "fi: Antti Ketola\n"+
                       "sv: Åke Engelbrektson\n"+
                       "es: Antti Ketola (proofreading needed)\n"+
-                      "de: Antti Ketola (proofreading needed)"
+                      "de: ntp22"
             }
             Label {
                 id: versionLabel
