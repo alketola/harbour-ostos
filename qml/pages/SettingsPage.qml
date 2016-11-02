@@ -122,7 +122,7 @@ Page {
                       "fi: Antti Ketola\n"+
                       "sv: Åke Engelbrektson\n"+
                       "es: Antti Ketola (proofreading needed)\n"+
-                      "de: Antti Ketola (proofreading needed)"
+                      "de: ntp22"
             }
             Label {
                 id: versionLabel
@@ -130,7 +130,7 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.02"
+                text: "Version "+"v1.05"
             }
 
             Component.onCompleted: {

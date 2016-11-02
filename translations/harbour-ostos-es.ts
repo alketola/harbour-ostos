@@ -108,53 +108,6 @@
     </message>
 </context>
 <context>
-    <name>OldHelpTxt</name>
-    <message>
-        <source>Help</source>
-        <translation>Instrucciónes</translation>
-    </message>
-    <message>
-        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
-</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>The items have states, indicated by the icon on the left of each shopping list item.
-</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>The state can be toggled like by clicking the state icon on the left.
-</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>The context menu has options to hide, edit, flag</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source> increase quantity, decrease quantity and delete the item.
-</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>The item is listed as to buy</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>The item has been bought</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>The item is listed as flagged (e.g. find later)</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>

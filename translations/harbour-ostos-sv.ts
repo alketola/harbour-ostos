@@ -108,57 +108,6 @@
     </message>
 </context>
 <context>
-    <name>OldHelpTxt</name>
-    <message>
-        <source>Help</source>
-        <translation>Hjälp</translation>
-    </message>
-    <message>
-        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
-</source>
-        <translation>Lägg till nya objekt genom att växla till söksidan åt höger (första objektet i rullgardinsmenyn).
-</translation>
-    </message>
-    <message>
-        <source>The items have states, indicated by the icon on the left of each shopping list item.
-</source>
-        <translation>Objektens statusindikator är den lilla punktikonen på vänster sida om varje inköpsobjekt.
-</translation>
-    </message>
-    <message>
-        <source>The state can be toggled like by clicking the state icon on the left.
-</source>
-        <translation>Status kan växlas genom att trycka på ikonen till vänster.
-</translation>
-    </message>
-    <message>
-        <source>The context menu has options to hide, edit, flag</source>
-        <translation>I kontextmenyn finns alternativ för att dölja, redigera, märka</translation>
-    </message>
-    <message>
-        <source> increase quantity, decrease quantity and delete the item.
-</source>
-        <translation>öka kvantitet, minska kvantitet och ta bort objekt.
-</translation>
-    </message>
-    <message>
-        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation>Lägg till nya objekt genom att växla till söksidan åt höger (första objektet i rullgardinsmenyn).</translation>
-    </message>
-    <message>
-        <source>The item is listed as to buy</source>
-        <translation>Detta objekt är listat för inköp</translation>
-    </message>
-    <message>
-        <source>The item has been bought</source>
-        <translation>Objektet är köpt</translation>
-    </message>
-    <message>
-        <source>The item is listed as flagged (e.g. find later)</source>
-        <translation>Objektet har listats som märkt (t.ex. köp senare)</translation>
-    </message>
-</context>
-<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>

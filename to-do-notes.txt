@@ -1,7 +1,7 @@
 2016-06-13:
 * Prepare uninstallation cleanup routines for example to SettingsPage.qml.
 Database erase:
-- optinally export database as file
+- optinally export database as file NOT DONE
 - remove tables shoppinglist, shops, settings, DONE
 - remove database, ShopListDB file
 - If first page pulldown menu is left without selection the list is not shown.

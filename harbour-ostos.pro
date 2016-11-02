@@ -93,3 +93,5 @@ DISTFILES += icons/86x86/harbour-ostos.png \
     icons/108x108/harbour-ostos.png \
     icons/128x108/harbour-ostos.png \
     icons/256x108/harbour-ostos.png
+
+DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
