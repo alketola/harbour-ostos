@@ -16,10 +16,6 @@
         <translation>Laden</translation>
     </message>
     <message>
-        <source>No items</source>
-        <translation>Keine Artikel</translation>
-    </message>
-    <message>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
@@ -117,11 +113,6 @@
     <message>
         <source>Help</source>
         <translation>Hilfe</translation>
-    </message>
-    <message>
-        <source>Add new items by switching to search page on the right (on first item in the pulldown menu.
-</source>
-        <translation>Neue Artikel durch Wechsel nach rechts auf die Suchseite hinzufügen (erster Eintrag im Pulldown-Menü).</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
