@@ -169,12 +169,15 @@ Page {
             onPressed: {
                 firstPageView.currentIndex = index
                 currIndex = index;
+                // pageStack.push(Qt.resolvedUrl("QuickEditPage.qml"))
                 //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-            }
+                var menucomponent = Qt.createComponent("LineButtonsMenu.qml");
+                var menuo = menucomponent.createObject();
+                itemi.menu = menuo;
+                //menuo.show();
 
-            menu: LineButtonsMenu {
-                id: lineButtonsMenu
-                modelindex: index
+
+
             }
 
             Row {

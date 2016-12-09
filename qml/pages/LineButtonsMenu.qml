@@ -99,4 +99,8 @@ ContextMenu {
         }
     }
 
+    onClosed: {
+        cxMenu.destroy();
+    }
+
 }

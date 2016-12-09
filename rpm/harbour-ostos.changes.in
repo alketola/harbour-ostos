@@ -15,8 +15,8 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
-- Scrubbed the deck
-- Hoisted the sails
+* Fri Nov 9 2016 Antti Ketola <antti@mobilitio.com> 1.0.6-1
+- Changed the List context menu to be dynamically created and destroyed()
+
 
 
