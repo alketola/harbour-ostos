@@ -135,19 +135,26 @@ Page {
 
             Component.onCompleted: {
                 // This was an attempt to read in Settings from database. There aren't any, currently
-                //                try {
-                //                    var d=DBA.getSetting("general-splash-disable");
-                //                    console.log("SettingsPage.qml: d:"+d);
-                //                    if(d!='true') {
-                //                        console.log("false");
-                //                        splashDisable.checked=false;
-                //                    } else {
-                //                        splashDisable.checked=true;
-                //                    }
-                //                } catch (err) {
-                //                    console.log("splashDisable error="+err);
-                //                }
+                try {
+                    var d=new String(DBA.getSetting("refresh-delay"));
+                    console.log("SettingsPage.qml: refresh-delay:"+d);
+                    if(DBA.NO_SETTING === d) {
+                        console.log("no refresh delay found in database");
+                        appWindow.refreshInterval = 0;
+                    } else {
+                        appWindow.setRefreshInterval(d.valueOf());
+                        console.log("Refresh delay "+d+" found in database:"+d.valueOf());
+                    }
+                } catch (err) {
+                    console.log("splashDisable error="+err);
+                }
             }
+        }
+    }
+    onStatusChanged: {
+        if (status==0){
+            console.log("SettingsPage.qml Page.onStatusChanged to:"+status);
+            DBA.setSetting("refresh-delay", appWindow.refreshInterval);
         }
     }
 }

@@ -172,12 +172,11 @@ Page {
                 // pageStack.push(Qt.resolvedUrl("QuickEditPage.qml"))
                 //                console.log("Pressed ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
                 var menucomponent = Qt.createComponent("LineButtonsMenu.qml");
-                var menuo = menucomponent.createObject();
+                //Would listLine more appropriate as parent of created menu object?
+                //No, gives error "QQmlComponent: Created graphical object was not placed in the graphics scene."
+                var menuo = menucomponent.createObject(firstPageView,{"modelindex":currIndex});
                 itemi.menu = menuo;
                 //menuo.show();
-
-
-
             }
 
             Row {

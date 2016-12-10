@@ -12,6 +12,8 @@
         <file>qml/images/icon-m-search.png</file>
         <file>qml/images/icon-m-up.png</file>
         <file>qml/images/icon-s-task.png</file>
+        <file>qml/images/icon-m-minus.png</file>
+        <file>qml/images/icon-m-plus.png</file>
     </qresource>
     <qresource prefix="/">
         <file>harbour-ostos.png</file>

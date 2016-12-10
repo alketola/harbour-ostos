@@ -33,7 +33,7 @@ ApplicationWindow
 
     // constants
     property string wildcard: "*"
-    property int defaultRefreshInterval: 1200
+    property int defaultRefreshInterval: 0
     property int refreshInterval: defaultRefreshInterval
     property int minRefreshInterval: 0
     property int maxRefreshInterval: 6000
@@ -118,6 +118,9 @@ ApplicationWindow
         console.log("harbour-ostos started")
         DBA.initDatabase(); // plug in localstorage
         currShop = wildcard
+        // Read in refault settings from database
+        var d=new String(DBA.getSetting("refresh-delay"));
+        setRefreshInterval(d.valueOf());
     }
 
     function setRefreshInterval(millisec) {

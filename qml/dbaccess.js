@@ -13,6 +13,7 @@ function openDB() {
     return LS.LocalStorage.openDatabaseSync("ShopListDB", "1.1", "Shopping list database", 100000);
 }
 
+var NO_SETTING = new String("____NO_SETTING____");
 
 /**
  * Escapes string so that special characters are preceded by backslash.
@@ -800,15 +801,16 @@ function getSetting(setting) {
         });
     } catch (sqlErr) {
         console.debug("ostos/dbaccess.js: getSetting: log squirrel: " + sqlErr);
-        return ""; // "ERROR"
+        return NO_SETTING; // "ERROR"
     }
 
     if(rs.rows.length>0) {
         var v=rs.rows.item(0).value;
+        v = unescapeFromSqlite(v);
         console.debug("ostos/dbaccess.js: getSetting: setting,value: " + setting + ","+v);
         return v;
     } else {
-        return "";
+        return NO_SETTING;
     }
 }
 
