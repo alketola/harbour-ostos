@@ -25,7 +25,8 @@ function escapeForSqlite(s){
     if (!s) return ""
     if (s==unknownShop) return unknownShop
     var t=s.toString()
-    var regex = /['".*+?^${}()|[\]\\]/g
+    t.replace(/'/g, '´') // This is for making JSON parsing possible
+    var regex = /[".*+?^${}()|[\]\\]/g
     var sub = '\\$&'
     return t.replace(regex, sub)
 }
@@ -807,7 +808,7 @@ function getSetting(setting) {
     if(rs.rows.length>0) {
         var v=rs.rows.item(0).value;
         v = unescapeFromSqlite(v);
-        console.debug("ostos/dbaccess.js: getSetting: setting,value: " + setting + ","+v);
+        //console.debug("ostos/dbaccess.js: getSetting: setting,value: " + setting + ","+v);
         return v;
     } else {
         return NO_SETTING;
