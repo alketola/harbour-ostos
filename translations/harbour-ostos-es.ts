@@ -15,8 +15,12 @@
         <translation type="unfinished">Tienda</translation>
     </message>
     <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Help</source>
-        <translation type="unfinished">Instrucciónes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
@@ -36,10 +40,6 @@
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>-</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -105,6 +105,37 @@
     <message>
         <source>Shop name</source>
         <translation>Nombre de la tienda</translation>
+    </message>
+</context>
+<context>
+    <name>QuickEditPage</name>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished">Aceptar</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <source>Hiding Item</source>
+        <translation type="unfinished">Escondiendo article</translation>
+    </message>
+    <message>
+        <source>Deleting Item</source>
+        <translation type="unfinished">Borrando artículo</translation>
+    </message>
+    <message>
+        <source>Hide item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flag item for further action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit item</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

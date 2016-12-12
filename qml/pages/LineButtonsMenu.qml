@@ -13,6 +13,7 @@ ContextMenu {
     id: cxMenu
     property int modelindex; // listView.currentIndex
     property int lineitems: 6
+    property bool remorsing: false
     MenuItem {
         Row {
             width: parent.width
@@ -21,12 +22,14 @@ ContextMenu {
                 width: parent.width/lineitems
                 icon.source: "image://theme/icon-m-dismiss"
                 onClicked: {
-                    // console.log("Item HIDE, ROWID:"+ shoppingListModel.get(modelindex).rowid)
+                    console.log("Item HIDE,index:"+modelindex +" ROWID:"+ shoppingListModel.get(modelindex).rowid)
                     // remorse and hide
+                    remorsing = true;
                     cxMenu.hide();
                     remorseHide.execute(cxMenu.parent,qsTr("Hiding Item"), function () {
-                        DBA.updateItemState(shoppingListModel.get(modelindex).rowid,"HIDE")
-                        shoppingListModel.remove(modelindex)
+                        DBA.updateItemState(shoppingListModel.get(modelindex).rowid,"HIDE");
+                        shoppingListModel.remove(modelindex);
+                        cxMenu.destroy();
                     }, 2000);
                 }
             }
@@ -55,7 +58,7 @@ ContextMenu {
 
             IconButton {
                 width: parent.width/lineitems
-                icon.source: "image://theme/icon-l-up"
+                icon.source: "../images/icon-m-plus.png"
                 onClicked: {
                     var q
                     q = parseInt(shoppingListModel.get(firstPageView.currentIndex).iqty)
@@ -68,7 +71,7 @@ ContextMenu {
 
             IconButton { // Change to hide function
                 width: parent.width/lineitems
-                icon.source: "image://theme/icon-l-down"
+                icon.source: "../images/icon-m-minus.png"
                 onClicked: {
                     var q
                     q = parseInt( shoppingListModel.get(firstPageView.currentIndex).iqty )
@@ -85,10 +88,12 @@ ContextMenu {
                 onClicked: {
                     // console.log("Item delete, ROWID:"+ shoppingListModel.get(modelindex).rowid)
                     // remorse and delete
+                    remorsing = true;
                     cxMenu.hide();
                     remorseDelete.execute(cxMenu.parent,qsTr("Deleting Item"), function () {
-                        DBA.deleteItemFromShoppingList(shoppingListModel.get(modelindex).rowid)
-                        shoppingListModel.remove(modelindex)
+                        DBA.deleteItemFromShoppingList(shoppingListModel.get(modelindex).rowid);
+                        shoppingListModel.remove(modelindex);
+                        cxMenu.destroy();
                     }, 3000);
                 }
             }
@@ -99,4 +104,22 @@ ContextMenu {
         }
     }
 
+    onClosed: {
+        console.log("LineButtonsMenu onClosed");
+
+        // This remorsing check is because remores item replaces
+        // context menu closing it, and thus coming here...
+        // Cannot destroy ContextMenu while remorsing.
+        // Can destroy in the end of remorse.
+        if (!remorsing) {
+            remorsing=false;
+            console.log("-->destroying cxMenu");
+            cxMenu.destroy();
+        } else {
+            // This should announce the menu for garbage collection
+            // According to top, garbage collection is not doing its job well
+            cxMenu.deleteLater;
+        }
+
+    }
 }

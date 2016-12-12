@@ -15,8 +15,12 @@
         <translation type="unfinished">Butik</translation>
     </message>
     <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Help</source>
-        <translation type="unfinished">Hjälp</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
@@ -28,19 +32,15 @@
     </message>
     <message>
         <source>Hide bought</source>
-        <translation>Dölj köpt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation>Sök i inköpslistan</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation>Rensar</translation>
-    </message>
-    <message>
-        <source>-</source>
-        <translation>-</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -105,6 +105,37 @@
     <message>
         <source>Shop name</source>
         <translation>Butiksnamn</translation>
+    </message>
+</context>
+<context>
+    <name>QuickEditPage</name>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished">Acceptera</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Avbryt</translation>
+    </message>
+    <message>
+        <source>Hiding Item</source>
+        <translation type="unfinished">Döljer objekt</translation>
+    </message>
+    <message>
+        <source>Deleting Item</source>
+        <translation type="unfinished">Tar bort objekt</translation>
+    </message>
+    <message>
+        <source>Hide item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flag item for further action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit item</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

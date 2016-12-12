@@ -13,6 +13,7 @@ function openDB() {
     return LS.LocalStorage.openDatabaseSync("ShopListDB", "1.1", "Shopping list database", 100000);
 }
 
+var NO_SETTING = new String("____NO_SETTING____");
 
 /**
  * Escapes string so that special characters are preceded by backslash.
@@ -24,9 +25,10 @@ function escapeForSqlite(s){
     if (!s) return ""
     if (s==unknownShop) return unknownShop
     var t=s.toString()
-    var regex = /['".*+?^${}()|[\]\\]/g
+    var regex = /["'.*+?^${}()|[\]\\]/g
     var sub = '\\$&'
-    return t.replace(regex, sub)
+    t=t.replace(regex, sub)
+    return t
 }
 
 /**
@@ -193,15 +195,16 @@ function readShoppingListByState(lm, mystate) {
  */
 function readShoppingListByShopExState(lm,shopname,excluded_state) {
     //    console.debug("ostos/dbaccess.js: readShoppingListByShop:"+shopname+", ex:"+excluded_state);
-    shopname=escapeForSqlite(shopname)
-    excluded_state=escapeForSqlite(excluded_state)
+    shopname=dq(escapeForSqlite(shopname))
+    excluded_state=dq(escapeForSqlite(excluded_state))
     var db = openDB()
     if(!db) { console.error("readAllByShop:db open failed"); return; }
     var rs
     try {
         db.transaction( function(tx) {
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
-            var querystring = "SELECT rowid, * FROM shoppinglist WHERE ishop='"+shopname+"' AND NOT istat='"+excluded_state+"' ORDER BY istat ASC, seq DESC, iname ASC;"
+            var querystring = "SELECT rowid, * FROM shoppinglist WHERE ishop="+shopname+" AND NOT istat="+excluded_state+" ORDER BY istat ASC, seq DESC, iname ASC;"
+            //print (querystring)
             rs = tx.executeSql(querystring)
         })
     } catch (sqlErr) {
@@ -544,7 +547,7 @@ function findItemByName(lm,itemname) {
 function addShop(sname) {
     sname=escapeForSqlite(sname);
 
-    // console.debug("ostos/dbaccess.js: Adding shop to db:"+sname);
+    console.debug("ostos/dbaccess.js: Adding shop to db:"+sname);
     var db = openDB();
     if(!db) { console.error("ostos/dbaccess.js: addShop:db open failed"); return; }
 
@@ -631,6 +634,7 @@ function shopRefCount(shopname) {
     return count
 }
 
+// dq for Double Quote
 
 function dq(str) {
     return '"' + str + '"';
@@ -641,18 +645,19 @@ function dq(str) {
  */
 function repopulateShopList(lm /* ListModel */) {
     //    console.debug("ostos/dbaccess.js: repopulateShopList")
-    var shops = getAllShopsByHits();
+    var shops = getAllShopsByHits()
+    var shoparr
     try {
-        var shoparr=JSON.parse(shops);
+        shoparr=JSON.parse(shops)
     } catch (err) {
-        console.error("Problem parsing '"+shoparr+" err:"+err);
+        console.error("Tried to parse \'"+shops+"\' err:"+err)
         return;
     }
 
     lm.clear();
     for(var i=0; i<shoparr.length; i++) {        
         //        console.debug("ostos/dbaccess.js: shoparr ["+i+"] ="+shoparr[i]+" length="+shoparr.length);
-        lm.append({"name":shoparr[i],"edittext":shoparr[i]});
+        lm.append({"name":shoparr[i],"edittext":shoparr[i]})
     }
 }
 
@@ -679,10 +684,14 @@ function getAllShopsByHits() {
         return "[NULL]";
     }
     arr = "[";
-    arr += dq(rs.rows.item(0).name);
+    var str = rs.rows.item(0).name
+    str = unescapeFromSqlite(str)
+    arr += dq(str);
     for(var i = 1; i < rs.rows.length; i++) {
         arr += ",";
-        arr += dq(rs.rows.item(i).name);
+        str = rs.rows.item(i).name;
+        str = unescapeFromSqlite(str);
+        arr += dq(str);
     }
     arr += "]"
     //    console.debug(arr);
@@ -800,15 +809,16 @@ function getSetting(setting) {
         });
     } catch (sqlErr) {
         console.debug("ostos/dbaccess.js: getSetting: log squirrel: " + sqlErr);
-        return ""; // "ERROR"
+        return NO_SETTING; // "ERROR"
     }
 
     if(rs.rows.length>0) {
         var v=rs.rows.item(0).value;
-        console.debug("ostos/dbaccess.js: getSetting: setting,value: " + setting + ","+v);
+        v = unescapeFromSqlite(v);
+        //console.debug("ostos/dbaccess.js: getSetting: setting,value: " + setting + ","+v);
         return v;
     } else {
-        return "";
+        return NO_SETTING;
     }
 }
 
