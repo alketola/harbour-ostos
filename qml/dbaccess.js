@@ -204,7 +204,7 @@ function readShoppingListByShopExState(lm,shopname,excluded_state) {
         db.transaction( function(tx) {
             // Now ordering initial list so that (BUY before FIND before GOT) and the newest (biggest rowid) first
             var querystring = "SELECT rowid, * FROM shoppinglist WHERE ishop="+shopname+" AND NOT istat="+excluded_state+" ORDER BY istat ASC, seq DESC, iname ASC;"
-            print (querystring)
+            //print (querystring)
             rs = tx.executeSql(querystring)
         })
     } catch (sqlErr) {
