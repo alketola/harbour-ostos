@@ -16,11 +16,11 @@
     </message>
     <message>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -32,15 +32,15 @@
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj köpt</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök köpobjekt</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensar</translation>
     </message>
 </context>
 <context>
@@ -127,15 +127,15 @@
     </message>
     <message>
         <source>Hide item</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj objekt</translation>
     </message>
     <message>
         <source>Flag item for further action</source>
-        <translation type="unfinished"></translation>
+        <translation>Märk objektet för ytterligare åtgärd</translation>
     </message>
     <message>
         <source>Edit item</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigera objekt</translation>
     </message>
 </context>
 <context>
