@@ -17,6 +17,5 @@
     </qresource>
     <qresource prefix="/">
         <file>harbour-ostos.png</file>
-        <file>qml/pages/QuickEditPage.qml</file>
     </qresource>
 </RCC>

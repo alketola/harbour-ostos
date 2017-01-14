@@ -30,7 +30,7 @@ ApplicationWindow
     // Global context
     property int currIndex // a global for current shoppingListModel index, passed around
     property string currShop // DBA.unknownShop is the string value for an unassigned shop
-
+    property variant shopFilter: [wildcard]
     // constants
     property string wildcard: "*"
     property int defaultRefreshInterval: 0
@@ -38,8 +38,10 @@ ApplicationWindow
     property int minRefreshInterval: 0
     property int maxRefreshInterval: 6000
     property bool webHelpEnabled: false
+    property bool shopFilterAutoResetEnabled: true
+    property string filterdesc:"*"
 
-    // Declared here to be accessible thru appWindow.
+    // Declared here to be accessible thru appWindow.    
 
     ListModel {
         id: shoppingListModel
@@ -52,10 +54,14 @@ ApplicationWindow
 
     ListModel {
         id: shopModel
+        // Structure defined implcitly in dbaccess.js
+        // in function repopulateShopList()
+        // as: {"checked:<true/false>, "name":<string>,"edittext":<string>}
     }
 
     // Using Componentized declarations seem to reduce Silica Util.js:38
     // Errors (parent Null) - so the Component is the parent
+
 
     Component {
         id: listView
@@ -65,6 +71,12 @@ ApplicationWindow
         id: itemeditflick
         SilicaFlickable {}
     }
+
+    Component {
+        id: filterPage
+        FilterPage {}
+    }
+
     Component {
         id: firstPage
         FirstPage {}
@@ -86,6 +98,12 @@ ApplicationWindow
     Component {
         id: settingsPage
         SettingsPage {}
+    }
+
+    /** This is a ListView without any content, full of emptiness */
+    Component {
+        id: nilvue
+        ListView { id: nillistview }
     }
 
     // Back to normal business, the ApplicationWindow's pointer to start
@@ -118,8 +136,10 @@ ApplicationWindow
         console.log("harbour-ostos started")
         DBA.initDatabase(); // plug in localstorage
         currShop = wildcard
+        shopFilter = [wildcard]
         // Read in refault settings from database
         var d=new String(DBA.getSetting("refresh-delay"));
+        if(DBA.NO_SETTING==d) d=0;
         setRefreshInterval(d.valueOf());
     }
 
@@ -160,7 +180,7 @@ ApplicationWindow
      * Function to request refresh - without timer
      */
     function requestRefresh(tracetext) {
-//        console.debug("harbour-ostos.requestRefresh : enabler: "+enabler+"; trace:'"+tracetext)
+        console.debug("harbour-ostos.requestRefresh: trace:'"+tracetext)
         refreshShoppingListByCurrentShop()
     }
     /*
@@ -173,21 +193,27 @@ ApplicationWindow
             menurefreshtimer.turn_on(tracetext)
         } else {
             menurefreshtimer.restart()
-//            console.debug("harbour-ostos.requestRefresh - restarted timer.")
+            // console.debug("harbour-ostos.requestRefresh - restarted timer.")
         }
     }
 
     // This is for "painting" the first page
     function  refreshShoppingListByCurrentShop(){
         shoppingListModel.updating = true
-        if ((currShop==wildcard) || (!currShop) ) {
-            currShop=wildcard            
-            shoppingListModel.clear()
-            DBA.readShoppingListExState(shoppingListModel,"HIDE");
-        } else {
-            shoppingListModel.clear()
-            DBA.readShoppingListByShopExState(shoppingListModel, currShop,"HIDE");
-        }
+        shoppingListModel.clear()
+
+        DBA.readShoppingListFiltered(shoppingListModel,"HIDE",shopFilter)
+//        console.log("built shopfilter="+DBA.buildshopfilter(shopFilter))
+
+//        if ((currShop==wildcard) || (!currShop) ) {
+//            currShop=wildcard
+//            shoppingListModel.clear()
+//            DBA.readShoppingListExState(shoppingListModel,"HIDE");
+//        } else {
+//            shoppingListModel.clear()
+//            DBA.readShoppingListByShopExState(shoppingListModel, currShop,"HIDE");
+//        }
+
         shoppingListModel.updating = false
         //        console.log("By Current shopname="+currShop)
     }

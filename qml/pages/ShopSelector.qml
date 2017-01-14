@@ -15,6 +15,14 @@ import "../dbaccess.js" as DBA
  *
  */
 
+/** SIDE EFFECTS
+ * Do not love using globals
+ * - appWindow.currShop = model.name
+ * - firstPageView.delegate = nilvue ; This is to disable shoppinglist touches
+ * - appWindow.requestRefresh() causing the firstPage contents to refresh
+ */
+/** DBA the database is only read for shop names */
+
 ComboBox {
 
     property Component overlappedToHide         // if there is something that has to be hidden
@@ -22,6 +30,7 @@ ComboBox {
     property ListModel listmodel                // The listmodel where the shop names are
     property bool hidewildcard: false           // flag to hide the wildcard option
     property string dbvalue
+    /* value aka. ComboBox.value is the selected / highlighted item */
 
     width: parent.width
     labelColor: Theme.secondaryColor
@@ -85,6 +94,7 @@ ComboBox {
             onClicked: {
                 value = wildcard
                 appWindow.currShop=wildcard
+                shopFilter = [wildcard]
             }
         }
 
@@ -118,9 +128,6 @@ ComboBox {
         if(overlappedToHide) firstPageView.delegate = nilvue
     }
 
-    Component {id: nilvue
-        ListView { id: nillistview }
-    }
 
     //    onStateChanged: {
 

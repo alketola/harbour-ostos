@@ -11,21 +11,24 @@ Dialog {
     property string unknownShopString : DBA.unknownShop
 
     property string searchString
+    property string addname : "raro"
     //property alias searchFld: addDialog.searchField //searchView.headerItem // needed the particular reference!
     property bool cherryPicked
 
     canAccept: ((searchListModel.count <= 1) || addDialog.cherryPicked == true)
     acceptDestination: Qt.resolvedUrl("ItemEditPage.qml")
-    //    acceptDestinationAction: PageStackAction.Push
+    acceptDestinationAction: PageStackAction.Push
+    acceptDestinationProperties: {"name_in":addname}
     backNavigation: true
     forwardNavigation: true
 
     ListModel {
-        id: acceptlm
+        id: addinglm
     }
 
     onAccepted: {
-        ITEMADD.accept()
+        //pageStack.push(Qt.resolvedUrl("ItemEditPage.qml"))        
+        ITEMADD.doadd()
         // console.debug("ItemAddPage.qml onAccepted, about to push ItemEditPage.qml")
     }
 
@@ -37,6 +40,7 @@ Dialog {
             //            console.log("**** loading templistmodel")
             DBA.readShoppingListExState(templistmodel,"BUY")
             searchListModel.update()
+            //console.log("pageStack.depth="+pageStack.depth)
         }
     }
 
@@ -92,6 +96,8 @@ Dialog {
                     onTextChanged: {
                         searchListModel.update()
                         cherryPicked = false
+                        addname=searchField.text
+                        console.log("searchField.text="+searchField.text+" addname="+addname)
                     }
                 }
             }
@@ -131,7 +137,7 @@ Dialog {
                         opacity: Theme.highlightBackgroundOpacity /3
                     }
                     onClicked: {
-                        searchField.text=sLabel.text
+                        searchField.text=sLabel.text                        
                         addDialog.cherryPicked=true
                     }
                 }

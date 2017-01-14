@@ -18,5 +18,6 @@
 * Fri Nov 9 2016 Antti Ketola <antti@mobilitio.com> 1.0.6-1
 - Changed the List context menu to be dynamically created and destroyed()
 
-
+* Sat Jan 14 2017 Antti Ketola <antti@mobilitio.com> 1.7-0
+- Developed further, changed shop selection
 

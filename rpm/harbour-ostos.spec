@@ -7,13 +7,13 @@ Name:       harbour-ostos
 
 # >> macros
 # << macros
-%define debug_package %{nil}
+
 %{!?qtc_qmake:%define qtc_qmake %qmake}
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Shopping List App
-Version:    1.06
+Version:    1.07
 Release:    0
 Group:      Qt/Qt
 License:    GPL V3

@@ -85,7 +85,9 @@ DISTFILES += \
     translations/harbour-ostos-es.ts \
     translations/harbour-ostos-fi.ts \
     translations/harbour-ostos-sv.ts \
-    translations/harbour-ostos.ts
+    translations/harbour-ostos.ts \
+    qml/pages/FilterPage.qml \
+    qml/pages/SpecialButton.qml
 
 SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
 

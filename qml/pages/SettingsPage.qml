@@ -83,12 +83,25 @@ Page {
 
             }
             TextSwitch {
-                id: extHelpEnable
+                id: extHelpEna
                 text: qsTr("Enable WWW help")
                 description: qsTr("Enable Help file read from Web and use of Google translator for unknown languages")
+                checked: appWindow.webHelpEnabled
 
-                onCheckedChanged: appWindow.webHelpEnabled = checked
+                onClicked: {
+                    appWindow.webHelpEnabled = !appWindow.webHelpEnabled
+                }
             }
+
+//            TextSwitch {
+//                id: shopFilterAutoResetEna
+//                text: qsTr("Enable That Shop Filter Returnss to *")
+//                checked: appWindow.shopFilterAutoResetEnabled
+
+//                onClicked: {
+//                    appWindow.shopFilterAutoResetEnabled
+//                }
+//            }
 
             Label {
                 width: parent.width
@@ -130,19 +143,20 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.06"
+                text: "Version "+"v1.07-alpha"
+
             }
 
             Component.onCompleted: {
                 // This was an attempt to read in Settings from database. There aren't any, currently
                 try {
-                    var d=new String(DBA.getSetting("refresh-delay"));
-                    console.log("SettingsPage.qml: refresh-delay:"+d);
+                    var d=new String(DBA.getSetting("refresh-delay"))
+                    console.log("SettingsPage.qml: refresh-delay:"+d)
                     if(DBA.NO_SETTING === d) {
-                        console.log("no refresh delay found in database");
-                        appWindow.refreshInterval = 0;
+                        console.log("no refresh delay found in database")
+                        appWindow.setRefreshInterval(0)
                     } else {
-                        appWindow.setRefreshInterval(d.valueOf());
+                        appWindow.setRefreshInterval(d.valueOf())
                         console.log("Refresh delay "+d+" found in database:"+d.valueOf());
                     }
                 } catch (err) {
