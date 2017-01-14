@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import "../dbaccess.js" as DBA
@@ -9,8 +9,9 @@ import "../dbaccess.js" as DBA
  * Main list page of the shopping list app
  */
 
-Page {
+Dialog {
     id: firstPage
+
     allowedOrientations: Orientation.All
 
     onStatusChanged: {
@@ -19,16 +20,28 @@ Page {
             firstPageView.delegate = listLine // to make sure that it is present, even if exited shop selector badly
             requestRefresh("firstPage status changed to Active")
             // Refactor? Why to always clear and repopulate shop list
-            shopModel.clear()
-            DBA.repopulateShopList(shopModel) // ShopModel
+            //            shopModel.clear()
+            //            DBA.repopulateShopList(shopModel) // ShopModel
+            console.log("pageStack.depth="+pageStack.depth)
+            console.log("shopFilter="+shopFilter)
+            console.log("filterdesc="+filterdesc)
         }
     }
-    backNavigation: false
+    Component.onCompleted: {
+        console.log("firstPage:Component.onCompleted")
 
-    _forwardDestination: Qt.resolvedUrl("ItemAddPage.qml")
-    _forwardDestinationAction: PageStackAction.Push
+    }
 
     forwardNavigation: true
+    acceptDestination: Qt.resolvedUrl("ItemAddPage.qml")
+    acceptDestinationAction: PageStackAction.Push
+
+    onAccepted:  {
+        console.log("firstPage:accepted")
+    }
+
+    backNavigation: false
+
 
     SilicaListView {
         id: firstPageView
@@ -42,31 +55,36 @@ Page {
         header: PageHeader {
             id: phdr
             height: Theme.itemSizeMedium
-            Row {
-                id: headerRow
-                spacing: Theme.paddingSmall
-                anchors.fill: parent
 
-                ShopSelector {
-                    id: mainListShopSelector
-                    label: qsTr("Shop")
-                    width: firstPage.width - firstPageSearchImage.width - Theme.paddingLarge
-                    anchors.top: parent.top
-                    listmodel: shopModel
-                    overlappedToHide: listLine
+            SpecialButton {
+                id: gotoOptionsButton
+
+                text: filterdesc
+                fontsize: Theme.fontSizeSmall
+                textwidth: width - Theme.paddingSmall
+
+                y: Theme.paddingMedium
+                x: Theme.paddingMedium
+                width: parent.width * 0.7
+
+                onClicked: {
+                    //console.log("firstPage:Go To Options")
+                    pageStack.push(Qt.resolvedUrl("FilterPage.qml"),PageStackAction.Animated)
                 }
-                Image {
-                    id: firstPageSearchImage
-                    source: "image://theme/icon-m-search"
-                    y: Theme.paddingLarge
-                }
+            }
+
+            Image {
+                id: firstPageSearchImage
+                x: parent.width*0.8
+                y: Theme.paddingLarge
+                source: "image://theme/icon-m-search"
             }
         }
 
         ViewPlaceholder {
             id: firstPagePlaceholder
             enabled: shoppingListModel.count == 0 | shoppingListModel.updating == true
-            text: qsTr("-")
+            text: shoppingListModel.count == 0 ? qsTr("-") : qsTr("updating")
         }
 
         VerticalScrollDecorator { flickable: firstPageView }
@@ -114,11 +132,6 @@ Page {
             //            }
 
 
-            //            MenuItem {
-            //                text: qsTr("Set shop")
-            //                onClicked: { console.log("currentShop:"+currentShop)}
-            //            }
-
             MenuItem {
                 text: qsTr("Edit shops")
                 onClicked: {
@@ -144,10 +157,10 @@ Page {
                 }
             }
 
-//            onStateChanged: {
-//                console.log("FirstPage PullDownMenu StateChanged, option selected="+pdm.optionSelected+" state="+state)
-//                if ((state != "expanded") && (pdm.optionSelected == "")) requestRefreshAsync(true,"FirstPagePulldown")
-//            }
+            //            onStateChanged: {
+            //                console.log("FirstPage PullDownMenu StateChanged, option selected="+pdm.optionSelected+" state="+state)
+            //                if ((state != "expanded") && (pdm.optionSelected == "")) requestRefreshAsync(true,"FirstPagePulldown")
+            //            }
         }
     }
 
@@ -159,13 +172,13 @@ Page {
         ListItem {
             id: itemi
             //            height: Theme.itemSizeSmall
-//            onClicked: { //ListItem
-//                //                firstPageView.currentIndex = index;
-//                //                ci = index;
-//                //                stateIndicator.cycle();
-//                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
-//                //                console.debug("shoppinglistitem height is:"+itemi.height)
-//            }
+            //            onClicked: { //ListItem
+            //                //                firstPageView.currentIndex = index;
+            //                //                ci = index;
+            //                //                stateIndicator.cycle();
+            //                //                console.log("Clicked ListItem, index=" + index + " listView.currentIndex = " + listView.currentIndex)
+            //                //                console.debug("shoppinglistitem height is:"+itemi.height)
+            //            }
             onPressed: {
                 firstPageView.currentIndex = index
                 currIndex = index;

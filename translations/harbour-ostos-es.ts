@@ -9,10 +9,29 @@
     </message>
 </context>
 <context>
+    <name>FilterPage</name>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished">Aceptar</translation>
+    </message>
+    <message>
+        <source>No shops</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new shop</source>
+        <translation type="unfinished">Añadir tienda</translation>
+    </message>
+    <message>
+        <source>Undo edits</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
-        <source>Shop</source>
-        <translation type="unfinished">Tienda</translation>
+        <source>-</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Help</source>
@@ -39,7 +58,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>-</source>
+        <source>updating</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -54,35 +73,31 @@
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation>Aceptar</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Aceptar</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation>Nombre del article</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation>Cantidad</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation>Unidad</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation>Clase</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation>Tienda</translation>
+        <translation type="unfinished">Tienda</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Editar tiendas</translation>
+        <translation type="unfinished">Editar tiendas</translation>
     </message>
 </context>
 <context>
@@ -105,6 +120,53 @@
     <message>
         <source>Shop name</source>
         <translation>Nombre de la tienda</translation>
+    </message>
+</context>
+<context>
+    <name>OldHelpTxt</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Instrucciónes</translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The items have states, indicated by the icon on the left of each shopping list item.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The state can be toggled like by clicking the state icon on the left.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The context menu has options to hide, edit, flag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> increase quantity, decrease quantity and delete the item.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item is listed as to buy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item has been bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item is listed as flagged (e.g. find later)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

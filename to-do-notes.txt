@@ -31,3 +31,6 @@ code:
 REASON is obviously that _pageStackIndicator is null.
 
 >>PageStack.qml
+
+2017-01-12
+Jos kauppa on valittuna, niin lisääminen ei kopioi oikein editointidialogiin

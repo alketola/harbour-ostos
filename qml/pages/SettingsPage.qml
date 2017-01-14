@@ -83,12 +83,25 @@ Page {
 
             }
             TextSwitch {
-                id: extHelpEnable
+                id: extHelpEna
                 text: qsTr("Enable WWW help")
                 description: qsTr("Enable Help file read from Web and use of Google translator for unknown languages")
+                checked: appWindow.webHelpEnabled
 
-                onCheckedChanged: appWindow.webHelpEnabled = checked
+                onClicked: {
+                    appWindow.webHelpEnabled = !appWindow.webHelpEnabled
+                }
             }
+
+//            TextSwitch {
+//                id: shopFilterAutoResetEna
+//                text: qsTr("Enable That Shop Filter Returnss to *")
+//                checked: appWindow.shopFilterAutoResetEnabled
+
+//                onClicked: {
+//                    appWindow.shopFilterAutoResetEnabled
+//                }
+//            }
 
             Label {
                 width: parent.width
@@ -130,7 +143,7 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.05"
+                text: "Version "+"v1.05-1"
             }
 
             Component.onCompleted: {

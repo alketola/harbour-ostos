@@ -3,11 +3,11 @@
   * just because onAccepted function was pretty big.
   * HAS DEPENDENCIES TO THE PAGE qml/pages/ItemAddPage.qml and globals
   */
-function accept() {
+function doadd() {
     // // console.log("itemadd.js:accept()")
     var count = searchListModel.count
-    // console.log("- searchListModel.count="+searchListModel.count)
     var db_index
+    // console.log("- searchListModel.count="+searchListModel.count)    
     var found_1st_item_name
 
     if ((count == 1) || ((cherryPicked==true))) {
@@ -20,28 +20,35 @@ function accept() {
             found_1st_item_name = searchListModel.get(0).name
         }
 
-        // console.log("- found_item_name:"+found_1st_item_name)
+        console.log("- found_item_name:"+found_1st_item_name)
 
-        acceptlm.clear()
-        db_index = DBA.findItemByName(acceptlm,found_1st_item_name)
+        addinglm.clear()
+        db_index = DBA.findItemByName(addinglm,found_1st_item_name)
         if(db_index) {
             // console.log("- ROW:"+acceptlm.get(0).rowid+" STAT:"+acceptlm.get(0).istat+" NAME:"+acceptlm.get(0).iname+" QTY:"+acceptlm.get(0).iqty+
             //            "UNIT:"+ acceptlm.get(0).iunit+" CLASS:"+acceptlm.get(0).iclass+" SHOP:"+acceptlm.get(0).ishop)
-            if(acceptlm.get(0).istat!="HIDE") { // If the row stat is other than HIDE, it should be found in shoppingList
+            if(addinglm.get(0).istat!="HIDE") { // If the row stat is other than HIDE, it should be found in shoppingList
+                var found_in_shoppinglistmodel = false
+                var nm=""
                 for (var i=0; i<shoppingListModel.count; i++){
-
-                    if(shoppingListModel.get(i).iname.toLowerCase()
-                            ==found_1st_item_name.toLowerCase()) {
+                    nm = shoppingListModel.get(i).iname.toLowerCase()
+                    if(nm===found_1st_item_name.toLowerCase()) {
                         currIndex = i
+                        found_in_shoppinglistmodel = true
                         break
                     }
                 }
+                if (!found_in_shoppinglistmodel) {
+                    console.log("Curious,"+found_1st_item_name+" not found in shoppingListModel")
+                    insertttoslbeginning(db_index)
+                }
             } else {
                 // in case the item stat was HIDE, it must be added to shoppingListModel
-                currIndex=0
-                shoppingListModel.insert(currIndex,{ "istat":"BUY", "iname":acceptlm.get(0).iname, "iqty":acceptlm.get(0).iqty, "iunit":acceptlm.get(0).iunit, "iclass":acceptlm.get(0).iclass, "rowid":parseInt(db_index)});
-                currShop = wildcard
+                insertttoslbeginning(db_index)
+
             }
+        } else {
+            console.log("Curious,"+found_1st_item_name+" not found in DB even it has db_index")
         }
     } else if (count==0) { // Haven't found, will start adding a new item and its details
         currIndex = shoppingListModel.count
@@ -58,5 +65,13 @@ function accept() {
     // console.log("* ItemAddPage accepted,\n- searchField.text:"+searchField.text+
     //            " found_item_name:"+found_1st_item_name+" ci:"+currIndex)
 
+}
+
+function insertttoslbeginning(db_index) {
+    var beginning = 0
+    shoppingListModel.insert(beginning,{ "istat":"BUY", "iname":addinglm.get(0).iname, "iqty":addinglm.get(0).iqty, "iunit":addinglm.get(0).iunit, "iclass":addinglm.get(0).iclass, "rowid":parseInt(db_index)});
+    currShop = wildcard
+    shopFilter = [wildcard]
+    currIndex=0
 }
 
