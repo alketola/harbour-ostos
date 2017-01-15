@@ -16,15 +16,15 @@
     </message>
     <message>
         <source>No shops</source>
-        <translation>Inga affär</translation>
+        <translation>Inga butiker</translation>
     </message>
     <message>
         <source>Add new shop</source>
-        <translation>Lägg till ny affär</translation>
+        <translation>Lägg till ny butik</translation>
     </message>
     <message>
         <source>Undo edits</source>
-        <translation>Ångra/Gör om</translation>
+        <translation>Ångra ändringar</translation>
     </message>
 </context>
 <context>
@@ -43,7 +43,7 @@
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Redigera affärer</translation>
+        <translation>Redigera butiker</translation>
     </message>
     <message>
         <source>Hide bought</source>
@@ -51,15 +51,15 @@
     </message>
     <message>
         <source>Search to buy</source>
-        <translation>Sök</translation>
+        <translation>Sök köpobjekt</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation>Listan blir raderat</translation>
+        <translation>Rensar listan</translation>
     </message>
     <message>
         <source>updating</source>
-        <translation>uppdatering</translation>
+        <translation>uppdaterar</translation>
     </message>
 </context>
 <context>
@@ -85,19 +85,19 @@
     </message>
     <message>
         <source>Unit</source>
-        <translation>enhet</translation>
+        <translation>Enhet</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation>Klasse</translation>
+        <translation>Klass</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation>Affär</translation>
+        <translation>Butik</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Redigera Affärer</translation>
+        <translation>Redigera Butiker</translation>
     </message>
 </context>
 <context>
@@ -115,11 +115,11 @@
     <name>NewShopDialog</name>
     <message>
         <source>Add new shop</source>
-        <translation>Lägg till ny affär</translation>
+        <translation>Lägg till ny butik</translation>
     </message>
     <message>
         <source>Shop name</source>
-        <translation>Namnet av affären</translation>
+        <translation>Butiksnamn</translation>
     </message>
 </context>
 <context>
@@ -131,24 +131,24 @@
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 </source>
-        <translation></translation>
+        <translation>Lägg till nya objekt genom att växla till söksidan åt höger (första menyposten i toppmenyn)</translation>
     </message>
     <message>
         <source>The state can be toggled like by clicking the state icon on the left.
 </source>
-        <translation>Staten kan ändras med tryck po knappet på vänster</translation>
+        <translation>Status kan ändras med tryck på statusikonen på vänster sida.</translation>
     </message>
     <message>
         <source>The context menu has options to hide, edit, flag</source>
-        <translation>Kontekstmenun har optioner för dölj, redigera, markera</translation>
+        <translation>Kontextmenyn har alternativ för att dölja, redigera och märka</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation>Lägg till nya objekt genom att växla till söksidan på höger på första objektet i rullgardinsmenyn</translation>
+        <translation>Lägg till nya objekt genom att växla till söksidan åt höger, på första objektet i toppmenyn</translation>
     </message>
     <message>
         <source>The item is listed as to buy</source>
-        <translation>Objektet är listad som att köpa</translation>
+        <translation>Objektet är listat för att köpas</translation>
     </message>
     <message>
         <source>The item has been bought</source>
@@ -156,17 +156,17 @@
     </message>
     <message>
         <source>The item is listed as flagged (e.g. find later)</source>
-        <translation>Objektet är markerad</translation>
+        <translation>Objektet är markerat (t.ex. hitta senare)</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Objekten har status, indikerat av ikon på vänster sida av varje köpobjekt</translation>
     </message>
     <message>
         <source> increase quantity, decrease quantity and delete the item.
 </source>
-        <translation type="unfinished"></translation>
+        <translation> öka mängden, minska mängden och ta bort objekt.</translation>
     </message>
 </context>
 <context>
@@ -212,7 +212,7 @@
     </message>
     <message>
         <source>Add new shop</source>
-        <translation>Lägg till ny affär</translation>
+        <translation>Lägg till ny butik</translation>
     </message>
     <message>
         <source>Edit</source>
