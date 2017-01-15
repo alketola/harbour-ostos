@@ -12,27 +12,23 @@
     <name>FilterPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished">Acceptera</translation>
+        <translation>Acceptera</translation>
     </message>
     <message>
         <source>No shops</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga affär</translation>
     </message>
     <message>
         <source>Add new shop</source>
-        <translation type="unfinished">Lägg till ny butik</translation>
+        <translation>Lägg till ny affär</translation>
     </message>
     <message>
         <source>Undo edits</source>
-        <translation type="unfinished"></translation>
+        <translation>Ångra/Gör om</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
-    <message>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>-</source>
         <translation>-</translation>
@@ -43,28 +39,27 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Redigera butiker</translation>
+        <translation>Redigera affärer</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj köpta objekt</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation>Sök köpobjekt</translation>
-        <translation type="unfinished"></translation>
+        <translation>Sök</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Listan blir raderat</translation>
     </message>
     <message>
         <source>updating</source>
-        <translation type="unfinished"></translation>
+        <translation>uppdatering</translation>
     </message>
 </context>
 <context>
@@ -78,31 +73,31 @@
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished">Acceptera</translation>
+        <translation>Acceptera</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>enhet</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasse</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Butik</translation>
+        <translation>Affär</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Redigera butiker</translation>
+        <translation>Redigera Affärer</translation>
     </message>
 </context>
 <context>
@@ -120,52 +115,48 @@
     <name>NewShopDialog</name>
     <message>
         <source>Add new shop</source>
-        <translation>Lägg till ny butik</translation>
+        <translation>Lägg till ny affär</translation>
     </message>
     <message>
         <source>Shop name</source>
-        <translation>Butiksnamn</translation>
+        <translation>Namnet av affären</translation>
     </message>
 </context>
 <context>
-    <name>QuickEditPage</name>
-    <message>
-        <source>Accept</source>
-        <translation type="unfinished">Acceptera</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished">Avbryt</translation>
-    </message>
-    <message>
-        <source>Hiding Item</source>
-        <translation type="unfinished">Döljer objekt</translation>
-    </message>
-    <message>
-        <source>Deleting Item</source>
-        <translation type="unfinished">Tar bort objekt</translation>
-    </message>
-    <message>
-        <source>Hide item</source>
-        <translation>Dölj objekt</translation>
-    </message>
-    <message>
-        <source>Flag item for further action</source>
-        <translation>Märk objektet för ytterligare åtgärd</translation>
-    </message>
-    <message>
-        <source>Edit item</source>
-        <translation>Redigera objekt</translation>
-=======
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Hjälp</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <source>The state can be toggled like by clicking the state icon on the left.
+</source>
+        <translation>Staten kan ändras med tryck po knappet på vänster</translation>
+    </message>
+    <message>
+        <source>The context menu has options to hide, edit, flag</source>
+        <translation>Kontekstmenun har optioner för dölj, redigera, markera</translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
+        <translation>Lägg till nya objekt genom att växla till söksidan på höger på första objektet i rullgardinsmenyn</translation>
+    </message>
+    <message>
+        <source>The item is listed as to buy</source>
+        <translation>Objektet är listad som att köpa</translation>
+    </message>
+    <message>
+        <source>The item has been bought</source>
+        <translation>Objektet har köpts</translation>
+    </message>
+    <message>
+        <source>The item is listed as flagged (e.g. find later)</source>
+        <translation>Objektet är markerad</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
@@ -173,35 +164,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The state can be toggled like by clicking the state icon on the left.
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The context menu has options to hide, edit, flag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source> increase quantity, decrease quantity and delete the item.
 </source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The item is listed as to buy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The item has been bought</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The item is listed as flagged (e.g. find later)</source>
-        <translation type="unfinished"></translation>
->>>>>>> sideoptionpage
     </message>
 </context>
 <context>
@@ -247,7 +212,7 @@
     </message>
     <message>
         <source>Add new shop</source>
-        <translation>Lägg till ny butik</translation>
+        <translation>Lägg till ny affär</translation>
     </message>
     <message>
         <source>Edit</source>

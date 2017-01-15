@@ -12,59 +12,54 @@
     <name>FilterPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished">Akzeptieren</translation>
+        <translation>Akzeptieren</translation>
     </message>
     <message>
         <source>No shops</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine laden</translation>
     </message>
     <message>
         <source>Add new shop</source>
-        <translation type="unfinished">Laden hinzufügen</translation>
+        <translation>Laden hinzufügen</translation>
     </message>
     <message>
         <source>Undo edits</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifikationen wiederrufen</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Shop</source>
-        <translation type="unfinished">Laden</translation>
-    </message>
-    <message>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
-        <translation type="unfinished">Hilfe</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Laden bearbeiten</translation>
+        <translation>Laden bearbeiten</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Verstecke gekaufte Artikeln</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschend</translation>
     </message>
     <message>
         <source>updating</source>
-        <translation type="unfinished"></translation>
+        <translation>aktualizierend</translation>
     </message>
 </context>
 <context>
@@ -78,31 +73,31 @@
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished">Akzeptieren</translation>
+        <translation>Akzeptieren</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikelname</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation type="unfinished"></translation>
+        <translation>Menge</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Einheit</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasse</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Laden</translation>
+        <translation>Laden</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Laden bearbeiten</translation>
+        <translation>Laden bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -128,33 +123,6 @@
     </message>
 </context>
 <context>
-    <name>QuickEditPage</name>
-    <message>
-        <source>Accept</source>
-        <translation type="unfinished">Akzeptieren</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished">Aufheben</translation>
-    </message>
-    <message>
-        <source>Hiding Item</source>
-        <translation type="unfinished">Verstecke Artikel</translation>
-    </message>
-    <message>
-        <source>Deleting Item</source>
-        <translation type="unfinished">Lösche Artikel</translation>
-    </message>
-    <message>
-        <source>Hide item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flag item for further action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit item</source>
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>

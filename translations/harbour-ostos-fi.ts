@@ -12,59 +12,54 @@
     <name>FilterPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished">Hyväksy</translation>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <source>No shops</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei kauppoja</translation>
     </message>
     <message>
         <source>Add new shop</source>
-        <translation type="unfinished">Lisää kauppa</translation>
+        <translation>Lisää kauppa</translation>
     </message>
     <message>
         <source>Undo edits</source>
-        <translation type="unfinished"></translation>
+        <translation>Peruuta muokkaus</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Shop</source>
-        <translation type="unfinished">Kauppa</translation>
-    </message>
-    <message>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
-        <translation type="unfinished">Ohje</translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Asetukset</translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Muokkaa kauppoja</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
     <message>
         <source>Hide bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Piilota ostetut</translation>
     </message>
     <message>
         <source>Search to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi ja lisää</translation>
     </message>
     <message>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennetään</translation>
     </message>
     <message>
         <source>updating</source>
-        <translation type="unfinished"></translation>
+        <translation>päivitetään</translation>
     </message>
 </context>
 <context>
@@ -78,31 +73,31 @@
     <name>ItemEditPage</name>
     <message>
         <source>Accept</source>
-        <translation type="unfinished">Hyväksy</translation>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <source>Item Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikkelin nimi</translation>
     </message>
     <message>
         <source>Quantity</source>
-        <translation type="unfinished"></translation>
+        <translation>Määrä</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>yksikkö</translation>
     </message>
     <message>
         <source>Item Class</source>
-        <translation type="unfinished"></translation>
+        <translation>Luokka</translation>
     </message>
     <message>
         <source>Shop</source>
-        <translation type="unfinished">Kauppa</translation>
+        <translation>Kauppa</translation>
     </message>
     <message>
         <source>Edit shops</source>
-        <translation type="unfinished">Muokkaa kauppoja</translation>
+        <translation>Muokkaa kauppoja</translation>
     </message>
 </context>
 <context>
@@ -128,33 +123,6 @@
     </message>
 </context>
 <context>
-    <name>QuickEditPage</name>
-    <message>
-        <source>Accept</source>
-        <translation type="unfinished">Hyväksy</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished">Peruuta</translation>
-    </message>
-    <message>
-        <source>Hiding Item</source>
-        <translation type="unfinished">Piilotetaan artikkeli</translation>
-    </message>
-    <message>
-        <source>Deleting Item</source>
-        <translation type="unfinished">Poistetaan artikkeli</translation>
-    </message>
-    <message>
-        <source>Hide item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flag item for further action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit item</source>
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
@@ -163,7 +131,7 @@
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lisää uusia artikkeleja siirtyen hakusivulle pyyhkäisemällä vasemmalle</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.

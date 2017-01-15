@@ -7,6 +7,7 @@ Name=Ostos
 # translation example:
 # your app name in Finnish locale (fi)
 Name[fi]=Ostos
-Name[en]=Ostos
-Name[es]=Carrito
+Name[en]=Basket
+Name[es]=Cesta
 Name[de]=Warenkorb
+Name[sv]=Varukorg
