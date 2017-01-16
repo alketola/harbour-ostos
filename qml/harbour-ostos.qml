@@ -33,13 +33,16 @@ ApplicationWindow
     property variant shopFilter: [wildcard]
     // constants
     property string wildcard: "*"
-    property int defaultRefreshInterval: 0
-    property int refreshInterval: defaultRefreshInterval
-    property int minRefreshInterval: 0
-    property int maxRefreshInterval: 6000
-    property bool webHelpEnabled: false
     property bool shopFilterAutoResetEnabled: true
     property string filterdesc:"*"
+
+    // Settings, their limits and default values
+    property int defaultRefreshInterval: 0
+    property int setting_refreshInterval: defaultRefreshInterval
+    property int minRefreshInterval: 0
+    property int maxRefreshInterval: 6000
+    property bool setting_webHelpEnabled: false
+    property bool setting_sectionHeadersEnabled: false
 
     // Declared here to be accessible thru appWindow.    
 
@@ -138,25 +141,43 @@ ApplicationWindow
         currShop = wildcard
         shopFilter = [wildcard]
         // Read in refault settings from database
+        readSettings()
+    }
+
+    function readSettings() {
         var d=new String(DBA.getSetting("refresh-delay"));
         if(DBA.NO_SETTING==d) d=0;
         setRefreshInterval(d.valueOf());
+
+        var h = new String(DBA.getSetting("section-headers-enable"))
+        if(DBA.NO_SETTING === h) h="false";
+        if (h=="true") {
+            appWindow.setting_sectionHeadersEnabled = true
+        } else {
+            appWindow.setting_sectionHeadersEnabled = false
+        }
+        console.log("setting section-headers-enable set to "+appWindow.setting_sectionHeadersEnabled)
+    }
+
+    function writeSettings() {
+        DBA.setSetting("refresh-delay", appWindow.setting_refreshInterval);
+        DBA.setSetting("section-headers-enable",appWindow.setting_sectionHeadersEnabled);
     }
 
     function setRefreshInterval(millisec) {
         if (millisec>maxRefreshInterval){
-            refreshInterval = maxRefreshInterval
+            setting_refreshInterval = maxRefreshInterval
         } else if (millisec<minRefreshInterval) {
-            refreshInterval = minRefreshInterval
+            setting_refreshInterval = minRefreshInterval
         } else {
-            refreshInterval = millisec
+            setting_refreshInterval = millisec
         }
     }
 
     //     This timer is used to refresh the shopping list in a separate thread.
     Timer {
         id: menurefreshtimer
-        interval: refreshInterval
+        interval: setting_refreshInterval
         repeat: false
 
         property string _trace

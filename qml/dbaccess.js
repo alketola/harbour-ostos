@@ -158,7 +158,7 @@ function readShoppingListFiltered(lm,excluded_state,filterarray) {// shoppingLis
     var db = openDB()
     if(!db) { console.error("readTheListExState:db open failed"); return; }
     var querystring = 'SELECT rowid, * FROM shoppinglist WHERE NOT istat=\"'+excluded_state+'\" '+shopfilterstring+' ORDER BY istat ASC, iclass ASC, seq DESC, iname ASC  ;'
-    console.log("querystring="+querystring)
+    //console.debug("querystring="+querystring)
     var rs
     try {
         db.transaction( function(tx) {

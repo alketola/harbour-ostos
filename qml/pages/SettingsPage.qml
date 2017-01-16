@@ -73,7 +73,7 @@ Page {
                 minimumValue: appWindow.minRefreshInterval
                 maximumValue: appWindow.maxRefreshInterval
 
-                value: appWindow.refreshInterval
+                value: appWindow.setting_refreshInterval
 
                 label: qsTr("List refresh interval")
                 valueText: Math.ceil(value) + " ms"
@@ -86,10 +86,20 @@ Page {
                 id: extHelpEna
                 text: qsTr("Enable WWW help")
                 description: qsTr("Enable Help file read from Web and use of Google translator for unknown languages")
-                checked: appWindow.webHelpEnabled
+                checked: appWindow.setting_webHelpEnabled
 
                 onClicked: {
-                    appWindow.webHelpEnabled = !appWindow.webHelpEnabled
+                    appWindow.setting_webHelpEnabled = !appWindow.setting_webHelpEnabled
+                }
+            }
+
+            TextSwitch {
+                id: shopFilterAutoResetEna
+                text: qsTr("Enable Class Section Headings in the Shoppinglist")
+                checked: appWindow.setting_sectionHeadersEnabled
+
+                onClicked: {
+                    appWindow.setting_sectionHeadersEnabled = !appWindow.setting_sectionHeadersEnabled
                 }
             }
 
@@ -148,27 +158,34 @@ Page {
             }
 
             Component.onCompleted: {
-                // This was an attempt to read in Settings from database. There aren't any, currently
-                try {
-                    var d=new String(DBA.getSetting("refresh-delay"))
-                    console.log("SettingsPage.qml: refresh-delay:"+d)
-                    if(DBA.NO_SETTING === d) {
-                        console.log("no refresh delay found in database")
-                        appWindow.setRefreshInterval(0)
-                    } else {
-                        appWindow.setRefreshInterval(d.valueOf())
-                        console.log("Refresh delay "+d+" found in database:"+d.valueOf());
-                    }
-                } catch (err) {
-                    console.log("splashDisable error="+err);
-                }
+                readSettings()
+                // This was an unwrapped way to read in Settings from database.
+//                try {
+//                    var d=new String(DBA.getSetting("refresh-delay"))
+//                    console.log("SettingsPage.qml: refresh-delay:"+d)
+//                    if(DBA.NO_SETTING === d) {
+//                        console.log("no refresh delay found in database")
+//                        appWindow.setRefreshInterval(0)
+//                    } else {
+//                        appWindow.setRefreshInterval(d.valueOf())
+//                        console.log("Refresh delay "+d+" found in database:"+d.valueOf());
+//                    }
+//                } catch (err) {
+//                    console.log("refresh-delay read seting error="+err);
+//                }
+//                var h = new String(DBA.getSetting("section-headers-enable"))
+//                if(DBA.NO_SETTING === h) {
+//                    appWindow.setting_sectionHeadersEnabled = h.valueOf()
+//                    console.log("setting section-headers-enable set to"+appWindow.setting_sectionHeadersEnabled)
+//                }
+
             }
         }
     }
     onStatusChanged: {
         if (status==0){
             console.log("SettingsPage.qml Page.onStatusChanged to:"+status);
-            DBA.setSetting("refresh-delay", appWindow.refreshInterval);
+            writeSettings()
         }
-    }
+    }    
 }
