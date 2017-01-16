@@ -126,47 +126,46 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Instrucciónes</translation>
+        <translation>Instrucciónes</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 </source>
-        <translation type="unfinished">Añade artículos deslizando adelante o por menu</translation>
+        <translation>Añade artículos deslizando adelante o por menu</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Los artículos tienen su estado, que se indica con un ícono a la izquierda.</translation>
     </message>
     <message>
         <source>The state can be toggled like by clicking the state icon on the left.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>El estado se cambia pulsando el ícono</translation>
     </message>
     <message>
         <source>The context menu has options to hide, edit, flag</source>
-        <translation type="unfinished"></translation>
+        <translation>El menu del contexto tiene opciones a esconder, editar, marcar</translation>
     </message>
     <message>
-        <source> increase quantity, decrease quantity and delete the item.
-</source>
-        <translation type="unfinished"></translation>
+        <source> increase quantity, decrease quantity and delete the item.</source>
+        <translation>, incrementar cantidad y decrementar cantidad, y borrar el artículo</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Se añade nuevos artículos pasando adelante a la página de busqueda, o seleccionando el primer opicion desde el menu de persiana.</translation>
     </message>
     <message>
         <source>The item is listed as to buy</source>
-        <translation type="unfinished"></translation>
+        <translation>Falta que comprar</translation>
     </message>
     <message>
         <source>The item has been bought</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprado</translation>
     </message>
     <message>
         <source>The item is listed as flagged (e.g. find later)</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcado</translation>
     </message>
 </context>
 <context>
@@ -177,11 +176,11 @@
     </message>
     <message>
         <source>List refresh interval</source>
-        <translation>Demora de actualización de la lista</translation>
+        <translation>Retraso de actualización de la lista</translation>
     </message>
     <message>
         <source>DELETE DATABASE TABLES</source>
-        <translation>BORRAR DATABASE</translation>
+        <translation>BORRAR TABLAS DE DATABASE</translation>
     </message>
     <message>
         <source>DELETING ALL DATA</source>
@@ -189,7 +188,7 @@
     </message>
     <message>
         <source>Enable WWW help</source>
-        <translation>Habilitar instrucciones desde Web</translation>
+        <translation>Habilitar ayuda desde el Web</translation>
     </message>
     <message>
         <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
