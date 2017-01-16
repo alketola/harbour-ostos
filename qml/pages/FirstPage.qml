@@ -105,7 +105,7 @@ Dialog {
         ViewPlaceholder {
             id: firstPagePlaceholder
             enabled: shoppingListModel.count == 0 | shoppingListModel.updating == true
-            text: shoppingListModel.count == 0 ? qsTr("-") : qsTr("updating")
+            text: shoppingListModel.count == 0 ? qsTr("-") : ""
         }
 
         VerticalScrollDecorator { flickable: firstPageView }

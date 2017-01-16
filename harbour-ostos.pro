@@ -45,7 +45,7 @@ OTHER_FILES += qml/harbour-ostos.qml \
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+#CONFIG += sailfishapp_i18n
 
 TRANSLATIONS += translations/harbour-ostos-fi.ts
 TRANSLATIONS += translations/harbour-ostos-sv.ts
