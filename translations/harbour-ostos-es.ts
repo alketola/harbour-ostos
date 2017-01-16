@@ -57,10 +57,6 @@
         <source>Clearing</source>
         <translation>Borrando la lista</translation>
     </message>
-    <message>
-        <source>updating</source>
-        <translation>actualizando</translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>
@@ -126,7 +122,7 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Instrucciónes</translation>
+        <translation>Instrucciónes</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
@@ -194,6 +190,10 @@
     <message>
         <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
         <translation>Habilitar uso del Internet para páginas de instrucciones</translation>
+    </message>
+    <message>
+        <source>Enable Class Section Headings in the Shoppinglist</source>
+        <translation>Separadores de categorías de artículos en lista de la compra</translation>
     </message>
 </context>
 <context>

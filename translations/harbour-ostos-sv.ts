@@ -57,10 +57,6 @@
         <source>Clearing</source>
         <translation>Rensar listan</translation>
     </message>
-    <message>
-        <source>updating</source>
-        <translation>uppdaterar</translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>
@@ -194,6 +190,10 @@
     <message>
         <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
         <translation>Aktivera online-hjälp och användning av Google translator för okända språk</translation>
+    </message>
+    <message>
+        <source>Enable Class Section Headings in the Shoppinglist</source>
+        <translation>Mostra separatorer av artikelkategorier på inköpslistan</translation>
     </message>
 </context>
 <context>
