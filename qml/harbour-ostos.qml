@@ -37,12 +37,13 @@ ApplicationWindow
     property string filterdesc:"*"
 
     // Settings, their limits and default values
-    property int defaultRefreshInterval: 0
-    property int setting_refreshInterval: defaultRefreshInterval
     property int minRefreshInterval: 0
     property int maxRefreshInterval: 6000
+    property int defaultRefreshInterval: 0
+    property int setting_refreshInterval: defaultRefreshInterval
     property bool setting_webHelpEnabled: false
     property bool setting_sectionHeadersEnabled: false
+    property bool setting_orderingByClassEnable:true
 
     // Declared here to be accessible thru appWindow.    
 
@@ -150,18 +151,20 @@ ApplicationWindow
         setRefreshInterval(d.valueOf());
 
         var h = new String(DBA.getSetting("section-headers-enable"))
-        if(DBA.NO_SETTING === h) h="false";
-        if (h=="true") {
-            appWindow.setting_sectionHeadersEnabled = true
-        } else {
-            appWindow.setting_sectionHeadersEnabled = false
-        }
-        console.log("setting section-headers-enable set to "+appWindow.setting_sectionHeadersEnabled)
+        if(DBA.NO_SETTING == h) h="false";
+        appWindow.setting_sectionHeadersEnabled = (h=="true") ? true : false
+        console.log("setting_sectionHeadersEnabled set to "+ setting_sectionHeadersEnabled)
+
+        var co = new String(DBA.getSetting("class-ordering-enable"))
+        if(DBA.NO_SETTING == co) co ="false";
+        setting_orderingByClassEnable = (co == "true") ? true : false;
+        console.log("setting_orderingByClassEnable set to:"+ setting_orderingByClassEnable)
     }
 
     function writeSettings() {
-        DBA.setSetting("refresh-delay", appWindow.setting_refreshInterval);
+        DBA.setSetting("refresh-delay", appWindow.setting_refreshInterval);  
         DBA.setSetting("section-headers-enable",appWindow.setting_sectionHeadersEnabled);
+        DBA.setSetting("class-ordering-enable",setting_orderingByClassEnable)
     }
 
     function setRefreshInterval(millisec) {
@@ -223,7 +226,7 @@ ApplicationWindow
         shoppingListModel.updating = true
         shoppingListModel.clear()
 
-        DBA.readShoppingListFiltered(shoppingListModel,"HIDE",shopFilter)
+        DBA.readShoppingListFiltered(shoppingListModel,"HIDE",shopFilter,setting_orderingByClassEnable)
 //        console.log("built shopfilter="+DBA.buildshopfilter(shopFilter))
 
 //        if ((currShop==wildcard) || (!currShop) ) {

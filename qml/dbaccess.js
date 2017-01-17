@@ -151,13 +151,15 @@ function readShoppingListExState(lm,excluded_state) {
 
 /** read shopping list as filtered by filter array */
 
-function readShoppingListFiltered(lm,excluded_state,filterarray) {// shoppingListModel,"HIDE",shopFilter
+function readShoppingListFiltered(lm,excluded_state,filterarray,classordering) {// shoppingListModel,"HIDE",shopFilter
     //    console.debug("ostos/dbaccess.js: readTheListExState:"+excluded_state);
     excluded_state=escapeForSqlite(excluded_state)
     var shopfilterstring = buildshopfilter(filterarray)
     var db = openDB()
     if(!db) { console.error("readTheListExState:db open failed"); return; }
-    var querystring = 'SELECT rowid, * FROM shoppinglist WHERE NOT istat=\"'+excluded_state+'\" '+shopfilterstring+' ORDER BY istat ASC, iclass ASC, seq DESC, iname ASC  ;'
+    var querystring = 'SELECT rowid, * FROM shoppinglist WHERE NOT istat=\"'+excluded_state+'\" '+shopfilterstring+' ORDER BY istat ASC,'
+    if (classordering) querystring += ' iclass ASC,'
+    querystring += ' seq DESC, iname ASC  ;'
     //console.debug("querystring="+querystring)
     var rs
     try {

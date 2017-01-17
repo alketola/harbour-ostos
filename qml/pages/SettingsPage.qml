@@ -94,10 +94,20 @@ Page {
             }
 
             TextSwitch {
-                id: shopFilterAutoResetEna
+                id: sectionEna
+                text:qsTr("Order shopping also by class to section")
+                checked: appWindow.setting_orderingByClassEnable
+
+                onClicked: {
+                    appWindow.setting_orderingByClassEnable = !appWindow.setting_orderingByClassEnable
+                }
+            }
+
+            TextSwitch {
+                id: sectionHeadingEna
                 text: qsTr("Enable Class Section Headings in the Shoppinglist")
                 checked: appWindow.setting_sectionHeadersEnabled
-
+                enabled: appWindow.setting_orderingByClassEnable
                 onClicked: {
                     appWindow.setting_sectionHeadersEnabled = !appWindow.setting_sectionHeadersEnabled
                 }
@@ -159,26 +169,6 @@ Page {
 
             Component.onCompleted: {
                 readSettings()
-                // This was an unwrapped way to read in Settings from database.
-//                try {
-//                    var d=new String(DBA.getSetting("refresh-delay"))
-//                    console.log("SettingsPage.qml: refresh-delay:"+d)
-//                    if(DBA.NO_SETTING === d) {
-//                        console.log("no refresh delay found in database")
-//                        appWindow.setRefreshInterval(0)
-//                    } else {
-//                        appWindow.setRefreshInterval(d.valueOf())
-//                        console.log("Refresh delay "+d+" found in database:"+d.valueOf());
-//                    }
-//                } catch (err) {
-//                    console.log("refresh-delay read seting error="+err);
-//                }
-//                var h = new String(DBA.getSetting("section-headers-enable"))
-//                if(DBA.NO_SETTING === h) {
-//                    appWindow.setting_sectionHeadersEnabled = h.valueOf()
-//                    console.log("setting section-headers-enable set to"+appWindow.setting_sectionHeadersEnabled)
-//                }
-
             }
         }
     }
