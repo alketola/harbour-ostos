@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>Item Class</source>
-        <translation>Klasse</translation>
+        <translation>Kategorie</translation>
     </message>
     <message>
         <source>Shop</source>
@@ -193,7 +193,11 @@
     </message>
     <message>
         <source>Enable Class Section Headings in the Shoppinglist</source>
-        <translation>Separatoren vo Artikelkategorien in der Einkaufsliste schauen</translation>
+        <translation>Kategorienüberschriften in der Einkaufsliste anzeigen</translation>
+    </message>
+    <message>
+        <source>Order shopping list also by class</source>
+        <translation>Die Einkaufsliste auch nach Kategorien sortieren</translation>
     </message>
 </context>
 <context>

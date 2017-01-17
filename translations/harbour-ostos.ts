@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Item Class</source>
-        <translatorcomment>Tavaraluokka,Luokittelu,Laji</translatorcomment>
+        <translatorcomment>Tavaraluokka,Luokittelu,Laji, kategoria</translatorcomment>
         <translation>Luokka</translation>
     </message>
     <message>
@@ -198,6 +198,10 @@
     <message>
         <source>Enable Class Section Headings in the Shoppinglist</source>
         <translation>Artikkeliluokkien erottimet ostoslistassa</translation>
+    </message>
+    <message>
+        <source>Order shopping list also by class</source>
+        <translation>Järjestä lista myös artikkelien luokan mukaan</translation>
     </message>
 </context>
 <context>

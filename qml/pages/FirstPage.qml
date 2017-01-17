@@ -256,7 +256,7 @@ Dialog {
                     margins: 2
                 }
                 color: Theme.highlightBackgroundColor
-                opacity: Theme.highlightBackgroundOpacity /3
+                opacity: stateIndicator.state =="BUY" ? Theme.highlightBackgroundOpacity /2  : Theme.highlightBackgroundOpacity / 5
             }
         }
     } // END Component listLine

@@ -95,11 +95,12 @@ Page {
 
             TextSwitch {
                 id: sectionEna
-                text:qsTr("Order shopping also by class to section")
+                text:qsTr("Order shopping list also by class")
                 checked: appWindow.setting_orderingByClassEnable
 
                 onClicked: {
                     appWindow.setting_orderingByClassEnable = !appWindow.setting_orderingByClassEnable
+                    appWindow.setting_sectionHeadersEnabled = appWindow.setting_orderingByClassEnable
                 }
             }
 
@@ -163,7 +164,7 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.07-alpha"
+                text: "Version "+"v1.07"
 
             }
 

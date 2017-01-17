@@ -73,14 +73,6 @@ Dialog {
 
             }
 
-//            DialogHeader {
-//                acceptText: {
-//                    title: qsTr("Accept")
-//                }
-//                cancelText: {
-//                    title: qsTr("Cancel")
-//                }
-//            }
             TextField {
                 id: itemname
                 anchors { left: parent.left; right: parent.right }
@@ -104,9 +96,10 @@ Dialog {
                 id: itemunit
                 anchors { left: parent.left; right: parent.right }
                 label: qsTr("Unit"); placeholderText: label
-                font.capitalization: Font.AllLowercase
+                font.capitalization: Font.MixedCase
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                inputMethodHints: Qt.ImhNoAutoUppercase
             }
 
             TextField {
