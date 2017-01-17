@@ -47,7 +47,7 @@
     </message>
     <message>
         <source>Hide bought</source>
-        <translation>Dölj köpta objekt</translation>
+        <translation>Dölj köpta artiklar</translation>
     </message>
     <message>
         <source>Search to buy</source>
@@ -93,18 +93,18 @@
     </message>
     <message>
         <source>Edit shops</source>
-        <translation>Redigera Butiker</translation>
+        <translation>Redigera butiker</translation>
     </message>
 </context>
 <context>
     <name>LineButtonsMenu</name>
     <message>
         <source>Hiding Item</source>
-        <translation>Döljer objekt</translation>
+        <translation>Döljer artikel</translation>
     </message>
     <message>
         <source>Deleting Item</source>
-        <translation>Tar bort objekt</translation>
+        <translation>Tar bort artikel</translation>
     </message>
 </context>
 <context>
@@ -127,7 +127,7 @@
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
 </source>
-        <translation>Lägg till nya objekt genom att växla till söksidan åt höger (första menyposten i toppmenyn)</translation>
+        <translation>Lägg till nya artiklar genom att växla till söksidan åt höger (första menyposten i toppmenyn).</translation>
     </message>
     <message>
         <source>The state can be toggled like by clicking the state icon on the left.
@@ -140,29 +140,29 @@
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
-        <translation>Lägg till nya objekt genom att växla till söksidan åt höger, på första objektet i toppmenyn</translation>
+        <translation>Lägg till nya artiklar genom att växla till söksidan åt höger, med första menyposten i toppmenyn</translation>
     </message>
     <message>
         <source>The item is listed as to buy</source>
-        <translation>Objektet är listat för att köpas</translation>
+        <translation>Artikeln är listad för att köpas</translation>
     </message>
     <message>
         <source>The item has been bought</source>
-        <translation>Objektet har köpts</translation>
+        <translation>Artikeln är köpt</translation>
     </message>
     <message>
         <source>The item is listed as flagged (e.g. find later)</source>
-        <translation>Objektet är markerat (t.ex. hitta senare)</translation>
+        <translation>Artikeln är flaggmärkt (t.ex. hitta senare)</translation>
     </message>
     <message>
         <source>The items have states, indicated by the icon on the left of each shopping list item.
 </source>
-        <translation>Objekten har status, indikerat av ikon på vänster sida av varje köpobjekt</translation>
+        <translation>Artiklar har statusmärkning, indikerat av ikon på vänster sida av varje köpobjekt</translation>
     </message>
     <message>
         <source> increase quantity, decrease quantity and delete the item.
 </source>
-        <translation> öka mängden, minska mängden och ta bort objekt.</translation>
+        <translation> öka mängden, minska mängden och ta bort artiklar.</translation>
     </message>
 </context>
 <context>
@@ -193,11 +193,11 @@
     </message>
     <message>
         <source>Enable Class Section Headings in the Shoppinglist</source>
-        <translation>Mostra separatorer av artikelkategorier på inköpslistan</translation>
+        <translation>Aktivera kategorirubriker i inköpslistan</translation>
     </message>
     <message>
         <source>Order shopping list also by class</source>
-        <translation>Sorterar lista också efter kategori</translation>
+        <translation>Sortera listan också efter kategori</translation>
     </message>
 </context>
 <context>
@@ -212,7 +212,7 @@
     </message>
     <message>
         <source>No items</source>
-        <translation>Inga objekt</translation>
+        <translation>Inga artiklar</translation>
     </message>
     <message>
         <source>Add new shop</source>
