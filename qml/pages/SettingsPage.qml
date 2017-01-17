@@ -73,7 +73,7 @@ Page {
                 minimumValue: appWindow.minRefreshInterval
                 maximumValue: appWindow.maxRefreshInterval
 
-                value: appWindow.refreshInterval
+                value: appWindow.setting_refreshInterval
 
                 label: qsTr("List refresh interval")
                 valueText: Math.ceil(value) + " ms"
@@ -86,10 +86,31 @@ Page {
                 id: extHelpEna
                 text: qsTr("Enable WWW help")
                 description: qsTr("Enable Help file read from Web and use of Google translator for unknown languages")
-                checked: appWindow.webHelpEnabled
+                checked: appWindow.setting_webHelpEnabled
 
                 onClicked: {
-                    appWindow.webHelpEnabled = !appWindow.webHelpEnabled
+                    appWindow.setting_webHelpEnabled = !appWindow.setting_webHelpEnabled
+                }
+            }
+
+            TextSwitch {
+                id: sectionEna
+                text:qsTr("Order shopping list also by class")
+                checked: appWindow.setting_orderingByClassEnable
+
+                onClicked: {
+                    appWindow.setting_orderingByClassEnable = !appWindow.setting_orderingByClassEnable
+                    appWindow.setting_sectionHeadersEnabled = appWindow.setting_orderingByClassEnable
+                }
+            }
+
+            TextSwitch {
+                id: sectionHeadingEna
+                text: qsTr("Enable Class Section Headings in the Shoppinglist")
+                checked: appWindow.setting_sectionHeadersEnabled
+                enabled: appWindow.setting_orderingByClassEnable
+                onClicked: {
+                    appWindow.setting_sectionHeadersEnabled = !appWindow.setting_sectionHeadersEnabled
                 }
             }
 
@@ -143,32 +164,19 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.07-alpha"
+                text: "Version "+"v1.07"
 
             }
 
             Component.onCompleted: {
-                // This was an attempt to read in Settings from database. There aren't any, currently
-                try {
-                    var d=new String(DBA.getSetting("refresh-delay"))
-                    console.log("SettingsPage.qml: refresh-delay:"+d)
-                    if(DBA.NO_SETTING === d) {
-                        console.log("no refresh delay found in database")
-                        appWindow.setRefreshInterval(0)
-                    } else {
-                        appWindow.setRefreshInterval(d.valueOf())
-                        console.log("Refresh delay "+d+" found in database:"+d.valueOf());
-                    }
-                } catch (err) {
-                    console.log("splashDisable error="+err);
-                }
+                readSettings()
             }
         }
     }
     onStatusChanged: {
         if (status==0){
             console.log("SettingsPage.qml Page.onStatusChanged to:"+status);
-            DBA.setSetting("refresh-delay", appWindow.refreshInterval);
+            writeSettings()
         }
-    }
+    }    
 }

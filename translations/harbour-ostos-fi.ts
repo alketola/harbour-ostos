@@ -57,10 +57,6 @@
         <source>Clearing</source>
         <translation>Tyhjennetään</translation>
     </message>
-    <message>
-        <source>updating</source>
-        <translation>päivitetään</translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>
@@ -89,6 +85,7 @@
     </message>
     <message>
         <source>Item Class</source>
+        <translatorcomment>Tavaraluokka,Luokittelu,Laji, kategoria</translatorcomment>
         <translation>Luokka</translation>
     </message>
     <message>
@@ -126,7 +123,7 @@
     <name>OldHelpTxt</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Ohje</translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
@@ -194,6 +191,14 @@
     <message>
         <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
         <translation>Salli ohjeiden luku internet-yhteyden kautta sivulta, joka käyttää Google Translatoria tuntemattomille kielille</translation>
+    </message>
+    <message>
+        <source>Enable Class Section Headings in the Shoppinglist</source>
+        <translation>Artikkeliluokkien erottimet ostoslistassa</translation>
+    </message>
+    <message>
+        <source>Order shopping list also by class</source>
+        <translation>Järjestä lista myös artikkelien luokan mukaan</translation>
     </message>
 </context>
 <context>

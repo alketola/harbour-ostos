@@ -23,8 +23,8 @@ Dialog {
             //            shopModel.clear()
             //            DBA.repopulateShopList(shopModel) // ShopModel
             console.log("pageStack.depth="+pageStack.depth)
-            console.log("shopFilter="+shopFilter)
-            console.log("filterdesc="+filterdesc)
+            //console.debug("shopFilter="+shopFilter)
+            //console.debug("filterdesc="+filterdesc)
         }
     }
     Component.onCompleted: {
@@ -42,6 +42,27 @@ Dialog {
 
     backNavigation: false
 
+    Component {
+        id: shoppingSection
+
+        Rectangle{
+            visible: appWindow.setting_sectionHeadersEnabled
+            width: parent.width
+            height: appWindow.setting_sectionHeadersEnabled ? Theme.itemSizeExtraSmall : 0
+            color: "transparent"
+            opacity: 100// Theme.highlightBackgroundOpacity
+
+            SectionHeader {
+                text: section
+                height: appWindow.setting_sectionHeadersEnabled ? Theme.itemSizeExtraSmall : 0
+                font.family: Theme.fontFamilyHeading
+                font.pixelSize: Theme.fontSizeMedium
+                horizontalAlignment: "AlignHCenter"
+                color: Theme.highlightColor
+                opacity: appWindow.setting_sectionHeadersEnabled ? 100 :0
+            }
+        }
+    }
 
     SilicaListView {
         id: firstPageView
@@ -84,13 +105,17 @@ Dialog {
         ViewPlaceholder {
             id: firstPagePlaceholder
             enabled: shoppingListModel.count == 0 | shoppingListModel.updating == true
-            text: shoppingListModel.count == 0 ? qsTr("-") : qsTr("updating")
+            text: shoppingListModel.count == 0 ? qsTr("-") : ""
         }
 
         VerticalScrollDecorator { flickable: firstPageView }
 
         model: shoppingListModel
         delegate: listLine
+
+        section.property: "iclass"
+        section.criteria: ViewSection.FullString
+        section.delegate: shoppingSection
 
         PullDownMenu {
             id: pulldownmenu
@@ -205,12 +230,14 @@ Dialog {
                     anchors.verticalCenter: parent.verticalCenter
                     truncationMode: TruncationMode.Fade
                     text: iname
+                    color: Theme.primaryColor
                 }
                 Label {
                     width: firstPage.width * 0.1
                     horizontalAlignment: Text.AlignRight
                     anchors.verticalCenter: parent.verticalCenter
                     text: iqty
+                    color: Theme.primaryColor
                 }
                 Label {
                     truncationMode: TruncationMode.Fade
@@ -229,7 +256,7 @@ Dialog {
                     margins: 2
                 }
                 color: Theme.highlightBackgroundColor
-                opacity: Theme.highlightBackgroundOpacity /3
+                opacity: stateIndicator.state =="BUY" ? Theme.highlightBackgroundOpacity /2  : Theme.highlightBackgroundOpacity / 5
             }
         }
     } // END Component listLine

@@ -57,10 +57,6 @@
         <source>Clearing</source>
         <translation>Borrando la lista</translation>
     </message>
-    <message>
-        <source>updating</source>
-        <translation>actualizando</translation>
-    </message>
 </context>
 <context>
     <name>ItemAddPage</name>
@@ -89,7 +85,7 @@
     </message>
     <message>
         <source>Item Class</source>
-        <translation>Clase</translation>
+        <translation>Categoría</translation>
     </message>
     <message>
         <source>Shop</source>
@@ -193,6 +189,14 @@
     <message>
         <source>Enable Help file read from Web and use of Google translator for unknown languages</source>
         <translation>Habilitar uso del Internet para páginas de instrucciones</translation>
+    </message>
+    <message>
+        <source>Enable Class Section Headings in the Shoppinglist</source>
+        <translation>Separadores de categoría de artículos en lista de la compra</translation>
+    </message>
+    <message>
+        <source>Order shopping list also by class</source>
+        <translation>Ordenar la lista también por categoría</translation>
     </message>
 </context>
 <context>
