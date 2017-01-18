@@ -31,10 +31,10 @@
 ** SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **
 ****************************************************************************************/
-
+/* This is a copy of Button.qml, but with textwidth property */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Sailfish.Silica.private 1.0
+
 
 MouseArea {
     id: button

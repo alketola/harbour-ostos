@@ -144,10 +144,6 @@
         <translation>El menu del contexto tiene opciones a esconder, editar, marcar</translation>
     </message>
     <message>
-        <source> increase quantity, decrease quantity and delete the item.</source>
-        <translation>, incrementar cantidad y decrementar cantidad, y borrar el artículo</translation>
-    </message>
-    <message>
         <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
         <translation>Se añade nuevos artículos pasando adelante a la página de busqueda, o seleccionando el primer opicion desde el menu de persiana.</translation>
     </message>
@@ -162,6 +158,11 @@
     <message>
         <source>The item is listed as flagged (e.g. find later)</source>
         <translation>Marcado</translation>
+    </message>
+    <message>
+        <source> increase quantity, decrease quantity and delete the item.
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -7,7 +7,7 @@
  * FYI:
  * On the device, the database is located in
  *
- * /home/nemo/.local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/Databases/<somelonghexnumber>.sqlite
+ * home nemo .local share harbour-ostos harbour-ostos/QML/OfflineStorage/Databases/<somelonghexnumber>.sqlite
  */
 
 var unknownShop = "?"
