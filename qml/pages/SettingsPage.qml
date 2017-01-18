@@ -123,6 +123,15 @@ Page {
 //                    appWindow.shopFilterAutoResetEnabled
 //                }
 //            }
+            Label {
+                id: versionLabel
+                width: parent.width
+                height: Theme.itemSizeMedium
+                //                truncationMode: TruncationMode.Fade
+                horizontalAlignment: Text.AlignHCenter
+                text: "Version "+"v1.08-0"
+
+            }
 
             Label {
                 width: parent.width
@@ -144,8 +153,17 @@ Page {
                 height: Theme.itemSizeSmall
                 horizontalAlignment: Text.AlignHCenter
 
-                text: "Copyright Antti Ketola 2016"
+                text: "Copyright Antti Ketola 2016-2017"
             }
+            Label {
+                width: parent.width
+                height: Theme.itemSizeSmall
+                horizontalAlignment: Text.AlignHCenter
+
+                text: "License: GPL V3.\nSources in GitHub."
+           }
+
+
             Label {
                 width: parent.width
                 height: Theme.itemSizesmall * 4
@@ -157,15 +175,6 @@ Page {
                       "sv: Åke Engelbrektson\n"+
                       "es: Antti Ketola (proofreading needed)\n"+
                       "de: ntp22"
-            }
-            Label {
-                id: versionLabel
-                width: parent.width
-                height: Theme.itemSizeMedium
-                //                truncationMode: TruncationMode.Fade
-                horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.07-2"
-
             }
 
             Component.onCompleted: {
