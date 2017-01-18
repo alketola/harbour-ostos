@@ -39,7 +39,7 @@ import Sailfish.Silica 1.0
 MouseArea {
     id: button
 
-    property bool down: pressed && containsMouse && !DragFilter.canceled
+    property bool down: pressed && containsMouse// && !DragFilter.canceled
     property alias text: buttonText.text
     property alias fontsize: buttonText.font.pixelSize
     property alias truncationMode: buttonText.truncationMode
@@ -60,7 +60,7 @@ MouseArea {
         button.DragFilter.end()
         pressTimer.stop()
     }
-    onPressed: button.DragFilter.begin(mouse.x, mouse.y)
+    //onPressed: button.DragFilter.begin(mouse.x, mouse.y)
     onPreventStealingChanged: if (preventStealing) button.DragFilter.end()
 
     height: Theme.itemSizeExtraSmall

@@ -164,7 +164,7 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.07-1"
+                text: "Version "+"v1.07-2"
 
             }
 

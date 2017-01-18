@@ -14,7 +14,7 @@ Name:       harbour-ostos
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Shopping List App
 Version:    1.07
-Release:    1
+Release:    2
 Group:      Qt/Qt
 License:    GPL V3
 URL:        http://mobilitio.com/app-support/ostos
