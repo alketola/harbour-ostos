@@ -51,6 +51,7 @@ TRANSLATIONS += translations/harbour-ostos-fi.ts
 TRANSLATIONS += translations/harbour-ostos-sv.ts
 TRANSLATIONS += translations/harbour-ostos-de.ts
 TRANSLATIONS += translations/harbour-ostos-es.ts
+TRANSLATIONS += translations/harbour-ostos-fr.ts
 
 RESOURCES += \
     resources.qrc
@@ -80,14 +81,16 @@ DISTFILES += \
     COPYING \
     icons/128x128/harbour-ostos.png \
     icons/256x256/harbour-ostos.png \
-    translations/harbour-ostos-ca.ts \
+    translations/harbour-ostos-fr.ts \
     translations/harbour-ostos-de.ts \
     translations/harbour-ostos-es.ts \
     translations/harbour-ostos-fi.ts \
     translations/harbour-ostos-sv.ts \
     translations/harbour-ostos.ts \
     qml/pages/FilterPage.qml \
-    qml/pages/SpecialButton.qml
+    qml/pages/SpecialButton.qml \
+    qml/export.js \
+    translations/harbour-ostos-fr.ts
 
 SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
 
