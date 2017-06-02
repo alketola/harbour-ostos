@@ -1,0 +1,16 @@
+A simple file/folder selector dialog for sailfish os apps. (developer example)
+
+How to use:
+
+    onClicked: {
+        var cacFileSelect = pageStack.push(Qt.resolvedUrl("cacFileSelect.qml"), {
+            //options (see below)
+        })
+
+        cacFileSelect.accepted.connect(function() {
+            // just do something with "cacFileSelect.selectedFileName"
+        })
+    }
+pageStack.push options: setRootFolder, setFolder, setShowHidden
+
+Further documentation: Qt.labs.folderlistmodel => http://doc.qt.io/qt-5/qml-qt-labs-folderlistmodel-folderlistmodel.html

@@ -44,6 +44,13 @@ Page {
 
                 }
             }
+
+            MenuItem {
+                text: qsTr("Backup Database")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("BackupDialog.qml"))
+                }
+            }
         }
         RemorsePopup { id: databaseTableDropRemorse }
 
@@ -78,7 +85,7 @@ Page {
                 label: qsTr("List refresh interval")
                 valueText: Math.ceil(value) + " ms"
                 onValueChanged: {
-                    appWindow.setRefreshInterval(value)
+                    appWindow.setRefreshInterval(value.valueOf())
                 }
 
             }

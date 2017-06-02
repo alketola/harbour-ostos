@@ -17,6 +17,8 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-ostos.cpp \
     src/Filester.cpp
 
+QT += core sql
+
 OTHER_FILES += qml/harbour-ostos.qml \
     qml/cover/CoverPage.qml \
     rpm/harbour-ostos.changes.in \
@@ -90,7 +92,11 @@ DISTFILES += \
     qml/pages/FilterPage.qml \
     qml/pages/SpecialButton.qml \
     qml/export.js \
-    translations/harbour-ostos-fr.ts
+    translations/harbour-ostos-fr.ts \
+    qml/pages/BackupDialog.qml \
+    qml/pages/CacFileSelect.qml \
+    qml/pages/CacFileSelect.qml.README \
+    qml/pages/CacFileSelect.qml.LICENCE
 
 SAILFISHAPP_ICONS += 86x86 108x108 128x128 256x256
 
@@ -100,3 +106,6 @@ DISTFILES += icons/86x86/harbour-ostos.png \
     icons/256x108/harbour-ostos.png
 
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+
+HEADERS += \
+    src/filester.h

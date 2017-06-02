@@ -2,6 +2,52 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fi_FI" sourcelanguage="en">
 <context>
+    <name>BackupDialog</name>
+    <message>
+        <source>Select backup source and destination files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source database file path and name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse and change source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse and select path to save to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup file name .csv</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set save path to SD card</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CacFileSelect</name>
+    <message>
+        <source>Select...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
@@ -202,6 +248,10 @@
     <message>
         <source>Order shopping list also by class</source>
         <translation>Järjestä lista myös artikkelien luokan mukaan</translation>
+    </message>
+    <message>
+        <source>Backup Database</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import QtQuick.LocalStorage 2.0
 import "pages"
 import "./dbaccess.js" as DBA
+import harbour.ostos.Filester 1.0
 
 ApplicationWindow
 {
@@ -324,6 +325,10 @@ ApplicationWindow
             state=""
         }
     } // end Rectangle
+
+    Filester {
+        id: theFilester
+    }
 }
 
 

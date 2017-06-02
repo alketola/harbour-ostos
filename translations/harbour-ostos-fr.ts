@@ -2,6 +2,52 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fr">
 <context>
+    <name>BackupDialog</name>
+    <message>
+        <source>Select backup source and destination files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source database file path and name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse and change source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse and select path to save to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup file name .csv</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set save path to SD card</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CacFileSelect</name>
+    <message>
+        <source>Select...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Ostos</source>
@@ -119,6 +165,53 @@
     </message>
 </context>
 <context>
+    <name>OldHelpTxt</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished">Aide</translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right (on first item in the pulldown menu.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The items have states, indicated by the icon on the left of each shopping list item.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The state can be toggled like by clicking the state icon on the left.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The context menu has options to hide, edit, flag</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> increase quantity, decrease quantity and delete the item.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new items by swithcing to search page on the right on first item in the pulldown menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item is listed as to buy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item has been bought</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The item is listed as flagged (e.g. find later)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
@@ -151,6 +244,10 @@
     <message>
         <source>Order shopping list also by class</source>
         <translation>Trier également la liste de courses par catégorie</translation>
+    </message>
+    <message>
+        <source>Backup Database</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
