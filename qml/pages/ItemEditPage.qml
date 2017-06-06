@@ -16,7 +16,7 @@ Dialog {
     property int rowid_in_db: -1
     property string name_in: "not set"
 
-//    acceptDestination: pageStack.find(function(page) {return page.id === "firstPage" })
+//    acceptDestination: pageStack.find(function(page) {return page.pagemark === "firstPage" })
 //    acceptDestinationAction: PageStackAction.Pop
     backNavigation: true
     forwardNavigation: false
@@ -79,7 +79,7 @@ Dialog {
                 focus: true; label: qsTr("Item Name"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: itemname.focus = true
+                EnterKey.onClicked: itemqty.focus = true
             }
 
 
@@ -89,7 +89,7 @@ Dialog {
                 label: qsTr("Quantity"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: qty.focus = true
+                EnterKey.onClicked: itemunit.focus = true
             }
 
             TextField {
@@ -99,6 +99,7 @@ Dialog {
                 font.capitalization: Font.MixedCase
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: itemclass.focus = true;
                 inputMethodHints: Qt.ImhNoAutoUppercase
             }
 
@@ -108,7 +109,7 @@ Dialog {
                 label: qsTr("Item Class"); placeholderText: label
                 EnterKey.enabled: text || inputMethodComposing
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: itemclass.focus = true
+                EnterKey.onClicked: editshopselector.focus = true
             }
 
             ShopSelector {

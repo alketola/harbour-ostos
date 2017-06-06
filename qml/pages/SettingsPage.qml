@@ -46,9 +46,12 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Backup Database")
+                text: qsTr("Export Database as CSV")
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("BackupDialog.qml"))
+                    var backupdialog = pageStack.push(Qt.resolvedUrl("BackupDialog.qml"))
+                    backupdialog.accepted.connect(function(){
+                        theFilester.saveDataBase()
+                    })
                 }
             }
         }

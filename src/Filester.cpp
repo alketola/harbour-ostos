@@ -103,10 +103,10 @@ void Filester::openDB() {
     }
     else {
         qDebug() << "Database: connection ok";
-        qDebug()<<m_db.tables();
+        qDebug()<< "Tables" << m_db.tables();
     }
-    qDebug() << m_db.databaseName();
-    qDebug() << m_db.isValid();
+    qDebug() << "Databasename" << m_db.databaseName();
+    qDebug() << "DB is valid" << m_db.isValid();
 
 }
 
@@ -120,6 +120,8 @@ void Filester::readAllDatabase() {
     //istat TEXT, iname TEXT PRIMARY KEY NOT NULL,
     //iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT,
     //hits INTEGER, seq INTEGER, control INTEGER
+    this->m_file.setFileName(this->saveFileName());
+
     if (this->m_file.open(QIODevice::ReadWrite)) {
         QTextStream writeStream(&(this->m_file));
 
@@ -127,7 +129,13 @@ void Filester::readAllDatabase() {
         {
             QSqlRecord rec = query.record();
             int maxCol = rec.count();
-            QString lstring="";
+            // Write Database field names to the first row of the CSV
+            for(int c=0;c<maxCol;c++) {
+                writeStream << rec.fieldName(c);
+                if (c<maxCol-1) { writeStream << "," ; }
+            }
+            writeStream << endl;
+            // Next rows will contain each a database row as CSV
             while(query.next()){
                 for(int col=0;col<maxCol;col++) {
                     QString s = query.value(col).toString();
@@ -136,7 +144,6 @@ void Filester::readAllDatabase() {
                 }
                 writeStream << endl;
             }
-            qDebug() << lstring;
         }
         else
         {

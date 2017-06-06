@@ -12,6 +12,8 @@ import "../dbaccess.js" as DBA
 Dialog {
     id: firstPage
 
+    property string pagemark: "firstPage"
+
     allowedOrientations: Orientation.All
 
     onStatusChanged: {

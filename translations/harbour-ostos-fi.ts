@@ -4,7 +4,7 @@
 <context>
     <name>BackupDialog</name>
     <message>
-        <source>Select backup source and destination files</source>
+        <source>Select backup source and destination</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -16,7 +16,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup path</source>
+        <source>Destination path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save to path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -24,7 +28,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup file name .csv</source>
+        <source>Destination file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save to file name .csv</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -247,7 +255,7 @@
         <translation>Järjestä lista myös artikkelien luokan mukaan</translation>
     </message>
     <message>
-        <source>Backup Database</source>
+        <source>Export Database as CSV</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
