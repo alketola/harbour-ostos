@@ -147,7 +147,7 @@ void Filester::readAllDatabase() {
         }
         else
         {
-            qDebug(qPrintable(query.lastError().text()));
+            qDebug() << qPrintable(query.lastError().text());
         }
         this->m_file.flush();
         this->m_file.close();

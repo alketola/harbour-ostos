@@ -17,7 +17,7 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-ostos.cpp \
     src/Filester.cpp
 
-QT += core sql
+QT += sql
 
 OTHER_FILES += qml/harbour-ostos.qml \
     qml/cover/CoverPage.qml \

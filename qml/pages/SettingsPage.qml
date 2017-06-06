@@ -12,7 +12,7 @@ import "../pages"
 
 Page {
     id: settingsPage
-
+    property string versionId: "v1.10-0"
     allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
 
     SilicaFlickable {
@@ -139,7 +139,7 @@ Page {
                 height: Theme.itemSizeMedium
                 //                truncationMode: TruncationMode.Fade
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version "+"v1.09-0"
+                text: "Version "+versionId
 
             }
 

@@ -29,9 +29,9 @@
  - 2.6.2017 added fileNameFilter as property
  */
 
-import QtQuick 2.2
+import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Qt.labs.folderlistmodel 2.1
+import Qt.labs.folderlistmodel 1.0
 
 Dialog {
     id: cac_fileSelect
@@ -48,7 +48,7 @@ Dialog {
         id: folderModel
         folder: setFolder
         rootFolder: setRootFolder
-        showHidden: setShowHidden
+        //showHidden: setShowHidden // requires import Qt.labs.folderlistmodel 2.1
         showDotAndDotDot: true
         showOnlyReadable: true
         nameFilters: [fileNameFilter]
