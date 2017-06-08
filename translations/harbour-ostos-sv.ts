@@ -5,54 +5,54 @@
     <name>BackupDialog</name>
     <message>
         <source>Select backup source and destination</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj säkerhetskopians källa och målmapp</translation>
     </message>
     <message>
         <source>Source database file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Källdatabasens sökväg och namn</translation>
     </message>
     <message>
         <source>Browse and change source</source>
-        <translation type="unfinished"></translation>
+        <translation>Bläddra och ändra källa</translation>
     </message>
     <message>
         <source>Destination path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Målsökväg:</translation>
     </message>
     <message>
         <source>Save to path</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara till mapp</translation>
     </message>
     <message>
         <source>Browse and select path to save to</source>
-        <translation type="unfinished"></translation>
+        <translation>Bläddra och välj mapp att spara i</translation>
     </message>
     <message>
         <source>Destination file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Målfil:</translation>
     </message>
     <message>
         <source>Save to file name .csv</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara som filnamn.csv</translation>
     </message>
     <message>
         <source>Set save path to SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange sökväg till SD-kort</translation>
     </message>
 </context>
 <context>
     <name>CacFileSelect</name>
     <message>
         <source>Select...</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj...</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <source>Select</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj</translation>
     </message>
 </context>
 <context>
@@ -255,7 +255,7 @@
     </message>
     <message>
         <source>Export Database as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera databas som CSV</translation>
     </message>
 </context>
 <context>
