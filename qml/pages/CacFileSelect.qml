@@ -23,7 +23,7 @@
     Qt.labs.folderlistmodel => https://doc.qt.io/archives/qt-5.5/qt-labs-folderlistmodel-qmlmodule.html
 
     example of options (to save you from looking it up):
-    { setRootFolder: "/home/nemo/", setShowHidden: true }
+    { setRootFolder: " home nemo ", setShowHidden: true }
 */
 /* Changelog:
  - 2.6.2017 added fileNameFilter as property
@@ -36,8 +36,8 @@ import Qt.labs.folderlistmodel 1.0
 Dialog {
     id: cac_fileSelect
 
-    property string setRootFolder: '/home/nemo'
-    property string setFolder: '/home/nemo'
+    property string setRootFolder: theFilester.getRootPath();
+    property string setFolder: theFilester.getStdHomePath();
     property bool setShowHidden: true
     property string selectedFileName: ""
     property string fileNameFilter: "*.*"

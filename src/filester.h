@@ -15,12 +15,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <qstring.h>
+#include <QStandardPaths>
 
 #define DEFAULT_FILENAME "harbour-ostos-list-backup.txt"
 
-#define DATABASEPATH "/home/nemo/.local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/Databases/"
-#define SAVEPATH_DEFAULT "/home/nemo/"
-#define SAVEPATH_SD "/media/sdcard/"
+#define DATABASEPATH " home nemo .local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/Databases/"
+#define SAVEPATH_DEFAULT " home nemo "
+#define SAVEPATH_SD " media sdcard "
 #define TABLENAME_SHOPPINGLIST "shoppinglist"
 #define COLUMNS_SHOPPINGLIST "istat,iname,iqty,iunit,iclass,ishop,hits,seq,control "
 //istat TEXT, iname TEXT PRIMARY KEY NOT NULL, iqty TEXT, iunit TEXT, iclass TEXT, ishop TEXT, hits INTEGER, seq INTEGER, control INTEGER
@@ -49,6 +50,10 @@ public:
     Q_INVOKABLE QString findDataBaseFile(QString path);
     Q_INVOKABLE void saveDataBase();
     Q_INVOKABLE void restoreDataBase();
+
+    Q_INVOKABLE QString getStdDataPath();
+    Q_INVOKABLE QString getStdHomePath();
+    Q_INVOKABLE QString getRootPath();
 
     Q_INVOKABLE void smokeTest(int i);
 private:

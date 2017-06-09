@@ -10,7 +10,7 @@ import Sailfish.Silica 1.0
 
 
 Dialog {
-    property string destPath: "/home/nemo/"
+    property string destPath: theFilester.getStdHomePath()
     property string destFile: "ostosShoppingList"
     property string destFileExtension: ".csv"
 
@@ -65,8 +65,8 @@ Dialog {
                 onClicked: {
                     var cacFileSelect = pageStack.push(Qt.resolvedUrl("CacFileSelect.qml"),
                                                        {
-                                                           setRootFolder:"/home/nemo/.local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/",
-                                                           setFolder:"/home/nemo/.local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/Databases/",
+                                                           setRootFolder: theFilester.getRootPath(),
+                                                           setFolder:theFilester.getStdDataPath() + "QML"+"/"+"OfflineStorage"+"/"+"Databases"+"/",
                                                            fileNameFilter:"*.sqlite"
                                                        })
                     cacFileSelect.accepted.connect(function() {
@@ -97,7 +97,7 @@ Dialog {
                 onClicked: {
                     var cacFileSelect = pageStack.push(Qt.resolvedUrl("CacFileSelect.qml"),
                                                        {
-                                                           setRootFolder:"/",
+                                                           //setRootFolder:"/",
                                                            setFolder:destPath,
                                                            fileNameFilter:"*.*"
                                                        })
@@ -121,21 +121,21 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
             }
 
-            Button {
-                id: buttonSetSavePathSdCard
-                x: Theme.paddingMedium
+//            Button {
+//                id: buttonSetSavePathSdCard
+//                x: Theme.paddingMedium
 
-                text: qsTr("Set save path to SD card")
-                onClicked: {
-                    backuppath.text = "/media/sdcard/"
-                }
-            }
+//                text: qsTr("Set save path to SD card")
+//                onClicked: {
+//                    backuppath.text = "/"+"media"+"/"+"sdcard"+"/"
+//                }
+//            }
         }
     }
 
     Component.onCompleted: {
         var DEFAULT_FILENAME = "harbour-ostos-list-backup.txt"
-        var DATABASEPATH = "/home/nemo/.local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/Databases/"
+        var DATABASEPATH = theFilester.getStdDataPath() + "QML"+"/"+"OfflineStorage"+"/"+"Databases"+"/"
         backupfilename.text = theFilester.saveFileName
         sourcedatabasefile.text = theFilester.findDataBaseFile(DATABASEPATH)
         backuppath.text = destPath

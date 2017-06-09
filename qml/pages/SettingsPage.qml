@@ -12,7 +12,7 @@ import "../pages"
 
 Page {
     id: settingsPage
-    property string versionId: "v1.10-0"
+    property string versionId: "v1.11-0"
     allowedOrientations: Orientation.Landscape | Orientation.Portrait | Orientation.LandscapeInverted
 
     SilicaFlickable {

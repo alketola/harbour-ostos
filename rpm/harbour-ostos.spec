@@ -13,7 +13,7 @@ Name:       harbour-ostos
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Shopping List App
-Version:    1.10
+Version:    1.11
 Release:    0
 Group:      Qt/Qt
 License:    GPL V3

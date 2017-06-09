@@ -1,6 +1,8 @@
-/* SQLITE3 database export for Harbour-Ostos
+/* Filester the File Monster
  *
- * TODO: deleting sqlite database file
+ * SQLITE3 database export and some other file functions for Harbour-Ostos
+ *
+ *
  */
 #include "filester.h"
 // Source material:
@@ -31,6 +33,19 @@ void Filester::setSaveFileName(QString name) {
     this->m_savefilename = name;
 }
 
+QString Filester::getStdDataPath() {
+    qDebug() << "getStdDataLocation()" << QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+    return QStandardPaths::writableLocation(QStandardPaths::DataLocation)+"/";
+}
+
+QString Filester::getStdHomePath() {
+    return QStandardPaths::writableLocation(QStandardPaths::HomeLocation)+"/";
+}
+
+QString Filester::getRootPath() {
+    return "/";
+}
+
 QString Filester::dbFileName() { return this->m_dbfilename; }
 void Filester::setDbFileName(QString fname) { this->m_dbfilename = fname; }
 
@@ -53,7 +68,7 @@ bool Filester::checkIfDirectoryExists(QString path) {
 }
 
 QString Filester::findDataBaseFile(QString path) {
-    if(!Filester::checkIfDirectoryExists(path)) { return "DIRECTORY NOT FOUND"; }
+    if(!Filester::checkIfDirectoryExists(path)) { return "-DIRECTORY NOT FOUND-"; }
     QDir dbDir(path);
     dbDir.setFilter(QDir::Files);
     dbDir.setSorting(QDir::Time);
@@ -66,7 +81,7 @@ QString Filester::findDataBaseFile(QString path) {
         QFileInfo firstFile = fileList.at(size-1);
         return QString(firstFile.absoluteFilePath());
     } else {
-       return("NOT FOUND");
+       return("-NOT FOUND-");
     }
 
 }
@@ -96,7 +111,7 @@ void Filester::smokeTest(int i){
 void Filester::openDB() {
     // Creating database connection
     m_db = QSqlDatabase::addDatabase("QSQLITE");
-    m_db.setDatabaseName(".local/share/harbour-ostos/harbour-ostos/QML/OfflineStorage/Databases/0e031c6438291b06f5e5b9bd4a8a5ec4.sqlite");//this->m_filename);
+    m_db.setDatabaseName(Filester::findDataBaseFile(Filester::getStdDataPath())+"/QML/OfflineStorage/Databases/");
 
     if (!m_db.open()) {
         qDebug() << "Error: connection with database failed";
@@ -105,7 +120,7 @@ void Filester::openDB() {
         qDebug() << "Database: connection ok";
         qDebug()<< "Tables" << m_db.tables();
     }
-    qDebug() << "Databasename" << m_db.databaseName();
+    qDebug() << "Databasename=" << m_db.databaseName();
     qDebug() << "DB is valid" << m_db.isValid();
 
 }
@@ -147,7 +162,7 @@ void Filester::readAllDatabase() {
         }
         else
         {
-            qDebug() << qPrintable(query.lastError().text());
+            qDebug() << "Filester: Last SQL error:" << qPrintable(query.lastError().text());
         }
         this->m_file.flush();
         this->m_file.close();
